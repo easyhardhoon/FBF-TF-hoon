@@ -83,7 +83,7 @@ void read_Mnist(const char * filename, vector<cv::Mat>& vec) {
 				}
 			}
 			vec.push_back(tp);
-      cout << "Get " << i << " Images" << "\n";
+      // cout << "Get " << i << " Images" << "\n";
 		}
 	}
 	else {
@@ -98,7 +98,7 @@ void read_Mnist_Label(const char * filename, vector<unsigned char> &arr) {
 			unsigned char temp = 0;
 			file.read((char*)&temp, sizeof(temp));
 			if (i > 7) {
-				cout << (int)temp << " ";
+				// cout << (int)temp << " ";
 				arr.push_back((unsigned char)temp);
 			}
 		}
@@ -162,35 +162,35 @@ void* job_cpu(tflite::InterpreterBuilder* builder, vector<cv::Mat> input){
          interpreter->typed_input_tensor<float>(0)[i*28 + j] = ((float)input[k].at<uchar>(i, j)/255.0); 
          if(interpreter->typed_input_tensor<float>(0)[i*28 + j] != 0)
 	       {
-           printf("\033[0;31m%0.4f\033[0m",interpreter->typed_input_tensor<float>(0)[i*28 + j]); 
+          //  printf("\033[0;31m%0.4f\033[0m",interpreter->typed_input_tensor<float>(0)[i*28 + j]); 
          }  
          else
          {
-           printf("%0.4f",interpreter->typed_input_tensor<float>(0)[i*28 + j]);
+          //  printf("%0.4f",interpreter->typed_input_tensor<float>(0)[i*28 + j]);
          }
        }
-       printf("\n");
+      //  printf("\n");
      }
-     printf("\n=====START Invoke=====\n\n");
+    //  printf("\n=====START Invoke=====\n\n");
      mtx_lock.lock();
      uint64_t START = nanos();
      TFLITE_MINIMAL_CHECK(interpreter->Invoke() == kTfLiteOk);
      uint64_t END = nanos();
      mtx_lock.unlock();
      uint64_t Invoke_time = END - START;
-     printf("\n=====End Invoke=====\n\n");
-     printf("single data's invoke time is %0.6f ms\n", (float)Invoke_time / (float)1000000);
-     printf("=====get_output=====\n\n");
+    //  printf("\n=====End Invoke=====\n\n");
+    //  printf("single data's invoke time is %0.6f ms\n", (float)Invoke_time / (float)1000000);
+    //  printf("=====get_output=====\n\n");
      float max =0;
      for (int n=0;n<10;n++)
      {
        if (interpreter->typed_output_tensor<float>(0)[n] > max)
          max = interpreter->typed_output_tensor<float>(0)[n];
-       printf("%d's data's output[label:%d] : %f\n", k, n,interpreter->typed_output_tensor<float>(0)[n]);
+      //  printf("%d's data's output[label:%d] : %f\n", k, n,interpreter->typed_output_tensor<float>(0)[n]);
      }
      average_accuarcy += max;
      average_time +=  (float)Invoke_time / (float)1000000;
-     printf("\n%d'sDATA\n", k+1);
+    //  printf("\n%d'sDATA\n", k+1);
    }
    printf(" >>>>>>>>>>>> model's average accuracy : %.6f %\n", average_accuarcy / (float)SEQ * 100);
    printf(" >>>>>>>>>>>> model's average invoke time : %.6f ms\n", average_time / (float)SEQ);
@@ -237,35 +237,35 @@ void* job_gpu(tflite::InterpreterBuilder* builder, vector<cv::Mat> input){
          interpreter->typed_input_tensor<float>(0)[i*28 + j] = ((float)input[k].at<uchar>(i, j)/255.0); 
          if(interpreter->typed_input_tensor<float>(0)[i*28 + j] != 0)
 	       {
-           printf("\033[0;31m%0.4f\033[0m",interpreter->typed_input_tensor<float>(0)[i*28 + j]); 
+          //  printf("\033[0;31m%0.4f\033[0m",interpreter->typed_input_tensor<float>(0)[i*28 + j]); 
          }  
          else
          {
-           printf("%0.4f",interpreter->typed_input_tensor<float>(0)[i*28 + j]);
+          //  printf("%0.4f",interpreter->typed_input_tensor<float>(0)[i*28 + j]);
          }
        }
-       printf("\n");
+      //  printf("\n");
      }
-     printf("\n=====START Invoke=====\n\n");
+    //  printf("\n=====START Invoke=====\n\n");
      mtx_lock.lock();
      uint64_t START = nanos();
      TFLITE_MINIMAL_CHECK(interpreter->Invoke() == kTfLiteOk);
      uint64_t END = nanos();
      uint64_t Invoke_time = END - START;
      mtx_lock.unlock();
-     printf("\n=====End Invoke=====\n\n");
-     printf("single data's invoke time is %0.6f ms\n", (float)Invoke_time / (float)1000000);
-     printf("=====get_output=====\n\n");
+    //  printf("\n=====End Invoke=====\n\n");
+    //  printf("single data's invoke time is %0.6f ms\n", (float)Invoke_time / (float)1000000);
+    //  printf("=====get_output=====\n\n");
      float max =0;
      for (int n=0;n<10;n++)
      {
        if (interpreter->typed_output_tensor<float>(0)[n] > max)
          max = interpreter->typed_output_tensor<float>(0)[n];
-       printf("%d's data's output[label:%d] : %f\n", k, n,interpreter->typed_output_tensor<float>(0)[n]);
+      //  printf("%d's data's output[label:%d] : %f\n", k, n,interpreter->typed_output_tensor<float>(0)[n]);
      }
      average_accuarcy += max;
      average_time +=  (float)Invoke_time / (float)1000000;
-     printf("\n%d'sDATA\n", k+1);
+    //  printf("\n%d'sDATA\n", k+1);
    }
    printf(" >>>>>>>>>>>> model's average accuracy : %.6f %\n", average_accuarcy / (float)SEQ * 100);
    printf(" >>>>>>>>>>>> model's average invoke time : %.6f ms\n", average_time / (float)SEQ);
@@ -312,6 +312,7 @@ int main(int argc, char* argv[]) {
   
   cpu.join();
   gpu.join();
+
   printf("CPU : %fs \n", cpu_t);
   printf("GPU : %fs \n", gpu_t);
   return 0;

@@ -79,7 +79,7 @@ void read_Mnist(const char * filename, vector<cv::Mat>& vec) {
 				}
 			}
 			vec.push_back(tp);
-      cout << "Get " << i << " Images" << "\n";
+      // cout << "Get " << i << " Images" << "\n";
 		}
 	}
 	else {
@@ -94,7 +94,7 @@ void read_Mnist_Label(const char * filename, vector<unsigned char> &arr) {
 			unsigned char temp = 0;
 			file.read((char*)&temp, sizeof(temp));
 			if (i > 7) {
-				cout << (int)temp << " ";
+				// cout << (int)temp << " ";
 				arr.push_back((unsigned char)temp);
 			}
 		}
@@ -175,7 +175,6 @@ int main(int argc, char* argv[]) {
   tflite::PrintInterpreterState(interpreter.get());
 
 
-
   printf("\n=====set_input======\n\n");
 
   vector<cv::Mat> input;
@@ -196,7 +195,7 @@ int main(int argc, char* argv[]) {
     {
       for (int j=0; j<28; j++)
         {
-        interpreter->typed_input_tensor<float>(0)[i*28 + j] = ((float)input[k].at<uchar>(i, j)/255.0); 
+        interpreter->typed_input_tensor<float>(0)[i*28 + j] = ((float)input[0].at<uchar>(i, j)/255.0); 
         if(interpreter->typed_input_tensor<float>(0)[i*28 + j] != 0)
 	      {
           //printf("\033[0;31m%0.4f\033[0m",interpreter->typed_input_tensor<float>(0)[i*28 + j]); 
@@ -225,6 +224,7 @@ int main(int argc, char* argv[]) {
     }
     average_accuarcy += max;
     average_time +=  (float)Invoke_time / (float)1000000;
+
     //printf("\n%d'sDATA\n", k+1);
   }
   printf(" >>>>>>>>>>>> model's average accuracy : %.6f %\n", average_accuarcy / (float)SEQ * 100);

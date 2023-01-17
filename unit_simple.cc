@@ -126,6 +126,7 @@ int main(int argc, char* argv[])
 			exit(1);
 		}		
 	}
+	
 	else{
 		tflite::UnitHandler Uhandler(originalfilename, quantizedfilename);
 		if (Uhandler.Invoke(UnitType::CPU0, UnitType::GPU0, input) != kTfLiteOk){

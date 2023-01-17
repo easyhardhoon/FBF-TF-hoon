@@ -1,5 +1,5 @@
-minimal_hoon : minimal_cpu_gpu.cc
-	g++ -o minimal_cpu_gpu minimal_cpu_gpu.cc -I/usr/include/opencv4\
+minimal_hoon : unit_simple.cc
+	g++ -o unit_simple unit_simple.cc -I/usr/include/opencv4\
 		-pthread -g -I/home/nvidia/FBF-TF\
 		-I/home/nvidia/FBF-TF/tensorflow/lite/tools/make/downloads/flatbuffers/include\
 		-L/home/nvidia/FBF-TF/tensorflow/lite/tools/make/gen/linux_aarch64/lib\
