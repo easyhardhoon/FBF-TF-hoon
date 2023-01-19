@@ -161,6 +161,8 @@ int main(int argc, char* argv[]) {
       .inference_priority1 = TFLITE_GPU_INFERENCE_PRIORITY_MIN_LATENCY,
       .inference_priority2 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO,
       .inference_priority3 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO,
+      .experimental_flags=4,
+      .max_delegated_partitions=5,
   };
   MyDelegate = TfLiteGpuDelegateV2Create(&options);
   if(interpreter->ModifyGraphWithDelegate(MyDelegate) != kTfLiteOk) {
