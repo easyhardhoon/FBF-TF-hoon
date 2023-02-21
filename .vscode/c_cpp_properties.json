@@ -4,9 +4,9 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/home/nvidia/FBF-TF/tensorflow",
+                "/home/nvidia/FBF-TF/tensorflow/",
                 "/home/nvidia/FBF-TF/",
-                "/home/nvidia/FBF-TF/tensorflow/lite",
+                "/home/nvidia/FBF-TF/tensorflow/lite/",
                 "/home/nvidia/FBF-TF-hoon/",
                 "/usr/include/opencv4/"
             ],

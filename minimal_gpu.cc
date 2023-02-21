@@ -39,7 +39,8 @@ limitations under the License.
 
 #define mnist
 #define SEQ 60000
-#define OUT_SEQ 10
+#define OUT_SEQ 1
+
 using namespace cv;
 using namespace std;
 
@@ -155,14 +156,24 @@ int main(int argc, char* argv[]) {
   // --------------------------------------------------------------------------------------------
   // NOTE gpu delegate. interpreter ( CPU --> GPU )
   TfLiteDelegate *MyDelegate = NULL;
+
+  // const TfLiteGpuDelegateOptionsV2 options = {
+      // .is_precision_loss_allowed = 1, 
+      // .inference_preference = TFLITE_GPU_INFERENCE_PREFERENCE_FAST_SINGLE_ANSWER,
+      // .inference_priority1 = TFLITE_GPU_INFERENCE_PRIORITY_MIN_LATENCY,
+      // .inference_priority2 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO,
+      // .inference_priority3 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO,
+      // .experimental_flags=4,
+      // .max_delegated_partitions=5,
+  // };
   const TfLiteGpuDelegateOptionsV2 options = {
-      .is_precision_loss_allowed = 1, 
+      .is_precision_loss_allowed = 0, 
       .inference_preference = TFLITE_GPU_INFERENCE_PREFERENCE_FAST_SINGLE_ANSWER,
-      .inference_priority1 = TFLITE_GPU_INFERENCE_PRIORITY_MIN_LATENCY,
+      .inference_priority1 = TFLITE_GPU_INFERENCE_PRIORITY_MAX_PRECISION,
       .inference_priority2 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO,
       .inference_priority3 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO,
-      .experimental_flags=4,
-      .max_delegated_partitions=5,
+      .experimental_flags = 1,
+      .max_delegated_partitions = 1,
   };
   MyDelegate = TfLiteGpuDelegateV2Create(&options);
   if(interpreter->ModifyGraphWithDelegate(MyDelegate) != kTfLiteOk) {
@@ -197,14 +208,14 @@ int main(int argc, char* argv[]) {
     {
       for (int j=0; j<28; j++)
         {
-        interpreter->typed_input_tensor<float>(0)[i*28 + j] = ((float)input[0].at<uchar>(i, j)/255.0); 
+        interpreter->typed_input_tensor<float>(0)[i*28 + j] = ((float)input[k].at<uchar>(i, j)/255.0); 
         if(interpreter->typed_input_tensor<float>(0)[i*28 + j] != 0)
 	      {
           //printf("\033[0;31m%0.4f\033[0m",interpreter->typed_input_tensor<float>(0)[i*28 + j]); 
         }  
         else
         {
-          //printf("%0.4f",interpreter->typed_input_tensor<float>(0)[i*28 + j]);
+         //printf("%0.4f",interpreter->typed_input_tensor<float>(0)[i*28 + j]);
         }
       }
       //printf("\n");
@@ -225,6 +236,7 @@ int main(int argc, char* argv[]) {
       //printf("%d's data's output[label:%d] : %f\n", k, n,interpreter->typed_output_tensor<float>(0)[n]);
     }
     average_accuarcy += max;
+    //printf("single data's accuarcy is %f \n", max);
     average_time +=  (float)Invoke_time / (float)1000000;
 
     //printf("\n%d'sDATA\n", k+1);
