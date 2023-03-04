@@ -2,6 +2,7 @@
 mnist_1.tflite -> original model 
 mnist_2.tflite -> change hidden layer's activation [relu->leaky_relu]
 mnist_3.tflite -> remove concatenate layer and add dropout layer at that point
+mnist_4.tflite -> remove dropout layer & change leaky_relu to elu [activation_function]
 
 #main flow
 1. minimal_cpu -> test minimal example on single unit CPU 
