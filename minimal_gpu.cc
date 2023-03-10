@@ -211,35 +211,35 @@ int main(int argc, char* argv[]) {
         interpreter->typed_input_tensor<float>(0)[i*28 + j] = ((float)input[k].at<uchar>(i, j)/255.0); 
         if(interpreter->typed_input_tensor<float>(0)[i*28 + j] != 0)
 	      {
-          //printf("\033[0;31m%0.4f\033[0m",interpreter->typed_input_tensor<float>(0)[i*28 + j]); 
+          printf("\033[0;31m%0.4f\033[0m",interpreter->typed_input_tensor<float>(0)[i*28 + j]); 
         }  
         else
         {
-         //printf("%0.4f",interpreter->typed_input_tensor<float>(0)[i*28 + j]);
+         printf("%0.4f",interpreter->typed_input_tensor<float>(0)[i*28 + j]);
         }
       }
-      //printf("\n");
+      printf("\n");
     }
-    //printf("\n=====START Invoke=====\n\n");
+    printf("\n=====START Invoke=====\n\n");
     uint64_t START = nanos();
     TFLITE_MINIMAL_CHECK(interpreter->Invoke() == kTfLiteOk);
     uint64_t END = nanos();
     uint64_t Invoke_time = END - START;
-    //printf("\n=====End Invoke=====\n\n");
-    //printf("single data's invoke time is %0.6f ms\n", (float)Invoke_time / (float)1000000);
-    //printf("=====get_output=====\n\n");
+    printf("\n=====End Invoke=====\n\n");
+    printf("single data's invoke time is %0.6f ms\n", (float)Invoke_time / (float)1000000);
+    printf("=====get_output=====\n\n");
     float max =0;
     for (int n=0;n<10;n++)
     {
       if (interpreter->typed_output_tensor<float>(0)[n] > max)
         max = interpreter->typed_output_tensor<float>(0)[n];
-      //printf("%d's data's output[label:%d] : %f\n", k, n,interpreter->typed_output_tensor<float>(0)[n]);
+      printf("%d's data's output[label:%d] : %f\n", k, n,interpreter->typed_output_tensor<float>(0)[n]);
     }
     average_accuarcy += max;
-    //printf("single data's accuarcy is %f \n", max);
+    printf("single data's accuarcy is %f \n", max);
     average_time +=  (float)Invoke_time / (float)1000000;
 
-    //printf("\n%d'sDATA\n", k+1);
+    printf("\n%d'sDATA\n", k+1);
   }
   printf(" >>>>>>>>>>>> model's average accuracy : %.6f %\n", average_accuarcy / (float)SEQ * 100);
   printf(" >>>>>>>>>>>> model's average invoke time : %.6f ms\n", average_time / (float)SEQ);
