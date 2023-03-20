@@ -4,9 +4,11 @@ mnist_2.tflite -> change hidden layer's activation [relu->leaky_relu]
 mnist_3.tflite -> remove concatenate layer and add dropout layer at that point
 mnist_4.tflite -> remove dropout layer & change leaky_relu to elu [activation_function]
 mnist_5.tflite -> change first Fully-Connected Layer's activation func [leaky_relu -> relu]
-mnist_6.tflite ->
-mnist_7.tflite ->
-
+mnist_6.tflite -> custom class model including add & mul layer
+mnist_7.tflite -> custom class model including add & mul layer
+mnist_8.tflite -> custom class model including SPLIT layer [TODO]
+ 
+yolo.tflite -> yolov4-tiny model. SPLIT layer is FALLBACK layer that forces to fall back to CPU
 
 #main flow
 1. minimal_cpu -> test minimal example on single unit CPU 
