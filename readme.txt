@@ -6,8 +6,9 @@ mnist_4.tflite -> remove dropout layer & change leaky_relu to elu [activation_fu
 mnist_5.tflite -> change first Fully-Connected Layer's activation func [leaky_relu -> relu]
 mnist_6.tflite -> custom class model including add & mul layer
 mnist_7.tflite -> custom class model including add & mul layer
-mnist_8.tflite -> custom class model including SPLIT layer [TODO]
- 
+mnist_8.tflite -> custom class model including SPLIT layer
+mnist_9.tflite -> change hidden layer's activation [relu->leaky_relu] based mnist_8.tflite
+
 yolo.tflite -> yolov4-tiny model. SPLIT layer is FALLBACK layer that forces to fall back to CPU
 
 #main flow
@@ -39,3 +40,13 @@ conv elu pool conv elu pool conv elu flatt fc fc softmax
   F   T   T     F   T    T    F   T    T   T   T     T    (case : CONV)
   T   T   F     T   T    F    T   T    T   T   T     T    (case : pool)
   T   T   T     T   T    T    T   T    T   F   F     T    (case : FC)  
+
+
+# mnist_9.tflite (final test model) (by custom class)
+split --> conv pool flatten FC
+                                +---> concatenate FC
+      --> conv pool flatten FC
+
+#NOTE
+this model is related to "Input data partitioning"
+split layer is unsupported layer in opengl delegation, with tensorflow lite version 2.4.1
