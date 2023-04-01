@@ -85,5 +85,14 @@ this model is related to "Input data partitioning"
 split layer is unsupported layer in opengl delegation, with tensorflow lite version 2.4.1
 
 
-# mnist_11.tflite (add dummy concate layer that causes fallback  on tuning VGG16 model)
+# mnist_12.tflite (add dummy concate layer that causes fallback  on tuning VGG16 model)
 
+VGG : CONV [64, 128, 256, 512], DENSE [4096, 256,10]
+
+mnist_10.tflite [tuning_seq] : CONV [16,32,64,128] , DENSE [1024, 256, 10]
+
+mnist_11.tflite [tuning_cus] : same as above case --> accuracy issue occurs.
+
+mnist_12.tflite [tuning_cus] : CONV [ 4,8,16,32] , DENSE [ 64, 32, 10] --> MIN
+ 
+                               CONV [ 5,10,20,30] , DENSE [ 128, 64,10 ]  ---> MAX[70,474 params]
