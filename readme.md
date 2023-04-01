@@ -20,7 +20,9 @@ mnist_9.tflite -> change hidden layer's activation [relu->leaky_relu] based mnis
 
 mnist_10.tflite -> tuning model based on VGG16 
 
-mnist_11.tftlie -> add dummy concate layer on mnist_10.tflite 
+mnist_11.tftlie -> add dummy concate layer on mnist_10.tflite
+
+mnist_12.tflite -> mnist_11.tflite has accuracy issue. solve problem by tuning params [70474 params]
 
 # main models
 
