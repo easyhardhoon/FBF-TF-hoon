@@ -104,13 +104,14 @@ mnist_10.tflite (not concate) : 2.193 ms, 99.046 %
 
 mnist_12.tflite (with concate) : 0.824ms, 95.785 %
 
-mnist_13.tflite (with concate) : 
+mnist_13.tflite (with concate) : 0.957ms , 95.31 % 
 
 
-**mnist_13.tflite (FallBack concate) (kLargest): ??? ms, ??? %** 
+mnist_13.tflite (FallBack concate) (kLargest):  2.407ms, 95.31% 
 
+mnist_13.tflite (FallBack concate) (ksmallest): 2.149ms,  98.03%
 
-**mnist_12.tflite (FallBack concate) (testing): ??? ms,  ??? %** 
+mnist_13.tflite (FallBack concate) (TODO): ???ms,  ???%
 
 
 
