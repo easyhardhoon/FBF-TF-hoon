@@ -57,10 +57,20 @@ class model_VGG(Model):
         self.dense3 = Dense(10, activation = tf.nn.softmax)
 
         #NOTE --> this point is 230401's solution. same tool "real AND dummy CONV"
-        self.dummy1 = Conv2D(1,(3,3), strides = (1,1), padding = 'same', trainable= False)
-        self.dummy2 = Conv2D(1,(3,3), strides = (1,1), padding = 'same', trainable= False)
-        self.dummy3 = Conv2D(1,(3,3), strides = (1,1), padding = 'same', trainable= False)
-        self.dummy4 = Conv2D(1,(3,3), strides = (1,1), padding = 'same', trainable= False)
+        self.dummy1_1 = Conv2D(1,(3,3), strides = (1,1), padding = 'same', trainable= False)
+        self.dummy1_2 = Conv2D(1,(3,3), strides = (1,1), padding = 'same', trainable= False)
+        self.dummy2_1 = Conv2D(1,(3,3), strides = (1,1), padding = 'same', trainable= False)
+        self.dummy2_2 = Conv2D(1,(3,3), strides = (1,1), padding = 'same', trainable= False)
+        self.dummy3_1 = Conv2D(1,(3,3), strides = (1,1), padding = 'same', trainable= False)
+        self.dummy3_2 = Conv2D(1,(3,3), strides = (1,1), padding = 'same', trainable= False)
+        self.dummy3_3 = Conv2D(1,(3,3), strides = (1,1), padding = 'same', trainable= False)
+        self.dummy4_1 = Conv2D(1,(3,3), strides = (1,1), padding = 'same', trainable= False)
+        self.dummy4_2 = Conv2D(1,(3,3), strides = (1,1), padding = 'same', trainable= False)
+        self.dummy4_3 = Conv2D(1,(3,3), strides = (1,1), padding = 'same', trainable= False)
+        self.dummy4_4 = Conv2D(1,(3,3), strides = (1,1), padding = 'same', trainable= False)
+        self.dummy4_5 = Conv2D(1,(3,3), strides = (1,1), padding = 'same', trainable= False)
+        self.dummy4_6 = Conv2D(1,(3,3), strides = (1,1), padding = 'same', trainable= False)
+        
     def call(self, x): 
         #TODO  --> many cases for Delgate Optimizing Test.
         #1. concate 4 times --> model_mnist_11.tflite
@@ -69,35 +79,76 @@ class model_VGG(Model):
         #2.          Is that right : first dummy input {1,30,30,1}
         #2. 230401 : find solution : num of parameters
         #            VGG DNN is not suitable model for MNIST data
-        model_dummy_1 = self.dummy1(tf.zeros([1,28,28,1]))
-        model_dummy_1.trainable =  False
+        model_dummy_1_1 = self.dummy1_1(tf.zeros([1,28,28,1]))
+        model_dummy_1_1.trainable =  False
+        model_dummy_1_2 = self.dummy1_1(tf.zeros([1,28,28,1]))
+        model_dummy_1_2.trainable =  False
         net = self.conv1_1(x)
+        net = concatenate([net, model_dummy_1_1], axis=3)
         net = self.conv1_2(net)
-        net = concatenate([net,model_dummy_1], axis=3)
+        net = concatenate([net,model_dummy_1_2], axis=3)
         net = self.pool1(net)
+
         net = self.conv2_1(net)
+        model_dummy_2_1 = self.dummy2_1(tf.zeros([1,14,14,1]))
+        model_dummy_2_1.trainable =  False
+        net = concatenate([net, model_dummy_2_1], axis=3)
         net = self.conv2_2(net)
-        model_dummy_2 = self.dummy2(tf.zeros([1,14,14,1]))
-        model_dummy_2.trainable =  False
-        net = concatenate([net,model_dummy_2],axis=3)
+        model_dummy_2_2 = self.dummy2_2(tf.zeros([1,14,14,1]))
+        model_dummy_2_2.trainable =  False
+        net = concatenate([net,model_dummy_2_2],axis=3)
         net = self.pool2(net)
+       
+        model_dummy_3_1  = self.dummy3_1(tf.zeros([1,7,7,1]))
+        model_dummy_3_1.trainable =  False
         net = self.conv3_1(net)
+        net = concatenate([net,model_dummy_3_1], axis=3)
+
+        model_dummy_3_2  = self.dummy3_2(tf.zeros([1,7,7,1]))
+        model_dummy_3_2.trainable =  False
         net = self.conv3_2(net)
+        net = concatenate([net,model_dummy_3_2], axis=3)
+
         net = self.conv3_3(net)
-        model_dummy_3  = self.dummy3(tf.zeros([1,7,7,1]))
-        model_dummy_3.trainable =  False
-        net = concatenate([net,model_dummy_3], axis=3)
+        model_dummy_3_3  = self.dummy3_3(tf.zeros([1,7,7,1]))
+        model_dummy_3_3.trainable =  False
+        net = concatenate([net,model_dummy_3_3], axis=3)
         net = self.pool3(net)
+
+
         net = self.conv4_1(net)
+        model_dummy_4_1  = self.dummy4_1(tf.zeros([1,3,3,1]))
+        model_dummy_4_1.trainable = False
+        net = concatenate([net,model_dummy_4_1], axis=3)
+
+
         net = self.conv4_2(net)
+        model_dummy_4_2  = self.dummy4_2(tf.zeros([1,3,3,1]))
+        model_dummy_4_2.trainable = False
+        net = concatenate([net,model_dummy_4_2], axis=3)
+
         net = self.conv4_3(net)
-        model_dummy_4  = self.dummy4(tf.zeros([1,3,3,1]))
-        model_dummy_4.trainable = False
-        net = concatenate([net,model_dummy_4], axis=3)
+        model_dummy_4_3  = self.dummy4_3(tf.zeros([1,3,3,1]))
+        model_dummy_4_3.trainable = False
+        net = concatenate([net,model_dummy_4_3], axis=3)
         net = self.pool4(net)
+
+
         net = self.conv4_4(net)
+        model_dummy_4_4  = self.dummy4_4(tf.zeros([1,1,1,1]))
+        model_dummy_4_4.trainable = False
+        net = concatenate([net,model_dummy_4_4], axis=3)
+
         net = self.conv4_5(net)
+        model_dummy_4_5  = self.dummy4_5(tf.zeros([1,1,1,1]))
+        model_dummy_4_5.trainable = False
+        net = concatenate([net,model_dummy_4_5], axis=3)
+
         net = self.conv4_6(net)
+        model_dummy_4_6  = self.dummy4_6(tf.zeros([1,1,1,1]))
+        model_dummy_4_6.trainable = False
+        net = concatenate([net,model_dummy_4_6], axis=3)
+
         net = self.flat(net)
         net = self.dense1(net)
         net = self.dense2(net)
@@ -124,7 +175,7 @@ test_loss, test_acc = myGpuModel.evaluate(x_test, y_test, batch_size=1)
 
 print('accuacy :', test_acc)
 
-myGpuModel.save('saved_model/mnist_12')
+myGpuModel.save('saved_model/mnist_13')
 
 #--------------------------------------------------------------------------------------
 #NOTE just 3-times CONV MNIST Model by sequential class

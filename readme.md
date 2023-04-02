@@ -24,6 +24,7 @@ mnist_11.tftlie -> add dummy concate layer on mnist_10.tflite
 
 mnist_12.tflite -> mnist_11.tflite has accuracy issue. solve problem by tuning params [70474 params]
 
+mnist_13.tflite -> add concate layer after every CONV layer
 # main models
 
 1. mnist_9.tflite -> originally Fallback model by custom class using SPLIT layer
@@ -85,7 +86,7 @@ this model is related to "Input data partitioning"
 split layer is unsupported layer in opengl delegation, with tensorflow lite version 2.4.1
 
 
-# mnist_12.tflite (add dummy concate layer that causes fallback  on tuning VGG16 model)
+# mnist_13.tflite (add dummy concate layer that causes fallback  on tuning VGG16 model)
 
 VGG : CONV [64, 128, 256, 512], DENSE [4096, 256,10]
 
@@ -97,14 +98,19 @@ mnist_12.tflite [tuning_cus] : CONV [ 4,8,16,32] , DENSE [ 64, 32, 10] --> MIN
  
                                CONV [ 5,10,20,30] , DENSE [ 128, 64,10 ]  ---> MAX[70,474 params]
 
+mnist_13.tflite [tuning_cus] : same as above case + add concate layer after evry conv layer
+
 mnist_10.tflite (not concate) : 2.193 ms, 99.046 %
 
 mnist_12.tflite (with concate) : 0.824ms, 95.785 %
 
-**mnist_12.tflite (FallBack concate) (kLargest): 2.505ms, 95.785 %** 
+mnist_13.tflite (with concate) : 
 
 
-**mnist_12.tflite (FallBack concate) (testing): ??? ms, 95.785 %** 
+**mnist_13.tflite (FallBack concate) (kLargest): ??? ms, ??? %** 
+
+
+**mnist_12.tflite (FallBack concate) (testing): ??? ms,  ??? %** 
 
 
 
