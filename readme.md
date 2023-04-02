@@ -96,3 +96,19 @@ mnist_11.tflite [tuning_cus] : same as above case --> accuracy issue occurs.
 mnist_12.tflite [tuning_cus] : CONV [ 4,8,16,32] , DENSE [ 64, 32, 10] --> MIN
  
                                CONV [ 5,10,20,30] , DENSE [ 128, 64,10 ]  ---> MAX[70,474 params]
+
+mnist_10.tflite (not concate) : 2.193 ms, 99.046 %
+
+mnist_12.tflite (with concate) : 0.824ms, 95.785 %
+
+**mnist_12.tflite (FallBack concate) (kLargest): 2.505ms, 95.785 %** 
+
+
+**mnist_12.tflite (FallBack concate) (testing): ??? ms, 95.785 %** 
+
+
+
+
+
+
+
