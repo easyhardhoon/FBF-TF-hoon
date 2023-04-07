@@ -2,6 +2,8 @@
 #define SEQ 60000
 #define OUT_SEQ 1
 #define mnist 
+#define NUM 4
+#define delegate_optimizing
 
 using namespace cv;
 using namespace std;
@@ -119,9 +121,39 @@ int main(int argc, char* argv[])
 	std::cout << "Loading Cat Image \n";
 	#endif
 
+	int loop_num = 0;
+	#ifdef delegate_optimizing
+	if(!bUseTwoModel){
+		// 230406 TODO
+		for (int loop_num=0; loop_num<NUM; loop_num++)
+		{
+			tflite::UnitHandler Uhandler(originalfilename);
+			printf("........................................................................................................\n");
+			printf("%d loop starting.....\n", loop_num);
+			if (Uhandler.Invoke(UnitType::CPU0, UnitType::GPU0, input, loop_num) != kTfLiteOk)
+			{
+			Uhandler.PrintMsg("Invoke Returned Error");
+			exit(1);
+			}
+			printf("%d loop End.....\n", loop_num);
+		}
+	}
+	
+	else{
+		tflite::UnitHandler Uhandler(originalfilename, quantizedfilename);
+		if (Uhandler.Invoke(UnitType::CPU0, UnitType::GPU0, input, loop_num) != kTfLiteOk){
+			Uhandler.PrintMsg("Invoke Returned Error");
+			exit(1);
+		}
+	}
+	#endif
+
+	#ifndef delegate_optimizing
 	if(!bUseTwoModel){
 		tflite::UnitHandler Uhandler(originalfilename);
-		if (Uhandler.Invoke(UnitType::CPU0, UnitType::GPU0, input) != kTfLiteOk){
+		// HOON ==> make extra loop for deleation optimizing???
+		// 230406 TODO
+		if (Uhandler.Invoke(UnitType::CPU0, UnitType::GPU0, input, loop_num) != kTfLiteOk){
 			Uhandler.PrintMsg("Invoke Returned Error");
 			exit(1);
 		}		
@@ -129,9 +161,10 @@ int main(int argc, char* argv[])
 	
 	else{
 		tflite::UnitHandler Uhandler(originalfilename, quantizedfilename);
-		if (Uhandler.Invoke(UnitType::CPU0, UnitType::GPU0, input) != kTfLiteOk){
+		if (Uhandler.Invoke(UnitType::CPU0, UnitType::GPU0, input, loop_num) != kTfLiteOk){
 			Uhandler.PrintMsg("Invoke Returned Error");
 			exit(1);
 		}
 	}
+	#endif
 }
