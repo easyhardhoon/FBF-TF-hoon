@@ -2,7 +2,7 @@
 #define SEQ 60000
 #define OUT_SEQ 1
 #define mnist 
-#define NUM 4
+#define NUM 14  // for choose "1" delegation node
 #define delegate_optimizing
 
 using namespace cv;
