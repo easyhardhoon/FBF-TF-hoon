@@ -1,5 +1,5 @@
 #include "tensorflow/lite/unit_handler.h"
-#define SEQ 6 //60000
+#define SEQ 10000 //60000
 #define OUT_SEQ 1
 #define mnist 
 #define NUM 16383 // for mnist_14.tflite
@@ -86,6 +86,8 @@ void read_image_opencv(string filename, vector<cv::Mat>& input){
 }
 #endif
 
+// extern std::vector<int> delegation_optimizer_v;
+// std::vector<int> b_delegation_optimizer;  // <-> ?? 
 
 int main(int argc, char* argv[])
 {
@@ -108,6 +110,7 @@ int main(int argc, char* argv[])
 	}
 	vector<cv::Mat> input;
 	vector<unsigned char> arr;
+	// vector<int> delegation_optimizer_v;
 	#ifdef mnist
 	std::cout << "Loading images \n";
         read_Mnist("train-images-idx3-ubyte", input);
@@ -135,6 +138,7 @@ int main(int argc, char* argv[])
 			Uhandler.PrintMsg("Invoke Returned Error");
 			exit(1);
 			}
+			// std::cout << "-----------------------------------TODO: " <<  b_delegation_optimizer.size() << std::endl;
 			printf("%d loop End.....\n", loop_num);
 			if (loop_num >= 16382)  printf("\033[0;31m choose 14 delegation node\033[0m\n");
 			else if (loop_num >= 16368)  printf("\033[0;31m choose 13 delegation node\033[0m\n");
@@ -151,7 +155,7 @@ int main(int argc, char* argv[])
 			else if (loop_num >= 14)  printf("\033[0;31m choose 2 delegation node \033[0m\n");
 		}
 			}
-	
+
 	else{
 		tflite::UnitHandler Uhandler(originalfilename, quantizedfilename);
 		if (Uhandler.Invoke(UnitType::CPU0, UnitType::GPU0, input, loop_num) != kTfLiteOk){
