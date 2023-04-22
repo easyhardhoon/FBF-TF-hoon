@@ -1,9 +1,10 @@
 #include "tensorflow/lite/unit_handler.h"
-#define SEQ 10000 //60000
+#define SEQ 60000 
 #define OUT_SEQ 1
 #define mnist 
-#define NUM 16383 // for mnist_14.tflite
 #define delegate_optimizing
+#define Partition_Num 14 // HOON --> number of all partition
+#define Max_Delegated_Partitions_Num 3 // HOON -> max delegated partitions num
 
 using namespace cv;
 using namespace std;
@@ -89,6 +90,11 @@ void read_image_opencv(string filename, vector<cv::Mat>& input){
 // extern std::vector<int> delegation_optimizer_v;
 // std::vector<int> b_delegation_optimizer;  // <-> ?? 
 
+int combination(int n, int r) {
+    	if(n == r || r == 0) return 1; 
+    	else return combination(n - 1, r - 1) + combination(n - 1, r);
+}
+
 int main(int argc, char* argv[])
 {
 	const char* originalfilename;
@@ -124,41 +130,47 @@ int main(int argc, char* argv[])
 	std::cout << "Loading Cat Image \n";
 	#endif
 
-	int loop_num = 0;
+	int max_delegated_partition_num = Max_Delegated_Partitions_Num;
+	int test_number  = combination(Partition_Num, Max_Delegated_Partitions_Num);
+	// printf("%d", test_number);
+	// fix number use  {Partition_Num}  &  {Max_Delegated_Partitions_Num}
+
+
 	#ifdef delegate_optimizing
 	if(!bUseTwoModel){
 		// 230406 TODO
-		for (int loop_num=0; loop_num<NUM; loop_num++)
+		for (int loop_num=0; loop_num<test_number; loop_num++)
 		{
 			tflite::UnitHandler Uhandler(originalfilename);
 			printf(".....................................................................................................\n");
 			printf("%d loop starting.....\n", loop_num);
-			if (Uhandler.Invoke(UnitType::CPU0, UnitType::GPU0, input, loop_num) != kTfLiteOk)
+			if (Uhandler.Invoke(UnitType::CPU0, UnitType::GPU0, input, loop_num, max_delegated_partition_num) != kTfLiteOk)
 			{
 			Uhandler.PrintMsg("Invoke Returned Error");
 			exit(1);
 			}
 			// std::cout << "-----------------------------------TODO: " <<  b_delegation_optimizer.size() << std::endl;
 			printf("%d loop End.....\n", loop_num);
-			if (loop_num >= 16382)  printf("\033[0;31m choose 14 delegation node\033[0m\n");
-			else if (loop_num >= 16368)  printf("\033[0;31m choose 13 delegation node\033[0m\n");
-			else if (loop_num >= 16277) printf("\033[0;31m choose 12 delegation node\033[0m\n");
-			else if (loop_num >= 15913)  printf("\033[0;31m choose 11 delegation node\033[0m\n");
-			else if (loop_num >= 14912) printf("\033[0;31m choose 10 delegation node\033[0m\n");
-			else if (loop_num >= 12910) printf("\033[0;31m choose 9 delegation node\033[0m\n");
-			else if (loop_num >= 9907) printf("\033[0;31m choose 8 delegation node\033[0m\n");
-			else if (loop_num >= 6475) printf("\033[0;31m choose 7 delegation node\033[0m\n");
-			else if (loop_num >= 3472) printf("\033[0;31m choose 6 delegation node\033[0m\n");
-			else if (loop_num >= 1470) printf("\033[0;31m choose 5 delegation node\033[0m\n");
-			else if (loop_num >= 469) printf("\033[0;31m choose 4 delegation node\033[0m\n");
-			else if (loop_num >= 105) printf("\033[0;31m choose 3 delegation node\033[0m\n");
-			else if (loop_num >= 14)  printf("\033[0;31m choose 2 delegation node \033[0m\n");
+			// if (loop_num >= 16382)  printf("\033[0;31m choose 14 delegation node\033[0m\n");
+			// else if (loop_num >= 16368)  printf("\033[0;31m choose 13 delegation node\033[0m\n");
+			// else if (loop_num >= 16277) printf("\033[0;31m choose 12 delegation node\033[0m\n");
+			// else if (loop_num >= 15913)  printf("\033[0;31m choose 11 delegation node\033[0m\n");
+			// else if (loop_num >= 14912) printf("\033[0;31m choose 10 delegation node\033[0m\n");
+			// else if (loop_num >= 12910) printf("\033[0;31m choose 9 delegation node\033[0m\n");
+			// else if (loop_num >= 9907) printf("\033[0;31m choose 8 delegation node\033[0m\n");
+			// else if (loop_num >= 6475) printf("\033[0;31m choose 7 delegation node\033[0m\n");
+			// else if (loop_num >= 3472) printf("\033[0;31m choose 6 delegation node\033[0m\n");
+			// else if (loop_num >= 1470) printf("\033[0;31m choose 5 delegation node\033[0m\n");
+			// else if (loop_num >= 469) printf("\033[0;31m choose 4 delegation node\033[0m\n");
+			// else if (loop_num >= 105) printf("\033[0;31m choose 3 delegation node\033[0m\n");
+			// else if (loop_num >= 14)  printf("\033[0;31m choose 2 delegation node \033[0m\n");
 		}
 			}
 
 	else{
+		int loop_num = 0;
 		tflite::UnitHandler Uhandler(originalfilename, quantizedfilename);
-		if (Uhandler.Invoke(UnitType::CPU0, UnitType::GPU0, input, loop_num) != kTfLiteOk){
+		if (Uhandler.Invoke(UnitType::CPU0, UnitType::GPU0, input, loop_num, max_delegated_partition_num) != kTfLiteOk){
 			Uhandler.PrintMsg("Invoke Returned Error");
 			exit(1);
 		}
