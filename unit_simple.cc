@@ -1,10 +1,11 @@
 #include "tensorflow/lite/unit_handler.h"
-#define SEQ 60000 
+#define SEQ 60000 //for input image
 #define OUT_SEQ 1
-#define mnist 
+#define catdog 
+
 #define delegate_optimizing
-#define Partition_Num 14 // HOON --> number of all partition
-#define Max_Delegated_Partitions_Num 3 // HOON -> max delegated partitions num
+#define Partition_Num 7// HOON --> number of all partition 14
+#define Max_Delegated_Partitions_Num 1 // HOON -> max delegated partitions num 4
 
 using namespace cv;
 using namespace std;
@@ -82,7 +83,7 @@ void read_image_opencv(string filename, vector<cv::Mat>& input){
 	}
 	cv::cvtColor(cvimg, cvimg, COLOR_BGR2RGB);
 	cv::Mat cvimg_;
-	cv::resize(cvimg, cvimg_, cv::Size(300, 300)); //resize to 300x300
+	cv::resize(cvimg, cvimg_, cv::Size(416,416)); //resize to 300x300
 	input.push_back(cvimg_);
 }
 #endif
@@ -126,8 +127,8 @@ int main(int argc, char* argv[])
 	#endif
 
 	#ifdef catdog
-	read_image_opencv("cat.0.jpg", input);
-	std::cout << "Loading Cat Image \n";
+	read_image_opencv("dog.jpg", input);
+	std::cout << "Loading dog Image \n";
 	#endif
 
 	int max_delegated_partition_num = Max_Delegated_Partitions_Num;
@@ -144,7 +145,7 @@ int main(int argc, char* argv[])
 			tflite::UnitHandler Uhandler(originalfilename);
 			printf(".....................................................................................................\n");
 			printf("%d loop starting.....\n", loop_num);
-			if (Uhandler.Invoke(UnitType::CPU0, UnitType::GPU0, input, loop_num, max_delegated_partition_num) != kTfLiteOk)
+			if (Uhandler.Invoke(UnitType::CPU0, UnitType::GPU0, input, loop_num, max_delegated_partition_num, test_number) != kTfLiteOk)
 			{
 			Uhandler.PrintMsg("Invoke Returned Error");
 			exit(1);
@@ -170,7 +171,7 @@ int main(int argc, char* argv[])
 	else{
 		int loop_num = 0;
 		tflite::UnitHandler Uhandler(originalfilename, quantizedfilename);
-		if (Uhandler.Invoke(UnitType::CPU0, UnitType::GPU0, input, loop_num, max_delegated_partition_num) != kTfLiteOk){
+		if (Uhandler.Invoke(UnitType::CPU0, UnitType::GPU0, input, loop_num, max_delegated_partition_num, test_number) != kTfLiteOk){
 			Uhandler.PrintMsg("Invoke Returned Error");
 			exit(1);
 		}
