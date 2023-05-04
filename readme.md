@@ -116,8 +116,11 @@ mnist_13.tflite (FallBack concate) (ksmallest): 2.149ms,  98.03%
 
 mnist_13.tflite (FallBack concate) (TODO): ???ms,  ???%
 
+mnist_14.tflite  : 14 partitions, relu , 90 %
+  
+mnist_15.tflite  : 5 partitions, relu, ?? %
 
-
+mnist_16.tflite  : 10 partitions, relu, ?? %
 
 
 
