@@ -1,11 +1,22 @@
 #include "tensorflow/lite/unit_handler.h"
 #define SEQ 60000 //for input image
 #define OUT_SEQ 1
-#define catdog 
 
+
+#define yolo //    Y / N
 #define delegate_optimizing
-#define Partition_Num 7// HOON --> number of all partition 14
-#define Max_Delegated_Partitions_Num 1 // HOON -> max delegated partitions num 4
+
+
+#ifdef yolo
+#define Partition_Num 7// HOON 
+#define Max_Delegated_Partitions_Num 7 // HOON 
+#endif
+
+#ifndef yolo
+#define mnist
+#define Partition_Num 10// HOON 
+#define Max_Delegated_Partitions_Num 1 // HOON 
+#endif
 
 using namespace cv;
 using namespace std;
@@ -74,7 +85,7 @@ void read_Mnist_Label(string filename, vector<unsigned char> &arr) {
 #endif
 
 
-#ifdef catdog
+#ifdef yolo
 void read_image_opencv(string filename, vector<cv::Mat>& input){
 	cv::Mat cvimg = cv::imread(filename, cv::IMREAD_COLOR);
 	if(cvimg.data == NULL){
@@ -83,7 +94,7 @@ void read_image_opencv(string filename, vector<cv::Mat>& input){
 	}
 	cv::cvtColor(cvimg, cvimg, COLOR_BGR2RGB);
 	cv::Mat cvimg_;
-	cv::resize(cvimg, cvimg_, cv::Size(416,416)); //resize to 300x300
+	cv::resize(cvimg, cvimg_, cv::Size(416,416)); //resize to 300x300   // 416 * 416 --> original image size
 	input.push_back(cvimg_);
 }
 #endif
@@ -126,7 +137,7 @@ int main(int argc, char* argv[])
 	std::cout << "Loading Mnist Image, Label Complete \n";
 	#endif
 
-	#ifdef catdog
+	#ifdef yolo
 	read_image_opencv("dog.jpg", input);
 	std::cout << "Loading dog Image \n";
 	#endif
