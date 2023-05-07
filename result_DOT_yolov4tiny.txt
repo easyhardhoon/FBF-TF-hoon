@@ -14,7 +14,7 @@ Latency for each of cases in delegation optimizing :
 1 case's latency is : 1149.24ms
 2 case's latency is : 1097.65ms
 3 case's latency is 866.305873ms
-4 case's latency is : 1426.44ms
+4 case's latency is : 1426.44ms   (VANILLA)
 5 case's latency is : 1444.97ms
 6 case's latency is : 1348.54ms
 UnitHandler : "ALL Jobs Done"
