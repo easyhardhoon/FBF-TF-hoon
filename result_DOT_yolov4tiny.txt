@@ -41,7 +41,7 @@ Latency for each of cases in delegation optimizing :
 15 case's latency is : 487.126ms
 16 case's latency is : 486.728ms
 17 case's latency is : 484.325ms
-18 case's latency is : 727.865ms
+18 case's latency is : 727.865ms  (VANILLA)
 19 case's latency is : 720.088ms
 20 case's latency is : 723.756ms
 
