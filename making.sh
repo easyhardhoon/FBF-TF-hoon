@@ -1,8 +1,8 @@
 #!/bin/bash
 
-minimal_hoon="/home/nvidia/FBF-TF-hoon"
+minimal_hoon="/home/hoon/FBF-TF-hoon"
 TflitePath="../FBF-TF/tensorflow/lite/tools/make"
-Tensorflowpath="home/nvidia/FBF-TF"
+Tensorflowpath="home/hoon/FBF-TF"
 
 echo "@@@re-build gpu_delegate.so AND make for tensorflowlite_test@@@"
 
