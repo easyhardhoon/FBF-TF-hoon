@@ -175,7 +175,7 @@ test_loss, test_acc = myGpuModel.evaluate(x_test, y_test, batch_size=1)
 
 print('accuacy :', test_acc)
 
-myGpuModel.save('saved_model/mnist_13')
+myGpuModel.save('saved_model/mnist_')
 
 #--------------------------------------------------------------------------------------
 #NOTE just 3-times CONV MNIST Model by sequential class
