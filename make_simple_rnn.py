@@ -64,6 +64,19 @@ model = tf.keras.Sequential(
         #defaut activation func is linear . (y==x)
         tf.keras.layers.Dense(units=1)])
 #--------------------------------------------------------
+
+
+
+#4. GRU
+#--------------------------------------------------------
+# lower parameter set size . 20% down than LSTM
+model = tf.keras.Sequential(
+        #input shape : timesteps, input_dim
+        [tf.keras.layers.GRU(units=30, return_sequences=True, input_shape=[100,2]), 
+        tf.keras.layers.GRU(units=30), 
+        #defaut activation func is linear . (y==x)   #GRU has pros in low parameter size
+        tf.keras.layers.Dense(units=1)])
+#--------------------------------------------------------
 #simple
 #model.compile(optimizer='adam', loss='mse')
 #model.summary()
