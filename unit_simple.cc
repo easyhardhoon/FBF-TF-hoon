@@ -2,19 +2,17 @@
 #define SEQ 60000 //for input image
 #define OUT_SEQ 1
 
-
 #define yolo //    Y / N
 #define delegate_optimizing
 
-
 #ifdef yolo
 #define Partition_Num 7// HOON 
-#define Max_Delegated_Partitions_Num 7 // HOON 
+#define Max_Delegated_Partitions_Num 1 // HOON 
 #endif
 
 #ifndef yolo
 #define mnist
-#define Partition_Num 10// HOON 
+#define Partition_Num 14// HOON 
 #define Max_Delegated_Partitions_Num 1 // HOON 
 #endif
 
@@ -138,7 +136,7 @@ int main(int argc, char* argv[])
 	#endif
 
 	#ifdef yolo
-	read_image_opencv("dog.jpg", input);
+	read_image_opencv("dog-group.jpg", input);
 	std::cout << "Loading dog Image \n";
 	#endif
 
@@ -151,6 +149,7 @@ int main(int argc, char* argv[])
 	#ifdef delegate_optimizing
 	if(!bUseTwoModel){
 		// 230406 TODO
+		test_number = 1;  // HOONING : Debugging for YOLO-output parsing
 		for (int loop_num=0; loop_num<test_number; loop_num++)
 		{
 			tflite::UnitHandler Uhandler(originalfilename);
@@ -208,4 +207,7 @@ int main(int argc, char* argv[])
 		}
 	}
 	#endif
+
+
+	
 }
