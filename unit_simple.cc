@@ -7,7 +7,7 @@
 
 #ifdef yolo
 #define Partition_Num 7  // HOON 
-#define Max_Delegated_Partitions_Num 7 // HOON 
+#define Max_Delegated_Partitions_Num 1 // HOON 
 #endif
 
 #ifndef yolo
@@ -93,6 +93,7 @@ void read_image_opencv(string filename, vector<cv::Mat>& input){
 	cv::cvtColor(cvimg, cvimg, COLOR_BGR2RGB);
 	cv::Mat cvimg_;
 	cv::resize(cvimg, cvimg_, cv::Size(416,416)); //resize to 300x300   // 416 * 416 --> original image size
+	// cvimg_.convertTo(cvimg_, CV_32F, 1.0 / 255.0);
 	input.push_back(cvimg_);
 }
 #endif
@@ -136,8 +137,10 @@ int main(int argc, char* argv[])
 	#endif
 
 	#ifdef yolo
-	read_image_opencv("dog-group.jpg", input);
-	// read_image_opencv("dog.jpg", input);
+	// read_image_opencv("data/dog-group.jpg", input);
+	// read_image_opencv("data/dog_horse_person.jpg", input);
+	// read_image_opencv("data/dog.jpg", input);
+	read_image_opencv("data/car.jpg", input);
 	std::cout << "Loading dog Image \n";
 	#endif
 
@@ -150,7 +153,7 @@ int main(int argc, char* argv[])
 	#ifdef delegate_optimizing
 	if(!bUseTwoModel){
 		// 230406 TODO
-		test_number = 10;  // HOONING : Debugging for YOLO-output parsing
+		test_number = 1;  // HOONING : Debugging for CPU YOLO-output parsing
 		for (int loop_num=0; loop_num<test_number; loop_num++)
 		{
 			tflite::UnitHandler Uhandler(originalfilename);
