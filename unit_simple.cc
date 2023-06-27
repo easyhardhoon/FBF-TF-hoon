@@ -137,11 +137,11 @@ int main(int argc, char* argv[])
 	#endif
 
 	#ifdef yolo
-	// read_image_opencv("data/dog-group.jpg", input);
+	read_image_opencv("data/dog-group.jpg", input);
 	// read_image_opencv("data/dog_horse_person.jpg", input);
 	// read_image_opencv("data/dog.jpg", input);
 	// read_image_opencv("data/car.jpg", input);
-	read_image_opencv("data/cats.jpg", input);
+	// read_image_opencv("data/cats.jpg", input);
 	std::cout << "Loading dog Image \n";
 	#endif
 
