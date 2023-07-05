@@ -137,11 +137,11 @@ int main(int argc, char* argv[])
 	#endif
 
 	#ifdef yolo
-	read_image_opencv("data/dog-group.jpg", input);
+	// read_image_opencv("data/dog-group.jpg", input);
 	// read_image_opencv("data/dog_horse_person.jpg", input);
 	// read_image_opencv("data/dog.jpg", input);
 	// read_image_opencv("data/car.jpg", input);
-	// read_image_opencv("data/cats.jpg", input);
+	read_image_opencv("data/cats.jpg", input);
 	std::cout << "Loading dog Image \n";
 	#endif
 
@@ -149,7 +149,6 @@ int main(int argc, char* argv[])
 	int test_number  = combination(Partition_Num, Max_Delegated_Partitions_Num);
 	// printf("%d", test_number);
 	// fix number use  {Partition_Num}  &  {Max_Delegated_Partitions_Num}
-
 
 	#ifdef delegate_optimizing
 	if(!bUseTwoModel){
@@ -165,21 +164,7 @@ int main(int argc, char* argv[])
 			Uhandler.PrintMsg("Invoke Returned Error");
 			exit(1);
 			}
-			// std::cout << "-----------------------------------TODO: " <<  b_delegation_optimizer.size() << std::endl;
 			printf("%d loop End.....\n", loop_num);
-			// if (loop_num >= 16382)  printf("\033[0;31m choose 14 delegation node\033[0m\n");
-			// else if (loop_num >= 16368)  printf("\033[0;31m choose 13 delegation node\033[0m\n");
-			// else if (loop_num >= 16277) printf("\033[0;31m choose 12 delegation node\033[0m\n");
-			// else if (loop_num >= 15913)  printf("\033[0;31m choose 11 delegation node\033[0m\n");
-			// else if (loop_num >= 14912) printf("\033[0;31m choose 10 delegation node\033[0m\n");
-			// else if (loop_num >= 12910) printf("\033[0;31m choose 9 delegation node\033[0m\n");
-			// else if (loop_num >= 9907) printf("\033[0;31m choose 8 delegation node\033[0m\n");
-			// else if (loop_num >= 6475) printf("\033[0;31m choose 7 delegation node\033[0m\n");
-			// else if (loop_num >= 3472) printf("\033[0;31m choose 6 delegation node\033[0m\n");
-			// else if (loop_num >= 1470) printf("\033[0;31m choose 5 delegation node\033[0m\n");
-			// else if (loop_num >= 469) printf("\033[0;31m choose 4 delegation node\033[0m\n");
-			// else if (loop_num >= 105) printf("\033[0;31m choose 3 delegation node\033[0m\n");
-			// else if (loop_num >= 14)  printf("\033[0;31m choose 2 delegation node \033[0m\n");
 		}
 			}
 
