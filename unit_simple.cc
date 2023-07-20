@@ -1,4 +1,5 @@
 #include "tensorflow/lite/unit_handler.h"
+#include "tensorflow/lite/core/subgraph.h"
 #define SEQ 60000 //for input image
 #define OUT_SEQ 1
 
@@ -6,7 +7,7 @@
 #define delegate_optimizing
 
 #ifdef yolo
-#define Partition_Num 7  // HOON 
+#define Partition_Num 7 // HOON 
 #define Max_Delegated_Partitions_Num 1 // HOON 
 #endif
 
@@ -138,12 +139,12 @@ int main(int argc, char* argv[])
 	#endif
 
 	#ifdef yolo
-	read_image_opencv("data/dog-group.jpg", input);
+	// read_image_opencv("data/dog-group.jpg", input);
 	// read_image_opencv("data/dog_horse_person.jpg", input);
 	// read_image_opencv("data/dog.jpg", input);
-	// read_image_opencv("data/car.jpg", input);
+	// read_image_opencv("../mAP_TF/input/images-optional/2007_000027.jpg", input);
 	// read_image_opencv("data/cats.jpg", input);
-	std::cout << "Loading dog Image \n";
+	// std::cout << "Loading dog Image \n";
 	#endif
 
 	int max_delegated_partition_num = Max_Delegated_Partitions_Num;
@@ -154,9 +155,11 @@ int main(int argc, char* argv[])
 	#ifdef delegate_optimizing
 	if(!bUseTwoModel){
 		// 230406 TODO
-		test_number = 1;  // HOONING : Debugging for CPU YOLO-output parsing
+		test_number = 80;  // HOONING : Debugging for CPU YOLO-output parsing
 		for (int loop_num=0; loop_num<test_number; loop_num++)
 		{
+			std::string filename = "../mAP_TF/input/images-optional/2007_0000" + std::to_string(27 + loop_num) + ".jpg";
+			read_image_opencv(filename, input);
 			tflite::UnitHandler Uhandler(originalfilename);
 			printf(".....................................................................................................\n");
 			printf("%d loop starting.....\n", loop_num);
@@ -166,6 +169,25 @@ int main(int argc, char* argv[])
 			exit(1);
 			}
 			printf("%d loop End.....\n", loop_num);
+			// --------------------
+			// move_data_from_FBF_TF_to_mAP_TF  \ 
+			// (real_bbox_cls_index_vector, real_bbox_cls_vector, real_bbox_loc_vector
+			std::vector<int> a = tflite::Subgraph::real_bbox_cls_index_vector;
+			std::vector<std::vector<float>> b = tflite::Subgraph::real_bbox_cls_vector;
+			std::vector<std::vector<float>> c = tflite::Subgraph::real_bbox_loc_vector;
+			std::cout << "cls_index vector size : " << a.size() << std::endl;
+			std::cout << "cls data vector size : " << b.size() << std::endl;
+			std::cout << "loc data vector size : " << c.size() << std::endl;
+			// --------------------------------------------------------------
+			// TODO (make funcs) 
+			// 1. final parsing func (merge 1 + 2 + 3 ) (ISSUE) (they've different type)
+			// 2. move out to FBF-TF .. to mAP_TF 
+			// --------------------------------------------------------------
+			tflite::Subgraph::real_bbox_cls_index_vector.clear();
+			tflite::Subgraph::real_bbox_cls_vector.clear();
+			tflite::Subgraph::real_bbox_loc_vector.clear();
+			// --------------------------------------------------------------
+
 		}
 			}
 
