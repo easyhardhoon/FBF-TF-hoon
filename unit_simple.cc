@@ -108,6 +108,56 @@ int combination(int n, int r) {
     	else return combination(n - 1, r - 1) + combination(n - 1, r);
 }
 
+
+void output_data_postprocessing(const std::vector<int>& real_bbox_cls_index_vector, \
+  const std::vector<std::vector<float>>& real_bbox_cls_vector, const std::vector<std::vector<float>>& real_bbox_loc_vector, int fnum)
+  {
+    std::map<int, std::string> labelDict = {
+        {0, "person"},     {1, "bicycle"},   {2, "car"},          {3, "motorbike"},
+        {4, "aeroplane"},  {5, "bus"},       {6, "train"},        {7, "truck"},
+        {8, "boat"},       {9, "traffic light"}, {10, "fire hydrant"}, {11, "stop sign"},
+        {12, "parking meter"}, {13, "bench"}, {14, "bird"},       {15, "cat"},
+        {16, "dog"},       {17, "horse"},    {18, "sheep"},       {19, "cow"},
+        {20, "elephant"},  {21, "bear"},     {22, "zebra"},       {23, "giraffe"},
+        {24, "backpack"},  {25, "umbrella"}, {26, "handbag"},     {27, "tie"},
+        {28, "suitcase"},  {29, "frisbee"},  {30, "skis"},        {31, "snowboard"},
+        {32, "sports ball"}, {33, "kite"},   {34, "baseball bat"}, {35, "baseball glove"},
+        {36, "skateboard"}, {37, "surfboard"}, {38, "tennis racket"}, {39, "bottle"},
+        {40, "wine glass"}, {41, "cup"},     {42, "fork"},        {43, "knife"},
+        {44, "spoon"},     {45, "bowl"},    {46, "banana"},      {47, "apple"},
+        {48, "sandwich"},  {49, "orange"},  {50, "broccoli"},    {51, "carrot"},
+        {52, "hot dog"},   {53, "pizza"},   {54, "donut"},       {55, "cake"},
+        {56, "chair"},     {57, "sofa"},    {58, "potted plant"}, {59, "bed"},
+        {60, "dining table"}, {61, "toilet"}, {62, "tvmonitor"}, {63, "laptop"},
+        {64, "mouse"},     {65, "remote"},  {66, "keyboard"},    {67, "cell phone"},
+        {68, "microwave"}, {69, "oven"},    {70, "toaster"},     {71, "sink"},
+        {72, "refrigerator"}, {73, "book"}, {74, "clock"},       {75, "vase"},
+        {76, "scissors"},  {77, "teddy bear"}, {78, "hair drier"}, {79, "toothbrush"}
+    };
+	int n=0;
+	std::string filename = "../mAP_TF/input/detection-results/" + std::to_string(fnum) + ".txt";
+	std::ofstream outFile(filename);
+	if (!outFile.is_open()) {
+        std::cerr << "Error: Unable to open file " << filename << std::endl;
+        return;
+    }
+	for (auto i : real_bbox_cls_index_vector) { 
+		auto object_name = labelDict[i];
+		auto cls_data = real_bbox_cls_vector[n][i];
+		auto loc_data = real_bbox_loc_vector[n];
+		outFile << object_name << " " << cls_data << " ";
+		for (auto j : loc_data){
+			outFile << j << " ";
+		}
+		outFile << std::endl;
+		n+=1;
+	}
+	outFile.close();
+	tflite::Subgraph::real_bbox_cls_index_vector.clear();
+	tflite::Subgraph::real_bbox_cls_vector.clear();
+	tflite::Subgraph::real_bbox_loc_vector.clear();
+  }
+
 int main(int argc, char* argv[])
 {
 	const char* originalfilename;
@@ -154,11 +204,11 @@ int main(int argc, char* argv[])
 
 	#ifdef delegate_optimizing
 	if(!bUseTwoModel){
-		// 230406 TODO
-		test_number = 80;  // HOONING : Debugging for CPU YOLO-output parsing
+		test_number = 85;  // HOONING : Debugging for CPU YOLO-output parsing
 		for (int loop_num=0; loop_num<test_number; loop_num++)
 		{
-			std::string filename = "../mAP_TF/input/images-optional/2007_0000" + std::to_string(27 + loop_num) + ".jpg";
+			int fnum = 1 + loop_num;
+			std::string filename = "../mAP_TF/input/images-optional/" + std::to_string(fnum) + ".jpg";
 			read_image_opencv(filename, input);
 			tflite::UnitHandler Uhandler(originalfilename);
 			printf(".....................................................................................................\n");
@@ -169,25 +219,12 @@ int main(int argc, char* argv[])
 			exit(1);
 			}
 			printf("%d loop End.....\n", loop_num);
-			// --------------------
-			// move_data_from_FBF_TF_to_mAP_TF  \ 
-			// (real_bbox_cls_index_vector, real_bbox_cls_vector, real_bbox_loc_vector
+		    // --------------------------------------------------------------
 			std::vector<int> a = tflite::Subgraph::real_bbox_cls_index_vector;
 			std::vector<std::vector<float>> b = tflite::Subgraph::real_bbox_cls_vector;
 			std::vector<std::vector<float>> c = tflite::Subgraph::real_bbox_loc_vector;
-			std::cout << "cls_index vector size : " << a.size() << std::endl;
-			std::cout << "cls data vector size : " << b.size() << std::endl;
-			std::cout << "loc data vector size : " << c.size() << std::endl;
+		    output_data_postprocessing(tflite::Subgraph::real_bbox_cls_index_vector, tflite::Subgraph::real_bbox_cls_vector, tflite::Subgraph::real_bbox_loc_vector, fnum);
 			// --------------------------------------------------------------
-			// TODO (make funcs) 
-			// 1. final parsing func (merge 1 + 2 + 3 ) (ISSUE) (they've different type)
-			// 2. move out to FBF-TF .. to mAP_TF 
-			// --------------------------------------------------------------
-			tflite::Subgraph::real_bbox_cls_index_vector.clear();
-			tflite::Subgraph::real_bbox_cls_vector.clear();
-			tflite::Subgraph::real_bbox_loc_vector.clear();
-			// --------------------------------------------------------------
-
 		}
 			}
 
