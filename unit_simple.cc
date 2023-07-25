@@ -92,11 +92,11 @@ void read_image_opencv(string filename, vector<cv::Mat>& input){
 		return;
 	}
 	cv::cvtColor(cvimg, cvimg, COLOR_BGR2RGB);
-	cv::Mat cvimg_;
+	// cv::Mat cvimg_;
 	// cv::resize(cvimg, cvimg_, cv::Size(320,320)); //resize to 300x300   // 416 * 416 --> original image size
-	cv::resize(cvimg, cvimg_, cv::Size(416,416)); //resize to 300x300   // 416 * 416 --> original image size
+	// cv::resize(cvimg, cvimg_, cv::Size(416,416)); //resize to 300x300   // 416 * 416 --> original image size
 	// cvimg_.convertTo(cvimg_, CV_32F, 1.0 / 255.0);
-	input.push_back(cvimg_);
+	input.push_back(cvimg);
 }
 #endif
 
@@ -115,24 +115,24 @@ void output_data_postprocessing(const std::vector<int>& real_bbox_cls_index_vect
     std::map<int, std::string> labelDict = {
         {0, "person"},     {1, "bicycle"},   {2, "car"},          {3, "motorbike"},
         {4, "aeroplane"},  {5, "bus"},       {6, "train"},        {7, "truck"},
-        {8, "boat"},       {9, "traffic light"}, {10, "fire hydrant"}, {11, "stop sign"},
-        {12, "parking meter"}, {13, "bench"}, {14, "bird"},       {15, "cat"},
+        {8, "boat"},       {9, "traffic_light"}, {10, "fire_hydrant"}, {11, "stop_sign"},
+        {12, "parking_meter"}, {13, "bench"}, {14, "bird"},       {15, "cat"},
         {16, "dog"},       {17, "horse"},    {18, "sheep"},       {19, "cow"},
         {20, "elephant"},  {21, "bear"},     {22, "zebra"},       {23, "giraffe"},
         {24, "backpack"},  {25, "umbrella"}, {26, "handbag"},     {27, "tie"},
         {28, "suitcase"},  {29, "frisbee"},  {30, "skis"},        {31, "snowboard"},
-        {32, "sports ball"}, {33, "kite"},   {34, "baseball bat"}, {35, "baseball glove"},
-        {36, "skateboard"}, {37, "surfboard"}, {38, "tennis racket"}, {39, "bottle"},
-        {40, "wine glass"}, {41, "cup"},     {42, "fork"},        {43, "knife"},
+        {32, "sports_ball"}, {33, "kite"},   {34, "baseball_bat"}, {35, "baseball_glove"},
+        {36, "skateboard"}, {37, "surfboard"}, {38, "tennis_racket"}, {39, "bottle"},
+        {40, "wine_glass"}, {41, "cup"},     {42, "fork"},        {43, "knife"},
         {44, "spoon"},     {45, "bowl"},    {46, "banana"},      {47, "apple"},
         {48, "sandwich"},  {49, "orange"},  {50, "broccoli"},    {51, "carrot"},
         {52, "hot dog"},   {53, "pizza"},   {54, "donut"},       {55, "cake"},
-        {56, "chair"},     {57, "sofa"},    {58, "potted plant"}, {59, "bed"},
-        {60, "dining table"}, {61, "toilet"}, {62, "tvmonitor"}, {63, "laptop"},
-        {64, "mouse"},     {65, "remote"},  {66, "keyboard"},    {67, "cell phone"},
+        {56, "chair"},     {57, "sofa"},    {58, "potted_plant"}, {59, "bed"},
+        {60, "dining_table"}, {61, "toilet"}, {62, "tvmonitor"}, {63, "laptop"},
+        {64, "mouse"},     {65, "remote"},  {66, "keyboard"},    {67, "cell_phone"},
         {68, "microwave"}, {69, "oven"},    {70, "toaster"},     {71, "sink"},
         {72, "refrigerator"}, {73, "book"}, {74, "clock"},       {75, "vase"},
-        {76, "scissors"},  {77, "teddy bear"}, {78, "hair drier"}, {79, "toothbrush"}
+        {76, "scissors"},  {77, "teddy_bear"}, {78, "hair_drier"}, {79, "toothbrush"}
     };
 	int n=0;
 	std::string filename = "../mAP_TF/input/detection-results/" + std::to_string(fnum) + ".txt";
@@ -153,9 +153,15 @@ void output_data_postprocessing(const std::vector<int>& real_bbox_cls_index_vect
 		n+=1;
 	}
 	outFile.close();
+	// std::cout << real_bbox_cls_index_vector.size() << std::endl;
+	// std::cout << real_bbox_cls_index_vector.size() << std::endl;
+	// std::cout << real_bbox_cls_index_vector.size() << std::endl;
 	tflite::Subgraph::real_bbox_cls_index_vector.clear();
 	tflite::Subgraph::real_bbox_cls_vector.clear();
 	tflite::Subgraph::real_bbox_loc_vector.clear();
+	// std::cout << real_bbox_cls_index_vector.size() << std::endl;
+	// std::cout << real_bbox_cls_index_vector.size() << std::endl;
+	// std::cout << real_bbox_cls_index_vector.size() << std::endl;
   }
 
 int main(int argc, char* argv[])
@@ -204,10 +210,14 @@ int main(int argc, char* argv[])
 
 	#ifdef delegate_optimizing
 	if(!bUseTwoModel){
-		test_number = 85;  // HOONING : Debugging for CPU YOLO-output parsing
+		test_number = 79;  // HOONING : Debugging for CPU YOLO-output parsing
+		// test_number = 2;  // HOONING : Debugging for CPU YOLO-output parsing
+		int fnum = 0;
 		for (int loop_num=0; loop_num<test_number; loop_num++)
 		{
-			int fnum = 1 + loop_num;
+			// int fnum = 1 + loop_num;
+		    fnum+=1;
+			input.clear();  // NOTE : should clear "input" vector
 			std::string filename = "../mAP_TF/input/images-optional/" + std::to_string(fnum) + ".jpg";
 			read_image_opencv(filename, input);
 			tflite::UnitHandler Uhandler(originalfilename);
