@@ -1,5 +1,6 @@
 #include "tensorflow/lite/unit_handler.h"
 #include "tensorflow/lite/core/subgraph.h"
+// #include "tensorflow/lite/interpreter.h"
 #define SEQ 60000 //for input image
 #define OUT_SEQ 1
 
@@ -92,11 +93,11 @@ void read_image_opencv(string filename, vector<cv::Mat>& input){
 		return;
 	}
 	cv::cvtColor(cvimg, cvimg, COLOR_BGR2RGB);
-	// cv::Mat cvimg_;
+	cv::Mat cvimg_;
 	// cv::resize(cvimg, cvimg_, cv::Size(320,320)); //resize to 300x300   // 416 * 416 --> original image size
-	// cv::resize(cvimg, cvimg_, cv::Size(416,416)); //resize to 300x300   // 416 * 416 --> original image size
+	cv::resize(cvimg, cvimg_, cv::Size(416,416)); //resize to 300x300   // 416 * 416 --> original image size
 	// cvimg_.convertTo(cvimg_, CV_32F, 1.0 / 255.0);
-	input.push_back(cvimg);
+	input.push_back(cvimg_);
 }
 #endif
 
@@ -210,7 +211,7 @@ int main(int argc, char* argv[])
 
 	#ifdef delegate_optimizing
 	if(!bUseTwoModel){
-		test_number = 79;  // HOONING : Debugging for CPU YOLO-output parsing
+		test_number = 194;  // HOONING : Debugging for CPU YOLO-output parsing
 		// test_number = 2;  // HOONING : Debugging for CPU YOLO-output parsing
 		int fnum = 0;
 		for (int loop_num=0; loop_num<test_number; loop_num++)
@@ -220,6 +221,7 @@ int main(int argc, char* argv[])
 			input.clear();  // NOTE : should clear "input" vector
 			std::string filename = "../mAP_TF/input/images-optional/" + std::to_string(fnum) + ".jpg";
 			read_image_opencv(filename, input);
+			std::cout << filename << std::endl;
 			tflite::UnitHandler Uhandler(originalfilename);
 			printf(".....................................................................................................\n");
 			printf("%d loop starting.....\n", loop_num);
