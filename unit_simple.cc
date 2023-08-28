@@ -165,51 +165,30 @@ void YOLO_parsing(std::vector<tflite::Subgraph::BoundingBox>& result_boxes, int 
   }
 
 
-// void output_data_postprocessing(const std::vector<int>& real_bbox_cls_index_vector, \
-//   const std::vector<std::vector<float>>& real_bbox_cls_vector, const std::vector<std::vector<int>>& real_bbox_loc_vector, int fnum)
-//   {
-//     std::map<int, std::string> labelDict = {
-//         {0, "person"},     {1, "bicycle"},   {2, "car"},          {3, "motorbike"},
-//         {4, "aeroplane"},  {5, "bus"},       {6, "train"},        {7, "truck"},
-//         {8, "boat"},       {9, "traffic_light"}, {10, "fire_hydrant"}, {11, "stop_sign"},
-//         {12, "parking_meter"}, {13, "bench"}, {14, "bird"},       {15, "cat"},
-//         {16, "dog"},       {17, "horse"},    {18, "sheep"},       {19, "cow"},
-//         {20, "elephant"},  {21, "bear"},     {22, "zebra"},       {23, "giraffe"},
-//         {24, "backpack"},  {25, "umbrella"}, {26, "handbag"},     {27, "tie"},
-//         {28, "suitcase"},  {29, "frisbee"},  {30, "skis"},        {31, "snowboard"},
-//         {32, "sports_ball"}, {33, "kite"},   {34, "baseball_bat"}, {35, "baseball_glove"},
-//         {36, "skateboard"}, {37, "surfboard"}, {38, "tennis_racket"}, {39, "bottle"},
-//         {40, "wine_glass"}, {41, "cup"},     {42, "fork"},        {43, "knife"},
-//         {44, "spoon"},     {45, "bowl"},    {46, "banana"},      {47, "apple"},
-//         {48, "sandwich"},  {49, "orange"},  {50, "broccoli"},    {51, "carrot"},
-//         {52, "hot dog"},   {53, "pizza"},   {54, "donut"},       {55, "cake"},
-//         {56, "chair"},     {57, "sofa"},    {58, "potted_plant"}, {59, "bed"},
-//         {60, "dining_table"}, {61, "toilet"}, {62, "tvmonitor"}, {63, "laptop"},
-//         {64, "mouse"},     {65, "remote"},  {66, "keyboard"},    {67, "cell_phone"},
-//         {68, "microwave"}, {69, "oven"},    {70, "toaster"},     {71, "sink"},
-//         {72, "refrigerator"}, {73, "book"}, {74, "clock"},       {75, "vase"},
-//         {76, "scissors"},  {77, "teddy_bear"}, {78, "hair_drier"}, {79, "toothbrush"}
-//     };
-// 	int n=0;
-// 	std::string filename = "../mAP_TF/input/detection-results/" + std::to_string(fnum) + ".txt";
-// 	std::ofstream outFile(filename);
-// 	if (!outFile.is_open()) {
-//         std::cerr << "Error: Unable to open file " << filename << std::endl;
-//         return;
-//     }
-// 	for (auto i : real_bbox_cls_index_vector) { 
-// 		auto object_name = labelDict[i];
-// 		auto cls_data = real_bbox_cls_vector[n][i];
-// 		std::vector<int> loc_data = real_bbox_loc_vector[n];
-// 		outFile << object_name << " " << cls_data << " ";
-// 		for (auto j : loc_data){
-// 			outFile << j << " ";
-// 		}
-// 		outFile << std::endl;
-// 		n+=1;
-// 	}
-// 	outFile.close();
-//   }
+void visualize_with_labels(cv::Mat& image, const std::vector<tflite::Subgraph::BoundingBox>& bboxes, std::map<int, std::string>& labelDict) {
+    for (const tflite::Subgraph::BoundingBox& bbox : bboxes) {
+        int x1 = bbox.left;
+        int y1 = bbox.top;
+        int x2 = bbox.right;
+        int y2 = bbox.bottom;
+        cv::rectangle(image, cv::Point(x1, y1), cv::Point(x2, y2), cv::Scalar(0, 255, 0), 2); // Green rectangle
+        
+        // Get object name and confidence score
+        std::string object_name = labelDict[bbox.class_id];
+        float confidence_score = bbox.score;
+
+        // Create label text
+        std::string label = object_name + ": " + std::to_string(confidence_score);
+
+        // Calculate position for the label
+        int label_x = x1;
+        int label_y = y1 - 10; // Place the label just above the rectangle
+
+        // Draw the label
+        cv::putText(image, label, cv::Point(label_x, label_y), cv::FONT_HERSHEY_SIMPLEX, 0.4, cv::Scalar(0, 0, 255), 1);
+    }
+}
+
 
 int main(int argc, char* argv[])
 {
@@ -244,19 +223,43 @@ int main(int argc, char* argv[])
 	#ifdef yolo
 	// read_image_opencv("data/dog-group.jpg", input);
 	// std::cout << "Loading dog Image \n";
+	std::map<int, std::string> labelDict = {
+        {0, "person"},     {1, "bicycle"},   {2, "car"},          {3, "motorbike"},
+        {4, "aeroplane"},  {5, "bus"},       {6, "train"},        {7, "truck"},
+        {8, "boat"},       {9, "traffic_light"}, {10, "fire_hydrant"}, {11, "stop_sign"},
+        {12, "parking_meter"}, {13, "bench"}, {14, "bird"},       {15, "cat"},
+        {16, "dog"},       {17, "horse"},    {18, "sheep"},       {19, "cow"},
+        {20, "elephant"},  {21, "bear"},     {22, "zebra"},       {23, "giraffe"},
+        {24, "backpack"},  {25, "umbrella"}, {26, "handbag"},     {27, "tie"},
+        {28, "suitcase"},  {29, "frisbee"},  {30, "skis"},        {31, "snowboard"},
+        {32, "sports_ball"}, {33, "kite"},   {34, "baseball_bat"}, {35, "baseball_glove"},
+        {36, "skateboard"}, {37, "surfboard"}, {38, "tennis_racket"}, {39, "bottle"},
+        {40, "wine_glass"}, {41, "cup"},     {42, "fork"},        {43, "knife"},
+        {44, "spoon"},     {45, "bowl"},    {46, "banana"},      {47, "apple"},
+        {48, "sandwich"},  {49, "orange"},  {50, "broccoli"},    {51, "carrot"},
+        {52, "hot dog"},   {53, "pizza"},   {54, "donut"},       {55, "cake"},
+        {56, "chair"},     {57, "sofa"},    {58, "potted_plant"}, {59, "bed"},
+        {60, "dining_table"}, {61, "toilet"}, {62, "tvmonitor"}, {63, "laptop"},
+        {64, "mouse"},     {65, "remote"},  {66, "keyboard"},    {67, "cell_phone"},
+        {68, "microwave"}, {69, "oven"},    {70, "toaster"},     {71, "sink"},
+        {72, "refrigerator"}, {73, "book"}, {74, "clock"},       {75, "vase"},
+        {76, "scissors"},  {77, "teddy_bear"}, {78, "hair_drier"}, {79, "toothbrush"}
+    };
 	#endif
 
 	int max_delegated_partition_num = Max_Delegated_Partitions_Num;
 	int test_number  = combination(Partition_Num, Max_Delegated_Partitions_Num);
-	// printf("%d", test_number);
-	// fix number use  {Partition_Num}  &  {Max_Delegated_Partitions_Num}
+
 
 	#ifdef delegate_optimizing
 	if(!bUseTwoModel){
-		// test_number = 194;  // HOONING : Debugging for CPU YOLO-output parsing
-		test_number = 1;  // HOONING : Debugging for CPU YOLO-output parsing
-		// int fnum = 164;
-		int fnum = 0;
+		test_number = 194;  // FULL
+		// test_number = 10;  // Debugging
+		// test_number = 5;  // Debugging
+		// test_number = 1;  // Debugging
+		// int fnum = 65;
+		int fnum = 0;				
+		// int fnum = 194;
 		for (int loop_num=0; loop_num<test_number; loop_num++)
 		{
 			// int fnum = 1 + loop_num;
@@ -278,34 +281,22 @@ int main(int argc, char* argv[])
 			std::vector<tflite::Subgraph::BoundingBox> bboxes = tflite::Subgraph::result_boxes;
 			YOLO_parsing(bboxes, fnum);
 
-			cv::namedWindow("Image with Bounding Boxes", cv::WINDOW_NORMAL);
 			// visualize
-			cv::Mat image = cv::imread(filename);
+			std::string window_name = std::to_string(fnum) + "'s parsed image";
+			cv::namedWindow(window_name, cv::WINDOW_NORMAL);
+			cv::Mat image = cv::imread(filename, cv::IMREAD_COLOR);
+			// cv::cvtColor(image, image, COLOR_BGR2RGB); 
+			cv::resize(image, image, cv::Size(416,416)); //resize to 300x300   // 416 * 416 --> original image size
     		if (!image.empty()) {
-    		    // Loop through the bounding boxes and draw them on the image
-    		    for (const tflite::Subgraph::BoundingBox& bbox : bboxes) {
-    		        // Extract the coordinates of the bounding box
-					std::cout << "Access to selected bboxes for visualization" << std::endl;
-    		        int x1 = bbox.left;
-    		        int y1 = bbox.top;
-    		        int x2 = bbox.right;
-    		        int y2 = bbox.bottom;
-    		        cv::rectangle(image, cv::Point(x1, y1), cv::Point(x2, y2), cv::Scalar(0, 255, 0), 2); // Green rectangle
-       			}
-        		// Display the image with bounding boxes
-        		cv::imshow("Image with Bounding Boxes", image);
-        		cv::waitKey(100); // Wait for a key press (0 means wait indefinitely)
+    		    visualize_with_labels(image, bboxes, labelDict);
+        		cv::imshow(window_name, image);
 			}
 			else {
     			std::cerr << "Error: Unable to load the image: " << filename << std::endl;
 			}
     	}
-			// cv::Mat cvimg = cv::imread(filename, cv::IMREAD_COLOR);
-			// std::vector<int> a = tflite::Subgraph::real_bbox_cls_index_vector;
-			// std::vector<std::vector<float>> b = tflite::Subgraph::real_bbox_cls_vector;
-			// std::vector<std::vector<int>> c = tflite::Subgraph::real_bbox_loc_vector;
-		    // output_data_postprocessing(tflite::Subgraph::real_bbox_cls_index_vector, tflite::Subgraph::real_bbox_cls_vector, tflite::Subgraph::real_bbox_loc_vector, fnum);
-			// --------------------------------------------------------------
+		cv::waitKey(0);
+		cv::destroyAllWindows();
 	}
 
 	else{
