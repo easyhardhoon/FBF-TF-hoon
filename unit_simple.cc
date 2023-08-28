@@ -1,6 +1,5 @@
 #include "tensorflow/lite/unit_handler.h"
 #include "tensorflow/lite/core/subgraph.h"
-// #include "tensorflow/lite/interpreter.h"
 #define SEQ 60000 //for input image
 #define OUT_SEQ 1
 
@@ -84,6 +83,11 @@ void read_Mnist_Label(string filename, vector<unsigned char> &arr) {
 }
 #endif
 
+// For Delegation Optimizing
+int combination(int n, int r) {
+    	if(n == r || r == 0) return 1; 
+    	else return combination(n - 1, r - 1) + combination(n - 1, r);
+}
 
 #ifdef yolo
 void read_image_opencv(string filename, vector<cv::Mat>& input){
@@ -93,58 +97,21 @@ void read_image_opencv(string filename, vector<cv::Mat>& input){
 		return;
 	}
 	cv::cvtColor(cvimg, cvimg, COLOR_BGR2RGB); 
-	// cv::resize(cvimg, cvimg, cv::Size(416,416)); 
 	cv::Mat cvimg_;
-	// cv::resize(cvimg, cvimg_, cv::Size(320,320)); //resize to 300x300   // 416 * 416 --> original image size
-	cv::resize(cvimg, cvimg_, cv::Size(416,416)); //resize to 300x300   // 416 * 416 --> original image size
-	// cvimg.convertTo(cvimg, CV_32F, 1.0 / 255.0); // GGGG
+	cv::resize(cvimg, cvimg_, cv::Size(416,416));
 	input.push_back(cvimg_);
-	// input.push_back(cvimg);
 
 }
 #endif
 
-// extern std::vector<int> delegation_optimizer_v;
-// std::vector<int> b_delegation_optimizer;  // <-> ?? 
-
-int combination(int n, int r) {
-    	if(n == r || r == 0) return 1; 
-    	else return combination(n - 1, r - 1) + combination(n - 1, r);
-}
-
-
-void YOLO_parsing(std::vector<tflite::Subgraph::BoundingBox>& result_boxes, int fnum)
+void YOLO_parsing(std::vector<tflite::Subgraph::BoundingBox>& result_boxes, int fnum, std::map<int, std::string>& labelDict)
   {
-    std::map<int, std::string> labelDict = {
-        {0, "person"},     {1, "bicycle"},   {2, "car"},          {3, "motorbike"},
-        {4, "aeroplane"},  {5, "bus"},       {6, "train"},        {7, "truck"},
-        {8, "boat"},       {9, "traffic_light"}, {10, "fire_hydrant"}, {11, "stop_sign"},
-        {12, "parking_meter"}, {13, "bench"}, {14, "bird"},       {15, "cat"},
-        {16, "dog"},       {17, "horse"},    {18, "sheep"},       {19, "cow"},
-        {20, "elephant"},  {21, "bear"},     {22, "zebra"},       {23, "giraffe"},
-        {24, "backpack"},  {25, "umbrella"}, {26, "handbag"},     {27, "tie"},
-        {28, "suitcase"},  {29, "frisbee"},  {30, "skis"},        {31, "snowboard"},
-        {32, "sports_ball"}, {33, "kite"},   {34, "baseball_bat"}, {35, "baseball_glove"},
-        {36, "skateboard"}, {37, "surfboard"}, {38, "tennis_racket"}, {39, "bottle"},
-        {40, "wine_glass"}, {41, "cup"},     {42, "fork"},        {43, "knife"},
-        {44, "spoon"},     {45, "bowl"},    {46, "banana"},      {47, "apple"},
-        {48, "sandwich"},  {49, "orange"},  {50, "broccoli"},    {51, "carrot"},
-        {52, "hot dog"},   {53, "pizza"},   {54, "donut"},       {55, "cake"},
-        {56, "chair"},     {57, "sofa"},    {58, "potted_plant"}, {59, "bed"},
-        {60, "dining_table"}, {61, "toilet"}, {62, "tvmonitor"}, {63, "laptop"},
-        {64, "mouse"},     {65, "remote"},  {66, "keyboard"},    {67, "cell_phone"},
-        {68, "microwave"}, {69, "oven"},    {70, "toaster"},     {71, "sink"},
-        {72, "refrigerator"}, {73, "book"}, {74, "clock"},       {75, "vase"},
-        {76, "scissors"},  {77, "teddy_bear"}, {78, "hair_drier"}, {79, "toothbrush"}
-    };
-	// int n=0;
 	std::string filename = "../mAP_TF/input/detection-results/" + std::to_string(fnum) + ".txt";
 	std::ofstream outFile(filename);
 	if (!outFile.is_open()) {
         std::cerr << "Error: Unable to open file " << filename << std::endl;
         return;
     }
-	// printf("%d\n", result_boxes.size());
 	for (int i=0; i <result_boxes.size(); i++) { 
 		auto object_name = labelDict[result_boxes[i].class_id];
 		auto left = result_boxes[i].left;
@@ -154,16 +121,10 @@ void YOLO_parsing(std::vector<tflite::Subgraph::BoundingBox>& result_boxes, int 
 		auto cls_data = result_boxes[i].score;
 		outFile << object_name << " " <<  cls_data << " ";
 		outFile << left << " " << top << " " << right << " " << bottom; 
-		// for (auto j : loc_data){
-		// 	outFile << j << " ";
-		// }
 		outFile << std::endl;
-		// n+=1;
 	}
-	// --------------------------------------------------------------
 	outFile.close();
   }
-
 
 void visualize_with_labels(cv::Mat& image, const std::vector<tflite::Subgraph::BoundingBox>& bboxes, std::map<int, std::string>& labelDict) {
     for (const tflite::Subgraph::BoundingBox& bbox : bboxes) {
@@ -171,24 +132,20 @@ void visualize_with_labels(cv::Mat& image, const std::vector<tflite::Subgraph::B
         int y1 = bbox.top;
         int x2 = bbox.right;
         int y2 = bbox.bottom;
-        cv::rectangle(image, cv::Point(x1, y1), cv::Point(x2, y2), cv::Scalar(0, 255, 0), 2); // Green rectangle
-        
-        // Get object name and confidence score
+        cv::RNG rng(bbox.class_id);
+        cv::Scalar color(rng.uniform(0, 255), rng.uniform(0, 255), rng.uniform(0, 255));
+        int label_x = x1;
+        int label_y = y1 - 20;
+
+        cv::rectangle(image, cv::Point(x1, y1), cv::Point(x2, y2), color, 3);
         std::string object_name = labelDict[bbox.class_id];
         float confidence_score = bbox.score;
-
-        // Create label text
         std::string label = object_name + ": " + std::to_string(confidence_score);
-
-        // Calculate position for the label
-        int label_x = x1;
-        int label_y = y1 - 10; // Place the label just above the rectangle
-
-        // Draw the label
-        cv::putText(image, label, cv::Point(label_x, label_y), cv::FONT_HERSHEY_SIMPLEX, 0.4, cv::Scalar(0, 0, 255), 1);
+        cv::Size text_size = cv::getTextSize(label, cv::FONT_HERSHEY_SIMPLEX, 0.6, 2, nullptr);
+        cv::rectangle(image, cv::Point(x1, label_y - text_size.height), cv::Point(x1 + text_size.width, label_y + 5), color, -1);
+        cv::putText(image, label, cv::Point(x1, label_y), cv::FONT_HERSHEY_SIMPLEX, 0.6, cv::Scalar(255, 255, 255), 2);
     }
 }
-
 
 int main(int argc, char* argv[])
 {
@@ -221,8 +178,6 @@ int main(int argc, char* argv[])
 	#endif
 
 	#ifdef yolo
-	// read_image_opencv("data/dog-group.jpg", input);
-	// std::cout << "Loading dog Image \n";
 	std::map<int, std::string> labelDict = {
         {0, "person"},     {1, "bicycle"},   {2, "car"},          {3, "motorbike"},
         {4, "aeroplane"},  {5, "bus"},       {6, "train"},        {7, "truck"},
@@ -237,7 +192,7 @@ int main(int argc, char* argv[])
         {40, "wine_glass"}, {41, "cup"},     {42, "fork"},        {43, "knife"},
         {44, "spoon"},     {45, "bowl"},    {46, "banana"},      {47, "apple"},
         {48, "sandwich"},  {49, "orange"},  {50, "broccoli"},    {51, "carrot"},
-        {52, "hot dog"},   {53, "pizza"},   {54, "donut"},       {55, "cake"},
+        {52, "hot_dog"},   {53, "pizza"},   {54, "donut"},       {55, "cake"},
         {56, "chair"},     {57, "sofa"},    {58, "potted_plant"}, {59, "bed"},
         {60, "dining_table"}, {61, "toilet"}, {62, "tvmonitor"}, {63, "laptop"},
         {64, "mouse"},     {65, "remote"},  {66, "keyboard"},    {67, "cell_phone"},
@@ -247,24 +202,18 @@ int main(int argc, char* argv[])
     };
 	#endif
 
+	#ifdef delegate_optimizing
 	int max_delegated_partition_num = Max_Delegated_Partitions_Num;
 	int test_number  = combination(Partition_Num, Max_Delegated_Partitions_Num);
-
-
-	#ifdef delegate_optimizing
 	if(!bUseTwoModel){
-		test_number = 194;  // FULL
-		// test_number = 10;  // Debugging
-		// test_number = 5;  // Debugging
 		// test_number = 1;  // Debugging
-		// int fnum = 65;
-		int fnum = 0;				
-		// int fnum = 194;
+ 		// int fnum = -1;    // Debugging	
+		test_number = 308;  // FULL 339
+		int fnum = 0;	    // FULL	
 		for (int loop_num=0; loop_num<test_number; loop_num++)
 		{
-			// int fnum = 1 + loop_num;
 		    fnum+=1;
-			input.clear();  // NOTE : should clear "input" vector
+			input.clear();  
 			std::string filename = "../mAP_TF/input/images-optional/" + std::to_string(fnum) + ".jpg";
 			read_image_opencv(filename, input);
 			std::cout << filename << std::endl;
@@ -277,16 +226,14 @@ int main(int argc, char* argv[])
 			exit(1);
 			}
 			printf("%d loop End.....\n", loop_num);
-		    // --------------------------------------------------------------
+  			////////////////////////////////////////////////////////////////////////////////////////////
 			std::vector<tflite::Subgraph::BoundingBox> bboxes = tflite::Subgraph::result_boxes;
-			YOLO_parsing(bboxes, fnum);
-
+			YOLO_parsing(bboxes, fnum, labelDict);
 			// visualize
 			std::string window_name = std::to_string(fnum) + "'s parsed image";
 			cv::namedWindow(window_name, cv::WINDOW_NORMAL);
 			cv::Mat image = cv::imread(filename, cv::IMREAD_COLOR);
-			// cv::cvtColor(image, image, COLOR_BGR2RGB); 
-			cv::resize(image, image, cv::Size(416,416)); //resize to 300x300   // 416 * 416 --> original image size
+			cv::resize(image, image, cv::Size(416,416)); 
     		if (!image.empty()) {
     		    visualize_with_labels(image, bboxes, labelDict);
         		cv::imshow(window_name, image);
@@ -297,6 +244,8 @@ int main(int argc, char* argv[])
     	}
 		cv::waitKey(0);
 		cv::destroyAllWindows();
+		////////////////////////////////////////////////////////////////////////////////////////////
+
 	}
 
 	else{
