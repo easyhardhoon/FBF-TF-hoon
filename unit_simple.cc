@@ -206,9 +206,7 @@ int main(int argc, char* argv[])
 	int max_delegated_partition_num = Max_Delegated_Partitions_Num;
 	int test_number  = combination(Partition_Num, Max_Delegated_Partitions_Num);
 	if(!bUseTwoModel){
-		// test_number = 1;  // Debugging
- 		// int fnum = -1;    // Debugging	
-		test_number = 308;  // FULL 339
+		test_number = 300;  // FULL 330
 		int fnum = 0;	    // FULL	
 		for (int loop_num=0; loop_num<test_number; loop_num++)
 		{
