@@ -104,7 +104,7 @@ void read_image_opencv(string filename, vector<cv::Mat>& input){
 }
 #endif
 
-void YOLO_parsing(std::vector<tflite::Subgraph::BoundingBox>& result_boxes, int fnum, std::map<int, std::string>& labelDict)
+void YOLO_parsing(std::vector<tflite::YOLO_Parser::BoundingBox>& result_boxes, int fnum, std::map<int, std::string>& labelDict)
   {
 	std::string filename = "../mAP_TF/input/detection-results/" + std::to_string(fnum) + ".txt";
 	std::ofstream outFile(filename);
@@ -126,8 +126,8 @@ void YOLO_parsing(std::vector<tflite::Subgraph::BoundingBox>& result_boxes, int 
 	outFile.close();
   }
 
-void visualize_with_labels(cv::Mat& image, const std::vector<tflite::Subgraph::BoundingBox>& bboxes, std::map<int, std::string>& labelDict) {
-    for (const tflite::Subgraph::BoundingBox& bbox : bboxes) {
+void visualize_with_labels(cv::Mat& image, const std::vector<tflite::YOLO_Parser::BoundingBox>& bboxes, std::map<int, std::string>& labelDict) {
+    for (const tflite::YOLO_Parser::BoundingBox& bbox : bboxes) {
         int x1 = bbox.left;
         int y1 = bbox.top;
         int x2 = bbox.right;
@@ -225,7 +225,7 @@ int main(int argc, char* argv[])
 			}
 			printf("%d loop End.....\n", loop_num);
   			////////////////////////////////////////////////////////////////////////////////////////////
-			std::vector<tflite::Subgraph::BoundingBox> bboxes = tflite::Subgraph::result_boxes;
+			std::vector<tflite::YOLO_Parser::BoundingBox> bboxes = tflite::YOLO_Parser::result_boxes;			YOLO_parsing(bboxes, fnum, labelDict);
 			YOLO_parsing(bboxes, fnum, labelDict);
 			// visualize
 			std::string window_name = std::to_string(fnum) + "'s parsed image";
