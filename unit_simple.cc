@@ -225,7 +225,7 @@ int main(int argc, char* argv[])
 			}
 			printf("%d loop End.....\n", loop_num);
   			////////////////////////////////////////////////////////////////////////////////////////////
-			std::vector<tflite::YOLO_Parser::BoundingBox> bboxes = tflite::YOLO_Parser::result_boxes;			YOLO_parsing(bboxes, fnum, labelDict);
+			std::vector<tflite::YOLO_Parser::BoundingBox> bboxes = tflite::YOLO_Parser::result_boxes;
 			YOLO_parsing(bboxes, fnum, labelDict);
 			// visualize
 			std::string window_name = std::to_string(fnum) + "'s parsed image";

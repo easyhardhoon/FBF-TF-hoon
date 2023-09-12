@@ -1,5 +1,5 @@
-DOT : unit_simple.cc
-	g++ -o unit_simple unit_simple.cc -I/usr/include/opencv4\
+minimal_yolo : minimal_yolo.cc
+	g++ -o minimal_yolo minimal_yolo.cc -I/usr/include/opencv4\
 		-pthread -g -I/home/nvidia/FBF-TF\
 		-I/home/nvidia/FBF-TF/tensorflow/lite/tools/make/downloads/flatbuffers/include\
 		-L/home/nvidia/FBF-TF/tensorflow/lite/tools/make/gen/linux_aarch64/lib\
@@ -20,4 +20,4 @@ DOT : unit_simple.cc
 	 	/usr/lib/aarch64-linux-gnu/libEGL.so\
 	        /usr/lib/aarch64-linux-gnu/libGL.so\
 		/usr/lib/aarch64-linux-gnu/libGLESv2.so\
-                
+
