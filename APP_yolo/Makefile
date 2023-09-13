@@ -6,6 +6,7 @@ minimal_yolo : minimal_yolo.cc
 		-I/home/nvidia/FBF-TF/tensorflow/lite/tools/make/downloads/absl\
 		-L/home/nvidia/FBF-TF/tensorflow/lite/tools/make/downloads/flatbuffers/build\
 		-lopencv_gapi\
+		-I/home/nvidia/FBF-TF-hoon/APP_yolo\
 		-ltensorflow-lite\
 		-lflatbuffers /lib/aarch64-linux-gnu/libdl.so.2\
 		-lopencv_stitching\

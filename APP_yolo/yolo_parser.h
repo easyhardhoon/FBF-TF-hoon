@@ -189,6 +189,25 @@ namespace yolo{
             result_boxes = bounding_boxes;
             bounding_boxes.clear();
       };
-    ////////////////////////////////////////////////////////////////////
+      void visualize_with_labels(cv::Mat& image, const std::vector<BoundingBox>& bboxes, std::map<int, std::string>& labelDict) {
+        for (const BoundingBox& bbox : bboxes) {
+            int x1 = bbox.left;
+            int y1 = bbox.top;
+            int x2 = bbox.right;
+            int y2 = bbox.bottom;
+            cv::RNG rng(bbox.class_id);
+            cv::Scalar color(rng.uniform(0, 255), rng.uniform(0, 255), rng.uniform(0, 255));
+            int label_x = x1;
+            int label_y = y1 - 20;
+
+            cv::rectangle(image, cv::Point(x1, y1), cv::Point(x2, y2), color, 3);
+            std::string object_name = labelDict[bbox.class_id];
+            float confidence_score = bbox.score;
+            std::string label = object_name + ": " + std::to_string(confidence_score);
+            cv::Size text_size = cv::getTextSize(label, cv::FONT_HERSHEY_SIMPLEX, 0.6, 2, nullptr);
+            cv::rectangle(image, cv::Point(x1, label_y - text_size.height), cv::Point(x1 + text_size.width, label_y + 5), color, -1);
+            cv::putText(image, label, cv::Point(x1, label_y), cv::FONT_HERSHEY_SIMPLEX, 0.6, cv::Scalar(255, 255, 255), 2);
+        }
+    };
     };
 }
