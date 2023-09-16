@@ -1,11 +1,12 @@
-DOT : unit_simple.cc
-	g++ -o unit_simple unit_simple.cc -I/usr/include/opencv4\
+DOT : yolo_with_DOT.cc
+	g++ -o yolo_with_DOT yolo_with_DOT.cc -I/usr/include/opencv4\
 		-pthread -g -I/home/nvidia/FBF-TF\
 		-I/home/nvidia/FBF-TF/tensorflow/lite/tools/make/downloads/flatbuffers/include\
 		-L/home/nvidia/FBF-TF/tensorflow/lite/tools/make/gen/linux_aarch64/lib\
 		-I/home/nvidia/FBF-TF/tensorflow/lite/tools/make/downloads/absl\
 		-L/home/nvidia/FBF-TF/tensorflow/lite/tools/make/downloads/flatbuffers/build\
 		-lopencv_gapi\
+		-I/home/nvidia/FBF-TF-hoon/APP_DOT\
 		-ltensorflow-lite\
 		-lflatbuffers /lib/aarch64-linux-gnu/libdl.so.2\
 		-lopencv_stitching\
