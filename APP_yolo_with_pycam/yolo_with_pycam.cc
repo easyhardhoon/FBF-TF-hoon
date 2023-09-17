@@ -24,7 +24,7 @@ limitations under the License.
 #include "opencv2/opencv_modules.hpp"
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/core/core.hpp"
-#include "minimal_yolo.h"
+#include "yolo_with_pycam.h"
 #include <raspicam/raspicam_cv.h>
 // This is an example that is minimal to read a model
 // from disk and perform inference. There is no data being loaded
@@ -51,7 +51,7 @@ int main(int argc, char* argv[]) {
   }
   const char* filename = argv[1];
   
-  // Pycam setting
+  // (1) Pycam setting
   raspicam::RaspiCam_Cv camera;
   camera.set(cv::CAP_PROP_FORMAT, CV_8UC3);
   camera.set(cv::CAP_PROP_FRAME_WIDTH, 640);
@@ -60,9 +60,8 @@ int main(int argc, char* argv[]) {
     cerr << "Error opening the camera" << endl;
     return 1;
   }
-
   while (true) {
-    // Load image from Pycam
+    // (2) Load image from Pycam
     cv::Mat image;
     camera.grab();
     camera.retrieve(image);
@@ -76,23 +75,23 @@ int main(int argc, char* argv[]) {
     cv::resize(image, image, cv::Size(416, 416));
     input.push_back(image);
    
-    // Load model
+    // (3) Load model
     std::unique_ptr<tflite::FlatBufferModel> model =
         tflite::FlatBufferModel::BuildFromFile(filename);
     TFLITE_MINIMAL_CHECK(model != nullptr);
 
-    // Build interpreter
+    // (4) Build interpreter
     tflite::ops::builtin::BuiltinOpResolver resolver;
     tflite::InterpreterBuilder builder(*model, resolver);
     std::unique_ptr<tflite::Interpreter> interpreter;
     builder(&interpreter);
     TFLITE_MINIMAL_CHECK(interpreter != nullptr);
 
-    // Allocate tensor buffers.
+    // (5) Allocate tensor buffers.
     TFLITE_MINIMAL_CHECK(interpreter->AllocateTensors() == kTfLiteOk);
     printf("=== Pre-invoke Interpreter State ===\n");
 
-    // Push image to input tensor
+    // (6) Push image to input tensor
     auto input_tensor = interpreter->typed_input_tensor<float>(0);
     for (int i=0; i<416; i++){
       for (int j=0; j<416; j++){   
@@ -102,24 +101,24 @@ int main(int argc, char* argv[]) {
         *(input_tensor + i * 416*3 + j * 3 + 2) = ((float)pixel[2])/255.0;
       }
     }
-
-    // Run inference
+    // (7) Run inference
     TFLITE_MINIMAL_CHECK(interpreter->Invoke() == kTfLiteOk);
     printf("\n\n=== Post-invoke Interpreter State ===\n");
 
-    // Output parsing
+    // (8) Output parsing
     TfLiteTensor* cls_tensor = interpreter->output_tensor(1);
     TfLiteTensor* loc_tensor = interpreter->output_tensor(0);
     yolo_output_parsing(cls_tensor, loc_tensor);
 
-    // Output visualize
+    // (9) Output visualize
     yolo_output_visualize(image);
+
     char key = cv::waitKey(1);
     if (key == 'q') {
         break;
     }
   }
-
+  // (10) release
   camera.release();
 	cv::destroyAllWindows();
   return 0;

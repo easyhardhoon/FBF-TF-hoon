@@ -1,11 +1,9 @@
 #include <yolo_parser.h>
-
 yolo::YOLO_Parser yolo_parser;
 std::vector<yolo::YOLO_Parser::BoundingBox> yolo::YOLO_Parser::result_boxes;
 std::vector<std::vector<float>> yolo::YOLO_Parser::real_bbox_cls_vector; 
 std::vector<int> yolo::YOLO_Parser::real_bbox_cls_index_vector;
 std::vector<std::vector<int>> yolo::YOLO_Parser::real_bbox_loc_vector;
-
 
 void yolo_output_parsing(TfLiteTensor* cls_tensor, TfLiteTensor* loc_tensor){
   printf("\033[0;33mStart YOLO parsing\033[0m\n");
@@ -26,7 +24,6 @@ void yolo_output_parsing(TfLiteTensor* cls_tensor, TfLiteTensor* loc_tensor){
         yolo::YOLO_Parser::real_bbox_loc_vector, iou_threshold,yolo::YOLO_Parser::real_bbox_cls_index_vector);
   printf("\033[0;33mEND YOLO parsing\033[0m\n");
 };
-
 
 void yolo_output_visualize(cv::Mat image){
   std::map<int, std::string> labelDict = {

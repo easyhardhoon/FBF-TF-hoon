@@ -9,8 +9,6 @@
 // #define SOFTMAX
 
 namespace yolo{
-    ////////////////////////////////////////////////////////////////////
-    // HOON : utility funcs for parsing Yolo output
     class YOLO_Parser{
       public:
         YOLO_Parser() {};

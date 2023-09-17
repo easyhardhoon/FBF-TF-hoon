@@ -40,7 +40,7 @@ using namespace std;
 
 #define YOLO_INPUT "../../mAP_TF/input/images-optional/"
 #define Partition_Num 7  // nCr --> "n"  // for YOLOv4-tiny
-#define Max_Delegated_Partitions_Num 1  // nCr --> "r"  // hyper-param
+#define Max_Delegated_Partitions_Num 7  // nCr --> "r"  // hyper-param
 #define GPU
 
 #define TFLITE_MINIMAL_CHECK(x)                              \
