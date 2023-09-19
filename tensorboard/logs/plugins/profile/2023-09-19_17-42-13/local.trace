@@ -1,0 +1,12 @@
+
+.õ)
+	/host:CPUõåö˜õ
+python3åö˜õ" õåö˜õtf.constantHøßŠAPÀÿí"*õåö˜õTFE_DeleteTensorHandleH€İƒHPğà"-õåö˜õTFE_Py_FastPathExecute_CH˜ë–[Pˆšã"*õåö˜õTFE_DeleteTensorHandleH€¦ñaP¸"*õåö˜õTFE_DeleteTensorHandleHˆËÅbPğ«"-õåö˜õEagerExecute: LogicalAndH°ú cPÀé•"2õåö˜õEagerLocalExecute: LogicalAndHĞ¼¿cPøõï"1õåö˜õValidateInputTypeAndPlacementHà¤lPØ€"'õåö˜õEagerKernelExecuteH˜‰×lPØ¥Ç"Rõåö˜õ
+LogicalAndHĞÁÉmP¸‹õZ"
+	long_nameLogicalAnd:LogicalAndZ
+is_eager1"'õåö˜õconvert_to_tensorHØÏØÌP¸ö„".õåö˜õTFE_Py_FastPathExecute_CH¸­ÍĞPÈ†Ì",õåö˜õEagerExecute: IdentityHÈœ´ÕP°Œ²"1õåö˜õEagerLocalExecute: IdentityH°îÅÕPˆˆœ"2õåö˜õValidateInputTypeAndPlacementHø©¿ÜP Š"'õåö˜õEagerKernelExecuteHÀ”èÜP¸Çm"Lõåö˜õIdentityHèßİP¸±!Z
+is_eager1Z
+	long_nameIdentity:Identity".õåö˜õTFE_Py_FastPathExecute_CHĞ§ÆàPÈ•è"'õåö˜õconvert_to_tensorH˜ÅÿP€Î×"'õåö˜õconvert_to_tensorHèØÄ„Pè‹´
+"!õåö˜õtf.constantHèÒºˆPøóç"+õåö˜õTFE_DeleteTensorHandleHğ‡ÔŒPˆ’"'õåö˜õconvert_to_tensorH’ÒPğêÚ"!õåö˜õtf.constantH€Ø‘P˜Ê²"+õåö˜õTFE_DeleteTensorHandleHˆ…ç“P¸ˆ"'õåö˜õconvert_to_tensorHØíí•PÈç‚"!õåö˜õtf.constantHèÖÇŸP°±"+õåö˜õTFE_DeleteTensorHandleHØ»°¡PĞ†".õåö˜õTFE_Py_ExecuteCancelableH˜†¡¥PğõÖ"0õåö˜õEagerExecute: WriteSummaryH¸¢œ§PÈ¿­"5õåö˜õEagerLocalExecute: WriteSummaryHÈ±±§PğÙ’"2õåö˜õValidateInputTypeAndPlacementH¸šÚ¯PÈÄ"(õåö˜õEagerKernelExecuteHàôı¯PØÌ´"Yõåö˜õWriteSummaryH®¹°PğÕÛZ&
+	long_nameWriteSummary:WriteSummaryZ
+is_eager1"+õåö˜õTFE_DeleteTensorHandleH°ÒÆ¹PàŒ"+õåö˜õTFE_DeleteTensorHandleHèåñ¹P¸…"+õåö˜õTFE_DeleteTensorHandleH…ÿ¹Pğ¨"!õåö˜õtf.constantHØ°¶¼Pøà"+õåö˜õTFE_DeleteTensorHandleH¸àé¾PØ§"+õåö˜õTFE_DeleteTensorHandleH®†ÁP¸"+õåö˜õTFE_DeleteTensorHandleH¨“¶ÁPÀº+"+õåö˜õTFE_DeleteTensorHandleHÀ²šÆPø´"+õåö˜õTFE_DeleteTensorHandleH¨æµÆP€ú

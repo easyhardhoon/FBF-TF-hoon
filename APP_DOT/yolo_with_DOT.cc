@@ -40,7 +40,7 @@ using namespace std;
 
 #define YOLO_INPUT "../../mAP_TF/input/images-optional/"
 #define Partition_Num 7  // nCr --> "n"  // for YOLOv4-tiny
-#define Max_Delegated_Partitions_Num 7  // nCr --> "r"  // hyper-param
+#define Max_Delegated_Partitions_Num 2  // nCr --> "r"  // hyper-param
 #define GPU
 
 #define TFLITE_MINIMAL_CHECK(x)                              \
@@ -99,7 +99,7 @@ int main(int argc, char* argv[]) {
       // Modify interpreter::subgraph when using GPU
       TfLiteDelegate *MyDelegate = NULL;
       const TfLiteGpuDelegateOptionsV2 options = {
-          .is_precision_loss_allowed = 0, 
+          .is_precision_loss_allowed = 0,  //1
           .inference_preference = TFLITE_GPU_INFERENCE_PREFERENCE_FAST_SINGLE_ANSWER,
           .inference_priority1 = TFLITE_GPU_INFERENCE_PRIORITY_MAX_PRECISION,
           .inference_priority2 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO,
