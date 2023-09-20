@@ -40,8 +40,9 @@ using namespace std;
 
 #define YOLO_INPUT "../../mAP_TF/input/images-optional/"
 #define Partition_Num 7  // nCr --> "n"  // for YOLOv4-tiny
-#define Max_Delegated_Partitions_Num 2  // nCr --> "r"  // hyper-param
+#define Max_Delegated_Partitions_Num 1  // nCr --> "r"  // hyper-param
 #define GPU
+#define IMG_set_num 1
 
 #define TFLITE_MINIMAL_CHECK(x)                              \
   if (!(x)) {                                                \
@@ -77,7 +78,7 @@ int main(int argc, char* argv[]) {
   for (int dot = 0; dot<DOT; dot++){
     int image_number = 1;
     printf("\n\n\033[0;31mDOT %d 's case starting...\033[0m\n\n", dot);
-    for (int loop_num=0;loop_num<300;loop_num++){ 
+    for (int loop_num=0;loop_num<IMG_set_num;loop_num++){ 
 
       // Load image 
       std::string image_name = YOLO_INPUT + std::to_string(image_number) + ".jpg";
