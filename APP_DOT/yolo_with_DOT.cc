@@ -41,9 +41,9 @@ using namespace std;
 
 #define YOLO_INPUT "../../mAP_TF/input/images-optional/"
 #define Partition_Num 7  // nCr --> "n"  // for YOLOv4-tiny
-#define Max_Delegated_Partitions_Num 3  // nCr --> "r"  // hyper-param
+// #define Max_Delegated_Partitions_Num 1  // nCr --> "r"  // hyper-param // Not use in full-auto
 #define GPU
-#define IMG_set_num 100 // "300" for mAP , "100" for DOT
+#define IMG_set_num 3 // "300" for mAP , "100" for DOT
 
 std::vector<float> time_table;
 
@@ -96,96 +96,107 @@ int main(int argc, char* argv[]) {
     return 1;
   }
   const char* filename = argv[1];
-  int DOT = combination(Partition_Num, Max_Delegated_Partitions_Num);
   vector<cv::Mat> input;
-  for (int dot = 0; dot<DOT; dot++){
-    int image_number = 1;
-    uint64_t average_time = 0;
-    printf("\n\n\033[0;31mDOT %d 's case starting...\033[0m\n\n", dot);
-    for (int loop_num=0;loop_num<IMG_set_num;loop_num++){ 
+  for (int N=1;N<=Partition_Num;N++){
+  //////////////////////////////////////////////////////////////////////////////////////////
+  // Outer loop [1<=N<=Max] 
+    printf("\n\n\033[0;33mLOOP START [N=%d]...\033[0m\n\n", N);
+    int DOT = combination(Partition_Num, N);
+    for (int dot = 0; dot<DOT; dot++){
+        //////////////////////////////////////////////////////////////////////////////////////////
+        // Build interpreter on each dot case
+        int image_number = 1;
+        uint64_t average_time = 0;
+        printf("\n\n\033[0;32mDOT %d 's case starting...\033[0m\n\n", dot);
 
-      // Load image 
-      std::string image_name = YOLO_INPUT + std::to_string(image_number) + ".jpg";
-      read_image_opencv(image_name, input);
+        // Load model
+        std::unique_ptr<tflite::FlatBufferModel> model =
+            tflite::FlatBufferModel::BuildFromFile(filename);
+        TFLITE_MINIMAL_CHECK(model != nullptr);
 
-      // Load model
-      std::unique_ptr<tflite::FlatBufferModel> model =
-          tflite::FlatBufferModel::BuildFromFile(filename);
-      TFLITE_MINIMAL_CHECK(model != nullptr);
+        // Build interpreter
+        tflite::ops::builtin::BuiltinOpResolver resolver;
+        tflite::InterpreterBuilder builder(*model, resolver);
+        std::unique_ptr<tflite::Interpreter> interpreter;
+        builder(&interpreter);
+        TFLITE_MINIMAL_CHECK(interpreter != nullptr);
 
-      // Build interpreter
-      tflite::ops::builtin::BuiltinOpResolver resolver;
-      tflite::InterpreterBuilder builder(*model, resolver);
-      std::unique_ptr<tflite::Interpreter> interpreter;
-      builder(&interpreter);
-      TFLITE_MINIMAL_CHECK(interpreter != nullptr);
+        #ifdef GPU
+        // Modify interpreter::subgraph when using GPU
+        TfLiteDelegate *MyDelegate = NULL;
+        const TfLiteGpuDelegateOptionsV2 options = {
+              .is_precision_loss_allowed = 0,  //1
+            .inference_preference = TFLITE_GPU_INFERENCE_PREFERENCE_FAST_SINGLE_ANSWER,
+            .inference_priority1 = TFLITE_GPU_INFERENCE_PRIORITY_MAX_PRECISION,
+            .inference_priority2 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO,
+            .inference_priority3 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO,
+            .priority_partition_num = dot, // loop_num
+            .experimental_flags = 1,
+            .max_delegated_partitions = N, // default is "1"
+        };
+        MyDelegate = TfLiteGpuDelegateV2Create(&options);
+        TFLITE_MINIMAL_CHECK(interpreter->ModifyGraphWithDelegate(MyDelegate) == kTfLiteOk);
+        #endif GPU
 
-      #ifdef GPU
-      // Modify interpreter::subgraph when using GPU
-      TfLiteDelegate *MyDelegate = NULL;
-      const TfLiteGpuDelegateOptionsV2 options = {
-          .is_precision_loss_allowed = 0,  //1
-          .inference_preference = TFLITE_GPU_INFERENCE_PREFERENCE_FAST_SINGLE_ANSWER,
-          .inference_priority1 = TFLITE_GPU_INFERENCE_PRIORITY_MAX_PRECISION,
-          .inference_priority2 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO,
-          .inference_priority3 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO,
-          .priority_partition_num = dot, // loop_num
-          .experimental_flags = 1,
-          .max_delegated_partitions = Max_Delegated_Partitions_Num, // default is "1"
-      };
-      MyDelegate = TfLiteGpuDelegateV2Create(&options);
-      TFLITE_MINIMAL_CHECK(interpreter->ModifyGraphWithDelegate(MyDelegate) == kTfLiteOk);
-      #endif GPU
+        // Allocate tensor buffers.
+        TFLITE_MINIMAL_CHECK(interpreter->AllocateTensors() == kTfLiteOk);
+        printf("=== Pre-invoke Interpreter State ===\n");
+        //////////////////////////////////////////////////////////////////////////////////////////
+        // Push test image to input_tensor
+        for (int loop_num=0;loop_num<IMG_set_num;loop_num++){ 
+          // Load image 
+          std::string image_name = YOLO_INPUT + std::to_string(image_number) + ".jpg";
+          read_image_opencv(image_name, input);
 
-      // Allocate tensor buffers.
-      TFLITE_MINIMAL_CHECK(interpreter->AllocateTensors() == kTfLiteOk);
-      printf("=== Pre-invoke Interpreter State ===\n");
-      // tflite::PrintInterpreterState(interpreter.get());
+          // Push image to input tensor
+          auto input_tensor = interpreter->typed_input_tensor<float>(0);
+          for (int i=0; i<416; i++){
+            for (int j=0; j<416; j++){
+              cv::Vec3b pixel = input[0].at<cv::Vec3b>(i, j);
+              *(input_tensor + i * 416*3 + j * 3) = ((float)pixel[0])/255.0;
+              *(input_tensor + i * 416*3 + j * 3 + 1) = ((float)pixel[1])/255.0;
+              *(input_tensor + i * 416*3 + j * 3 + 2) = ((float)pixel[2])/255.0;
+            }
+          }
+          // Run inference
+          uint64_t START = millis();
+          TFLITE_MINIMAL_CHECK(interpreter->Invoke() == kTfLiteOk);
+          uint64_t END = millis();
+          uint64_t Invoke_time = END - START;
+          printf("\n\n=== Interpreter Invoke ===\n");
+          // printf("\033[0;31msingle data's invoke time is %0.2f ms\n\033[0m", (float)Invoke_time);
+          average_time += Invoke_time;
 
-      // Push image to input tensor
-      auto input_tensor = interpreter->typed_input_tensor<float>(0);
-      for (int i=0; i<416; i++){
-        for (int j=0; j<416; j++){
-          cv::Vec3b pixel = input[0].at<cv::Vec3b>(i, j);
-          *(input_tensor + i * 416*3 + j * 3) = ((float)pixel[0])/255.0;
-          *(input_tensor + i * 416*3 + j * 3 + 1) = ((float)pixel[1])/255.0;
-          *(input_tensor + i * 416*3 + j * 3 + 2) = ((float)pixel[2])/255.0;
+          // Output parsing
+          TfLiteTensor* cls_tensor = interpreter->output_tensor(1);
+          TfLiteTensor* loc_tensor = interpreter->output_tensor(0);
+          yolo_output_parsing(cls_tensor, loc_tensor);
+
+          // Output visualize
+          #ifndef GPU
+          yolo_output_visualize(image_name, image_number);
+          #endif
+
+          // Make txt file to get mAP
+          // make_txt_to_get_mAP(yolo::YOLO_Parser::result_boxes, image_number, dot, Max_Delegated_Partitions_Num);
+
+          // Re-initialize
+          image_number+=1;
+          input.clear();
+          // interpreter->~Interpreter(); // Not use
         }
-      }
-
-      // Run inference
-      uint64_t START = millis();
-      TFLITE_MINIMAL_CHECK(interpreter->Invoke() == kTfLiteOk);
-      uint64_t END = millis();
-      uint64_t Invoke_time = END - START;
-      printf("\n\n=== Interpreter Invoke ===\n");
-      // printf("\033[0;31msingle data's invoke time is %0.2f ms\n\033[0m", (float)Invoke_time);
-      average_time += Invoke_time;
-
-      // Output parsing
-      TfLiteTensor* cls_tensor = interpreter->output_tensor(1);
-      TfLiteTensor* loc_tensor = interpreter->output_tensor(0);
-      yolo_output_parsing(cls_tensor, loc_tensor);
-
-      // Output visualize
-      #ifndef GPU
-      yolo_output_visualize(image_name, image_number);
-      #endif
-      
-      // Make txt file to get mAP
-      // make_txt_to_get_mAP(yolo::YOLO_Parser::result_boxes, image_number, dot, Max_Delegated_Partitions_Num);
-
-      // Re-initialize
-      image_number+=1;
-      input.clear();
-      // interpreter->~Interpreter();
+        //////////////////////////////////////////////////////////////////////////////////////////
+        // Push result to time table
+        printf("\033[0;31mDOT %d 's case's average invoke time [choose N=%d]: %0.2fms\033[0m\n", dot, float(average_time/IMG_set_num), N);
+        time_table.push_back(float(average_time/IMG_set_num));
+        if (dot == DOT -1){
+          print_time_table(time_table);
+        }
     }
-    printf("\033[0;31mDOT %d 's case's average invoke time : %0.2fms\033[0m\n", dot, float(average_time/IMG_set_num));
-    time_table.push_back(float(average_time/IMG_set_num));
-    if (dot == DOT -1){
-      print_time_table(time_table);
-    }
+    // TODO : push each N's time table to parent_timetable 
+    // ISSUE  : How to get each time::{case} ? DEBUGGING.....
   }
+  /////////////
   cv::waitKey(0);
 	cv::destroyAllWindows();
   return 0;
