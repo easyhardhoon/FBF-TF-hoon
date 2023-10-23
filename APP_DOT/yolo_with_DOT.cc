@@ -26,10 +26,11 @@ limitations under the License.
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/core/core.hpp"
 #include "yolo_with_DOT.h"
+#include <chrono>
 // This is an example that is minimal to read a model
 // from disk and perform inference. There is no data being loaded
 // that is up to you to add as a user.
-//
+
 // NOTE: Do not add any dependencies to this that cannot be built with
 // the minimal makefile. This example must remain trivial to build with
 // the minimal build tool.
@@ -40,15 +41,37 @@ using namespace std;
 
 #define YOLO_INPUT "../../mAP_TF/input/images-optional/"
 #define Partition_Num 7  // nCr --> "n"  // for YOLOv4-tiny
-#define Max_Delegated_Partitions_Num 1  // nCr --> "r"  // hyper-param
+#define Max_Delegated_Partitions_Num 3  // nCr --> "r"  // hyper-param
 #define GPU
-#define IMG_set_num 1
+#define IMG_set_num 100 // "300" for mAP , "100" for DOT
+
+std::vector<float> time_table;
 
 #define TFLITE_MINIMAL_CHECK(x)                              \
   if (!(x)) {                                                \
     fprintf(stderr, "Error at %s:%d\n", __FILE__, __LINE__); \
     exit(1);                                                 \
   }
+
+uint64_t millis()
+{
+    uint64_t ms = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
+    return ms; 
+}
+
+void print_time_table(std::vector<float> time_table){
+  std::cout << "\033[0;31mLatency for each case in DOT\033[0m : " <<std::endl;
+  double min = *min_element(time_table.begin(), time_table.end());
+  for (int i=0;i< time_table.size(); i++){
+      if(time_table.at(i) < min + 0.3)   // 0.3 is bias
+      {
+          printf("\033[0;31m%d case's latency is %0.2fms\033[0m\n",i,time_table.at(i));
+      }
+      else{
+          std::cout << i << " case's latency is : " << time_table.at(i) << "ms" << std::endl;
+      }
+  }
+}
 
 int combination(int n, int r) {
     	if(n == r || r == 0) return 1; 
@@ -77,6 +100,7 @@ int main(int argc, char* argv[]) {
   vector<cv::Mat> input;
   for (int dot = 0; dot<DOT; dot++){
     int image_number = 1;
+    uint64_t average_time = 0;
     printf("\n\n\033[0;31mDOT %d 's case starting...\033[0m\n\n", dot);
     for (int loop_num=0;loop_num<IMG_set_num;loop_num++){ 
 
@@ -121,7 +145,7 @@ int main(int argc, char* argv[]) {
       // Push image to input tensor
       auto input_tensor = interpreter->typed_input_tensor<float>(0);
       for (int i=0; i<416; i++){
-        for (int j=0; j<416; j++){   
+        for (int j=0; j<416; j++){
           cv::Vec3b pixel = input[0].at<cv::Vec3b>(i, j);
           *(input_tensor + i * 416*3 + j * 3) = ((float)pixel[0])/255.0;
           *(input_tensor + i * 416*3 + j * 3 + 1) = ((float)pixel[1])/255.0;
@@ -130,8 +154,13 @@ int main(int argc, char* argv[]) {
       }
 
       // Run inference
+      uint64_t START = millis();
       TFLITE_MINIMAL_CHECK(interpreter->Invoke() == kTfLiteOk);
+      uint64_t END = millis();
+      uint64_t Invoke_time = END - START;
       printf("\n\n=== Interpreter Invoke ===\n");
+      // printf("\033[0;31msingle data's invoke time is %0.2f ms\n\033[0m", (float)Invoke_time);
+      average_time += Invoke_time;
 
       // Output parsing
       TfLiteTensor* cls_tensor = interpreter->output_tensor(1);
@@ -142,14 +171,19 @@ int main(int argc, char* argv[]) {
       #ifndef GPU
       yolo_output_visualize(image_name, image_number);
       #endif
-
+      
       // Make txt file to get mAP
-      make_txt_to_get_mAP(yolo::YOLO_Parser::result_boxes, image_number, dot, Max_Delegated_Partitions_Num);
+      // make_txt_to_get_mAP(yolo::YOLO_Parser::result_boxes, image_number, dot, Max_Delegated_Partitions_Num);
 
       // Re-initialize
       image_number+=1;
       input.clear();
       // interpreter->~Interpreter();
+    }
+    printf("\033[0;31mDOT %d 's case's average invoke time : %0.2fms\033[0m\n", dot, float(average_time/IMG_set_num));
+    time_table.push_back(float(average_time/IMG_set_num));
+    if (dot == DOT -1){
+      print_time_table(time_table);
     }
   }
   cv::waitKey(0);
