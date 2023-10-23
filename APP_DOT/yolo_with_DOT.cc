@@ -43,9 +43,10 @@ using namespace std;
 #define Partition_Num 7  // nCr --> "n"  // for YOLOv4-tiny
 // #define Max_Delegated_Partitions_Num 1  // nCr --> "r"  // hyper-param // Not use in full-auto
 #define GPU
-#define IMG_set_num 3 // "300" for mAP , "100" for DOT
+#define IMG_set_num 1 // "300" for mAP , "100" for DOT
 
 std::vector<float> time_table;
+std::vector<std::vector<float>> DOT_table;
 
 #define TFLITE_MINIMAL_CHECK(x)                              \
   if (!(x)) {                                                \
@@ -53,8 +54,7 @@ std::vector<float> time_table;
     exit(1);                                                 \
   }
 
-uint64_t millis()
-{
+uint64_t millis() {
     uint64_t ms = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
     return ms; 
 }
@@ -71,6 +71,47 @@ void print_time_table(std::vector<float> time_table){
           std::cout << i << " case's latency is : " << time_table.at(i) << "ms" << std::endl;
       }
   }
+}
+void printCombination(int n, int k, int kth) {
+    std::vector<int> combination;
+    int index = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (index == kth) {
+                combination.push_back(i);
+                combination.push_back(j);
+                break;
+            }
+            index++;
+        }
+        if (index == kth) {
+            break;
+        }
+    }
+    if (combination.size() == 2) {
+        printf("\033[0;34mMinimum CASE's combination : [%d,%d]\n\033[0m",combination[0], combination[1]);
+        // std::cout << "Kth combination: [" << combination[0] << ", " << combination[1] << "]" << std::endl;
+    } else {
+        std::cerr << "Invalid k value" << std::endl;
+    }
+}
+
+void find_best_case(std::vector<std::vector<float>> DOT_table){
+  float min_value = DOT_table[0][0];
+  int min_row = 0;
+  int min_col = 0;
+  for (int i = 0; i < DOT_table.size(); ++i) {
+      for (int j = 0; j < DOT_table[i].size(); ++j) {
+          if (DOT_table[i][j] < min_value) {
+              min_value = DOT_table[i][j];
+              min_row = i;
+              min_col = j;
+          }
+      }
+  }
+  printf("\033[0;34mMinimum value : %.2fms\n\033[0m", min_value);
+  printf("\033[0;34mMinimum CASE's N : %d\n\033[0m",min_row+1);
+  printCombination(Partition_Num, min_row+1,min_col);
 }
 
 int combination(int n, int r) {
@@ -100,14 +141,14 @@ int main(int argc, char* argv[]) {
   for (int N=1;N<=Partition_Num;N++){
   //////////////////////////////////////////////////////////////////////////////////////////
   // Outer loop [1<=N<=Max] 
-    printf("\n\n\033[0;33mLOOP START [N=%d]...\033[0m\n\n", N);
+    printf("\033[0;33mLOOP START [N=%d]...\033[0m\n", N);
     int DOT = combination(Partition_Num, N);
     for (int dot = 0; dot<DOT; dot++){
         //////////////////////////////////////////////////////////////////////////////////////////
         // Build interpreter on each dot case
         int image_number = 1;
         uint64_t average_time = 0;
-        printf("\n\n\033[0;32mDOT %d 's case starting...\033[0m\n\n", dot);
+        printf("\033[0;32mDOT %d 's case starting...\033[0m\n", dot);
 
         // Load model
         std::unique_ptr<tflite::FlatBufferModel> model =
@@ -193,10 +234,13 @@ int main(int argc, char* argv[]) {
           print_time_table(time_table);
         }
     }
-    // TODO : push each N's time table to parent_timetable 
-    // ISSUE  : How to get each time::{case} ? DEBUGGING.....
+    // Push each N's time table to parent time table
+    DOT_table.push_back(time_table);
+    time_table.clear();
   }
   /////////////
+  // Search Best case recorded in DOT_table
+  find_best_case(DOT_table);
   cv::waitKey(0);
 	cv::destroyAllWindows();
   return 0;
