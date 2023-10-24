@@ -59,6 +59,41 @@ uint64_t millis() {
     return ms; 
 }
 
+void printCombination(int n, int k, int kth) {
+    if (k < 0 || k > n) {
+        std::cerr << "Invalid k value" << std::endl;
+        return;
+    }
+    std::vector<int> combination(k, 0);
+    std::vector<int> indices(n, 0);
+    for (int i = 0; i < k; ++i) {
+        combination[i] = i;
+        indices[i] = 1;
+    }
+    for (int i = 1; i < kth; ++i) {
+        int j = k - 1;
+        while (j >= 0 && combination[j] == n - k + j) {
+            j--;
+        }
+        combination[j]++;
+        for (int x = j + 1; x < k; ++x) {
+            combination[x] = combination[j] + x - j;
+        }
+    }
+    std::vector<int> result;
+    for (int i = 0; i < n; ++i) {
+        if (indices[i] == 1) {
+            result.push_back(i);
+        }
+    }
+    printf("[");
+    for (int i = 0; i < k - 1; ++i) {
+        std::cout << result[i] << ", ";
+    }
+    std::cout << result[k - 1] << "]" << std::endl;
+    result.clear();
+}
+
 void print_time_table(std::vector<float> time_table){
   std::cout << "\033[0;31mLatency for each case in DOT\033[0m : " <<std::endl;
   double min = *min_element(time_table.begin(), time_table.end());
@@ -72,30 +107,31 @@ void print_time_table(std::vector<float> time_table){
       }
   }
 }
-void printCombination(int n, int k, int kth) {
-    std::vector<int> combination;
-    int index = 0;
-    for (int i = 0; i < n; i++) {
-        for (int j = i + 1; j < n; j++) {
-            if (index == kth) {
-                combination.push_back(i);
-                combination.push_back(j);
-                break;
-            }
-            index++;
-        }
-        if (index == kth) {
-            break;
-        }
-    }
-    if (combination.size() == 2) {
-        printf("\033[0;34mMinimum CASE's combination : [%d,%d]\n\033[0m",combination[0], combination[1]);
-        // std::cout << "Kth combination: [" << combination[0] << ", " << combination[1] << "]" << std::endl;
-    } else {
-        std::cerr << "Invalid k value" << std::endl;
-    }
-}
 
+void print_DOT_table(std::vector<std::vector<float>> DOT_table){
+  std::cout << "\033[0;31m////////////////////////////////////////////////////////\033[0m" <<std::endl;
+  std::cout << "\033[0;31m////////////////////////////////////////////////////////\033[0m" <<std::endl;
+  std::cout << "\033[0;31m/////Print DOT Table//////\033[0m" <<std::endl;
+  for (int i=0;i<DOT_table.size();i++){
+    std::cout << "N = " << i+1 <<std::endl;
+    std::vector<float> time_table = DOT_table[i];
+    float min = *min_element(time_table.begin(), time_table.end());
+    float bias = 0.3;
+    float sum = 0.0;
+    for (int i=0;i< time_table.size(); i++){
+        printCombination(Partition_Num,i+1,time_table[i]);
+        if(time_table[i] < min + bias) // Effiecient case group
+        {
+            printf("\033[0;31mcase's latency is %0.2fms\033[0m\n",time_table[i]);
+        }
+        else{ // Normal case group
+            std::cout << "case's latency is " << time_table[i] << "ms" << std::endl;
+        }
+        sum += time_table[i];
+    }
+    printf("\033[0;32mChoose_%d's average latency is %0.2fms\033[0m\n",i+1,sum/time_table.size());
+  }
+}
 void find_best_case(std::vector<std::vector<float>> DOT_table){
   float min_value = DOT_table[0][0];
   int min_row = 0;
@@ -109,8 +145,10 @@ void find_best_case(std::vector<std::vector<float>> DOT_table){
           }
       }
   }
-  printf("\033[0;34mMinimum value : %.2fms\n\033[0m", min_value);
+  printf("\033[0;34mMinimum CAES's value : %.2fms\n\033[0m", min_value);
   printf("\033[0;34mMinimum CASE's N : %d\n\033[0m",min_row+1);
+  printf("\033[0;34mMinimum CASE's th : %d\n\033[0m",min_col);
+  printf("\033[0;34mMinimum CASE's combination : \033[0m");
   printCombination(Partition_Num, min_row+1,min_col);
 }
 
@@ -228,10 +266,10 @@ int main(int argc, char* argv[]) {
         }
         //////////////////////////////////////////////////////////////////////////////////////////
         // Push result to time table
-        printf("\033[0;31mDOT %d 's case's average invoke time [choose N=%d]: %0.2fms\033[0m\n", dot, float(average_time/IMG_set_num), N);
+        // printf("\033[0;31mDOT %d 's case's average invoke time [choose N=%d]: %0.2fms\033[0m\n", dot, float(average_time/IMG_set_num), N);
         time_table.push_back(float(average_time/IMG_set_num));
         if (dot == DOT -1){
-          print_time_table(time_table);
+          // print_time_table(time_table);
         }
     }
     // Push each N's time table to parent time table
@@ -240,6 +278,7 @@ int main(int argc, char* argv[]) {
   }
   /////////////
   // Search Best case recorded in DOT_table
+  print_DOT_table(DOT_table);
   find_best_case(DOT_table);
   cv::waitKey(0);
 	cv::destroyAllWindows();
