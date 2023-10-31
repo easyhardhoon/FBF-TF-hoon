@@ -25,6 +25,7 @@ for i in range(num_models):
 
 models = [LinearRegression() for _ in range(num_models)]
 fig = plt.figure(figsize=(12, 12))
+fig.suptitle('mob in nx', fontsize=20, fontweight='bold')
 
 for i in range(num_models):
     model = models[i]
@@ -35,10 +36,12 @@ for i in range(num_models):
     x_test = x_test_list[i]
 
     pred = model.predict(x_test)
-
+    a = model.coef_[0][0]  
+    b = model.intercept_[0]  
     ax = fig.add_subplot(3, 3, i + 1)
-    ax.scatter(x_train, y_train, s=30, c='b', marker='o', label='Train data')
-    ax.scatter(x_test, pred, s=30, c='r', marker='x', label='Test data')
+    ax.scatter(x_train, y_train, s=15, c='b', marker='o', label='train')
+    ax.scatter(x_test, pred, s=15, c='r', marker='x', label='test')
+    ax.plot(x_test, a * x_test + b, color='g', label='line') 
     if i==0:
         ax.set_title(f'CPF regression')
         ax.set_xlabel('input size')
@@ -67,7 +70,11 @@ for i in range(num_models):
         ax.set_title(f'LVS regression')
         ax.set_xlabel('FLOPs')
         ax.set_ylabel('latency')
+    a = round(a,9)
+    b = round(b,5)
+    equation = "y = " + str(a) + "x + " + str(b)
+    print(equation)
+    ax.text(0.95, 0.05, equation, ha='right', va='bottom', color='red',transform=ax.transAxes, fontsize=10)
     ax.legend()
 plt.subplots_adjust(hspace=0.5)
 plt.show()
-
