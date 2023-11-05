@@ -1,0 +1,36 @@
+FLOPS on mobilenet
+OP_NAME            | M FLOPS
+------------------------------
+CONV_2D            | 21.7
+DEPTHWISE_CONV_2D  | 7.2
+CONV_2D            | 51.4
+DEPTHWISE_CONV_2D  | 3.6
+CONV_2D            | 51.4
+DEPTHWISE_CONV_2D  | 7.2
+CONV_2D            | 102.8
+DEPTHWISE_CONV_2D  | 1.8
+CONV_2D            | 51.4
+DEPTHWISE_CONV_2D  | 3.6
+CONV_2D            | 102.8
+DEPTHWISE_CONV_2D  | 0.9
+CONV_2D            | 51.4
+DEPTHWISE_CONV_2D  | 1.8
+CONV_2D            | 102.8
+DEPTHWISE_CONV_2D  | 1.8
+CONV_2D            | 102.8
+DEPTHWISE_CONV_2D  | 1.8
+CONV_2D            | 102.8
+DEPTHWISE_CONV_2D  | 1.8
+CONV_2D            | 102.8
+DEPTHWISE_CONV_2D  | 1.8
+CONV_2D            | 102.8
+DEPTHWISE_CONV_2D  | 0.5
+CONV_2D            | 51.4
+DEPTHWISE_CONV_2D  | 0.9
+CONV_2D            | 102.8
+AVERAGE_POOL_2D    | <IGNORED>
+CONV_2D            | 2.1
+SQUEEZE            | <IGNORED>
+SOFTMAX            | <IGNORED>
+------------------------------
+Total: 1137.5 M FLOPS

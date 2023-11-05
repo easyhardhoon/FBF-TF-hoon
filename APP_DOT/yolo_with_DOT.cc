@@ -278,8 +278,8 @@ int main(int argc, char* argv[]) {
   }
   /////////////
   // Search Best case recorded in DOT_table
-  print_DOT_table(DOT_table);
-  find_best_case(DOT_table);
+  // print_DOT_table(DOT_table);
+  // find_best_case(DOT_table);
   cv::waitKey(0);
 	cv::destroyAllWindows();
   return 0;
