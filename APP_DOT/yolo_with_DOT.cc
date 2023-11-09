@@ -43,7 +43,7 @@ using namespace std;
 #define Partition_Num 7  // nCr --> "n"  // for YOLOv4-tiny
 // #define Max_Delegated_Partitions_Num 1  // nCr --> "r"  // hyper-param // Not use in full-auto
 #define GPU
-#define IMG_set_num 1 // "300" for mAP , "100" for DOT
+#define IMG_set_num 3 // "300" for mAP , "100" for DOT
 
 std::vector<float> time_table;
 std::vector<std::vector<float>> DOT_table;
@@ -58,48 +58,35 @@ uint64_t millis() {
     uint64_t ms = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
     return ms; 
 }
-
-void printCombination(int n, int k, int kth) {
-    if (k < 0 || k > n) {
-        std::cerr << "Invalid k value" << std::endl;
-        return;
-    }
-    std::vector<int> combination(k, 0);
-    std::vector<int> indices(n, 0);
-    for (int i = 0; i < k; ++i) {
-        combination[i] = i;
-        indices[i] = 1;
-    }
-    for (int i = 1; i < kth; ++i) {
-        int j = k - 1;
-        while (j >= 0 && combination[j] == n - k + j) {
-            j--;
-        }
-        combination[j]++;
-        for (int x = j + 1; x < k; ++x) {
-            combination[x] = combination[j] + x - j;
-        }
-    }
-    std::vector<int> result;
-    for (int i = 0; i < n; ++i) {
-        if (indices[i] == 1) {
-            result.push_back(i);
-        }
-    }
-    printf("[");
-    for (int i = 0; i < k - 1; ++i) {
-        std::cout << result[i] << ", ";
-    }
-    std::cout << result[k - 1] << "]" << std::endl;
-    result.clear();
+std::vector<std::vector<int>> mother_vec;
+std::vector<std::vector<int>>make_mother_vec(int start , std::vector<int> vec, int n, int total) {
+    if (vec.size() == n) {
+    		mother_vec.push_back(vec);
+    		return mother_vec;
+    	}
+    	for (int i = start + 1; i < total; i++) {
+    		vec.push_back(i);
+    		make_mother_vec(i, vec, n, total);
+    		vec.pop_back();
+    	}
+    	return mother_vec; 
 }
-
+void printCombination(int n, int k, int kth) {
+    std::vector<int> result;
+    mother_vec = make_mother_vec(-1, result, k, n);
+    result = mother_vec[kth];
+    std::cout <<"[";
+    for (auto &data : result) std::cout << data << " ";
+    std::cout <<"]";
+    mother_vec.clear();
+    return;
+}
 void print_time_table(std::vector<float> time_table){
   std::cout << "\033[0;31mLatency for each case in DOT\033[0m : " <<std::endl;
   double min = *min_element(time_table.begin(), time_table.end());
+  float bias = 0.3;
   for (int i=0;i< time_table.size(); i++){
-      if(time_table.at(i) < min + 0.3)   // 0.3 is bias
-      {
+      if(time_table.at(i) < min + bias) { 
           printf("\033[0;31m%d case's latency is %0.2fms\033[0m\n",i,time_table.at(i));
       }
       else{
@@ -107,7 +94,6 @@ void print_time_table(std::vector<float> time_table){
       }
   }
 }
-
 void print_DOT_table(std::vector<std::vector<float>> DOT_table){
   std::cout << "\033[0;31m////////////////////////////////////////////////////////\033[0m" <<std::endl;
   std::cout << "\033[0;31m////////////////////////////////////////////////////////\033[0m" <<std::endl;
@@ -118,18 +104,17 @@ void print_DOT_table(std::vector<std::vector<float>> DOT_table){
     float min = *min_element(time_table.begin(), time_table.end());
     float bias = 0.3;
     float sum = 0.0;
-    for (int i=0;i< time_table.size(); i++){
-        printCombination(Partition_Num,i+1,time_table[i]);
-        if(time_table[i] < min + bias) // Effiecient case group
-        {
-            printf("\033[0;31mcase's latency is %0.2fms\033[0m\n",time_table[i]);
+    for (int j=0;j< time_table.size(); j++){
+        printCombination(Partition_Num,i+1,j);
+        if(time_table[j] < min + bias) {
+            printf("\033[0;31mcase's latency is %0.2fms\033[0m\n",time_table[j]);
         }
-        else{ // Normal case group
-            std::cout << "case's latency is " << time_table[i] << "ms" << std::endl;
+        else{
+            std::cout << "case's latency is " << time_table[j] << "ms" << std::endl;
         }
-        sum += time_table[i];
+        sum += time_table[j];
     }
-    printf("\033[0;32mChoose_%d's average latency is %0.2fms\033[0m\n",i+1,sum/time_table.size());
+    printf("\033[0;32m[END]...Choose_%d's average latency is %0.2fms\033[0m\n",i+1,sum/time_table.size());
   }
 }
 void find_best_case(std::vector<std::vector<float>> DOT_table){
@@ -145,18 +130,17 @@ void find_best_case(std::vector<std::vector<float>> DOT_table){
           }
       }
   }
-  printf("\033[0;34mMinimum CAES's value : %.2fms\n\033[0m", min_value);
-  printf("\033[0;34mMinimum CASE's N : %d\n\033[0m",min_row+1);
-  printf("\033[0;34mMinimum CASE's th : %d\n\033[0m",min_col);
-  printf("\033[0;34mMinimum CASE's combination : \033[0m");
+  printf("Minimum CAES's value : %.2fms\n", min_value);
+  printf("Minimum CASE's N : %d\n",min_row+1);
+  printf("Minimum CASE's th : %d\n",min_col);
+  printf("Minimum CASE's combination : ");
   printCombination(Partition_Num, min_row+1,min_col);
+  printf("\n");
 }
-
 int combination(int n, int r) {
     	if(n == r || r == 0) return 1; 
     	else return combination(n - 1, r - 1) + combination(n - 1, r);
 }
-
 void read_image_opencv(string image_name, vector<cv::Mat>& input){
 	cv::Mat cvimg = cv::imread(image_name, cv::IMREAD_COLOR);
 	if(cvimg.data == NULL){
@@ -243,7 +227,6 @@ int main(int argc, char* argv[]) {
           uint64_t END = millis();
           uint64_t Invoke_time = END - START;
           printf("\n\n=== Interpreter Invoke ===\n");
-          // printf("\033[0;31msingle data's invoke time is %0.2f ms\n\033[0m", (float)Invoke_time);
           average_time += Invoke_time;
 
           // Output parsing
@@ -278,8 +261,8 @@ int main(int argc, char* argv[]) {
   }
   /////////////
   // Search Best case recorded in DOT_table
-  // print_DOT_table(DOT_table);
-  // find_best_case(DOT_table);
+  print_DOT_table(DOT_table);
+  find_best_case(DOT_table);
   cv::waitKey(0);
 	cv::destroyAllWindows();
   return 0;
