@@ -43,7 +43,7 @@ using namespace std;
 #define Partition_Num 7  // nCr --> "n"  // for YOLOv4-tiny
 // #define Max_Delegated_Partitions_Num 1  // nCr --> "r"  // hyper-param // Not use in full-auto
 #define GPU
-#define IMG_set_num 3 // "300" for mAP , "100" for DOT
+#define IMG_set_num 100 // "300" for mAP , "100" for DOT
 
 std::vector<float> time_table;
 std::vector<std::vector<float>> DOT_table;
