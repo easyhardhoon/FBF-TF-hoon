@@ -183,10 +183,14 @@ int main(int argc, char* argv[]) {
         std::unique_ptr<tflite::Interpreter> interpreter;
         builder(&interpreter);
         TFLITE_MINIMAL_CHECK(interpreter != nullptr);
-
+	
         #ifdef GPU
         // Modify interpreter::subgraph when using GPU
         TfLiteDelegate *MyDelegate = NULL;
+	
+	//For Debugging
+	N=100;
+
         const TfLiteGpuDelegateOptionsV2 options = {
               .is_precision_loss_allowed = 0,  //1
             .inference_preference = TFLITE_GPU_INFERENCE_PREFERENCE_FAST_SINGLE_ANSWER,
@@ -204,6 +208,7 @@ int main(int argc, char* argv[]) {
         // Allocate tensor buffers.
         TFLITE_MINIMAL_CHECK(interpreter->AllocateTensors() == kTfLiteOk);
         printf("=== Pre-invoke Interpreter State ===\n");
+	tflite::PrintInterpreterState(interpreter.get());  //For debugging model info
         //////////////////////////////////////////////////////////////////////////////////////////
         // Push test image to input_tensor
         for (int loop_num=0;loop_num<IMG_set_num;loop_num++){ 
@@ -223,7 +228,8 @@ int main(int argc, char* argv[]) {
           }
           // Run inference
           uint64_t START = millis();
-          TFLITE_MINIMAL_CHECK(interpreter->Invoke() == kTfLiteOk);
+          //TFLITE_MINIMAL_CHECK(interpreter->Invoke() == kTfLiteOk);
+          interpreter->Invoke(); // ISSUE
           uint64_t END = millis();
           uint64_t Invoke_time = END - START;
           printf("\n\n=== Interpreter Invoke ===\n");

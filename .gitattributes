@@ -1,0 +1,15 @@
+models/inception_v2_lite_model.tflite filter=lfs diff=lfs merge=lfs -text
+models/lanenet_fp32.tflite filter=lfs diff=lfs merge=lfs -text
+models/yolov5.tflite filter=lfs diff=lfs merge=lfs -text
+models/efficientnet_lite4_fp32_2.tflite filter=lfs diff=lfs merge=lfs -text
+models/mobilenet_v1_10_224_fp32.tflite filter=lfs diff=lfs merge=lfs -text
+models/movenet_singlepose_lightning.tflite filter=lfs diff=lfs merge=lfs -text
+models/yolov4-416-fp32.tflite filter=lfs diff=lfs merge=lfs -text
+models/yolov4-tiny-416.tflite filter=lfs diff=lfs merge=lfs -text
+models/custom_dnns_for_mnist filter=lfs diff=lfs merge=lfs -text
+models/inception_v1_lite_model.tflite filter=lfs diff=lfs merge=lfs -text
+models/ssd_mobile.tflite filter=lfs diff=lfs merge=lfs -text
+models/yolov4-tiny-customOP.tflite filter=lfs diff=lfs merge=lfs -text
+models/inception_v3_lite_model.tflite filter=lfs diff=lfs merge=lfs -text
+models/movenet_singlepose_thunder.tflite filter=lfs diff=lfs merge=lfs -text
+models/readme.md filter=lfs diff=lfs merge=lfs -text
