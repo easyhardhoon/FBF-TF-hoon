@@ -27,6 +27,8 @@ limitations under the License.
 #include "opencv2/core/core.hpp"
 #include <chrono>
 #define Use_GPU
+#define DEBUG
+
 // #include "minimal_yolo.h"
 // This is an example that is minimal to read a model
 // from disk and perform inference. There is no data being loaded
@@ -105,14 +107,16 @@ int main(int argc, char* argv[]) {
       .inference_priority3 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO,
       .priority_partition_num = 1,
       .experimental_flags = 1,
-      .max_delegated_partitions = 1,
+      .max_delegated_partitions = 6, 
   };
   MyDelegate = TfLiteGpuDelegateV2Create(&options);
   TFLITE_MINIMAL_CHECK(interpreter->ModifyGraphWithDelegate(MyDelegate) == kTfLiteOk);
   #endif Use_GPU
 
   printf("=== Print interpreterstate Start ===\n");
+  #ifdef DEBUG
   tflite::PrintInterpreterState(interpreter.get());
+  #endif
   printf("=== Print interpreterstate End ===\n");
   // Allocate tensor buffers.
   TFLITE_MINIMAL_CHECK(interpreter->AllocateTensors() == kTfLiteOk);
@@ -147,7 +151,7 @@ int main(int argc, char* argv[]) {
     TFLITE_MINIMAL_CHECK(interpreter->Invoke() == kTfLiteOk);
     uint64_t END = millis();
     uint64_t Invoke_time = END - START;
-    std::cout << "Invoke_time : " << Invoke_time << "ms" << std::endl;
+    std::cout << "\nInvoke_time : " << Invoke_time << "ms" << std::endl;
     printf("=== Invoke END ===\n");
 
     // Output parsing
