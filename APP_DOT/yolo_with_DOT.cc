@@ -43,7 +43,7 @@ using namespace std;
 #define Partition_Num 7  // nCr --> "n"  // for YOLOv4-tiny
 // #define Max_Delegated_Partitions_Num 1  // nCr --> "r"  // hyper-param // Not use in full-auto
 #define GPU
-#define IMG_set_num 100 // "300" for mAP , "100" for DOT
+#define IMG_set_num 1 // "300" for mAP , "100" for DOT // "1" for debugging
 
 std::vector<float> time_table;
 std::vector<std::vector<float>> DOT_table;
@@ -188,8 +188,8 @@ int main(int argc, char* argv[]) {
         // Modify interpreter::subgraph when using GPU
         TfLiteDelegate *MyDelegate = NULL;
 	
-	//For Debugging
-	N=100;
+	      //For Debugging
+	      // N=100;
 
         const TfLiteGpuDelegateOptionsV2 options = {
               .is_precision_loss_allowed = 0,  //1
@@ -208,7 +208,7 @@ int main(int argc, char* argv[]) {
         // Allocate tensor buffers.
         TFLITE_MINIMAL_CHECK(interpreter->AllocateTensors() == kTfLiteOk);
         printf("=== Pre-invoke Interpreter State ===\n");
-	tflite::PrintInterpreterState(interpreter.get());  //For debugging model info
+	      // tflite::PrintInterpreterState(interpreter.get());  //For debugging model info
         //////////////////////////////////////////////////////////////////////////////////////////
         // Push test image to input_tensor
         for (int loop_num=0;loop_num<IMG_set_num;loop_num++){ 

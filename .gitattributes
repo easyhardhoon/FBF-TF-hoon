@@ -13,3 +13,4 @@ models/yolov4-tiny-customOP.tflite filter=lfs diff=lfs merge=lfs -text
 models/inception_v3_lite_model.tflite filter=lfs diff=lfs merge=lfs -text
 models/movenet_singlepose_thunder.tflite filter=lfs diff=lfs merge=lfs -text
 models/readme.md filter=lfs diff=lfs merge=lfs -text
+./models/ filter=lfs diff=lfs merge=lfs -text
