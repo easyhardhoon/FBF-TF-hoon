@@ -26,9 +26,10 @@ limitations under the License.
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/core/core.hpp"
 #include <chrono>
+#include "minimal.h"
 #define Use_GPU
 #define DEBUG
-
+#define YOLO
 // #include "minimal_yolo.h"
 // This is an example that is minimal to read a model
 // from disk and perform inference. There is no data being loaded
@@ -47,7 +48,7 @@ limitations under the License.
 using namespace std;
 
 #define INPUT "../../mAP_TF/input/images-optional/"
-#define IMAGE_NUM 10
+#define IMAGE_NUM 300
 #define TFLITE_MINIMAL_CHECK(x)                              \
   if (!(x)) {                                                \
     fprintf(stderr, "Error at %s:%d\n", __FILE__, __LINE__); \
@@ -107,11 +108,11 @@ int main(int argc, char* argv[]) {
       .inference_priority3 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO,
       .priority_partition_num = 1,
       .experimental_flags = 1,
-      .max_delegated_partitions = 6, 
+      .max_delegated_partitions = 10, 
   };
   MyDelegate = TfLiteGpuDelegateV2Create(&options);
   TFLITE_MINIMAL_CHECK(interpreter->ModifyGraphWithDelegate(MyDelegate) == kTfLiteOk);
-  #endif Use_GPU
+  #endif
 
   printf("=== Print interpreterstate Start ===\n");
   #ifdef DEBUG
@@ -136,15 +137,26 @@ int main(int argc, char* argv[]) {
     // TFLite's data tensor format :[B, H, W, C]
     // Opencv's data image  format :[W, H] 
     auto input_tensor = interpreter->typed_input_tensor<float>(0);
-    for (int h=0; h<height; h++){
-      for (int w=0; w<width; w++){
-        cv::Vec3b pixel = input[0].at<cv::Vec3b>(w, h);
-        *(input_tensor + w * width*3 + w * 3) = ((float)pixel[0])/255.0;
-        *(input_tensor + w * width*3 + w * 3 + 1) = ((float)pixel[1])/255.0;
-        *(input_tensor + w * width*3 + w * 3 + 2) = ((float)pixel[2])/255.0;
-      }
-    }
 
+    // ISSUE (SOLVED)
+    // for (int h=0; h<height; h++){
+    //   for (int w=0; w<width; w++){
+    //     cv::Vec3b pixel = input[0].at<cv::Vec3b>(w, h);
+    //     *(input_tensor + h * width*3 + w * 3) = ((float)pixel[0])/255.0;
+    //     *(input_tensor + h * width*3 + w * 3 + 1) = ((float)pixel[1])/255.0;
+    //     *(input_tensor + h * width*3 + w * 3 + 2) = ((float)pixel[2])/255.0;
+    //   }
+    // }
+
+    // CORRECT
+    for (int i=0; i<416; i++){
+               for (int j=0; j<416; j++){
+                 cv::Vec3b pixel = input[0].at<cv::Vec3b>(i, j);
+                 *(input_tensor + i * 416*3 + j * 3) = ((float)pixel[0])/255.0;
+                 *(input_tensor + i * 416*3 + j * 3 + 1) = ((float)pixel[1])/255.0;
+                 *(input_tensor + i * 416*3 + j * 3 + 2) = ((float)pixel[2])/255.0;
+               }
+             }
     // Run inference
     printf("\n=== Invoke START ===\n");
     uint64_t START = millis();
@@ -154,16 +166,18 @@ int main(int argc, char* argv[]) {
     std::cout << "\nInvoke_time : " << Invoke_time << "ms" << std::endl;
     printf("=== Invoke END ===\n");
 
+    #ifdef YOLO
     // Output parsing
-    // TfLiteTensor* cls_tensor = interpreter->output_tensor(1);
-    // TfLiteTensor* loc_tensor = interpreter->output_tensor(0);
-    // yolo_output_parsing(cls_tensor, loc_tensor);
-
+    TfLiteTensor* cls_tensor = interpreter->output_tensor(1);
+    TfLiteTensor* loc_tensor = interpreter->output_tensor(0);
+    yolo_output_parsing(cls_tensor, loc_tensor);
+    make_txt_to_get_mAP(yolo::YOLO_Parser::result_boxes, i);
     // Output visualize
-    // yolo_output_visualize(image_name);
+    // yolo_output_visualize(image_name, i);
+    #endif
     input.clear();
   }  
-  cv::waitKey(0);
-	cv::destroyAllWindows();
+  // cv::waitKey(0);
+	// cv::destroyAllWindows();
   return 0;
 }
