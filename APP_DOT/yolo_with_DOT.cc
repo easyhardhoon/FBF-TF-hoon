@@ -40,10 +40,11 @@ limitations under the License.
 using namespace std;
 
 #define YOLO_INPUT "../../mAP_TF/input/images-optional/"
-#define Partition_Num 7  // nCr --> "n"  // for YOLOv4-tiny
+#define Partition_Num 9  // nCr --> "n"  // for YOLOv4-tiny
 // #define Max_Delegated_Partitions_Num 1  // nCr --> "r"  // hyper-param // Not use in full-auto
 #define GPU
-#define IMG_set_num 20 // "300" for mAP , "100" for DOT // "1" for debugging
+#define IMG_set_num 10 // "300" for mAP , "100" for DOT // "1" for debugging
+// #define YOLO
 
 std::vector<float> time_table;
 std::vector<std::vector<float>> DOT_table;
@@ -58,6 +59,13 @@ uint64_t millis() {
     uint64_t ms = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
     return ms; 
 }
+
+std::map<std::string, std::pair<int,int>> input_map = {
+  {"yolo", {416,416}},
+  {"lane", {512,256}},
+  {"move", {192,192}}
+};
+
 std::vector<std::vector<int>> mother_vec;
 std::vector<std::vector<int>>make_mother_vec(int start , std::vector<int> vec, int n, int total) {
     if (vec.size() == n) {
@@ -141,7 +149,8 @@ int combination(int n, int r) {
     	if(n == r || r == 0) return 1; 
     	else return combination(n - 1, r - 1) + combination(n - 1, r);
 }
-void read_image_opencv(string image_name, vector<cv::Mat>& input){
+
+void read_image_opencv(string image_name, vector<cv::Mat>& input, int width, int height){
 	cv::Mat cvimg = cv::imread(image_name, cv::IMREAD_COLOR);
 	if(cvimg.data == NULL){
 		std::cout << "=== IMAGE DATA NULL ===\n";
@@ -149,16 +158,17 @@ void read_image_opencv(string image_name, vector<cv::Mat>& input){
 	}
 	cv::cvtColor(cvimg, cvimg, cv::COLOR_BGR2RGB); 
 	cv::Mat cvimg_;
-	cv::resize(cvimg, cvimg_, cv::Size(416,416));
+	cv::resize(cvimg, cvimg_, cv::Size(width, height));
 	input.push_back(cvimg_);
 }
 
 int main(int argc, char* argv[]) {
-  if (argc != 2) {
-    fprintf(stderr, "minimal <tflite model>\n");
+  if (argc != 3) {
+    fprintf(stderr, "minimal <tflite model> <input_type> \n");
     return 1;
   }
   const char* filename = argv[1];
+  const char* input_type = argv[2];
   vector<cv::Mat> input;
   for (int N=1;N<=Partition_Num;N++){
   //////////////////////////////////////////////////////////////////////////////////////////
@@ -187,9 +197,6 @@ int main(int argc, char* argv[]) {
         #ifdef GPU
         // Modify interpreter::subgraph when using GPU
         TfLiteDelegate *MyDelegate = NULL;
-	
-	      //For Debugging
-	      // N=100;
 
         const TfLiteGpuDelegateOptionsV2 options = {
               .is_precision_loss_allowed = 0,  //1
@@ -214,31 +221,38 @@ int main(int argc, char* argv[]) {
         for (int loop_num=0;loop_num<IMG_set_num;loop_num++){ 
           // Load image 
           std::string image_name = YOLO_INPUT + std::to_string(image_number) + ".jpg";
-          read_image_opencv(image_name, input);
+          int width = input_map[input_type].first;
+          int height = input_map[input_type].second;
+          read_image_opencv(image_name, input, width, height); 
 
           // Push image to input tensor
           auto input_tensor = interpreter->typed_input_tensor<float>(0);
-          for (int i=0; i<416; i++){
-            for (int j=0; j<416; j++){
-              cv::Vec3b pixel = input[0].at<cv::Vec3b>(i, j);
-              *(input_tensor + i * 416*3 + j * 3) = ((float)pixel[0])/255.0;
-              *(input_tensor + i * 416*3 + j * 3 + 1) = ((float)pixel[1])/255.0;
-              *(input_tensor + i * 416*3 + j * 3 + 2) = ((float)pixel[2])/255.0;
+          
+          // Normalize code for pushing image to input tensor
+          for (int w=0; w<width; w++){
+            for (int h=0; h<height; h++){
+              cv::Vec3b pixel = input[0].at<cv::Vec3b>(w, h);
+              *(input_tensor + w * height*3 + h * 3) = ((float)pixel[0])/255.0;
+              *(input_tensor + w * height*3 + h * 3 + 1) = ((float)pixel[1])/255.0;
+              *(input_tensor + w * height*3 + h * 3 + 2) = ((float)pixel[2])/255.0;
             }
           }
+
           // Run inference
           uint64_t START = millis();
-          //TFLITE_MINIMAL_CHECK(interpreter->Invoke() == kTfLiteOk);
-          interpreter->Invoke(); // ISSUE
+          printf("\n\n=== Interpreter Invoke (Before)===\n");
+          TFLITE_MINIMAL_CHECK(interpreter->Invoke() == kTfLiteOk);
           uint64_t END = millis();
           uint64_t Invoke_time = END - START;
-          printf("\n\n=== Interpreter Invoke ===\n");
+          printf("\n\n=== Interpreter Invoke (After)===\n");
           average_time += Invoke_time;
 
+          #ifdef YOLO
           // Output parsing
           TfLiteTensor* cls_tensor = interpreter->output_tensor(1);
           TfLiteTensor* loc_tensor = interpreter->output_tensor(0);
           yolo_output_parsing(cls_tensor, loc_tensor);
+          #endif
 
           // Output visualize
           #ifndef GPU
@@ -246,7 +260,7 @@ int main(int argc, char* argv[]) {
           #endif
 
           // Make txt file to get mAP
-          // make_txt_to_get_mAP(yolo::YOLO_Parser::result_boxes, image_number, dot, Max_Delegated_Partitions_Num);
+          // make_txt_to_get_mAP(yolo::YOLO_Parser::result_boxes, image_number, dot, N);
 
           // Re-initialize
           image_number+=1;
