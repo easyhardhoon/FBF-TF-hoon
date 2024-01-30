@@ -43,7 +43,7 @@ using namespace std;
 #define Partition_Num 7  // nCr --> "n"  // for YOLOv4-tiny
 // #define Max_Delegated_Partitions_Num 1  // nCr --> "r"  // hyper-param // Not use in full-auto
 #define GPU
-#define IMG_set_num 1 // "300" for mAP , "100" for DOT // "1" for debugging
+#define IMG_set_num 20 // "300" for mAP , "100" for DOT // "1" for debugging
 
 std::vector<float> time_table;
 std::vector<std::vector<float>> DOT_table;
@@ -255,10 +255,10 @@ int main(int argc, char* argv[]) {
         }
         //////////////////////////////////////////////////////////////////////////////////////////
         // Push result to time table
-        // printf("\033[0;31mDOT %d 's case's average invoke time [choose N=%d]: %0.2fms\033[0m\n", dot, float(average_time/IMG_set_num), N);
+        printf("\033[0;31mDOT %d 's case's average invoke time [choose N=%d]: %0.2fms\033[0m\n", dot, N, float(average_time/IMG_set_num));
         time_table.push_back(float(average_time/IMG_set_num));
         if (dot == DOT -1){
-          // print_time_table(time_table);
+          print_time_table(time_table);
         }
     }
     // Push each N's time table to parent time table
@@ -269,7 +269,7 @@ int main(int argc, char* argv[]) {
   // Search Best case recorded in DOT_table
   print_DOT_table(DOT_table);
   find_best_case(DOT_table);
-  cv::waitKey(0);
-	cv::destroyAllWindows();
+  // cv::waitKey(0);
+	// cv::destroyAllWindows();
   return 0;
 }

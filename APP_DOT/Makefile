@@ -34,7 +34,6 @@ od : yolo_with_DOT.cc
 		-I/home/odroid/FBF-TF-hoon/APP_DOT\
 		-lflatbuffers /lib/arm-linux-gnueabihf/libdl.so.2\
 		-lopencv_stitching\
-		-lopencv_highgui\
 		-lopencv_dnn\
 		-lopencv_videoio\
 		-lopencv_ml -lopencv_video\

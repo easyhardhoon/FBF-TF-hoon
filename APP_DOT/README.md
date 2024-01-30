@@ -10,3 +10,9 @@ modified (FBF-TF::Work_Hoon) + yolo_output_parsing + get_mAP + DOT(IEIE)
 4. It would be better to choose "partition with more params" than to "partition with more layers"
 5. Large partitions are not always the most parameterized
 6. Evaluate each case by [yolo_output_parsing + get_mAP]
+
+# Expansion 
+
+Before : single model(yolov4-tiny) & single board(xaiver-nx)
+
+After : multi mode(yolov4-tiny, lanenet) & multi board(xavier-nx, odroidxu4)

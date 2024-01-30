@@ -52,12 +52,12 @@ std::map<int, std::string> labelDict = {
 void yolo_output_visualize(std::string image_name, int image_number){
   std::vector<yolo::YOLO_Parser::BoundingBox> bboxes = yolo::YOLO_Parser::result_boxes;
 	std::string window_name = std::to_string(image_number) + "'s  parsed image";
-	cv::namedWindow(window_name, cv::WINDOW_NORMAL);
+	// cv::namedWindow(window_name, cv::WINDOW_NORMAL);
 	cv::Mat image = cv::imread(image_name, cv::IMREAD_COLOR);
 	cv::resize(image, image, cv::Size(416,416)); 
   	if (!image.empty()) {
   	    yolo_parser.visualize_with_labels(image, bboxes, labelDict);
-    		cv::imshow(window_name, image);
+    		// cv::imshow(window_name, image);
 	}
 };
 

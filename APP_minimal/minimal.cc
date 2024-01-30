@@ -29,7 +29,7 @@ limitations under the License.
 #include "minimal.h"
 #define Use_GPU
 #define DEBUG
-#define YOLO
+// #define YOLO
 // #include "minimal_yolo.h"
 // This is an example that is minimal to read a model
 // from disk and perform inference. There is no data being loaded
