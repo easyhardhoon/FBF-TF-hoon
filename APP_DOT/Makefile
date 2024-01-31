@@ -1,5 +1,5 @@
-nx : yolo_with_DOT.cc
-	g++ -o yolo_with_DOT yolo_with_DOT.cc -I/usr/include/opencv4\
+nx : DOT.cc
+	g++ -o DOT DOT.cc -I/usr/include/opencv4\
 		-pthread -g -I/home/nvidia/FBF-TF\
 		-I/home/nvidia/FBF-TF/tensorflow/lite/tools/make/downloads/flatbuffers/include\
 		-L/home/nvidia/FBF-TF/tensorflow/lite/tools/make/gen/linux_aarch64/lib\
@@ -22,8 +22,8 @@ nx : yolo_with_DOT.cc
 	        /usr/lib/aarch64-linux-gnu/libGL.so\
 		/usr/lib/aarch64-linux-gnu/libGLESv2.so\
 
-od : yolo_with_DOT.cc
-	g++ -g -o yolo_with_DOT yolo_with_DOT.cc -I/usr/include/opencv4\
+od : DOT.cc
+	g++ -g -o DOT DOT.cc -I/usr/include/opencv4\
 		-pthread -g -I/home/odroid/FBF-TF\
 		-I/home/odroid/FBF-TF/tensorflow/lite/tools/make/downloads/flatbuffers/include\
 		-L/home/odroid/FBF-TF/tensorflow/lite/tools/make/gen/bbb_armv7l/lib\

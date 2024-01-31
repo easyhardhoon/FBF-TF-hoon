@@ -1,0 +1,3136 @@
+odroid@odroid:~/FBF-TF-hoon/APP_DOT$ bash run_lane.sh 
+LOOP START [N=1]...
+DOT 0 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+INFO: Created TensorFlow Lite delegate for GPU.
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+21 operations will run on the GPU, and the remaining 66 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+INFO: Initialized OpenCL-based API.
+INFO: Created 1 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa20a3040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 20 21 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 0 's case's average invoke time [choose N=1]: 7362.00ms
+DOT 1 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+4 operations will run on the GPU, and the remaining 83 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 20 21 24 25 
+INFO: Created 1 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa2225040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 22 23 87 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 1 's case's average invoke time [choose N=1]: 20220.00ms
+DOT 2 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+5 operations will run on the GPU, and the remaining 82 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 27 28 29 33 34 
+INFO: Created 1 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa527f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 87 30 31 32 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 2 's case's average invoke time [choose N=1]: 20439.00ms
+DOT 3 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+4 operations will run on the GPU, and the remaining 83 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 31 32 35 36 
+INFO: Created 1 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa527f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 33 34 87 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 3 's case's average invoke time [choose N=1]: 19974.00ms
+DOT 4 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+5 operations will run on the GPU, and the remaining 82 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 38 39 40 44 45 
+INFO: Created 1 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa527f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 87 41 42 43 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 4 's case's average invoke time [choose N=1]: 20751.00ms
+DOT 5 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+4 operations will run on the GPU, and the remaining 83 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 42 43 46 47 
+INFO: Created 1 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa527f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 44 45 87 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 5 's case's average invoke time [choose N=1]: 20036.00ms
+DOT 6 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+3 operations will run on the GPU, and the remaining 84 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 49 50 51 
+INFO: Created 1 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa527f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 87 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 6 's case's average invoke time [choose N=1]: 19842.00ms
+DOT 7 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+3 operations will run on the GPU, and the remaining 84 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 53 54 55 
+INFO: Created 1 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa527f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 87 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 7 's case's average invoke time [choose N=1]: 20210.00ms
+DOT 8 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+29 operations will run on the GPU, and the remaining 58 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+INFO: Created 1 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa7935040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 87 80 tensorflow/lite/kernels/arg_min_max.cc
+
+
+=== Interpreter Invoke (After)===
+DOT 8 's case's average invoke time [choose N=1]: 14984.00ms
+Latency for each case in DOT : 
+0 case's latency is 7362.00ms
+1 case's latency is : 20220ms
+2 case's latency is : 20439ms
+3 case's latency is : 19974ms
+4 case's latency is : 20751ms
+5 case's latency is : 20036ms
+6 case's latency is : 19842ms
+7 case's latency is : 20210ms
+8 case's latency is : 14984ms
+LOOP START [N=2]...
+DOT 0 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 1  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+25 operations will run on the GPU, and the remaining 62 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 20 21 24 25 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 88 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 0 's case's average invoke time [choose N=2]: 6827.00ms
+DOT 1 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 2  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+26 operations will run on the GPU, and the remaining 61 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 27 28 29 33 34 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 20 21 24 25 26 88 30 31 32 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 1 's case's average invoke time [choose N=2]: 6595.00ms
+DOT 2 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 3  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+25 operations will run on the GPU, and the remaining 62 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 31 32 35 36 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 20 21 24 25 26 27 28 29 30 33 34 88 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 2 's case's average invoke time [choose N=2]: 7109.00ms
+DOT 3 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 4  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+26 operations will run on the GPU, and the remaining 61 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 38 39 40 44 45 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 20 21 24 25 26 27 28 29 30 31 32 33 34 35 36 37 88 41 42 43 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 3 's case's average invoke time [choose N=2]: 6844.00ms
+DOT 4 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 5  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+25 operations will run on the GPU, and the remaining 62 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 42 43 46 47 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 20 21 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 44 45 88 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 4 's case's average invoke time [choose N=2]: 6769.00ms
+DOT 5 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 6  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+24 operations will run on the GPU, and the remaining 63 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 49 50 51 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 20 21 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 88 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 5 's case's average invoke time [choose N=2]: 6606.00ms
+DOT 6 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 7  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+24 operations will run on the GPU, and the remaining 63 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 53 54 55 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 20 21 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 88 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 6 's case's average invoke time [choose N=2]: 6475.00ms
+DOT 7 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 8  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+50 operations will run on the GPU, and the remaining 37 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa4616040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 20 21 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 88 80 tensorflow/lite/kernels/arg_min_max.cc
+
+
+=== Interpreter Invoke (After)===
+DOT 7 's case's average invoke time [choose N=2]: 1810.00ms
+DOT 8 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 1  , 2  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+9 operations will run on the GPU, and the remaining 78 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 20 21 24 25 27 28 29 33 34 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 22 23 87 26 88 30 31 32 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 8 's case's average invoke time [choose N=2]: 20323.00ms
+DOT 9 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 1  , 3  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+8 operations will run on the GPU, and the remaining 79 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 20 21 24 25 31 32 35 36 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 22 23 87 26 27 28 29 30 33 34 88 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 9 's case's average invoke time [choose N=2]: 19070.00ms
+DOT 10 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 1  , 4  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+9 operations will run on the GPU, and the remaining 78 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 20 21 24 25 38 39 40 44 45 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 22 23 87 26 27 28 29 30 31 32 33 34 35 36 37 88 41 42 43 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 10 's case's average invoke time [choose N=2]: 20533.00ms
+DOT 11 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 1  , 5  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+8 operations will run on the GPU, and the remaining 79 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 20 21 24 25 42 43 46 47 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 22 23 87 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 44 45 88 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 11 's case's average invoke time [choose N=2]: 19881.00ms
+DOT 12 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 1  , 6  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+7 operations will run on the GPU, and the remaining 80 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 20 21 24 25 49 50 51 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa527f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 22 23 87 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 88 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 12 's case's average invoke time [choose N=2]: 19610.00ms
+DOT 13 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 1  , 7  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+7 operations will run on the GPU, and the remaining 80 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 20 21 24 25 53 54 55 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa527f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 22 23 87 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 88 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 13 's case's average invoke time [choose N=2]: 19733.00ms
+DOT 14 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 1  , 8  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+33 operations will run on the GPU, and the remaining 54 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 20 21 24 25 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa7615040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 22 23 87 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 88 80 tensorflow/lite/kernels/arg_min_max.cc
+
+
+=== Interpreter Invoke (After)===
+DOT 14 's case's average invoke time [choose N=2]: 14606.00ms
+DOT 15 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 2  , 3  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+9 operations will run on the GPU, and the remaining 78 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 27 28 29 33 34 31 32 35 36 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 87 30 88 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 15 's case's average invoke time [choose N=2]: 20548.00ms
+DOT 16 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 2  , 4  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+10 operations will run on the GPU, and the remaining 77 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 27 28 29 33 34 38 39 40 44 45 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 87 30 31 32 35 36 37 88 41 42 43 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 16 's case's average invoke time [choose N=2]: 19547.00ms
+DOT 17 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 2  , 5  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+9 operations will run on the GPU, and the remaining 78 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 27 28 29 33 34 42 43 46 47 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 87 30 31 32 35 36 37 38 39 40 41 44 45 88 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 17 's case's average invoke time [choose N=2]: 19509.00ms
+DOT 18 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 2  , 6  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+8 operations will run on the GPU, and the remaining 79 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 27 28 29 33 34 49 50 51 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 87 30 31 32 35 36 37 38 39 40 41 42 43 44 45 46 47 48 88 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 18 's case's average invoke time [choose N=2]: 19462.00ms
+DOT 19 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 2  , 7  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+8 operations will run on the GPU, and the remaining 79 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 27 28 29 33 34 53 54 55 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 87 30 31 32 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 88 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 19 's case's average invoke time [choose N=2]: 20290.00ms
+DOT 20 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 2  , 8  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+34 operations will run on the GPU, and the remaining 53 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 27 28 29 33 34 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa7414040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 87 30 31 32 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 88 80 tensorflow/lite/kernels/arg_min_max.cc
+
+
+=== Interpreter Invoke (After)===
+DOT 20 's case's average invoke time [choose N=2]: 14910.00ms
+DOT 21 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 3  , 4  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+9 operations will run on the GPU, and the remaining 78 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 31 32 35 36 38 39 40 44 45 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 33 34 87 37 88 41 42 43 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 21 's case's average invoke time [choose N=2]: 19384.00ms
+DOT 22 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 3  , 5  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+8 operations will run on the GPU, and the remaining 79 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 31 32 35 36 42 43 46 47 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa527f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 33 34 87 37 38 39 40 41 44 45 88 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 22 's case's average invoke time [choose N=2]: 20082.00ms
+DOT 23 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 3  , 6  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+7 operations will run on the GPU, and the remaining 80 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 31 32 35 36 49 50 51 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa527f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 33 34 87 37 38 39 40 41 42 43 44 45 46 47 48 88 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 23 's case's average invoke time [choose N=2]: 18669.00ms
+DOT 24 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 3  , 7  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+7 operations will run on the GPU, and the remaining 80 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 31 32 35 36 53 54 55 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa527f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 33 34 87 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 88 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 24 's case's average invoke time [choose N=2]: 20411.00ms
+DOT 25 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 3  , 8  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+33 operations will run on the GPU, and the remaining 54 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 31 32 35 36 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa7555040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 33 34 87 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 88 80 tensorflow/lite/kernels/arg_min_max.cc
+
+
+=== Interpreter Invoke (After)===
+DOT 25 's case's average invoke time [choose N=2]: 14821.00ms
+DOT 26 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 4  , 5  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+9 operations will run on the GPU, and the remaining 78 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 38 39 40 44 45 42 43 46 47 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 87 41 88 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 26 's case's average invoke time [choose N=2]: 20443.00ms
+DOT 27 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 4  , 6  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+8 operations will run on the GPU, and the remaining 79 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 38 39 40 44 45 49 50 51 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 87 41 42 43 46 47 48 88 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 27 's case's average invoke time [choose N=2]: 19732.00ms
+DOT 28 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 4  , 7  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+8 operations will run on the GPU, and the remaining 79 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 38 39 40 44 45 53 54 55 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 87 41 42 43 46 47 48 49 50 51 52 88 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 28 's case's average invoke time [choose N=2]: 18914.00ms
+DOT 29 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 4  , 8  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+34 operations will run on the GPU, and the remaining 53 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 38 39 40 44 45 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa7414040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 87 41 42 43 46 47 48 49 50 51 52 53 54 55 56 88 80 tensorflow/lite/kernels/arg_min_max.cc
+
+
+=== Interpreter Invoke (After)===
+DOT 29 's case's average invoke time [choose N=2]: 15617.00ms
+DOT 30 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 5  , 6  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+7 operations will run on the GPU, and the remaining 80 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 42 43 46 47 49 50 51 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 44 45 87 48 88 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 30 's case's average invoke time [choose N=2]: 19834.00ms
+DOT 31 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 5  , 7  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+7 operations will run on the GPU, and the remaining 80 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 42 43 46 47 53 54 55 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa527f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 44 45 87 48 49 50 51 52 88 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 31 's case's average invoke time [choose N=2]: 19629.00ms
+DOT 32 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 5  , 8  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+33 operations will run on the GPU, and the remaining 54 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 42 43 46 47 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa7637040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 44 45 87 48 49 50 51 52 53 54 55 56 88 80 tensorflow/lite/kernels/arg_min_max.cc
+
+
+=== Interpreter Invoke (After)===
+DOT 32 's case's average invoke time [choose N=2]: 15680.00ms
+DOT 33 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 6  , 7  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+6 operations will run on the GPU, and the remaining 81 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 49 50 51 53 54 55 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 87 52 88 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 33 's case's average invoke time [choose N=2]: 20147.00ms
+DOT 34 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 6  , 8  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+32 operations will run on the GPU, and the remaining 55 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 49 50 51 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa7676040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 87 52 53 54 55 56 88 80 tensorflow/lite/kernels/arg_min_max.cc
+
+
+=== Interpreter Invoke (After)===
+DOT 34 's case's average invoke time [choose N=2]: 14830.00ms
+DOT 35 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 7  , 8  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+32 operations will run on the GPU, and the remaining 55 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 53 54 55 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+INFO: Created 2 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa7782040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 87 56 88 80 tensorflow/lite/kernels/arg_min_max.cc
+
+
+=== Interpreter Invoke (After)===
+DOT 35 's case's average invoke time [choose N=2]: 14613.00ms
+Latency for each case in DOT : 
+0 case's latency is : 6827ms
+1 case's latency is : 6595ms
+2 case's latency is : 7109ms
+3 case's latency is : 6844ms
+4 case's latency is : 6769ms
+5 case's latency is : 6606ms
+6 case's latency is : 6475ms
+7 case's latency is 1810.00ms
+8 case's latency is : 20323ms
+9 case's latency is : 19070ms
+10 case's latency is : 20533ms
+11 case's latency is : 19881ms
+12 case's latency is : 19610ms
+13 case's latency is : 19733ms
+14 case's latency is : 14606ms
+15 case's latency is : 20548ms
+16 case's latency is : 19547ms
+17 case's latency is : 19509ms
+18 case's latency is : 19462ms
+19 case's latency is : 20290ms
+20 case's latency is : 14910ms
+21 case's latency is : 19384ms
+22 case's latency is : 20082ms
+23 case's latency is : 18669ms
+24 case's latency is : 20411ms
+25 case's latency is : 14821ms
+26 case's latency is : 20443ms
+27 case's latency is : 19732ms
+28 case's latency is : 18914ms
+29 case's latency is : 15617ms
+30 case's latency is : 19834ms
+31 case's latency is : 19629ms
+32 case's latency is : 15680ms
+33 case's latency is : 20147ms
+34 case's latency is : 14830ms
+35 case's latency is : 14613ms
+LOOP START [N=3]...
+DOT 0 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 1  , 2  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+30 operations will run on the GPU, and the remaining 57 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 20 21 24 25 27 28 29 33 34 
+INFO: Created 3 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 88 26 89 30 31 32 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 0 's case's average invoke time [choose N=3]: 6534.00ms
+DOT 1 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 1  , 3  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+29 operations will run on the GPU, and the remaining 58 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 20 21 24 25 31 32 35 36 
+INFO: Created 3 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 88 26 27 28 29 30 33 34 89 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 1 's case's average invoke time [choose N=3]: 6066.00ms
+DOT 2 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 1  , 4  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+30 operations will run on the GPU, and the remaining 57 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 20 21 24 25 38 39 40 44 45 
+INFO: Created 3 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 88 26 27 28 29 30 31 32 33 34 35 36 37 89 41 42 43 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 2 's case's average invoke time [choose N=3]: 6914.00ms
+DOT 3 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 1  , 5  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+29 operations will run on the GPU, and the remaining 58 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 20 21 24 25 42 43 46 47 
+INFO: Created 3 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 88 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 44 45 89 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 3 's case's average invoke time [choose N=3]: 6446.00ms
+DOT 4 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 1  , 6  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+28 operations will run on the GPU, and the remaining 59 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 20 21 24 25 49 50 51 
+INFO: Created 3 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 88 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 89 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 4 's case's average invoke time [choose N=3]: 6371.00ms
+DOT 5 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 1  , 7  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+28 operations will run on the GPU, and the remaining 59 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 20 21 24 25 53 54 55 
+INFO: Created 3 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 88 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 89 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 5 's case's average invoke time [choose N=3]: 6430.00ms
+DOT 6 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 1  , 8  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+54 operations will run on the GPU, and the remaining 33 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 20 21 24 25 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+INFO: Created 3 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa9334040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 88 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 89 80 tensorflow/lite/kernels/arg_min_max.cc
+
+
+=== Interpreter Invoke (After)===
+DOT 6 's case's average invoke time [choose N=3]: 1610.00ms
+DOT 7 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 2  , 3  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+30 operations will run on the GPU, and the remaining 57 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 27 28 29 33 34 31 32 35 36 
+INFO: Created 3 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 20 21 24 25 26 88 30 89 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 7 's case's average invoke time [choose N=3]: 6276.00ms
+DOT 8 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 2  , 4  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+31 operations will run on the GPU, and the remaining 56 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 27 28 29 33 34 38 39 40 44 45 
+INFO: Created 3 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 20 21 24 25 26 88 30 31 32 35 36 37 89 41 42 43 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 8 's case's average invoke time [choose N=3]: 6546.00ms
+DOT 9 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 2  , 5  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+30 operations will run on the GPU, and the remaining 57 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 27 28 29 33 34 42 43 46 47 
+INFO: Created 3 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 20 21 24 25 26 88 30 31 32 35 36 37 38 39 40 41 44 45 89 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 9 's case's average invoke time [choose N=3]: 6371.00ms
+DOT 10 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 2  , 6  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+29 operations will run on the GPU, and the remaining 58 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 27 28 29 33 34 49 50 51 
+INFO: Created 3 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 20 21 24 25 26 88 30 31 32 35 36 37 38 39 40 41 42 43 44 45 46 47 48 89 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 10 's case's average invoke time [choose N=3]: 6411.00ms
+DOT 11 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 2  , 7  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+29 operations will run on the GPU, and the remaining 58 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 27 28 29 33 34 53 54 55 
+INFO: Created 3 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 20 21 24 25 26 88 30 31 32 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 89 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 11 's case's average invoke time [choose N=3]: 6625.00ms
+DOT 12 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 2  , 8  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+55 operations will run on the GPU, and the remaining 32 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 27 28 29 33 34 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+INFO: Created 3 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa3f31040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 20 21 24 25 26 88 30 31 32 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 89 80 tensorflow/lite/kernels/arg_min_max.cc
+
+
+=== Interpreter Invoke (After)===
+DOT 12 's case's average invoke time [choose N=3]: 1651.00ms
+DOT 13 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 3  , 4  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+30 operations will run on the GPU, and the remaining 57 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 31 32 35 36 38 39 40 44 45 
+INFO: Created 3 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 20 21 24 25 26 27 28 29 30 33 34 88 37 89 41 42 43 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 13 's case's average invoke time [choose N=3]: 6050.00ms
+DOT 14 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 3  , 5  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+29 operations will run on the GPU, and the remaining 58 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 31 32 35 36 42 43 46 47 
+INFO: Created 3 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 20 21 24 25 26 27 28 29 30 33 34 88 37 38 39 40 41 44 45 89 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 14 's case's average invoke time [choose N=3]: 6554.00ms
+DOT 15 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 3  , 6  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+28 operations will run on the GPU, and the remaining 59 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 31 32 35 36 49 50 51 
+INFO: Created 3 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 20 21 24 25 26 27 28 29 30 33 34 88 37 38 39 40 41 42 43 44 45 46 47 48 89 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 15 's case's average invoke time [choose N=3]: 6387.00ms
+DOT 16 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 3  , 7  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+28 operations will run on the GPU, and the remaining 59 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 31 32 35 36 53 54 55 
+INFO: Created 3 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 20 21 24 25 26 27 28 29 30 33 34 88 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 89 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 16 's case's average invoke time [choose N=3]: 6808.00ms
+DOT 17 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 3  , 8  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+54 operations will run on the GPU, and the remaining 33 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 31 32 35 36 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+INFO: Created 3 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0xa4132040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 20 21 24 25 26 27 28 29 30 33 34 88 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 89 80 tensorflow/lite/kernels/arg_min_max.cc
+
+
+=== Interpreter Invoke (After)===
+DOT 17 's case's average invoke time [choose N=3]: 1615.00ms
+DOT 18 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 4  , 5  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+30 operations will run on the GPU, and the remaining 57 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 38 39 40 44 45 42 43 46 47 
+INFO: Created 3 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 20 21 24 25 26 27 28 29 30 31 32 33 34 35 36 37 88 41 89 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 18 's case's average invoke time [choose N=3]: 6635.00ms
+DOT 19 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 4  , 6  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+29 operations will run on the GPU, and the remaining 58 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 38 39 40 44 45 49 50 51 
+INFO: Created 3 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+
+
+=== Push image to input tensor (After)===
+
+
+=== Interpreter Invoke (Before)===
+=== Excution plan info === : 
+87 19 20 21 24 25 26 27 28 29 30 31 32 33 34 35 36 37 88 41 42 43 46 47 48 89 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 tensorflow/lite/kernels/arg_min_max.cc
+81 82 83 84 85 86 
+
+=== Interpreter Invoke (After)===
+DOT 19 's case's average invoke time [choose N=3]: 6681.00ms
+DOT 20 's case starting...
+0 49 12 127 127 50 13 128 128 51 14 129 129 52 15 130 130 53 16 131 131 54 17 132 132 55 18 133 133 56 94 134 134 57 95 135 135 136 134 96 8 137 137 58 124 138 0 59 20 139 139 60 21 140 140 61 22 141 139 142 141 142 143 143 62 23 144 144 63 24 145 145 97 25 146 146 98 26 147 147 64 99 148 144 100 27 149 149 65 101 150 150 148 151 151 66 28 152 152 102 29 153 153 67 103 154 151 154 155 155 68 30 156 156 104 31 157 157 105 32 158 158 69 106 159 155 107 33 160 160 70 108 161 161 159 162 162 71 34 163 163 109 35 164 164 72 110 165 162 165 166 166 73 39 167 167 111 40 168 168 112 41 169 169 74 113 170 166 114 42 171 171 75 115 172 172 170 173 173 76 43 174 174 116 44 175 175 77 117 176 173 176 177 177 78 45 178 178 118 46 179 179 79 119 180 177 180 181 181 80 47 182 182 120 48 183 183 81 121 184 181 184 185 185 1 186 186 37 187 187 36 188 188 82 38 189 189 185 190 190 83 124 191 191 84 122 192 192 3 193 193 194 138 194 195 191 123 9 196 196 85 124 197 197 198 136 198 199 199 3 200 195 200 201 201 86 7 202 202 87 11 203 203 88 10 204 204 89 125 205 205 2 206 206 4 207 202 90 19 208 208 91 126 209 209 2 210 210 6 211 211 5 212 212 93 92 213 
+use same 'interpreterbuilder' api
+Execution Plan Size : 87
+=== Fallback node number info === : 
+19 26 30 37 41 48 52 56 80 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 
+[1] : 20 21 24 25 
+[2] : 27 28 29 33 34 
+[3] : 31 32 35 36 
+[4] : 38 39 40 44 45 
+[5] : 42 43 46 47 
+[6] : 49 50 51 
+[7] : 53 54 55 
+[8] : 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 81 82 83 84 85 86 
+Combination Case (by delegation_node_accepter) is : 0  , 4  , 7  , 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+ARG_MAX: Operation is not supported.
+DEPTHWISE_CONV_2D: depth_multiplier != 1 && input.c != 1
+29 operations will run on the GPU, and the remaining 58 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 22 23 38 39 40 44 45 53 54 55 
+INFO: Created 3 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+
+
+=== read image by CV (After)===
+1 256 512 3
+
+
+=== Push image to input tensor (Before)===
+DEBUG_POINTER : 0x9577f040
+run_lane.sh: line 1: 25543 Segmentation fault      ./DOT ./../models/lanenet_fp32.tflite lane
+
