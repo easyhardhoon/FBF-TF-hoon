@@ -1,0 +1,1051 @@
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+/////Print DOT Table//////
+N = 1
+[0 ]case's latency is 895.00ms
+[1 ]case's latency is 1708ms
+[2 ]case's latency is 1328ms
+[3 ]case's latency is 1311ms
+[4 ]case's latency is 1320ms
+[5 ]case's latency is 1311ms
+[6 ]case's latency is 1318ms
+[7 ]case's latency is 1309ms
+[8 ]case's latency is 1316ms
+[9 ]case's latency is 1090ms
+[END]...Choose_1's average latency is 1290.60ms
+N = 2
+[0 1 ]case's latency is 592ms
+[0 2 ]case's latency is 544ms
+[0 3 ]case's latency is 510ms
+[0 4 ]case's latency is 499ms
+[0 5 ]case's latency is 495ms
+[0 6 ]case's latency is 498ms
+[0 7 ]case's latency is 493ms
+[0 8 ]case's latency is 491ms
+[0 9 ]case's latency is 214.00ms
+[1 2 ]case's latency is 1305ms
+[1 3 ]case's latency is 1290ms
+[1 4 ]case's latency is 1302ms
+[1 5 ]case's latency is 1298ms
+[1 6 ]case's latency is 1296ms
+[1 7 ]case's latency is 1293ms
+[1 8 ]case's latency is 1307ms
+[1 9 ]case's latency is 1041ms
+[2 3 ]case's latency is 1300ms
+[2 4 ]case's latency is 1312ms
+[2 5 ]case's latency is 1300ms
+[2 6 ]case's latency is 1304ms
+[2 7 ]case's latency is 1303ms
+[2 8 ]case's latency is 1313ms
+[2 9 ]case's latency is 1064ms
+[3 4 ]case's latency is 1305ms
+[3 5 ]case's latency is 1305ms
+[3 6 ]case's latency is 1310ms
+[3 7 ]case's latency is 1299ms
+[3 8 ]case's latency is 1312ms
+[3 9 ]case's latency is 1055ms
+[4 5 ]case's latency is 1312ms
+[4 6 ]case's latency is 1305ms
+[4 7 ]case's latency is 1304ms
+[4 8 ]case's latency is 1311ms
+[4 9 ]case's latency is 1056ms
+[5 6 ]case's latency is 1304ms
+[5 7 ]case's latency is 1318ms
+[5 8 ]case's latency is 1316ms
+[5 9 ]case's latency is 1133ms
+[6 7 ]case's latency is 1334ms
+[6 8 ]case's latency is 1322ms
+[6 9 ]case's latency is 1120ms
+[7 8 ]case's latency is 1301ms
+[7 9 ]case's latency is 1072ms
+[8 9 ]case's latency is 1080ms
+[END]...Choose_2's average latency is 1100.84ms
+N = 3
+[0 1 2 ]case's latency is 597ms
+[0 1 3 ]case's latency is 594ms
+[0 1 4 ]case's latency is 521ms
+[0 1 5 ]case's latency is 494ms
+[0 1 6 ]case's latency is 496ms
+[0 1 7 ]case's latency is 488ms
+[0 1 8 ]case's latency is 492ms
+[0 1 9 ]case's latency is 213ms
+[0 2 3 ]case's latency is 483ms
+[0 2 4 ]case's latency is 473ms
+[0 2 5 ]case's latency is 466ms
+[0 2 6 ]case's latency is 474ms
+[0 2 7 ]case's latency is 476ms
+[0 2 8 ]case's latency is 484ms
+[0 2 9 ]case's latency is 204ms
+[0 3 4 ]case's latency is 482ms
+[0 3 5 ]case's latency is 480ms
+[0 3 6 ]case's latency is 476ms
+[0 3 7 ]case's latency is 538ms
+[0 3 8 ]case's latency is 471ms
+[0 3 9 ]case's latency is 201ms
+[0 4 5 ]case's latency is 485ms
+[0 4 6 ]case's latency is 478ms
+[0 4 7 ]case's latency is 470ms
+[0 4 8 ]case's latency is 481ms
+[0 4 9 ]case's latency is 203ms
+[0 5 6 ]case's latency is 474ms
+[0 5 7 ]case's latency is 473ms
+[0 5 8 ]case's latency is 481ms
+[0 5 9 ]case's latency is 203ms
+[0 6 7 ]case's latency is 481ms
+[0 6 8 ]case's latency is 482ms
+[0 6 9 ]case's latency is 203ms
+[0 7 8 ]case's latency is 479ms
+[0 7 9 ]case's latency is 200.00ms
+[0 8 9 ]case's latency is 211ms
+[1 2 3 ]case's latency is 1277ms
+[1 2 4 ]case's latency is 1288ms
+[1 2 5 ]case's latency is 1286ms
+[1 2 6 ]case's latency is 1286ms
+[1 2 7 ]case's latency is 1282ms
+[1 2 8 ]case's latency is 1286ms
+[1 2 9 ]case's latency is 1037ms
+[1 3 4 ]case's latency is 1284ms
+[1 3 5 ]case's latency is 1285ms
+[1 3 6 ]case's latency is 1280ms
+[1 3 7 ]case's latency is 1282ms
+[1 3 8 ]case's latency is 1299ms
+[1 3 9 ]case's latency is 1123ms
+[1 4 5 ]case's latency is 1296ms
+[1 4 6 ]case's latency is 1299ms
+[1 4 7 ]case's latency is 1301ms
+[1 4 8 ]case's latency is 1326ms
+[1 4 9 ]case's latency is 1073ms
+[1 5 6 ]case's latency is 1301ms
+[1 5 7 ]case's latency is 1299ms
+[1 5 8 ]case's latency is 1296ms
+[1 5 9 ]case's latency is 1037ms
+[1 6 7 ]case's latency is 1275ms
+[1 6 8 ]case's latency is 1294ms
+[1 6 9 ]case's latency is 1041ms
+[1 7 8 ]case's latency is 1291ms
+[1 7 9 ]case's latency is 1036ms
+[1 8 9 ]case's latency is 1268ms
+[2 3 4 ]case's latency is 1289ms
+[2 3 5 ]case's latency is 1292ms
+[2 3 6 ]case's latency is 1313ms
+[2 3 7 ]case's latency is 1298ms
+[2 3 8 ]case's latency is 1308ms
+[2 3 9 ]case's latency is 1116ms
+[2 4 5 ]case's latency is 1305ms
+[2 4 6 ]case's latency is 1301ms
+[2 4 7 ]case's latency is 1308ms
+[2 4 8 ]case's latency is 1308ms
+[2 4 9 ]case's latency is 1125ms
+[2 5 6 ]case's latency is 1285ms
+[2 5 7 ]case's latency is 1304ms
+[2 5 8 ]case's latency is 1297ms
+[2 5 9 ]case's latency is 1068ms
+[2 6 7 ]case's latency is 1289ms
+[2 6 8 ]case's latency is 1297ms
+[2 6 9 ]case's latency is 1057ms
+[2 7 8 ]case's latency is 1301ms
+[2 7 9 ]case's latency is 1062ms
+[2 8 9 ]case's latency is 1079ms
+[3 4 5 ]case's latency is 1300ms
+[3 4 6 ]case's latency is 1303ms
+[3 4 7 ]case's latency is 1300ms
+[3 4 8 ]case's latency is 1301ms
+[3 4 9 ]case's latency is 1065ms
+[3 5 6 ]case's latency is 1283ms
+[3 5 7 ]case's latency is 1282ms
+[3 5 8 ]case's latency is 1287ms
+[3 5 9 ]case's latency is 1056ms
+[3 6 7 ]case's latency is 1283ms
+[3 6 8 ]case's latency is 1284ms
+[3 6 9 ]case's latency is 1056ms
+[3 7 8 ]case's latency is 1285ms
+[3 7 9 ]case's latency is 1059ms
+[3 8 9 ]case's latency is 1084ms
+[4 5 6 ]case's latency is 1698ms
+[4 5 7 ]case's latency is 1456ms
+[4 5 8 ]case's latency is 1304ms
+[4 5 9 ]case's latency is 1076ms
+[4 6 7 ]case's latency is 1301ms
+[4 6 8 ]case's latency is 1306ms
+[4 6 9 ]case's latency is 1073ms
+[4 7 8 ]case's latency is 1304ms
+[4 7 9 ]case's latency is 1077ms
+[4 8 9 ]case's latency is 1058ms
+[5 6 7 ]case's latency is 1293ms
+[5 6 8 ]case's latency is 1304ms
+[5 6 9 ]case's latency is 1050ms
+[5 7 8 ]case's latency is 1306ms
+[5 7 9 ]case's latency is 1056ms
+[5 8 9 ]case's latency is 1039ms
+[6 7 8 ]case's latency is 1293ms
+[6 7 9 ]case's latency is 1034ms
+[6 8 9 ]case's latency is 1038ms
+[7 8 9 ]case's latency is 1038ms
+[END]...Choose_3's average latency is 987.24ms
+N = 4
+[0 1 2 3 ]case's latency is 536ms
+[0 1 2 4 ]case's latency is 540ms
+[0 1 2 5 ]case's latency is 534ms
+[0 1 2 6 ]case's latency is 541ms
+[0 1 2 7 ]case's latency is 537ms
+[0 1 2 8 ]case's latency is 540ms
+[0 1 2 9 ]case's latency is 245ms
+[0 1 3 4 ]case's latency is 488ms
+[0 1 3 5 ]case's latency is 493ms
+[0 1 3 6 ]case's latency is 489ms
+[0 1 3 7 ]case's latency is 485ms
+[0 1 3 8 ]case's latency is 486ms
+[0 1 3 9 ]case's latency is 216ms
+[0 1 4 5 ]case's latency is 488ms
+[0 1 4 6 ]case's latency is 487ms
+[0 1 4 7 ]case's latency is 482ms
+[0 1 4 8 ]case's latency is 488ms
+[0 1 4 9 ]case's latency is 225ms
+[0 1 5 6 ]case's latency is 486ms
+[0 1 5 7 ]case's latency is 479ms
+[0 1 5 8 ]case's latency is 489ms
+[0 1 5 9 ]case's latency is 210ms
+[0 1 6 7 ]case's latency is 480ms
+[0 1 6 8 ]case's latency is 476ms
+[0 1 6 9 ]case's latency is 205ms
+[0 1 7 8 ]case's latency is 485ms
+[0 1 7 9 ]case's latency is 213ms
+[0 1 8 9 ]case's latency is 211ms
+[0 2 3 4 ]case's latency is 476ms
+[0 2 3 5 ]case's latency is 473ms
+[0 2 3 6 ]case's latency is 474ms
+[0 2 3 7 ]case's latency is 471ms
+[0 2 3 8 ]case's latency is 478ms
+[0 2 3 9 ]case's latency is 215ms
+[0 2 4 5 ]case's latency is 477ms
+[0 2 4 6 ]case's latency is 477ms
+[0 2 4 7 ]case's latency is 473ms
+[0 2 4 8 ]case's latency is 477ms
+[0 2 4 9 ]case's latency is 209ms
+[0 2 5 6 ]case's latency is 475ms
+[0 2 5 7 ]case's latency is 472ms
+[0 2 5 8 ]case's latency is 473ms
+[0 2 5 9 ]case's latency is 200ms
+[0 2 6 7 ]case's latency is 469ms
+[0 2 6 8 ]case's latency is 474ms
+[0 2 6 9 ]case's latency is 199ms
+[0 2 7 8 ]case's latency is 479ms
+[0 2 7 9 ]case's latency is 201ms
+[0 2 8 9 ]case's latency is 208ms
+[0 3 4 5 ]case's latency is 470ms
+[0 3 4 6 ]case's latency is 463ms
+[0 3 4 7 ]case's latency is 469ms
+[0 3 4 8 ]case's latency is 472ms
+[0 3 4 9 ]case's latency is 199ms
+[0 3 5 6 ]case's latency is 470ms
+[0 3 5 7 ]case's latency is 466ms
+[0 3 5 8 ]case's latency is 472ms
+[0 3 5 9 ]case's latency is 194.00ms
+[0 3 6 7 ]case's latency is 478ms
+[0 3 6 8 ]case's latency is 478ms
+[0 3 6 9 ]case's latency is 200ms
+[0 3 7 8 ]case's latency is 475ms
+[0 3 7 9 ]case's latency is 204ms
+[0 3 8 9 ]case's latency is 210ms
+[0 4 5 6 ]case's latency is 477ms
+[0 4 5 7 ]case's latency is 481ms
+[0 4 5 8 ]case's latency is 477ms
+[0 4 5 9 ]case's latency is 204ms
+[0 4 6 7 ]case's latency is 478ms
+[0 4 6 8 ]case's latency is 479ms
+[0 4 6 9 ]case's latency is 210ms
+[0 4 7 8 ]case's latency is 487ms
+[0 4 7 9 ]case's latency is 207ms
+[0 4 8 9 ]case's latency is 216ms
+[0 5 6 7 ]case's latency is 483ms
+[0 5 6 8 ]case's latency is 484ms
+[0 5 6 9 ]case's latency is 213ms
+[0 5 7 8 ]case's latency is 484ms
+[0 5 7 9 ]case's latency is 212ms
+[0 5 8 9 ]case's latency is 213ms
+[0 6 7 8 ]case's latency is 483ms
+[0 6 7 9 ]case's latency is 207ms
+[0 6 8 9 ]case's latency is 212ms
+[0 7 8 9 ]case's latency is 215ms
+[1 2 3 4 ]case's latency is 1266ms
+[1 2 3 5 ]case's latency is 1259ms
+[1 2 3 6 ]case's latency is 1256ms
+[1 2 3 7 ]case's latency is 1258ms
+[1 2 3 8 ]case's latency is 1261ms
+[1 2 3 9 ]case's latency is 1048ms
+[1 2 4 5 ]case's latency is 1269ms
+[1 2 4 6 ]case's latency is 1266ms
+[1 2 4 7 ]case's latency is 1266ms
+[1 2 4 8 ]case's latency is 1270ms
+[1 2 4 9 ]case's latency is 1029ms
+[1 2 5 6 ]case's latency is 1273ms
+[1 2 5 7 ]case's latency is 1267ms
+[1 2 5 8 ]case's latency is 1278ms
+[1 2 5 9 ]case's latency is 1098ms
+[1 2 6 7 ]case's latency is 1277ms
+[1 2 6 8 ]case's latency is 1271ms
+[1 2 6 9 ]case's latency is 1046ms
+[1 2 7 8 ]case's latency is 1277ms
+[1 2 7 9 ]case's latency is 1048ms
+[1 2 8 9 ]case's latency is 1056ms
+[1 3 4 5 ]case's latency is 1271ms
+[1 3 4 6 ]case's latency is 1272ms
+[1 3 4 7 ]case's latency is 1266ms
+[1 3 4 8 ]case's latency is 1270ms
+[1 3 4 9 ]case's latency is 1043ms
+[1 3 5 6 ]case's latency is 1267ms
+[1 3 5 7 ]case's latency is 1262ms
+[1 3 5 8 ]case's latency is 1281ms
+[1 3 5 9 ]case's latency is 1042ms
+[1 3 6 7 ]case's latency is 1269ms
+[1 3 6 8 ]case's latency is 1266ms
+[1 3 6 9 ]case's latency is 1045ms
+[1 3 7 8 ]case's latency is 1272ms
+[1 3 7 9 ]case's latency is 1040ms
+[1 3 8 9 ]case's latency is 1049ms
+[1 4 5 6 ]case's latency is 1278ms
+[1 4 5 7 ]case's latency is 1266ms
+[1 4 5 8 ]case's latency is 1265ms
+[1 4 5 9 ]case's latency is 1043ms
+[1 4 6 7 ]case's latency is 1270ms
+[1 4 6 8 ]case's latency is 1279ms
+[1 4 6 9 ]case's latency is 1049ms
+[1 4 7 8 ]case's latency is 1276ms
+[1 4 7 9 ]case's latency is 1047ms
+[1 4 8 9 ]case's latency is 1048ms
+[1 5 6 7 ]case's latency is 1269ms
+[1 5 6 8 ]case's latency is 1270ms
+[1 5 6 9 ]case's latency is 1041ms
+[1 5 7 8 ]case's latency is 1272ms
+[1 5 7 9 ]case's latency is 1045ms
+[1 5 8 9 ]case's latency is 1052ms
+[1 6 7 8 ]case's latency is 1271ms
+[1 6 7 9 ]case's latency is 1041ms
+[1 6 8 9 ]case's latency is 1052ms
+[1 7 8 9 ]case's latency is 1050ms
+[2 3 4 5 ]case's latency is 1275ms
+[2 3 4 6 ]case's latency is 1269ms
+[2 3 4 7 ]case's latency is 1270ms
+[2 3 4 8 ]case's latency is 1275ms
+[2 3 4 9 ]case's latency is 1049ms
+[2 3 5 6 ]case's latency is 1269ms
+[2 3 5 7 ]case's latency is 1274ms
+[2 3 5 8 ]case's latency is 1272ms
+[2 3 5 9 ]case's latency is 1032ms
+[2 3 6 7 ]case's latency is 1261ms
+[2 3 6 8 ]case's latency is 1263ms
+[2 3 6 9 ]case's latency is 1030ms
+[2 3 7 8 ]case's latency is 1263ms
+[2 3 7 9 ]case's latency is 1032ms
+[2 3 8 9 ]case's latency is 1034ms
+[2 4 5 6 ]case's latency is 1268ms
+[2 4 5 7 ]case's latency is 1264ms
+[2 4 5 8 ]case's latency is 1263ms
+[2 4 5 9 ]case's latency is 1035ms
+[2 4 6 7 ]case's latency is 1265ms
+[2 4 6 8 ]case's latency is 1262ms
+[2 4 6 9 ]case's latency is 1034ms
+[2 4 7 8 ]case's latency is 1266ms
+[2 4 7 9 ]case's latency is 1041ms
+[2 4 8 9 ]case's latency is 1040ms
+[2 5 6 7 ]case's latency is 1273ms
+[2 5 6 8 ]case's latency is 1265ms
+[2 5 6 9 ]case's latency is 1034ms
+[2 5 7 8 ]case's latency is 1267ms
+[2 5 7 9 ]case's latency is 1036ms
+[2 5 8 9 ]case's latency is 1032ms
+[2 6 7 8 ]case's latency is 1271ms
+[2 6 7 9 ]case's latency is 1034ms
+[2 6 8 9 ]case's latency is 1030ms
+[2 7 8 9 ]case's latency is 1034ms
+[3 4 5 6 ]case's latency is 1259ms
+[3 4 5 7 ]case's latency is 1253ms
+[3 4 5 8 ]case's latency is 1264ms
+[3 4 5 9 ]case's latency is 1016ms
+[3 4 6 7 ]case's latency is 1252ms
+[3 4 6 8 ]case's latency is 1256ms
+[3 4 6 9 ]case's latency is 1019ms
+[3 4 7 8 ]case's latency is 1266ms
+[3 4 7 9 ]case's latency is 1017ms
+[3 4 8 9 ]case's latency is 1024ms
+[3 5 6 7 ]case's latency is 1252ms
+[3 5 6 8 ]case's latency is 1260ms
+[3 5 6 9 ]case's latency is 1017ms
+[3 5 7 8 ]case's latency is 1258ms
+[3 5 7 9 ]case's latency is 1018ms
+[3 5 8 9 ]case's latency is 1021ms
+[3 6 7 8 ]case's latency is 1262ms
+[3 6 7 9 ]case's latency is 1015ms
+[3 6 8 9 ]case's latency is 1030ms
+[3 7 8 9 ]case's latency is 1028ms
+[4 5 6 7 ]case's latency is 1266ms
+[4 5 6 8 ]case's latency is 1264ms
+[4 5 6 9 ]case's latency is 1019ms
+[4 5 7 8 ]case's latency is 1264ms
+[4 5 7 9 ]case's latency is 1017ms
+[4 5 8 9 ]case's latency is 1037ms
+[4 6 7 8 ]case's latency is 1266ms
+[4 6 7 9 ]case's latency is 1025ms
+[4 6 8 9 ]case's latency is 1033ms
+[4 7 8 9 ]case's latency is 1032ms
+[5 6 7 8 ]case's latency is 1259ms
+[5 6 7 9 ]case's latency is 1023ms
+[5 6 8 9 ]case's latency is 1032ms
+[5 7 8 9 ]case's latency is 1036ms
+[6 7 8 9 ]case's latency is 1035ms
+[END]...Choose_4's average latency is 855.91ms
+N = 5
+[0 1 2 3 4 ]case's latency is 522ms
+[0 1 2 3 5 ]case's latency is 518ms
+[0 1 2 3 6 ]case's latency is 501ms
+[0 1 2 3 7 ]case's latency is 498ms
+[0 1 2 3 8 ]case's latency is 507ms
+[0 1 2 3 9 ]case's latency is 253ms
+[0 1 2 4 5 ]case's latency is 510ms
+[0 1 2 4 6 ]case's latency is 492ms
+[0 1 2 4 7 ]case's latency is 475ms
+[0 1 2 4 8 ]case's latency is 473ms
+[0 1 2 4 9 ]case's latency is 210ms
+[0 1 2 5 6 ]case's latency is 461ms
+[0 1 2 5 7 ]case's latency is 463ms
+[0 1 2 5 8 ]case's latency is 469ms
+[0 1 2 5 9 ]case's latency is 192ms
+[0 1 2 6 7 ]case's latency is 458ms
+[0 1 2 6 8 ]case's latency is 461ms
+[0 1 2 6 9 ]case's latency is 193ms
+[0 1 2 7 8 ]case's latency is 459ms
+[0 1 2 7 9 ]case's latency is 190ms
+[0 1 2 8 9 ]case's latency is 204ms
+[0 1 3 4 5 ]case's latency is 454ms
+[0 1 3 4 6 ]case's latency is 454ms
+[0 1 3 4 7 ]case's latency is 453ms
+[0 1 3 4 8 ]case's latency is 458ms
+[0 1 3 4 9 ]case's latency is 200ms
+[0 1 3 5 6 ]case's latency is 459ms
+[0 1 3 5 7 ]case's latency is 454ms
+[0 1 3 5 8 ]case's latency is 457ms
+[0 1 3 5 9 ]case's latency is 191ms
+[0 1 3 6 7 ]case's latency is 458ms
+[0 1 3 6 8 ]case's latency is 463ms
+[0 1 3 6 9 ]case's latency is 193ms
+[0 1 3 7 8 ]case's latency is 464ms
+[0 1 3 7 9 ]case's latency is 192ms
+[0 1 3 8 9 ]case's latency is 198ms
+[0 1 4 5 6 ]case's latency is 459ms
+[0 1 4 5 7 ]case's latency is 453ms
+[0 1 4 5 8 ]case's latency is 459ms
+[0 1 4 5 9 ]case's latency is 187.00ms
+[0 1 4 6 7 ]case's latency is 450ms
+[0 1 4 6 8 ]case's latency is 457ms
+[0 1 4 6 9 ]case's latency is 194ms
+[0 1 4 7 8 ]case's latency is 469ms
+[0 1 4 7 9 ]case's latency is 196ms
+[0 1 4 8 9 ]case's latency is 197ms
+[0 1 5 6 7 ]case's latency is 453ms
+[0 1 5 6 8 ]case's latency is 460ms
+[0 1 5 6 9 ]case's latency is 189ms
+[0 1 5 7 8 ]case's latency is 456ms
+[0 1 5 7 9 ]case's latency is 188ms
+[0 1 5 8 9 ]case's latency is 192ms
+[0 1 6 7 8 ]case's latency is 457ms
+[0 1 6 7 9 ]case's latency is 196ms
+[0 1 6 8 9 ]case's latency is 190ms
+[0 1 7 8 9 ]case's latency is 193ms
+[0 2 3 4 5 ]case's latency is 461ms
+[0 2 3 4 6 ]case's latency is 453ms
+[0 2 3 4 7 ]case's latency is 452ms
+[0 2 3 4 8 ]case's latency is 462ms
+[0 2 3 4 9 ]case's latency is 187.00ms
+[0 2 3 5 6 ]case's latency is 456ms
+[0 2 3 5 7 ]case's latency is 455ms
+[0 2 3 5 8 ]case's latency is 461ms
+[0 2 3 5 9 ]case's latency is 188ms
+[0 2 3 6 7 ]case's latency is 463ms
+[0 2 3 6 8 ]case's latency is 467ms
+[0 2 3 6 9 ]case's latency is 193ms
+[0 2 3 7 8 ]case's latency is 461ms
+[0 2 3 7 9 ]case's latency is 195ms
+[0 2 3 8 9 ]case's latency is 201ms
+[0 2 4 5 6 ]case's latency is 457ms
+[0 2 4 5 7 ]case's latency is 459ms
+[0 2 4 5 8 ]case's latency is 465ms
+[0 2 4 5 9 ]case's latency is 195ms
+[0 2 4 6 7 ]case's latency is 461ms
+[0 2 4 6 8 ]case's latency is 465ms
+[0 2 4 6 9 ]case's latency is 196ms
+[0 2 4 7 8 ]case's latency is 473ms
+[0 2 4 7 9 ]case's latency is 196ms
+[0 2 4 8 9 ]case's latency is 203ms
+[0 2 5 6 7 ]case's latency is 458ms
+[0 2 5 6 8 ]case's latency is 471ms
+[0 2 5 6 9 ]case's latency is 204ms
+[0 2 5 7 8 ]case's latency is 469ms
+[0 2 5 7 9 ]case's latency is 206ms
+[0 2 5 8 9 ]case's latency is 205ms
+[0 2 6 7 8 ]case's latency is 465ms
+[0 2 6 7 9 ]case's latency is 196ms
+[0 2 6 8 9 ]case's latency is 203ms
+[0 2 7 8 9 ]case's latency is 205ms
+[0 3 4 5 6 ]case's latency is 469ms
+[0 3 4 5 7 ]case's latency is 460ms
+[0 3 4 5 8 ]case's latency is 471ms
+[0 3 4 5 9 ]case's latency is 194ms
+[0 3 4 6 7 ]case's latency is 474ms
+[0 3 4 6 8 ]case's latency is 472ms
+[0 3 4 6 9 ]case's latency is 196ms
+[0 3 4 7 8 ]case's latency is 465ms
+[0 3 4 7 9 ]case's latency is 192ms
+[0 3 4 8 9 ]case's latency is 201ms
+[0 3 5 6 7 ]case's latency is 458ms
+[0 3 5 6 8 ]case's latency is 468ms
+[0 3 5 6 9 ]case's latency is 191ms
+[0 3 5 7 8 ]case's latency is 468ms
+[0 3 5 7 9 ]case's latency is 195ms
+[0 3 5 8 9 ]case's latency is 194ms
+[0 3 6 7 8 ]case's latency is 463ms
+[0 3 6 7 9 ]case's latency is 195ms
+[0 3 6 8 9 ]case's latency is 191ms
+[0 3 7 8 9 ]case's latency is 197ms
+[0 4 5 6 7 ]case's latency is 459ms
+[0 4 5 6 8 ]case's latency is 466ms
+[0 4 5 6 9 ]case's latency is 189ms
+[0 4 5 7 8 ]case's latency is 470ms
+[0 4 5 7 9 ]case's latency is 196ms
+[0 4 5 8 9 ]case's latency is 195ms
+[0 4 6 7 8 ]case's latency is 465ms
+[0 4 6 7 9 ]case's latency is 196ms
+[0 4 6 8 9 ]case's latency is 198ms
+[0 4 7 8 9 ]case's latency is 198ms
+[0 5 6 7 8 ]case's latency is 466ms
+[0 5 6 7 9 ]case's latency is 193ms
+[0 5 6 8 9 ]case's latency is 193ms
+[0 5 7 8 9 ]case's latency is 198ms
+[0 6 7 8 9 ]case's latency is 196ms
+[1 2 3 4 5 ]case's latency is 1257ms
+[1 2 3 4 6 ]case's latency is 1258ms
+[1 2 3 4 7 ]case's latency is 1253ms
+[1 2 3 4 8 ]case's latency is 1266ms
+[1 2 3 4 9 ]case's latency is 997ms
+[1 2 3 5 6 ]case's latency is 1253ms
+[1 2 3 5 7 ]case's latency is 1248ms
+[1 2 3 5 8 ]case's latency is 1259ms
+[1 2 3 5 9 ]case's latency is 1007ms
+[1 2 3 6 7 ]case's latency is 1269ms
+[1 2 3 6 8 ]case's latency is 1263ms
+[1 2 3 6 9 ]case's latency is 1091ms
+[1 2 3 7 8 ]case's latency is 1288ms
+[1 2 3 7 9 ]case's latency is 1091ms
+[1 2 3 8 9 ]case's latency is 1534ms
+[1 2 4 5 6 ]case's latency is 1328ms
+[1 2 4 5 7 ]case's latency is 1461ms
+[1 2 4 5 8 ]case's latency is 1289ms
+[1 2 4 5 9 ]case's latency is 1099ms
+[1 2 4 6 7 ]case's latency is 1268ms
+[1 2 4 6 8 ]case's latency is 1278ms
+[1 2 4 6 9 ]case's latency is 1051ms
+[1 2 4 7 8 ]case's latency is 1285ms
+[1 2 4 7 9 ]case's latency is 1465ms
+[1 2 4 8 9 ]case's latency is 1034ms
+[1 2 5 6 7 ]case's latency is 1261ms
+[1 2 5 6 8 ]case's latency is 1275ms
+[1 2 5 6 9 ]case's latency is 1028ms
+[1 2 5 7 8 ]case's latency is 1266ms
+[1 2 5 7 9 ]case's latency is 1024ms
+[1 2 5 8 9 ]case's latency is 1035ms
+[1 2 6 7 8 ]case's latency is 1263ms
+[1 2 6 7 9 ]case's latency is 1035ms
+[1 2 6 8 9 ]case's latency is 1046ms
+[1 2 7 8 9 ]case's latency is 1039ms
+[1 3 4 5 6 ]case's latency is 1267ms
+[1 3 4 5 7 ]case's latency is 1265ms
+[1 3 4 5 8 ]case's latency is 1269ms
+[1 3 4 5 9 ]case's latency is 1035ms
+[1 3 4 6 7 ]case's latency is 1260ms
+[1 3 4 6 8 ]case's latency is 1275ms
+[1 3 4 6 9 ]case's latency is 1035ms
+[1 3 4 7 8 ]case's latency is 1266ms
+[1 3 4 7 9 ]case's latency is 1024ms
+[1 3 4 8 9 ]case's latency is 1030ms
+[1 3 5 6 7 ]case's latency is 1263ms
+[1 3 5 6 8 ]case's latency is 1267ms
+[1 3 5 6 9 ]case's latency is 1030ms
+[1 3 5 7 8 ]case's latency is 1256ms
+[1 3 5 7 9 ]case's latency is 1030ms
+[1 3 5 8 9 ]case's latency is 1031ms
+[1 3 6 7 8 ]case's latency is 1256ms
+[1 3 6 7 9 ]case's latency is 1025ms
+[1 3 6 8 9 ]case's latency is 1025ms
+[1 3 7 8 9 ]case's latency is 1028ms
+[1 4 5 6 7 ]case's latency is 1255ms
+[1 4 5 6 8 ]case's latency is 1273ms
+[1 4 5 6 9 ]case's latency is 1025ms
+[1 4 5 7 8 ]case's latency is 1263ms
+[1 4 5 7 9 ]case's latency is 1029ms
+[1 4 5 8 9 ]case's latency is 1032ms
+[1 4 6 7 8 ]case's latency is 1261ms
+[1 4 6 7 9 ]case's latency is 1039ms
+[1 4 6 8 9 ]case's latency is 1032ms
+[1 4 7 8 9 ]case's latency is 1035ms
+[1 5 6 7 8 ]case's latency is 1682ms
+[1 5 6 7 9 ]case's latency is 1009ms
+[1 5 6 8 9 ]case's latency is 1020ms
+[1 5 7 8 9 ]case's latency is 1016ms
+[1 6 7 8 9 ]case's latency is 1024ms
+[2 3 4 5 6 ]case's latency is 1639ms
+[2 3 4 5 7 ]case's latency is 1268ms
+[2 3 4 5 8 ]case's latency is 1263ms
+[2 3 4 5 9 ]case's latency is 1034ms
+[2 3 4 6 7 ]case's latency is 1264ms
+[2 3 4 6 8 ]case's latency is 1274ms
+[2 3 4 6 9 ]case's latency is 1042ms
+[2 3 4 7 8 ]case's latency is 1274ms
+[2 3 4 7 9 ]case's latency is 1034ms
+[2 3 4 8 9 ]case's latency is 1039ms
+[2 3 5 6 7 ]case's latency is 1264ms
+[2 3 5 6 8 ]case's latency is 1274ms
+[2 3 5 6 9 ]case's latency is 1025ms
+[2 3 5 7 8 ]case's latency is 1268ms
+[2 3 5 7 9 ]case's latency is 1033ms
+[2 3 5 8 9 ]case's latency is 1034ms
+[2 3 6 7 8 ]case's latency is 1276ms
+[2 3 6 7 9 ]case's latency is 1063ms
+[2 3 6 8 9 ]case's latency is 1052ms
+[2 3 7 8 9 ]case's latency is 1060ms
+[2 4 5 6 7 ]case's latency is 1289ms
+[2 4 5 6 8 ]case's latency is 1286ms
+[2 4 5 6 9 ]case's latency is 1048ms
+[2 4 5 7 8 ]case's latency is 1299ms
+[2 4 5 7 9 ]case's latency is 1057ms
+[2 4 5 8 9 ]case's latency is 1066ms
+[2 4 6 7 8 ]case's latency is 1299ms
+[2 4 6 7 9 ]case's latency is 1066ms
+[2 4 6 8 9 ]case's latency is 1059ms
+[2 4 7 8 9 ]case's latency is 1062ms
+[2 5 6 7 8 ]case's latency is 1298ms
+[2 5 6 7 9 ]case's latency is 1066ms
+[2 5 6 8 9 ]case's latency is 1061ms
+[2 5 7 8 9 ]case's latency is 1058ms
+[2 6 7 8 9 ]case's latency is 1067ms
+[3 4 5 6 7 ]case's latency is 1283ms
+[3 4 5 6 8 ]case's latency is 1267ms
+[3 4 5 6 9 ]case's latency is 1034ms
+[3 4 5 7 8 ]case's latency is 1265ms
+[3 4 5 7 9 ]case's latency is 1023ms
+[3 4 5 8 9 ]case's latency is 1032ms
+[3 4 6 7 8 ]case's latency is 1266ms
+[3 4 6 7 9 ]case's latency is 1024ms
+[3 4 6 8 9 ]case's latency is 1036ms
+[3 4 7 8 9 ]case's latency is 1042ms
+[3 5 6 7 8 ]case's latency is 1270ms
+[3 5 6 7 9 ]case's latency is 1040ms
+[3 5 6 8 9 ]case's latency is 1036ms
+[3 5 7 8 9 ]case's latency is 1045ms
+[3 6 7 8 9 ]case's latency is 1037ms
+[4 5 6 7 8 ]case's latency is 1288ms
+[4 5 6 7 9 ]case's latency is 1033ms
+[4 5 6 8 9 ]case's latency is 1038ms
+[4 5 7 8 9 ]case's latency is 1048ms
+[4 6 7 8 9 ]case's latency is 1061ms
+[5 6 7 8 9 ]case's latency is 1061ms
+[END]...Choose_5's average latency is 752.13ms
+N = 6
+[0 1 2 3 4 5 ]case's latency is 502ms
+[0 1 2 3 4 6 ]case's latency is 501ms
+[0 1 2 3 4 7 ]case's latency is 502ms
+[0 1 2 3 4 8 ]case's latency is 503ms
+[0 1 2 3 4 9 ]case's latency is 247ms
+[0 1 2 3 5 6 ]case's latency is 487ms
+[0 1 2 3 5 7 ]case's latency is 486ms
+[0 1 2 3 5 8 ]case's latency is 482ms
+[0 1 2 3 5 9 ]case's latency is 216ms
+[0 1 2 3 6 7 ]case's latency is 479ms
+[0 1 2 3 6 8 ]case's latency is 487ms
+[0 1 2 3 6 9 ]case's latency is 217ms
+[0 1 2 3 7 8 ]case's latency is 487ms
+[0 1 2 3 7 9 ]case's latency is 217ms
+[0 1 2 3 8 9 ]case's latency is 222ms
+[0 1 2 4 5 6 ]case's latency is 471ms
+[0 1 2 4 5 7 ]case's latency is 470ms
+[0 1 2 4 5 8 ]case's latency is 477ms
+[0 1 2 4 5 9 ]case's latency is 209ms
+[0 1 2 4 6 7 ]case's latency is 470ms
+[0 1 2 4 6 8 ]case's latency is 471ms
+[0 1 2 4 6 9 ]case's latency is 205ms
+[0 1 2 4 7 8 ]case's latency is 477ms
+[0 1 2 4 7 9 ]case's latency is 203ms
+[0 1 2 4 8 9 ]case's latency is 209ms
+[0 1 2 5 6 7 ]case's latency is 461ms
+[0 1 2 5 6 8 ]case's latency is 453ms
+[0 1 2 5 6 9 ]case's latency is 182ms
+[0 1 2 5 7 8 ]case's latency is 458ms
+[0 1 2 5 7 9 ]case's latency is 183ms
+[0 1 2 5 8 9 ]case's latency is 190ms
+[0 1 2 6 7 8 ]case's latency is 463ms
+[0 1 2 6 7 9 ]case's latency is 185ms
+[0 1 2 6 8 9 ]case's latency is 191ms
+[0 1 2 7 8 9 ]case's latency is 192ms
+[0 1 3 4 5 6 ]case's latency is 451ms
+[0 1 3 4 5 7 ]case's latency is 450ms
+[0 1 3 4 5 8 ]case's latency is 453ms
+[0 1 3 4 5 9 ]case's latency is 179.00ms
+[0 1 3 4 6 7 ]case's latency is 446ms
+[0 1 3 4 6 8 ]case's latency is 456ms
+[0 1 3 4 6 9 ]case's latency is 186ms
+[0 1 3 4 7 8 ]case's latency is 459ms
+[0 1 3 4 7 9 ]case's latency is 182ms
+[0 1 3 4 8 9 ]case's latency is 190ms
+[0 1 3 5 6 7 ]case's latency is 450ms
+[0 1 3 5 6 8 ]case's latency is 455ms
+[0 1 3 5 6 9 ]case's latency is 183ms
+[0 1 3 5 7 8 ]case's latency is 451ms
+[0 1 3 5 7 9 ]case's latency is 179.00ms
+[0 1 3 5 8 9 ]case's latency is 185ms
+[0 1 3 6 7 8 ]case's latency is 458ms
+[0 1 3 6 7 9 ]case's latency is 186ms
+[0 1 3 6 8 9 ]case's latency is 190ms
+[0 1 3 7 8 9 ]case's latency is 185ms
+[0 1 4 5 6 7 ]case's latency is 460ms
+[0 1 4 5 6 8 ]case's latency is 458ms
+[0 1 4 5 6 9 ]case's latency is 186ms
+[0 1 4 5 7 8 ]case's latency is 460ms
+[0 1 4 5 7 9 ]case's latency is 188ms
+[0 1 4 5 8 9 ]case's latency is 188ms
+[0 1 4 6 7 8 ]case's latency is 454ms
+[0 1 4 6 7 9 ]case's latency is 183ms
+[0 1 4 6 8 9 ]case's latency is 189ms
+[0 1 4 7 8 9 ]case's latency is 190ms
+[0 1 5 6 7 8 ]case's latency is 460ms
+[0 1 5 6 7 9 ]case's latency is 186ms
+[0 1 5 6 8 9 ]case's latency is 194ms
+[0 1 5 7 8 9 ]case's latency is 189ms
+[0 1 6 7 8 9 ]case's latency is 187ms
+[0 2 3 4 5 6 ]case's latency is 465ms
+[0 2 3 4 5 7 ]case's latency is 458ms
+[0 2 3 4 5 8 ]case's latency is 463ms
+[0 2 3 4 5 9 ]case's latency is 184ms
+[0 2 3 4 6 7 ]case's latency is 468ms
+[0 2 3 4 6 8 ]case's latency is 471ms
+[0 2 3 4 6 9 ]case's latency is 185ms
+[0 2 3 4 7 8 ]case's latency is 488ms
+[0 2 3 4 7 9 ]case's latency is 182ms
+[0 2 3 4 8 9 ]case's latency is 192ms
+[0 2 3 5 6 7 ]case's latency is 497ms
+[0 2 3 5 6 8 ]case's latency is 495ms
+[0 2 3 5 6 9 ]case's latency is 189ms
+[0 2 3 5 7 8 ]case's latency is 500ms
+[0 2 3 5 7 9 ]case's latency is 188ms
+[0 2 3 5 8 9 ]case's latency is 199ms
+[0 2 3 6 7 8 ]case's latency is 508ms
+[0 2 3 6 7 9 ]case's latency is 185ms
+[0 2 3 6 8 9 ]case's latency is 197ms
+[0 2 3 7 8 9 ]case's latency is 196ms
+[0 2 4 5 6 7 ]case's latency is 520ms
+[0 2 4 5 6 8 ]case's latency is 528ms
+[0 2 4 5 6 9 ]case's latency is 192ms
+[0 2 4 5 7 8 ]case's latency is 539ms
+[0 2 4 5 7 9 ]case's latency is 195ms
+[0 2 4 5 8 9 ]case's latency is 201ms
+[0 2 4 6 7 8 ]case's latency is 537ms
+[0 2 4 6 7 9 ]case's latency is 190ms
+[0 2 4 6 8 9 ]case's latency is 202ms
+[0 2 4 7 8 9 ]case's latency is 201ms
+[0 2 5 6 7 8 ]case's latency is 545ms
+[0 2 5 6 7 9 ]case's latency is 198ms
+[0 2 5 6 8 9 ]case's latency is 203ms
+[0 2 5 7 8 9 ]case's latency is 203ms
+[0 2 6 7 8 9 ]case's latency is 198ms
+[0 3 4 5 6 7 ]case's latency is 565ms
+[0 3 4 5 6 8 ]case's latency is 543ms
+[0 3 4 5 6 9 ]case's latency is 185ms
+[0 3 4 5 7 8 ]case's latency is 453ms
+[0 3 4 5 7 9 ]case's latency is 183ms
+[0 3 4 5 8 9 ]case's latency is 185ms
+[0 3 4 6 7 8 ]case's latency is 464ms
+[0 3 4 6 7 9 ]case's latency is 192ms
+[0 3 4 6 8 9 ]case's latency is 190ms
+[0 3 4 7 8 9 ]case's latency is 192ms
+[0 3 5 6 7 8 ]case's latency is 471ms
+[0 3 5 6 7 9 ]case's latency is 189ms
+[0 3 5 6 8 9 ]case's latency is 188ms
+[0 3 5 7 8 9 ]case's latency is 189ms
+[0 3 6 7 8 9 ]case's latency is 191ms
+[0 4 5 6 7 8 ]case's latency is 483ms
+[0 4 5 6 7 9 ]case's latency is 188ms
+[0 4 5 6 8 9 ]case's latency is 188ms
+[0 4 5 7 8 9 ]case's latency is 189ms
+[0 4 6 7 8 9 ]case's latency is 192ms
+[0 5 6 7 8 9 ]case's latency is 191ms
+[1 2 3 4 5 6 ]case's latency is 1308ms
+[1 2 3 4 5 7 ]case's latency is 1310ms
+[1 2 3 4 5 8 ]case's latency is 1311ms
+[1 2 3 4 5 9 ]case's latency is 1016ms
+[1 2 3 4 6 7 ]case's latency is 1301ms
+[1 2 3 4 6 8 ]case's latency is 1307ms
+[1 2 3 4 6 9 ]case's latency is 1019ms
+[1 2 3 4 7 8 ]case's latency is 1319ms
+[1 2 3 4 7 9 ]case's latency is 1036ms
+[1 2 3 4 8 9 ]case's latency is 1037ms
+[1 2 3 5 6 7 ]case's latency is 1310ms
+[1 2 3 5 6 8 ]case's latency is 1309ms
+[1 2 3 5 6 9 ]case's latency is 1017ms
+[1 2 3 5 7 8 ]case's latency is 1300ms
+[1 2 3 5 7 9 ]case's latency is 1015ms
+[1 2 3 5 8 9 ]case's latency is 1022ms
+[1 2 3 6 7 8 ]case's latency is 1292ms
+[1 2 3 6 7 9 ]case's latency is 1018ms
+[1 2 3 6 8 9 ]case's latency is 1027ms
+[1 2 3 7 8 9 ]case's latency is 1028ms
+[1 2 4 5 6 7 ]case's latency is 1310ms
+[1 2 4 5 6 8 ]case's latency is 1293ms
+[1 2 4 5 6 9 ]case's latency is 1023ms
+[1 2 4 5 7 8 ]case's latency is 1291ms
+[1 2 4 5 7 9 ]case's latency is 1026ms
+[1 2 4 5 8 9 ]case's latency is 1031ms
+[1 2 4 6 7 8 ]case's latency is 1295ms
+[1 2 4 6 7 9 ]case's latency is 1028ms
+[1 2 4 6 8 9 ]case's latency is 1032ms
+[1 2 4 7 8 9 ]case's latency is 1032ms
+[1 2 5 6 7 8 ]case's latency is 1316ms
+[1 2 5 6 7 9 ]case's latency is 1030ms
+[1 2 5 6 8 9 ]case's latency is 1027ms
+[1 2 5 7 8 9 ]case's latency is 1039ms
+[1 2 6 7 8 9 ]case's latency is 1034ms
+[1 3 4 5 6 7 ]case's latency is 1301ms
+[1 3 4 5 6 8 ]case's latency is 1299ms
+[1 3 4 5 6 9 ]case's latency is 1022ms
+[1 3 4 5 7 8 ]case's latency is 1299ms
+[1 3 4 5 7 9 ]case's latency is 1026ms
+[1 3 4 5 8 9 ]case's latency is 1029ms
+[1 3 4 6 7 8 ]case's latency is 1308ms
+[1 3 4 6 7 9 ]case's latency is 1046ms
+[1 3 4 6 8 9 ]case's latency is 1046ms
+[1 3 4 7 8 9 ]case's latency is 1053ms
+[1 3 5 6 7 8 ]case's latency is 1319ms
+[1 3 5 6 7 9 ]case's latency is 1048ms
+[1 3 5 6 8 9 ]case's latency is 1052ms
+[1 3 5 7 8 9 ]case's latency is 1056ms
+[1 3 6 7 8 9 ]case's latency is 1060ms
+[1 4 5 6 7 8 ]case's latency is 1329ms
+[1 4 5 6 7 9 ]case's latency is 1055ms
+[1 4 5 6 8 9 ]case's latency is 1061ms
+[1 4 5 7 8 9 ]case's latency is 1067ms
+[1 4 6 7 8 9 ]case's latency is 1060ms
+[1 5 6 7 8 9 ]case's latency is 1065ms
+[2 3 4 5 6 7 ]case's latency is 1341ms
+[2 3 4 5 6 8 ]case's latency is 1348ms
+[2 3 4 5 6 9 ]case's latency is 1070ms
+[2 3 4 5 7 8 ]case's latency is 1349ms
+[2 3 4 5 7 9 ]case's latency is 1071ms
+[2 3 4 5 8 9 ]case's latency is 1081ms
+[2 3 4 6 7 8 ]case's latency is 1361ms
+[2 3 4 6 7 9 ]case's latency is 1084ms
+[2 3 4 6 8 9 ]case's latency is 1076ms
+[2 3 4 7 8 9 ]case's latency is 1095ms
+[2 3 5 6 7 8 ]case's latency is 1362ms
+[2 3 5 6 7 9 ]case's latency is 1076ms
+[2 3 5 6 8 9 ]case's latency is 1081ms
+[2 3 5 7 8 9 ]case's latency is 1074ms
+[2 3 6 7 8 9 ]case's latency is 1078ms
+[2 4 5 6 7 8 ]case's latency is 1387ms
+[2 4 5 6 7 9 ]case's latency is 1081ms
+[2 4 5 6 8 9 ]case's latency is 1084ms
+[2 4 5 7 8 9 ]case's latency is 1082ms
+[2 4 6 7 8 9 ]case's latency is 1085ms
+[2 5 6 7 8 9 ]case's latency is 1083ms
+[3 4 5 6 7 8 ]case's latency is 1391ms
+[3 4 5 6 7 9 ]case's latency is 1075ms
+[3 4 5 6 8 9 ]case's latency is 1073ms
+[3 4 5 7 8 9 ]case's latency is 1083ms
+[3 4 6 7 8 9 ]case's latency is 1079ms
+[3 5 6 7 8 9 ]case's latency is 1071ms
+[4 5 6 7 8 9 ]case's latency is 1076ms
+[END]...Choose_6's average latency is 648.96ms
+N = 7
+[0 1 2 3 4 5 6 ]case's latency is 618ms
+[0 1 2 3 4 5 7 ]case's latency is 613ms
+[0 1 2 3 4 5 8 ]case's latency is 620ms
+[0 1 2 3 4 5 9 ]case's latency is 279ms
+[0 1 2 3 4 6 7 ]case's latency is 657ms
+[0 1 2 3 4 6 8 ]case's latency is 657ms
+[0 1 2 3 4 6 9 ]case's latency is 273ms
+[0 1 2 3 4 7 8 ]case's latency is 664ms
+[0 1 2 3 4 7 9 ]case's latency is 240ms
+[0 1 2 3 4 8 9 ]case's latency is 252ms
+[0 1 2 3 5 6 7 ]case's latency is 645ms
+[0 1 2 3 5 6 8 ]case's latency is 632ms
+[0 1 2 3 5 6 9 ]case's latency is 218ms
+[0 1 2 3 5 7 8 ]case's latency is 635ms
+[0 1 2 3 5 7 9 ]case's latency is 214ms
+[0 1 2 3 5 8 9 ]case's latency is 219ms
+[0 1 2 3 6 7 8 ]case's latency is 636ms
+[0 1 2 3 6 7 9 ]case's latency is 207ms
+[0 1 2 3 6 8 9 ]case's latency is 220ms
+[0 1 2 3 7 8 9 ]case's latency is 216ms
+[0 1 2 4 5 6 7 ]case's latency is 637ms
+[0 1 2 4 5 6 8 ]case's latency is 633ms
+[0 1 2 4 5 6 9 ]case's latency is 203ms
+[0 1 2 4 5 7 8 ]case's latency is 642ms
+[0 1 2 4 5 7 9 ]case's latency is 206ms
+[0 1 2 4 5 8 9 ]case's latency is 212ms
+[0 1 2 4 6 7 8 ]case's latency is 644ms
+[0 1 2 4 6 7 9 ]case's latency is 202ms
+[0 1 2 4 6 8 9 ]case's latency is 201ms
+[0 1 2 4 7 8 9 ]case's latency is 197ms
+[0 1 2 5 6 7 8 ]case's latency is 636ms
+[0 1 2 5 6 7 9 ]case's latency is 189ms
+[0 1 2 5 6 8 9 ]case's latency is 203ms
+[0 1 2 5 7 8 9 ]case's latency is 196ms
+[0 1 2 6 7 8 9 ]case's latency is 200ms
+[0 1 3 4 5 6 7 ]case's latency is 647ms
+[0 1 3 4 5 6 8 ]case's latency is 663ms
+[0 1 3 4 5 6 9 ]case's latency is 197ms
+[0 1 3 4 5 7 8 ]case's latency is 651ms
+[0 1 3 4 5 7 9 ]case's latency is 188.00ms
+[0 1 3 4 5 8 9 ]case's latency is 198ms
+[0 1 3 4 6 7 8 ]case's latency is 658ms
+[0 1 3 4 6 7 9 ]case's latency is 195ms
+[0 1 3 4 6 8 9 ]case's latency is 194ms
+[0 1 3 4 7 8 9 ]case's latency is 200ms
+[0 1 3 5 6 7 8 ]case's latency is 659ms
+[0 1 3 5 6 7 9 ]case's latency is 192ms
+[0 1 3 5 6 8 9 ]case's latency is 188.00ms
+[0 1 3 5 7 8 9 ]case's latency is 192ms
+[0 1 3 6 7 8 9 ]case's latency is 190ms
+[0 1 4 5 6 7 8 ]case's latency is 669ms
+[0 1 4 5 6 7 9 ]case's latency is 189ms
+[0 1 4 5 6 8 9 ]case's latency is 201ms
+[0 1 4 5 7 8 9 ]case's latency is 197ms
+[0 1 4 6 7 8 9 ]case's latency is 193ms
+[0 1 5 6 7 8 9 ]case's latency is 201ms
+[0 2 3 4 5 6 7 ]case's latency is 659ms
+[0 2 3 4 5 6 8 ]case's latency is 666ms
+[0 2 3 4 5 6 9 ]case's latency is 194ms
+[0 2 3 4 5 7 8 ]case's latency is 661ms
+[0 2 3 4 5 7 9 ]case's latency is 197ms
+[0 2 3 4 5 8 9 ]case's latency is 202ms
+[0 2 3 4 6 7 8 ]case's latency is 685ms
+[0 2 3 4 6 7 9 ]case's latency is 207ms
+[0 2 3 4 6 8 9 ]case's latency is 201ms
+[0 2 3 4 7 8 9 ]case's latency is 201ms
+[0 2 3 5 6 7 8 ]case's latency is 683ms
+[0 2 3 5 6 7 9 ]case's latency is 199ms
+[0 2 3 5 6 8 9 ]case's latency is 205ms
+[0 2 3 5 7 8 9 ]case's latency is 201ms
+[0 2 3 6 7 8 9 ]case's latency is 202ms
+[0 2 4 5 6 7 8 ]case's latency is 669ms
+[0 2 4 5 6 7 9 ]case's latency is 211ms
+[0 2 4 5 6 8 9 ]case's latency is 204ms
+[0 2 4 5 7 8 9 ]case's latency is 207ms
+[0 2 4 6 7 8 9 ]case's latency is 203ms
+[0 2 5 6 7 8 9 ]case's latency is 207ms
+[0 3 4 5 6 7 8 ]case's latency is 664ms
+[0 3 4 5 6 7 9 ]case's latency is 197ms
+[0 3 4 5 6 8 9 ]case's latency is 203ms
+[0 3 4 5 7 8 9 ]case's latency is 200ms
+[0 3 4 6 7 8 9 ]case's latency is 200ms
+[0 3 5 6 7 8 9 ]case's latency is 204ms
+[0 4 5 6 7 8 9 ]case's latency is 204ms
+[1 2 3 4 5 6 7 ]case's latency is 1554ms
+[1 2 3 4 5 6 8 ]case's latency is 1560ms
+[1 2 3 4 5 6 9 ]case's latency is 1198ms
+[1 2 3 4 5 7 8 ]case's latency is 1568ms
+[1 2 3 4 5 7 9 ]case's latency is 1216ms
+[1 2 3 4 5 8 9 ]case's latency is 1213ms
+[1 2 3 4 6 7 8 ]case's latency is 1556ms
+[1 2 3 4 6 7 9 ]case's latency is 1212ms
+[1 2 3 4 6 8 9 ]case's latency is 1221ms
+[1 2 3 4 7 8 9 ]case's latency is 1223ms
+[1 2 3 5 6 7 8 ]case's latency is 1554ms
+[1 2 3 5 6 7 9 ]case's latency is 1207ms
+[1 2 3 5 6 8 9 ]case's latency is 1206ms
+[1 2 3 5 7 8 9 ]case's latency is 1211ms
+[1 2 3 6 7 8 9 ]case's latency is 1216ms
+[1 2 4 5 6 7 8 ]case's latency is 1554ms
+[1 2 4 5 6 7 9 ]case's latency is 1208ms
+[1 2 4 5 6 8 9 ]case's latency is 1207ms
+[1 2 4 5 7 8 9 ]case's latency is 1213ms
+[1 2 4 6 7 8 9 ]case's latency is 1206ms
+[1 2 5 6 7 8 9 ]case's latency is 1212ms
+[1 3 4 5 6 7 8 ]case's latency is 1562ms
+[1 3 4 5 6 7 9 ]case's latency is 1204ms
+[1 3 4 5 6 8 9 ]case's latency is 1217ms
+[1 3 4 5 7 8 9 ]case's latency is 1220ms
+[1 3 4 6 7 8 9 ]case's latency is 1217ms
+[1 3 5 6 7 8 9 ]case's latency is 1209ms
+[1 4 5 6 7 8 9 ]case's latency is 1217ms
+[2 3 4 5 6 7 8 ]case's latency is 1571ms
+[2 3 4 5 6 7 9 ]case's latency is 1222ms
+[2 3 4 5 6 8 9 ]case's latency is 1231ms
+[2 3 4 5 7 8 9 ]case's latency is 1223ms
+[2 3 4 6 7 8 9 ]case's latency is 1217ms
+[2 3 5 6 7 8 9 ]case's latency is 1212ms
+[2 4 5 6 7 8 9 ]case's latency is 1219ms
+[3 4 5 6 7 8 9 ]case's latency is 1210ms
+[END]...Choose_7's average latency is 634.83ms
+N = 8
+[0 1 2 3 4 5 6 7 ]case's latency is 687ms
+[0 1 2 3 4 5 6 8 ]case's latency is 682ms
+[0 1 2 3 4 5 6 9 ]case's latency is 260ms
+[0 1 2 3 4 5 7 8 ]case's latency is 666ms
+[0 1 2 3 4 5 7 9 ]case's latency is 211ms
+[0 1 2 3 4 5 8 9 ]case's latency is 218ms
+[0 1 2 3 4 6 7 8 ]case's latency is 657ms
+[0 1 2 3 4 6 7 9 ]case's latency is 213ms
+[0 1 2 3 4 6 8 9 ]case's latency is 220ms
+[0 1 2 3 4 7 8 9 ]case's latency is 218ms
+[0 1 2 3 5 6 7 8 ]case's latency is 651ms
+[0 1 2 3 5 6 7 9 ]case's latency is 204ms
+[0 1 2 3 5 6 8 9 ]case's latency is 213ms
+[0 1 2 3 5 7 8 9 ]case's latency is 210ms
+[0 1 2 3 6 7 8 9 ]case's latency is 211ms
+[0 1 2 4 5 6 7 8 ]case's latency is 652ms
+[0 1 2 4 5 6 7 9 ]case's latency is 202.00ms
+[0 1 2 4 5 6 8 9 ]case's latency is 214ms
+[0 1 2 4 5 7 8 9 ]case's latency is 210ms
+[0 1 2 4 6 7 8 9 ]case's latency is 210ms
+[0 1 2 5 6 7 8 9 ]case's latency is 211ms
+[0 1 3 4 5 6 7 8 ]case's latency is 656ms
+[0 1 3 4 5 6 7 9 ]case's latency is 207ms
+[0 1 3 4 5 6 8 9 ]case's latency is 215ms
+[0 1 3 4 5 7 8 9 ]case's latency is 216ms
+[0 1 3 4 6 7 8 9 ]case's latency is 207ms
+[0 1 3 5 6 7 8 9 ]case's latency is 210ms
+[0 1 4 5 6 7 8 9 ]case's latency is 207ms
+[0 2 3 4 5 6 7 8 ]case's latency is 666ms
+[0 2 3 4 5 6 7 9 ]case's latency is 208ms
+[0 2 3 4 5 6 8 9 ]case's latency is 215ms
+[0 2 3 4 5 7 8 9 ]case's latency is 218ms
+[0 2 3 4 6 7 8 9 ]case's latency is 215ms
+[0 2 3 5 6 7 8 9 ]case's latency is 212ms
+[0 2 4 5 6 7 8 9 ]case's latency is 216ms
+[0 3 4 5 6 7 8 9 ]case's latency is 214ms
+[1 2 3 4 5 6 7 8 ]case's latency is 1545ms
+[1 2 3 4 5 6 7 9 ]case's latency is 1197ms
+[1 2 3 4 5 6 8 9 ]case's latency is 1202ms
+[1 2 3 4 5 7 8 9 ]case's latency is 1201ms
+[1 2 3 4 6 7 8 9 ]case's latency is 1200ms
+[1 2 3 5 6 7 8 9 ]case's latency is 1189ms
+[1 2 4 5 6 7 8 9 ]case's latency is 1188ms
+[1 3 4 5 6 7 8 9 ]case's latency is 1186ms
+[2 3 4 5 6 7 8 9 ]case's latency is 1206ms
+[END]...Choose_8's average latency is 498.13ms
+N = 9
+[0 1 2 3 4 5 6 7 8 ]case's latency is 666ms
+[0 1 2 3 4 5 6 7 9 ]case's latency is 235.00ms
+[0 1 2 3 4 5 6 8 9 ]case's latency is 242ms
+[0 1 2 3 4 5 7 8 9 ]case's latency is 241ms
+[0 1 2 3 4 6 7 8 9 ]case's latency is 241ms
+[0 1 2 3 5 6 7 8 9 ]case's latency is 238ms
+[0 1 2 4 5 6 7 8 9 ]case's latency is 239ms
+[0 1 3 4 5 6 7 8 9 ]case's latency is 237ms
+[0 2 3 4 5 6 7 8 9 ]case's latency is 243ms
+[1 2 3 4 5 6 7 8 9 ]case's latency is 1196ms
+[END]...Choose_9's average latency is 377.80ms
+N = 10
+[0 1 2 3 4 5 6 7 8 9 ]case's latency is 231.00ms
+[END]...Choose_10's average latency is 231.00ms
+Minimum CAES's value : 179.00ms
+Minimum CASE's N : 6
+Minimum CASE's th : 38
+Minimum CASE's combination : [0 1 3 4 5 9 ]
+

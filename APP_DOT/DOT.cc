@@ -42,7 +42,7 @@ limitations under the License.
 using namespace std;
 
 #define INPUT "../../mAP_TF/input/images-optional/"
-#define Partition_Num 9  // nCr --> "n"  // for YOLOv4-tiny
+#define Partition_Num 10  // nCr --> "n"  // for YOLOv4-tiny
 // #define Max_Delegated_Partitions_Num 1  // nCr --> "r"  // hyper-param // Not use in full-auto
 #define GPU
 #define IMG_set_num 1 // "300" for mAP , "100" for DOT // "1" for debugging
@@ -155,7 +155,7 @@ int main(int argc, char* argv[]) {
         // Allocate tensor buffers.
         TFLITE_MINIMAL_CHECK(interpreter->AllocateTensors() == kTfLiteOk);
         printf("=== Pre-invoke Interpreter State ===\n");
-	      // tflite::PrintInterpreterState(interpreter.get());  //For debugging model info
+	tflite::PrintInterpreterState(interpreter.get());  //For debugging model info
         //////////////////////////////////////////////////////////////////////////////////////////
         // Push test image to input_tensor
         // float*tmp = nullptr;
@@ -185,14 +185,36 @@ int main(int argc, char* argv[]) {
           // TFLite's data tensor format :[B, H, W, C]
           // Opencv's data image  format :[W, H] 
           // PrintTensor(*input_T);
+
+          ////////////////////////////////////////////////////////////////////
           printf("DEBUG_POINTER_ADDRESS : %p\n", (void*)input_tensor);
-          printf("DEBUG_POINTER_VALUE : %f\n", *input_tensor);
+          printf("DEBUG_POINTER_VALUE (before push) : %.6f\n", *input_tensor);
           if(input_tensor == nullptr){
             printf("ERROR : get Nullptr!!!\n");
           }
-          
+          std::cout << "\n======= Tensor safety check START=======\n";
+          std::cout << "Is data stale (Not fresh)? : " << input_T->data_is_stale << std::endl; 
+          std::cout << "Is data variable (Not stable)? : " << input_T->is_variable << std::endl; 
+          const int alloc_type = input_T->allocation_type;
+          std::cout << "Tensor allocation type is : ";
+           if(alloc_type==2){
+            std::cout << "kTfLiteArenaRw" << std::endl;
+          }
+          else if(alloc_type==0){
+            std::cout << "kTfLiteMemNone" << std::endl;
+          }
+          else{
+            std::cout << "???" << alloc_type << std::endl;            
+          }
+          std::cout << "Tensor allocated byte is : " << input_T->bytes << std::endl; 
+          // std::cout << "Tensor allocation  pointer's pointing value is : " << *(input_T->allocation) << std::endl;      
+          // std::cout << "Tensor allocation  pointer's address is : " << input_T->allocation << std::endl;      
+          std::cout << "\n======= Tensor safety check END=======\n";     
+          ////////////////////////////////////////////////////////////////////
+          printf("\n\n=== Push image to input tensor (Start)===\n");
           for (int w=0; w<width; w++){
             for (int h=0; h<height; h++){
+              std::cout << "W=" << w<< "   ";  // (OK : 511, WRONG : 487 )
               cv::Vec3b pixel = input[0].at<cv::Vec3b>(w, h);
               *(input_tensor + w * height*3 + h * 3) = ((float)pixel[0])/255.0;
               *(input_tensor + w * height*3 + h * 3 + 1) = ((float)pixel[1])/255.0;
@@ -201,6 +223,7 @@ int main(int argc, char* argv[]) {
             // printf("DEBUG_POINTER %p\n", (void*)input_tensor);
           }
           
+          printf("DEBUG_POINTER_VALUE (after push) : %.6f\n", *input_tensor);
           printf("\n\n=== Push image to input tensor (After)===\n");
           // PrintTensor(*input_T);
           // for (int h=0; h<height; h++){
