@@ -138,6 +138,7 @@ int main(int argc, char* argv[]) {
         // Modify interpreter::subgraph when using GPU
         TfLiteDelegate *MyDelegate = NULL;
 
+        // Default option + only change N + add dot (inference priority doesn't matter)
         const TfLiteGpuDelegateOptionsV2 options = {
               .is_precision_loss_allowed = 0,  //1
             .inference_preference = TFLITE_GPU_INFERENCE_PREFERENCE_FAST_SINGLE_ANSWER,
@@ -150,7 +151,7 @@ int main(int argc, char* argv[]) {
         };
         MyDelegate = TfLiteGpuDelegateV2Create(&options);
         TFLITE_MINIMAL_CHECK(interpreter->ModifyGraphWithDelegate(MyDelegate) == kTfLiteOk);
-        #endif GPU
+        #endif
 
         // Allocate tensor buffers.
         TFLITE_MINIMAL_CHECK(interpreter->AllocateTensors() == kTfLiteOk);
@@ -169,7 +170,7 @@ int main(int argc, char* argv[]) {
           #endif
           int width = input_map[input_type].first;
           int height = input_map[input_type].second;
-          read_image_opencv(image_name, input, width, height); 
+          read_image_opencv(image_name, input, width, height);
           printf("\n\n=== read image by CV (After)===\n");
           // Push image to input tensor
           auto input_tensor = interpreter->typed_input_tensor<float>(0); // float * , data.raw
@@ -211,19 +212,26 @@ int main(int argc, char* argv[]) {
           // std::cout << "Tensor allocation  pointer's address is : " << input_T->allocation << std::endl;      
           std::cout << "\n======= Tensor safety check END=======\n";     
           ////////////////////////////////////////////////////////////////////
+          // TODO : 1. Try to switch input_tensor's address using base code for FeedDummyInputToTensor
+          //        2. Refer to git play_with_tflite. 
+          // 
+          
           printf("\n\n=== Push image to input tensor (Start)===\n");
           for (int w=0; w<width; w++){
+            std::cout << "W=" << w<< " ";  // (OK : 511, WRONG : 487 )
             for (int h=0; h<height; h++){
-              std::cout << "W=" << w<< "   ";  // (OK : 511, WRONG : 487 )
               cv::Vec3b pixel = input[0].at<cv::Vec3b>(w, h);
+              // printf("%.3f ", ((float)pixel[0])/255.0); VALUE IS CORRECT
               *(input_tensor + w * height*3 + h * 3) = ((float)pixel[0])/255.0;
               *(input_tensor + w * height*3 + h * 3 + 1) = ((float)pixel[1])/255.0;
               *(input_tensor + w * height*3 + h * 3 + 2) = ((float)pixel[2])/255.0;
+              // *(input_tensor + w * height*3 + h * 3 + 2) = ((float)pixel[2])/255.0; Type doesn't matter
             }
             // printf("DEBUG_POINTER %p\n", (void*)input_tensor);
           }
-          
-          printf("DEBUG_POINTER_VALUE (after push) : %.6f\n", *input_tensor);
+          printf("\n\nDEBUG_INPUT_TENSOR_SHAPE (after push) : %d %d %d %d\n", input_T->dims[1],
+                              input_T->dims[2],input_T->dims[3],input_T->dims[4]);
+          printf("\nDEBUG_POINTER_VALUE (after push) : %.6f\n", *input_tensor);
           printf("\n\n=== Push image to input tensor (After)===\n");
           // PrintTensor(*input_T);
           // for (int h=0; h<height; h++){
