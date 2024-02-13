@@ -190,5 +190,11 @@ void read_image_opencv(string image_name, vector<cv::Mat>& input, int width, int
 	cv::cvtColor(cvimg, cvimg, cv::COLOR_BGR2RGB); 
 	cv::Mat cvimg_;
 	cv::resize(cvimg, cvimg_, cv::Size(width, height));
-	input.push_back(cvimg_);
+  std::cout << "OpenCV's (width * height) : " << cvimg_.size() << std::endl;
+  // cvimg_= cv::dnn::blobFromImage(cvimg_); // NHWC -> NCHW
+  std::cout << "OpenCV's dimension : ";
+  std::cout << cvimg_.size[0] << " " << cvimg_.size[1] << " " << std::endl; 
+  std::cout << "row : " << cvimg_.rows << " cols : " << cvimg_.cols << std::endl;
+  // Opencv --> W,H --> row(H), col(W)
+  input.push_back(cvimg_);
 };

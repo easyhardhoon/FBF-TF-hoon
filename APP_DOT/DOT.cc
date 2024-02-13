@@ -42,10 +42,11 @@ limitations under the License.
 using namespace std;
 
 #define INPUT "../../mAP_TF/input/images-optional/"
-#define Partition_Num 10  // nCr --> "n"  // for YOLOv4-tiny
+#define Partition_Num 7  // nCr --> "n"  // for YOLOv4-tiny
 // #define Max_Delegated_Partitions_Num 1  // nCr --> "r"  // hyper-param // Not use in full-auto
 #define GPU
-#define IMG_set_num 1 // "300" for mAP , "100" for DOT // "1" for debugging
+#define IMG_set_num 2 // "300" for mAP , "100" for DOT // "1" for debugging
+// #define DEBUG
 // #define YOLO
 
 std::vector<float> time_table;
@@ -156,7 +157,7 @@ int main(int argc, char* argv[]) {
         // Allocate tensor buffers.
         TFLITE_MINIMAL_CHECK(interpreter->AllocateTensors() == kTfLiteOk);
         printf("=== Pre-invoke Interpreter State ===\n");
-	tflite::PrintInterpreterState(interpreter.get());  //For debugging model info
+	// tflite::PrintInterpreterState(interpreter.get());  //For debugging model info
         //////////////////////////////////////////////////////////////////////////////////////////
         // Push test image to input_tensor
         // float*tmp = nullptr;
@@ -175,19 +176,17 @@ int main(int argc, char* argv[]) {
           // Push image to input tensor
           auto input_tensor = interpreter->typed_input_tensor<float>(0); // float * , data.raw
           auto input_T = interpreter->input_tensor(0); // TfLiteTensor * , real_tensor
+          std:cout << "TFLite's tensor dimension : ";
           std::cout << input_T->dims->data[0] << " " << input_T->dims->data[1]; 
           std::cout << " " << input_T->dims->data[2] << " " << input_T->dims->data[3] << std::endl;
           printf("\n\n=== Push image to input tensor (Before)===\n");
-          // if(input_tensor == tmp){
-          //   input_tensor+=0x305af00 / sizeof(float);
-          // }
-          // tmp = input_tensor;
           // Normalize code for pushing image to input tensor
-          // TFLite's data tensor format :[B, H, W, C]
-          // Opencv's data image  format :[W, H] 
+          // TFLite's data tensor format :[N, H, W, C]
+          // Opencv's data image  format :[N, H, W, C] 
           // PrintTensor(*input_T);
-
           ////////////////////////////////////////////////////////////////////
+
+          #ifdef DEBUG
           printf("DEBUG_POINTER_ADDRESS : %p\n", (void*)input_tensor);
           printf("DEBUG_POINTER_VALUE (before push) : %.6f\n", *input_tensor);
           if(input_tensor == nullptr){
@@ -208,40 +207,52 @@ int main(int argc, char* argv[]) {
             std::cout << "???" << alloc_type << std::endl;            
           }
           std::cout << "Tensor allocated byte is : " << input_T->bytes << std::endl; 
-          // std::cout << "Tensor allocation  pointer's pointing value is : " << *(input_T->allocation) << std::endl;      
-          // std::cout << "Tensor allocation  pointer's address is : " << input_T->allocation << std::endl;      
           std::cout << "\n======= Tensor safety check END=======\n";     
-          ////////////////////////////////////////////////////////////////////
-          // TODO : 1. Try to switch input_tensor's address using base code for FeedDummyInputToTensor
-          //        2. Refer to git play_with_tflite. 
-          // 
-          
+          #endif
+
           printf("\n\n=== Push image to input tensor (Start)===\n");
-          for (int w=0; w<width; w++){
-            std::cout << "W=" << w<< " ";  // (OK : 511, WRONG : 487 )
-            for (int h=0; h<height; h++){
-              cv::Vec3b pixel = input[0].at<cv::Vec3b>(w, h);
-              // printf("%.3f ", ((float)pixel[0])/255.0); VALUE IS CORRECT
-              *(input_tensor + w * height*3 + h * 3) = ((float)pixel[0])/255.0;
-              *(input_tensor + w * height*3 + h * 3 + 1) = ((float)pixel[1])/255.0;
-              *(input_tensor + w * height*3 + h * 3 + 2) = ((float)pixel[2])/255.0;
-              // *(input_tensor + w * height*3 + h * 3 + 2) = ((float)pixel[2])/255.0; Type doesn't matter
-            }
-            // printf("DEBUG_POINTER %p\n", (void*)input_tensor);
+
+          // ERROR
+          // seg fault at specific case (random-shot)
+          // Should consider cv::mat's dimension.
+          // for (int w=0; w<width; w++){
+          //   std::cout << "W=" << w<< " ";  // (OK : 511, WRONG : 487 )
+          //   for (int h=0; h<height; h++){
+          //     cv::Vec3b pixel = input[0].at<cv::Vec3b>(w, h); // SEG FAULT 
+          //     *(input_tensor + w * height*3 + h * 3) = ((float)pixel[0])/255.0;
+          //     *(input_tensor + w * height*3 + h * 3 + 1) = ((float)pixel[1])/255.0;
+          //     *(input_tensor + w * height*3 + h * 3 + 2) = ((float)pixel[2])/255.0;
+          //   }
+          // }
+
+          // ERROR 
+          // 
+          // for (int w=0; w<width; w++){
+          //     for (int h=0; h<height; h++){
+          //       cv::Vec3b pixel = input[0].at<cv::Vec3b>(h,w);
+          //       *(input_tensor + w * height*3 + h * 3) = ((float)pixel[0])/255.0;
+          //       *(input_tensor + w * height*3 + h * 3 + 1) = ((float)pixel[1])/255.0;
+          //       *(input_tensor + w * height*3 + h * 3 + 2) = ((float)pixel[2])/255.0;
+          //     }
+          // }  
+
+          // SUCCESS (NHWC to NHWC)
+          // TFLite's data tensor format :[N, H, W, C]
+          // Opencv's data image  format :[N, H, W, C] (W,H --> row(H), col(W))
+          for (int h=0; h<height; h++){
+              for (int w=0; w<width; w++){
+                cv::Vec3b pixel = input[0].at<cv::Vec3b>(h,w);
+                *(input_tensor + h * width*3 + w * 3) = ((float)pixel[0])/255.0;
+                *(input_tensor + h * width*3 + w * 3 + 1) = ((float)pixel[1])/255.0;
+                *(input_tensor + h * width*3 + w * 3 + 2) = ((float)pixel[2])/255.0;
+              }
           }
+          #ifdef DEBUG
           printf("\n\nDEBUG_INPUT_TENSOR_SHAPE (after push) : %d %d %d %d\n", input_T->dims[1],
                               input_T->dims[2],input_T->dims[3],input_T->dims[4]);
           printf("\nDEBUG_POINTER_VALUE (after push) : %.6f\n", *input_tensor);
+          #endif
           printf("\n\n=== Push image to input tensor (After)===\n");
-          // PrintTensor(*input_T);
-          // for (int h=0; h<height; h++){
-          //   for (int w=0; w<width; w++){
-          //     cv::Vec3b pixel = input[0].at<cv::Vec3b>(w, h);
-          //     *(input_tensor + h * width*3 + w * 3) = ((float)pixel[0])/255.0;
-          //     *(input_tensor + h * width*3 + w * 3 + 1) = ((float)pixel[1])/255.0;
-          //     *(input_tensor + h * width*3 + w * 3 + 2) = ((float)pixel[2])/255.0;
-          //   }
-          // }
 
           // Run inference
           uint64_t START = millis();
@@ -265,7 +276,7 @@ int main(int argc, char* argv[]) {
           #endif
 
           // Make txt file to get mAP
-          // make_txt_to_get_mAP(yolo::YOLO_Parser::result_boxes, image_number, dot, N);
+          make_txt_to_get_mAP(yolo::YOLO_Parser::result_boxes, image_number, dot, N);
 
           // Re-initialize
           image_number+=1;
