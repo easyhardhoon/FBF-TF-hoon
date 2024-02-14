@@ -1,0 +1,1808 @@
+=== Fallback node number info === : 
+63 
+=== Delegated_partitions info === : 
+[0] : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 64 65 66 
+[1] : 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 241 242 243 244 245 246 247 248 249 250 251 252 253 254 255 
+=== Fallback reason info === : 
+ERROR: Following operations are not supported by GPU delegate:
+CONV_2D: It is hidden FALLBACK
+66 operations will run on the GPU, and the remaining 190 operations will run on the CPU.
+======================================= 
+>>>>>>>>>>ops_to replace vector(nodes number for gpu delegation) is : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 64 65 66 
+INFO: Initialized OpenCL-based API.
+INFO: Created 1 GPU delegate kernels.
+AllocateTensors
+=== Pre-invoke Interpreter State ===
+Interpreter has 828 tensors and 257 nodes
+Inputs: 634
+Outputs: 7
+
+Tensor   0 InceptionResnetV2/AuxLogits/Conv2d_1a_3x3/AvgPool kTfLiteFloat32  kTfLiteArenaRw     108800 bytes ( 0.1 MB)  1 5 5 1088
+Tensor   1 InceptionResnetV2/AuxLogits/Conv2d_1b_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        512 bytes ( 0.0 MB)  128
+Tensor   2 InceptionResnetV2/AuxLogits/Conv2d_1b_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw      12800 bytes ( 0.0 MB)  1 5 5 128
+Tensor   3 InceptionResnetV2/AuxLogits/Conv2d_1b_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     557056 bytes ( 0.5 MB)  128 1 1 1088
+Tensor   4 InceptionResnetV2/AuxLogits/Conv2d_2a_5x5/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       3072 bytes ( 0.0 MB)  768
+Tensor   5 InceptionResnetV2/AuxLogits/Conv2d_2a_5x5/Relu kTfLiteFloat32  kTfLiteArenaRw       3072 bytes ( 0.0 MB)  1 1 1 768
+Tensor   6 InceptionResnetV2/AuxLogits/Conv2d_2a_5x5/weights kTfLiteFloat32   kTfLiteMmapRo    9830400 bytes ( 9.4 MB)  768 5 5 128
+Tensor   7 InceptionResnetV2/AuxLogits/Logits/BiasAdd kTfLiteFloat32  kTfLiteArenaRw       4004 bytes ( 0.0 MB)  1 1001
+Tensor   8 InceptionResnetV2/AuxLogits/Logits/MatMul_bias kTfLiteFloat32   kTfLiteMmapRo       4004 bytes ( 0.0 MB)  1001
+Tensor   9 InceptionResnetV2/AuxLogits/Logits/weights/transpose kTfLiteFloat32   kTfLiteMmapRo    3075072 bytes ( 2.9 MB)  1001 768
+Tensor  10 InceptionResnetV2/Conv2d_1a_3x3/weights kTfLiteFloat32   kTfLiteMmapRo       3456 bytes ( 0.0 MB)  32 3 3 3
+Tensor  11 InceptionResnetV2/Conv2d_2a_3x3/weights kTfLiteFloat32   kTfLiteMmapRo      36864 bytes ( 0.0 MB)  32 3 3 32
+Tensor  12 InceptionResnetV2/Conv2d_2b_3x3/weights kTfLiteFloat32   kTfLiteMmapRo      73728 bytes ( 0.1 MB)  64 3 3 32
+Tensor  13 InceptionResnetV2/Conv2d_3b_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      20480 bytes ( 0.0 MB)  80 1 1 64
+Tensor  14 InceptionResnetV2/Conv2d_4a_3x3/weights kTfLiteFloat32   kTfLiteMmapRo     552960 bytes ( 0.5 MB)  192 3 3 80
+Tensor  15 InceptionResnetV2/InceptionResnetV2/Conv2d_1a_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor  16 InceptionResnetV2/InceptionResnetV2/Conv2d_1a_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw    2841728 bytes ( 2.7 MB)  1 149 149 32
+Tensor  17 InceptionResnetV2/InceptionResnetV2/Conv2d_2a_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor  18 InceptionResnetV2/InceptionResnetV2/Conv2d_2a_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw    2765952 bytes ( 2.6 MB)  1 147 147 32
+Tensor  19 InceptionResnetV2/InceptionResnetV2/Conv2d_2b_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        256 bytes ( 0.0 MB)  64
+Tensor  20 InceptionResnetV2/InceptionResnetV2/Conv2d_2b_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw    5531904 bytes ( 5.3 MB)  1 147 147 64
+Tensor  21 InceptionResnetV2/InceptionResnetV2/Conv2d_3b_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        320 bytes ( 0.0 MB)  80
+Tensor  22 InceptionResnetV2/InceptionResnetV2/Conv2d_3b_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw    1705280 bytes ( 1.6 MB)  1 73 73 80
+Tensor  23 InceptionResnetV2/InceptionResnetV2/Conv2d_4a_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor  24 InceptionResnetV2/InceptionResnetV2/Conv2d_4a_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw    3871488 bytes ( 3.7 MB)  1 71 71 192
+Tensor  25 InceptionResnetV2/InceptionResnetV2/MaxPool_3a_3x3/MaxPool kTfLiteFloat32  kTfLiteArenaRw    1364224 bytes ( 1.3 MB)  1 73 73 64
+Tensor  26 InceptionResnetV2/InceptionResnetV2/MaxPool_5a_3x3/MaxPool kTfLiteFloat32  kTfLiteArenaRw     940800 bytes ( 0.9 MB)  1 35 35 192
+Tensor  27 InceptionResnetV2/InceptionResnetV2/Mixed_5b/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        384 bytes ( 0.0 MB)  96
+Tensor  28 InceptionResnetV2/InceptionResnetV2/Mixed_5b/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     470400 bytes ( 0.4 MB)  1 35 35 96
+Tensor  29 InceptionResnetV2/InceptionResnetV2/Mixed_5b/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        192 bytes ( 0.0 MB)  48
+Tensor  30 InceptionResnetV2/InceptionResnetV2/Mixed_5b/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     235200 bytes ( 0.2 MB)  1 35 35 48
+Tensor  31 InceptionResnetV2/InceptionResnetV2/Mixed_5b/Branch_1/Conv2d_0b_5x5/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        256 bytes ( 0.0 MB)  64
+Tensor  32 InceptionResnetV2/InceptionResnetV2/Mixed_5b/Branch_1/Conv2d_0b_5x5/Relu kTfLiteFloat32  kTfLiteArenaRw     313600 bytes ( 0.3 MB)  1 35 35 64
+Tensor  33 InceptionResnetV2/InceptionResnetV2/Mixed_5b/Branch_2/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        256 bytes ( 0.0 MB)  64
+Tensor  34 InceptionResnetV2/InceptionResnetV2/Mixed_5b/Branch_2/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     313600 bytes ( 0.3 MB)  1 35 35 64
+Tensor  35 InceptionResnetV2/InceptionResnetV2/Mixed_5b/Branch_2/Conv2d_0b_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        384 bytes ( 0.0 MB)  96
+Tensor  36 InceptionResnetV2/InceptionResnetV2/Mixed_5b/Branch_2/Conv2d_0b_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     470400 bytes ( 0.4 MB)  1 35 35 96
+Tensor  37 InceptionResnetV2/InceptionResnetV2/Mixed_5b/Branch_2/Conv2d_0c_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        384 bytes ( 0.0 MB)  96
+Tensor  38 InceptionResnetV2/InceptionResnetV2/Mixed_5b/Branch_2/Conv2d_0c_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     470400 bytes ( 0.4 MB)  1 35 35 96
+Tensor  39 InceptionResnetV2/InceptionResnetV2/Mixed_5b/Branch_3/AvgPool_0a_3x3/AvgPool kTfLiteFloat32  kTfLiteArenaRw     940800 bytes ( 0.9 MB)  1 35 35 192
+Tensor  40 InceptionResnetV2/InceptionResnetV2/Mixed_5b/Branch_3/Conv2d_0b_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        256 bytes ( 0.0 MB)  64
+Tensor  41 InceptionResnetV2/InceptionResnetV2/Mixed_5b/Branch_3/Conv2d_0b_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     313600 bytes ( 0.3 MB)  1 35 35 64
+Tensor  42 InceptionResnetV2/InceptionResnetV2/Mixed_5b/concat kTfLiteFloat32  kTfLiteArenaRw    1568000 bytes ( 1.5 MB)  1 35 35 320
+Tensor  43 InceptionResnetV2/InceptionResnetV2/Mixed_6a/Branch_0/Conv2d_1a_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       1536 bytes ( 0.0 MB)  384
+Tensor  44 InceptionResnetV2/InceptionResnetV2/Mixed_6a/Branch_0/Conv2d_1a_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     443904 bytes ( 0.4 MB)  1 17 17 384
+Tensor  45 InceptionResnetV2/InceptionResnetV2/Mixed_6a/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       1024 bytes ( 0.0 MB)  256
+Tensor  46 InceptionResnetV2/InceptionResnetV2/Mixed_6a/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw    1254400 bytes ( 1.2 MB)  1 35 35 256
+Tensor  47 InceptionResnetV2/InceptionResnetV2/Mixed_6a/Branch_1/Conv2d_0b_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       1024 bytes ( 0.0 MB)  256
+Tensor  48 InceptionResnetV2/InceptionResnetV2/Mixed_6a/Branch_1/Conv2d_0b_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw    1254400 bytes ( 1.2 MB)  1 35 35 256
+Tensor  49 InceptionResnetV2/InceptionResnetV2/Mixed_6a/Branch_1/Conv2d_1a_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       1536 bytes ( 0.0 MB)  384
+Tensor  50 InceptionResnetV2/InceptionResnetV2/Mixed_6a/Branch_1/Conv2d_1a_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     443904 bytes ( 0.4 MB)  1 17 17 384
+Tensor  51 InceptionResnetV2/InceptionResnetV2/Mixed_6a/Branch_2/MaxPool_1a_3x3/MaxPool kTfLiteFloat32  kTfLiteArenaRw     369920 bytes ( 0.4 MB)  1 17 17 320
+Tensor  52 InceptionResnetV2/InceptionResnetV2/Mixed_6a/concat kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor  53 InceptionResnetV2/InceptionResnetV2/Repeat/block35_1/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor  54 InceptionResnetV2/InceptionResnetV2/Repeat/block35_1/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor  55 InceptionResnetV2/InceptionResnetV2/Repeat/block35_1/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor  56 InceptionResnetV2/InceptionResnetV2/Repeat/block35_1/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor  57 InceptionResnetV2/InceptionResnetV2/Repeat/block35_1/Branch_1/Conv2d_0b_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor  58 InceptionResnetV2/InceptionResnetV2/Repeat/block35_1/Branch_1/Conv2d_0b_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor  59 InceptionResnetV2/InceptionResnetV2/Repeat/block35_1/Branch_2/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor  60 InceptionResnetV2/InceptionResnetV2/Repeat/block35_1/Branch_2/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor  61 InceptionResnetV2/InceptionResnetV2/Repeat/block35_1/Branch_2/Conv2d_0b_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        192 bytes ( 0.0 MB)  48
+Tensor  62 InceptionResnetV2/InceptionResnetV2/Repeat/block35_1/Branch_2/Conv2d_0b_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     235200 bytes ( 0.2 MB)  1 35 35 48
+Tensor  63 InceptionResnetV2/InceptionResnetV2/Repeat/block35_1/Branch_2/Conv2d_0c_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        256 bytes ( 0.0 MB)  64
+Tensor  64 InceptionResnetV2/InceptionResnetV2/Repeat/block35_1/Branch_2/Conv2d_0c_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     313600 bytes ( 0.3 MB)  1 35 35 64
+Tensor  65 InceptionResnetV2/InceptionResnetV2/Repeat/block35_1/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       1280 bytes ( 0.0 MB)  320
+Tensor  66 InceptionResnetV2/InceptionResnetV2/Repeat/block35_1/Relu kTfLiteFloat32  kTfLiteArenaRw    1568000 bytes ( 1.5 MB)  1 35 35 320
+Tensor  67 InceptionResnetV2/InceptionResnetV2/Repeat/block35_1/concat kTfLiteFloat32  kTfLiteArenaRw     627200 bytes ( 0.6 MB)  1 35 35 128
+Tensor  68 InceptionResnetV2/InceptionResnetV2/Repeat/block35_1/mul kTfLiteFloat32  kTfLiteArenaRw    1568000 bytes ( 1.5 MB)  1 35 35 320
+Tensor  69 InceptionResnetV2/InceptionResnetV2/Repeat/block35_10/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor  70 InceptionResnetV2/InceptionResnetV2/Repeat/block35_10/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor  71 InceptionResnetV2/InceptionResnetV2/Repeat/block35_10/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor  72 InceptionResnetV2/InceptionResnetV2/Repeat/block35_10/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor  73 InceptionResnetV2/InceptionResnetV2/Repeat/block35_10/Branch_1/Conv2d_0b_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor  74 InceptionResnetV2/InceptionResnetV2/Repeat/block35_10/Branch_1/Conv2d_0b_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor  75 InceptionResnetV2/InceptionResnetV2/Repeat/block35_10/Branch_2/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor  76 InceptionResnetV2/InceptionResnetV2/Repeat/block35_10/Branch_2/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor  77 InceptionResnetV2/InceptionResnetV2/Repeat/block35_10/Branch_2/Conv2d_0b_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        192 bytes ( 0.0 MB)  48
+Tensor  78 InceptionResnetV2/InceptionResnetV2/Repeat/block35_10/Branch_2/Conv2d_0b_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     235200 bytes ( 0.2 MB)  1 35 35 48
+Tensor  79 InceptionResnetV2/InceptionResnetV2/Repeat/block35_10/Branch_2/Conv2d_0c_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        256 bytes ( 0.0 MB)  64
+Tensor  80 InceptionResnetV2/InceptionResnetV2/Repeat/block35_10/Branch_2/Conv2d_0c_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     313600 bytes ( 0.3 MB)  1 35 35 64
+Tensor  81 InceptionResnetV2/InceptionResnetV2/Repeat/block35_10/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       1280 bytes ( 0.0 MB)  320
+Tensor  82 InceptionResnetV2/InceptionResnetV2/Repeat/block35_10/Relu kTfLiteFloat32  kTfLiteArenaRw    1568000 bytes ( 1.5 MB)  1 35 35 320
+Tensor  83 InceptionResnetV2/InceptionResnetV2/Repeat/block35_10/concat kTfLiteFloat32  kTfLiteArenaRw     627200 bytes ( 0.6 MB)  1 35 35 128
+Tensor  84 InceptionResnetV2/InceptionResnetV2/Repeat/block35_10/mul kTfLiteFloat32  kTfLiteArenaRw    1568000 bytes ( 1.5 MB)  1 35 35 320
+Tensor  85 InceptionResnetV2/InceptionResnetV2/Repeat/block35_2/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor  86 InceptionResnetV2/InceptionResnetV2/Repeat/block35_2/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor  87 InceptionResnetV2/InceptionResnetV2/Repeat/block35_2/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor  88 InceptionResnetV2/InceptionResnetV2/Repeat/block35_2/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor  89 InceptionResnetV2/InceptionResnetV2/Repeat/block35_2/Branch_1/Conv2d_0b_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor  90 InceptionResnetV2/InceptionResnetV2/Repeat/block35_2/Branch_1/Conv2d_0b_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor  91 InceptionResnetV2/InceptionResnetV2/Repeat/block35_2/Branch_2/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor  92 InceptionResnetV2/InceptionResnetV2/Repeat/block35_2/Branch_2/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor  93 InceptionResnetV2/InceptionResnetV2/Repeat/block35_2/Branch_2/Conv2d_0b_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        192 bytes ( 0.0 MB)  48
+Tensor  94 InceptionResnetV2/InceptionResnetV2/Repeat/block35_2/Branch_2/Conv2d_0b_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     235200 bytes ( 0.2 MB)  1 35 35 48
+Tensor  95 InceptionResnetV2/InceptionResnetV2/Repeat/block35_2/Branch_2/Conv2d_0c_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        256 bytes ( 0.0 MB)  64
+Tensor  96 InceptionResnetV2/InceptionResnetV2/Repeat/block35_2/Branch_2/Conv2d_0c_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     313600 bytes ( 0.3 MB)  1 35 35 64
+Tensor  97 InceptionResnetV2/InceptionResnetV2/Repeat/block35_2/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       1280 bytes ( 0.0 MB)  320
+Tensor  98 InceptionResnetV2/InceptionResnetV2/Repeat/block35_2/Relu kTfLiteFloat32  kTfLiteArenaRw    1568000 bytes ( 1.5 MB)  1 35 35 320
+Tensor  99 InceptionResnetV2/InceptionResnetV2/Repeat/block35_2/concat kTfLiteFloat32  kTfLiteArenaRw     627200 bytes ( 0.6 MB)  1 35 35 128
+Tensor 100 InceptionResnetV2/InceptionResnetV2/Repeat/block35_2/mul kTfLiteFloat32  kTfLiteArenaRw    1568000 bytes ( 1.5 MB)  1 35 35 320
+Tensor 101 InceptionResnetV2/InceptionResnetV2/Repeat/block35_3/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 102 InceptionResnetV2/InceptionResnetV2/Repeat/block35_3/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 103 InceptionResnetV2/InceptionResnetV2/Repeat/block35_3/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 104 InceptionResnetV2/InceptionResnetV2/Repeat/block35_3/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 105 InceptionResnetV2/InceptionResnetV2/Repeat/block35_3/Branch_1/Conv2d_0b_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 106 InceptionResnetV2/InceptionResnetV2/Repeat/block35_3/Branch_1/Conv2d_0b_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 107 InceptionResnetV2/InceptionResnetV2/Repeat/block35_3/Branch_2/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 108 InceptionResnetV2/InceptionResnetV2/Repeat/block35_3/Branch_2/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 109 InceptionResnetV2/InceptionResnetV2/Repeat/block35_3/Branch_2/Conv2d_0b_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        192 bytes ( 0.0 MB)  48
+Tensor 110 InceptionResnetV2/InceptionResnetV2/Repeat/block35_3/Branch_2/Conv2d_0b_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     235200 bytes ( 0.2 MB)  1 35 35 48
+Tensor 111 InceptionResnetV2/InceptionResnetV2/Repeat/block35_3/Branch_2/Conv2d_0c_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        256 bytes ( 0.0 MB)  64
+Tensor 112 InceptionResnetV2/InceptionResnetV2/Repeat/block35_3/Branch_2/Conv2d_0c_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     313600 bytes ( 0.3 MB)  1 35 35 64
+Tensor 113 InceptionResnetV2/InceptionResnetV2/Repeat/block35_3/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       1280 bytes ( 0.0 MB)  320
+Tensor 114 InceptionResnetV2/InceptionResnetV2/Repeat/block35_3/Relu kTfLiteFloat32  kTfLiteArenaRw    1568000 bytes ( 1.5 MB)  1 35 35 320
+Tensor 115 InceptionResnetV2/InceptionResnetV2/Repeat/block35_3/concat kTfLiteFloat32  kTfLiteArenaRw     627200 bytes ( 0.6 MB)  1 35 35 128
+Tensor 116 InceptionResnetV2/InceptionResnetV2/Repeat/block35_3/mul kTfLiteFloat32  kTfLiteArenaRw    1568000 bytes ( 1.5 MB)  1 35 35 320
+Tensor 117 InceptionResnetV2/InceptionResnetV2/Repeat/block35_4/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 118 InceptionResnetV2/InceptionResnetV2/Repeat/block35_4/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 119 InceptionResnetV2/InceptionResnetV2/Repeat/block35_4/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 120 InceptionResnetV2/InceptionResnetV2/Repeat/block35_4/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 121 InceptionResnetV2/InceptionResnetV2/Repeat/block35_4/Branch_1/Conv2d_0b_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 122 InceptionResnetV2/InceptionResnetV2/Repeat/block35_4/Branch_1/Conv2d_0b_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 123 InceptionResnetV2/InceptionResnetV2/Repeat/block35_4/Branch_2/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 124 InceptionResnetV2/InceptionResnetV2/Repeat/block35_4/Branch_2/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 125 InceptionResnetV2/InceptionResnetV2/Repeat/block35_4/Branch_2/Conv2d_0b_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        192 bytes ( 0.0 MB)  48
+Tensor 126 InceptionResnetV2/InceptionResnetV2/Repeat/block35_4/Branch_2/Conv2d_0b_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     235200 bytes ( 0.2 MB)  1 35 35 48
+Tensor 127 InceptionResnetV2/InceptionResnetV2/Repeat/block35_4/Branch_2/Conv2d_0c_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        256 bytes ( 0.0 MB)  64
+Tensor 128 InceptionResnetV2/InceptionResnetV2/Repeat/block35_4/Branch_2/Conv2d_0c_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     313600 bytes ( 0.3 MB)  1 35 35 64
+Tensor 129 InceptionResnetV2/InceptionResnetV2/Repeat/block35_4/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       1280 bytes ( 0.0 MB)  320
+Tensor 130 InceptionResnetV2/InceptionResnetV2/Repeat/block35_4/Relu kTfLiteFloat32  kTfLiteArenaRw    1568000 bytes ( 1.5 MB)  1 35 35 320
+Tensor 131 InceptionResnetV2/InceptionResnetV2/Repeat/block35_4/concat kTfLiteFloat32  kTfLiteArenaRw     627200 bytes ( 0.6 MB)  1 35 35 128
+Tensor 132 InceptionResnetV2/InceptionResnetV2/Repeat/block35_4/mul kTfLiteFloat32  kTfLiteArenaRw    1568000 bytes ( 1.5 MB)  1 35 35 320
+Tensor 133 InceptionResnetV2/InceptionResnetV2/Repeat/block35_5/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 134 InceptionResnetV2/InceptionResnetV2/Repeat/block35_5/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 135 InceptionResnetV2/InceptionResnetV2/Repeat/block35_5/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 136 InceptionResnetV2/InceptionResnetV2/Repeat/block35_5/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 137 InceptionResnetV2/InceptionResnetV2/Repeat/block35_5/Branch_1/Conv2d_0b_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 138 InceptionResnetV2/InceptionResnetV2/Repeat/block35_5/Branch_1/Conv2d_0b_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 139 InceptionResnetV2/InceptionResnetV2/Repeat/block35_5/Branch_2/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 140 InceptionResnetV2/InceptionResnetV2/Repeat/block35_5/Branch_2/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 141 InceptionResnetV2/InceptionResnetV2/Repeat/block35_5/Branch_2/Conv2d_0b_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        192 bytes ( 0.0 MB)  48
+Tensor 142 InceptionResnetV2/InceptionResnetV2/Repeat/block35_5/Branch_2/Conv2d_0b_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     235200 bytes ( 0.2 MB)  1 35 35 48
+Tensor 143 InceptionResnetV2/InceptionResnetV2/Repeat/block35_5/Branch_2/Conv2d_0c_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        256 bytes ( 0.0 MB)  64
+Tensor 144 InceptionResnetV2/InceptionResnetV2/Repeat/block35_5/Branch_2/Conv2d_0c_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     313600 bytes ( 0.3 MB)  1 35 35 64
+Tensor 145 InceptionResnetV2/InceptionResnetV2/Repeat/block35_5/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       1280 bytes ( 0.0 MB)  320
+Tensor 146 InceptionResnetV2/InceptionResnetV2/Repeat/block35_5/Relu kTfLiteFloat32  kTfLiteArenaRw    1568000 bytes ( 1.5 MB)  1 35 35 320
+Tensor 147 InceptionResnetV2/InceptionResnetV2/Repeat/block35_5/concat kTfLiteFloat32  kTfLiteArenaRw     627200 bytes ( 0.6 MB)  1 35 35 128
+Tensor 148 InceptionResnetV2/InceptionResnetV2/Repeat/block35_5/mul kTfLiteFloat32  kTfLiteArenaRw    1568000 bytes ( 1.5 MB)  1 35 35 320
+Tensor 149 InceptionResnetV2/InceptionResnetV2/Repeat/block35_6/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 150 InceptionResnetV2/InceptionResnetV2/Repeat/block35_6/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 151 InceptionResnetV2/InceptionResnetV2/Repeat/block35_6/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 152 InceptionResnetV2/InceptionResnetV2/Repeat/block35_6/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 153 InceptionResnetV2/InceptionResnetV2/Repeat/block35_6/Branch_1/Conv2d_0b_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 154 InceptionResnetV2/InceptionResnetV2/Repeat/block35_6/Branch_1/Conv2d_0b_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 155 InceptionResnetV2/InceptionResnetV2/Repeat/block35_6/Branch_2/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 156 InceptionResnetV2/InceptionResnetV2/Repeat/block35_6/Branch_2/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 157 InceptionResnetV2/InceptionResnetV2/Repeat/block35_6/Branch_2/Conv2d_0b_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        192 bytes ( 0.0 MB)  48
+Tensor 158 InceptionResnetV2/InceptionResnetV2/Repeat/block35_6/Branch_2/Conv2d_0b_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     235200 bytes ( 0.2 MB)  1 35 35 48
+Tensor 159 InceptionResnetV2/InceptionResnetV2/Repeat/block35_6/Branch_2/Conv2d_0c_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        256 bytes ( 0.0 MB)  64
+Tensor 160 InceptionResnetV2/InceptionResnetV2/Repeat/block35_6/Branch_2/Conv2d_0c_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     313600 bytes ( 0.3 MB)  1 35 35 64
+Tensor 161 InceptionResnetV2/InceptionResnetV2/Repeat/block35_6/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       1280 bytes ( 0.0 MB)  320
+Tensor 162 InceptionResnetV2/InceptionResnetV2/Repeat/block35_6/Relu kTfLiteFloat32  kTfLiteArenaRw    1568000 bytes ( 1.5 MB)  1 35 35 320
+Tensor 163 InceptionResnetV2/InceptionResnetV2/Repeat/block35_6/concat kTfLiteFloat32  kTfLiteArenaRw     627200 bytes ( 0.6 MB)  1 35 35 128
+Tensor 164 InceptionResnetV2/InceptionResnetV2/Repeat/block35_6/mul kTfLiteFloat32  kTfLiteArenaRw    1568000 bytes ( 1.5 MB)  1 35 35 320
+Tensor 165 InceptionResnetV2/InceptionResnetV2/Repeat/block35_7/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 166 InceptionResnetV2/InceptionResnetV2/Repeat/block35_7/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 167 InceptionResnetV2/InceptionResnetV2/Repeat/block35_7/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 168 InceptionResnetV2/InceptionResnetV2/Repeat/block35_7/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 169 InceptionResnetV2/InceptionResnetV2/Repeat/block35_7/Branch_1/Conv2d_0b_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 170 InceptionResnetV2/InceptionResnetV2/Repeat/block35_7/Branch_1/Conv2d_0b_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 171 InceptionResnetV2/InceptionResnetV2/Repeat/block35_7/Branch_2/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 172 InceptionResnetV2/InceptionResnetV2/Repeat/block35_7/Branch_2/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 173 InceptionResnetV2/InceptionResnetV2/Repeat/block35_7/Branch_2/Conv2d_0b_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        192 bytes ( 0.0 MB)  48
+Tensor 174 InceptionResnetV2/InceptionResnetV2/Repeat/block35_7/Branch_2/Conv2d_0b_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     235200 bytes ( 0.2 MB)  1 35 35 48
+Tensor 175 InceptionResnetV2/InceptionResnetV2/Repeat/block35_7/Branch_2/Conv2d_0c_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        256 bytes ( 0.0 MB)  64
+Tensor 176 InceptionResnetV2/InceptionResnetV2/Repeat/block35_7/Branch_2/Conv2d_0c_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     313600 bytes ( 0.3 MB)  1 35 35 64
+Tensor 177 InceptionResnetV2/InceptionResnetV2/Repeat/block35_7/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       1280 bytes ( 0.0 MB)  320
+Tensor 178 InceptionResnetV2/InceptionResnetV2/Repeat/block35_7/Relu kTfLiteFloat32  kTfLiteArenaRw    1568000 bytes ( 1.5 MB)  1 35 35 320
+Tensor 179 InceptionResnetV2/InceptionResnetV2/Repeat/block35_7/concat kTfLiteFloat32  kTfLiteArenaRw     627200 bytes ( 0.6 MB)  1 35 35 128
+Tensor 180 InceptionResnetV2/InceptionResnetV2/Repeat/block35_7/mul kTfLiteFloat32  kTfLiteArenaRw    1568000 bytes ( 1.5 MB)  1 35 35 320
+Tensor 181 InceptionResnetV2/InceptionResnetV2/Repeat/block35_8/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 182 InceptionResnetV2/InceptionResnetV2/Repeat/block35_8/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 183 InceptionResnetV2/InceptionResnetV2/Repeat/block35_8/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 184 InceptionResnetV2/InceptionResnetV2/Repeat/block35_8/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 185 InceptionResnetV2/InceptionResnetV2/Repeat/block35_8/Branch_1/Conv2d_0b_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 186 InceptionResnetV2/InceptionResnetV2/Repeat/block35_8/Branch_1/Conv2d_0b_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 187 InceptionResnetV2/InceptionResnetV2/Repeat/block35_8/Branch_2/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 188 InceptionResnetV2/InceptionResnetV2/Repeat/block35_8/Branch_2/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 189 InceptionResnetV2/InceptionResnetV2/Repeat/block35_8/Branch_2/Conv2d_0b_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        192 bytes ( 0.0 MB)  48
+Tensor 190 InceptionResnetV2/InceptionResnetV2/Repeat/block35_8/Branch_2/Conv2d_0b_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     235200 bytes ( 0.2 MB)  1 35 35 48
+Tensor 191 InceptionResnetV2/InceptionResnetV2/Repeat/block35_8/Branch_2/Conv2d_0c_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        256 bytes ( 0.0 MB)  64
+Tensor 192 InceptionResnetV2/InceptionResnetV2/Repeat/block35_8/Branch_2/Conv2d_0c_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     313600 bytes ( 0.3 MB)  1 35 35 64
+Tensor 193 InceptionResnetV2/InceptionResnetV2/Repeat/block35_8/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       1280 bytes ( 0.0 MB)  320
+Tensor 194 InceptionResnetV2/InceptionResnetV2/Repeat/block35_8/Relu kTfLiteFloat32  kTfLiteArenaRw    1568000 bytes ( 1.5 MB)  1 35 35 320
+Tensor 195 InceptionResnetV2/InceptionResnetV2/Repeat/block35_8/concat kTfLiteFloat32  kTfLiteArenaRw     627200 bytes ( 0.6 MB)  1 35 35 128
+Tensor 196 InceptionResnetV2/InceptionResnetV2/Repeat/block35_8/mul kTfLiteFloat32  kTfLiteArenaRw    1568000 bytes ( 1.5 MB)  1 35 35 320
+Tensor 197 InceptionResnetV2/InceptionResnetV2/Repeat/block35_9/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 198 InceptionResnetV2/InceptionResnetV2/Repeat/block35_9/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 199 InceptionResnetV2/InceptionResnetV2/Repeat/block35_9/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 200 InceptionResnetV2/InceptionResnetV2/Repeat/block35_9/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 201 InceptionResnetV2/InceptionResnetV2/Repeat/block35_9/Branch_1/Conv2d_0b_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 202 InceptionResnetV2/InceptionResnetV2/Repeat/block35_9/Branch_1/Conv2d_0b_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 203 InceptionResnetV2/InceptionResnetV2/Repeat/block35_9/Branch_2/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        128 bytes ( 0.0 MB)  32
+Tensor 204 InceptionResnetV2/InceptionResnetV2/Repeat/block35_9/Branch_2/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     156800 bytes ( 0.1 MB)  1 35 35 32
+Tensor 205 InceptionResnetV2/InceptionResnetV2/Repeat/block35_9/Branch_2/Conv2d_0b_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        192 bytes ( 0.0 MB)  48
+Tensor 206 InceptionResnetV2/InceptionResnetV2/Repeat/block35_9/Branch_2/Conv2d_0b_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     235200 bytes ( 0.2 MB)  1 35 35 48
+Tensor 207 InceptionResnetV2/InceptionResnetV2/Repeat/block35_9/Branch_2/Conv2d_0c_3x3/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        256 bytes ( 0.0 MB)  64
+Tensor 208 InceptionResnetV2/InceptionResnetV2/Repeat/block35_9/Branch_2/Conv2d_0c_3x3/Relu kTfLiteFloat32  kTfLiteArenaRw     313600 bytes ( 0.3 MB)  1 35 35 64
+Tensor 209 InceptionResnetV2/InceptionResnetV2/Repeat/block35_9/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       1280 bytes ( 0.0 MB)  320
+Tensor 210 InceptionResnetV2/InceptionResnetV2/Repeat/block35_9/Relu kTfLiteFloat32  kTfLiteArenaRw    1568000 bytes ( 1.5 MB)  1 35 35 320
+Tensor 211 InceptionResnetV2/InceptionResnetV2/Repeat/block35_9/concat kTfLiteFloat32  kTfLiteArenaRw     627200 bytes ( 0.6 MB)  1 35 35 128
+Tensor 212 InceptionResnetV2/InceptionResnetV2/Repeat/block35_9/mul kTfLiteFloat32  kTfLiteArenaRw    1568000 bytes ( 1.5 MB)  1 35 35 320
+Tensor 213 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_1/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 214 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_1/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 215 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_1/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        512 bytes ( 0.0 MB)  128
+Tensor 216 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_1/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     147968 bytes ( 0.1 MB)  1 17 17 128
+Tensor 217 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_1/Branch_1/Conv2d_0b_1x7/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        640 bytes ( 0.0 MB)  160
+Tensor 218 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_1/Branch_1/Conv2d_0b_1x7/Relu kTfLiteFloat32  kTfLiteArenaRw     184960 bytes ( 0.2 MB)  1 17 17 160
+Tensor 219 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_1/Branch_1/Conv2d_0c_7x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 220 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_1/Branch_1/Conv2d_0c_7x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 221 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_1/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       4352 bytes ( 0.0 MB)  1088
+Tensor 222 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_1/Relu kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 223 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_1/concat kTfLiteFloat32  kTfLiteArenaRw     443904 bytes ( 0.4 MB)  1 17 17 384
+Tensor 224 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_1/mul kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 225 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_10/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 226 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_10/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 227 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_10/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        512 bytes ( 0.0 MB)  128
+Tensor 228 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_10/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     147968 bytes ( 0.1 MB)  1 17 17 128
+Tensor 229 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_10/Branch_1/Conv2d_0b_1x7/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        640 bytes ( 0.0 MB)  160
+Tensor 230 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_10/Branch_1/Conv2d_0b_1x7/Relu kTfLiteFloat32  kTfLiteArenaRw     184960 bytes ( 0.2 MB)  1 17 17 160
+Tensor 231 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_10/Branch_1/Conv2d_0c_7x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 232 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_10/Branch_1/Conv2d_0c_7x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 233 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_10/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       4352 bytes ( 0.0 MB)  1088
+Tensor 234 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_10/Relu kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 235 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_10/concat kTfLiteFloat32  kTfLiteArenaRw     443904 bytes ( 0.4 MB)  1 17 17 384
+Tensor 236 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_10/mul kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 237 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_11/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 238 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_11/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 239 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_11/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        512 bytes ( 0.0 MB)  128
+Tensor 240 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_11/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     147968 bytes ( 0.1 MB)  1 17 17 128
+Tensor 241 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_11/Branch_1/Conv2d_0b_1x7/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        640 bytes ( 0.0 MB)  160
+Tensor 242 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_11/Branch_1/Conv2d_0b_1x7/Relu kTfLiteFloat32  kTfLiteArenaRw     184960 bytes ( 0.2 MB)  1 17 17 160
+Tensor 243 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_11/Branch_1/Conv2d_0c_7x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 244 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_11/Branch_1/Conv2d_0c_7x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 245 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_11/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       4352 bytes ( 0.0 MB)  1088
+Tensor 246 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_11/Relu kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 247 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_11/concat kTfLiteFloat32  kTfLiteArenaRw     443904 bytes ( 0.4 MB)  1 17 17 384
+Tensor 248 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_11/mul kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 249 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_12/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 250 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_12/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 251 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_12/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        512 bytes ( 0.0 MB)  128
+Tensor 252 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_12/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     147968 bytes ( 0.1 MB)  1 17 17 128
+Tensor 253 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_12/Branch_1/Conv2d_0b_1x7/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        640 bytes ( 0.0 MB)  160
+Tensor 254 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_12/Branch_1/Conv2d_0b_1x7/Relu kTfLiteFloat32  kTfLiteArenaRw     184960 bytes ( 0.2 MB)  1 17 17 160
+Tensor 255 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_12/Branch_1/Conv2d_0c_7x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 256 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_12/Branch_1/Conv2d_0c_7x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 257 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_12/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       4352 bytes ( 0.0 MB)  1088
+Tensor 258 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_12/Relu kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 259 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_12/concat kTfLiteFloat32  kTfLiteArenaRw     443904 bytes ( 0.4 MB)  1 17 17 384
+Tensor 260 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_12/mul kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 261 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_13/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 262 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_13/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 263 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_13/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        512 bytes ( 0.0 MB)  128
+Tensor 264 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_13/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     147968 bytes ( 0.1 MB)  1 17 17 128
+Tensor 265 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_13/Branch_1/Conv2d_0b_1x7/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        640 bytes ( 0.0 MB)  160
+Tensor 266 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_13/Branch_1/Conv2d_0b_1x7/Relu kTfLiteFloat32  kTfLiteArenaRw     184960 bytes ( 0.2 MB)  1 17 17 160
+Tensor 267 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_13/Branch_1/Conv2d_0c_7x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 268 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_13/Branch_1/Conv2d_0c_7x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 269 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_13/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       4352 bytes ( 0.0 MB)  1088
+Tensor 270 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_13/Relu kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 271 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_13/concat kTfLiteFloat32  kTfLiteArenaRw     443904 bytes ( 0.4 MB)  1 17 17 384
+Tensor 272 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_13/mul kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 273 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_14/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 274 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_14/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 275 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_14/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        512 bytes ( 0.0 MB)  128
+Tensor 276 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_14/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     147968 bytes ( 0.1 MB)  1 17 17 128
+Tensor 277 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_14/Branch_1/Conv2d_0b_1x7/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        640 bytes ( 0.0 MB)  160
+Tensor 278 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_14/Branch_1/Conv2d_0b_1x7/Relu kTfLiteFloat32  kTfLiteArenaRw     184960 bytes ( 0.2 MB)  1 17 17 160
+Tensor 279 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_14/Branch_1/Conv2d_0c_7x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 280 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_14/Branch_1/Conv2d_0c_7x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 281 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_14/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       4352 bytes ( 0.0 MB)  1088
+Tensor 282 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_14/Relu kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 283 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_14/concat kTfLiteFloat32  kTfLiteArenaRw     443904 bytes ( 0.4 MB)  1 17 17 384
+Tensor 284 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_14/mul kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 285 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_15/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 286 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_15/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 287 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_15/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        512 bytes ( 0.0 MB)  128
+Tensor 288 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_15/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     147968 bytes ( 0.1 MB)  1 17 17 128
+Tensor 289 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_15/Branch_1/Conv2d_0b_1x7/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        640 bytes ( 0.0 MB)  160
+Tensor 290 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_15/Branch_1/Conv2d_0b_1x7/Relu kTfLiteFloat32  kTfLiteArenaRw     184960 bytes ( 0.2 MB)  1 17 17 160
+Tensor 291 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_15/Branch_1/Conv2d_0c_7x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 292 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_15/Branch_1/Conv2d_0c_7x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 293 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_15/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       4352 bytes ( 0.0 MB)  1088
+Tensor 294 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_15/Relu kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 295 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_15/concat kTfLiteFloat32  kTfLiteArenaRw     443904 bytes ( 0.4 MB)  1 17 17 384
+Tensor 296 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_15/mul kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 297 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_16/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 298 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_16/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 299 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_16/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        512 bytes ( 0.0 MB)  128
+Tensor 300 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_16/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     147968 bytes ( 0.1 MB)  1 17 17 128
+Tensor 301 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_16/Branch_1/Conv2d_0b_1x7/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        640 bytes ( 0.0 MB)  160
+Tensor 302 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_16/Branch_1/Conv2d_0b_1x7/Relu kTfLiteFloat32  kTfLiteArenaRw     184960 bytes ( 0.2 MB)  1 17 17 160
+Tensor 303 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_16/Branch_1/Conv2d_0c_7x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 304 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_16/Branch_1/Conv2d_0c_7x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 305 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_16/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       4352 bytes ( 0.0 MB)  1088
+Tensor 306 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_16/Relu kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 307 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_16/concat kTfLiteFloat32  kTfLiteArenaRw     443904 bytes ( 0.4 MB)  1 17 17 384
+Tensor 308 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_16/mul kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 309 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_17/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 310 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_17/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 311 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_17/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        512 bytes ( 0.0 MB)  128
+Tensor 312 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_17/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     147968 bytes ( 0.1 MB)  1 17 17 128
+Tensor 313 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_17/Branch_1/Conv2d_0b_1x7/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        640 bytes ( 0.0 MB)  160
+Tensor 314 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_17/Branch_1/Conv2d_0b_1x7/Relu kTfLiteFloat32  kTfLiteArenaRw     184960 bytes ( 0.2 MB)  1 17 17 160
+Tensor 315 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_17/Branch_1/Conv2d_0c_7x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 316 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_17/Branch_1/Conv2d_0c_7x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 317 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_17/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       4352 bytes ( 0.0 MB)  1088
+Tensor 318 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_17/Relu kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 319 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_17/concat kTfLiteFloat32  kTfLiteArenaRw     443904 bytes ( 0.4 MB)  1 17 17 384
+Tensor 320 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_17/mul kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 321 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_18/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 322 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_18/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 323 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_18/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        512 bytes ( 0.0 MB)  128
+Tensor 324 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_18/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     147968 bytes ( 0.1 MB)  1 17 17 128
+Tensor 325 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_18/Branch_1/Conv2d_0b_1x7/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        640 bytes ( 0.0 MB)  160
+Tensor 326 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_18/Branch_1/Conv2d_0b_1x7/Relu kTfLiteFloat32  kTfLiteArenaRw     184960 bytes ( 0.2 MB)  1 17 17 160
+Tensor 327 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_18/Branch_1/Conv2d_0c_7x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 328 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_18/Branch_1/Conv2d_0c_7x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 329 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_18/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       4352 bytes ( 0.0 MB)  1088
+Tensor 330 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_18/Relu kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 331 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_18/concat kTfLiteFloat32  kTfLiteArenaRw     443904 bytes ( 0.4 MB)  1 17 17 384
+Tensor 332 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_18/mul kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 333 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_19/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 334 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_19/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 335 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_19/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        512 bytes ( 0.0 MB)  128
+Tensor 336 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_19/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     147968 bytes ( 0.1 MB)  1 17 17 128
+Tensor 337 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_19/Branch_1/Conv2d_0b_1x7/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        640 bytes ( 0.0 MB)  160
+Tensor 338 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_19/Branch_1/Conv2d_0b_1x7/Relu kTfLiteFloat32  kTfLiteArenaRw     184960 bytes ( 0.2 MB)  1 17 17 160
+Tensor 339 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_19/Branch_1/Conv2d_0c_7x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 340 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_19/Branch_1/Conv2d_0c_7x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 341 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_19/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       4352 bytes ( 0.0 MB)  1088
+Tensor 342 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_19/Relu kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 343 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_19/concat kTfLiteFloat32  kTfLiteArenaRw     443904 bytes ( 0.4 MB)  1 17 17 384
+Tensor 344 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_19/mul kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 345 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_2/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 346 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_2/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 347 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_2/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        512 bytes ( 0.0 MB)  128
+Tensor 348 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_2/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     147968 bytes ( 0.1 MB)  1 17 17 128
+Tensor 349 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_2/Branch_1/Conv2d_0b_1x7/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        640 bytes ( 0.0 MB)  160
+Tensor 350 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_2/Branch_1/Conv2d_0b_1x7/Relu kTfLiteFloat32  kTfLiteArenaRw     184960 bytes ( 0.2 MB)  1 17 17 160
+Tensor 351 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_2/Branch_1/Conv2d_0c_7x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 352 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_2/Branch_1/Conv2d_0c_7x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 353 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_2/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       4352 bytes ( 0.0 MB)  1088
+Tensor 354 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_2/Relu kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 355 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_2/concat kTfLiteFloat32  kTfLiteArenaRw     443904 bytes ( 0.4 MB)  1 17 17 384
+Tensor 356 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_2/mul kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 357 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_20/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 358 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_20/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 359 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_20/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        512 bytes ( 0.0 MB)  128
+Tensor 360 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_20/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     147968 bytes ( 0.1 MB)  1 17 17 128
+Tensor 361 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_20/Branch_1/Conv2d_0b_1x7/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        640 bytes ( 0.0 MB)  160
+Tensor 362 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_20/Branch_1/Conv2d_0b_1x7/Relu kTfLiteFloat32  kTfLiteArenaRw     184960 bytes ( 0.2 MB)  1 17 17 160
+Tensor 363 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_20/Branch_1/Conv2d_0c_7x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 364 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_20/Branch_1/Conv2d_0c_7x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 365 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_20/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       4352 bytes ( 0.0 MB)  1088
+Tensor 366 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_20/Relu kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 367 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_20/concat kTfLiteFloat32  kTfLiteArenaRw     443904 bytes ( 0.4 MB)  1 17 17 384
+Tensor 368 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_20/mul kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 369 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_3/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 370 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_3/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 371 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_3/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        512 bytes ( 0.0 MB)  128
+Tensor 372 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_3/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     147968 bytes ( 0.1 MB)  1 17 17 128
+Tensor 373 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_3/Branch_1/Conv2d_0b_1x7/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        640 bytes ( 0.0 MB)  160
+Tensor 374 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_3/Branch_1/Conv2d_0b_1x7/Relu kTfLiteFloat32  kTfLiteArenaRw     184960 bytes ( 0.2 MB)  1 17 17 160
+Tensor 375 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_3/Branch_1/Conv2d_0c_7x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 376 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_3/Branch_1/Conv2d_0c_7x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 377 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_3/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       4352 bytes ( 0.0 MB)  1088
+Tensor 378 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_3/Relu kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 379 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_3/concat kTfLiteFloat32  kTfLiteArenaRw     443904 bytes ( 0.4 MB)  1 17 17 384
+Tensor 380 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_3/mul kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 381 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_4/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 382 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_4/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 383 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_4/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        512 bytes ( 0.0 MB)  128
+Tensor 384 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_4/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     147968 bytes ( 0.1 MB)  1 17 17 128
+Tensor 385 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_4/Branch_1/Conv2d_0b_1x7/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        640 bytes ( 0.0 MB)  160
+Tensor 386 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_4/Branch_1/Conv2d_0b_1x7/Relu kTfLiteFloat32  kTfLiteArenaRw     184960 bytes ( 0.2 MB)  1 17 17 160
+Tensor 387 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_4/Branch_1/Conv2d_0c_7x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 388 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_4/Branch_1/Conv2d_0c_7x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 389 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_4/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       4352 bytes ( 0.0 MB)  1088
+Tensor 390 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_4/Relu kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 391 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_4/concat kTfLiteFloat32  kTfLiteArenaRw     443904 bytes ( 0.4 MB)  1 17 17 384
+Tensor 392 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_4/mul kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 393 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_5/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 394 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_5/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 395 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_5/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        512 bytes ( 0.0 MB)  128
+Tensor 396 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_5/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     147968 bytes ( 0.1 MB)  1 17 17 128
+Tensor 397 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_5/Branch_1/Conv2d_0b_1x7/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        640 bytes ( 0.0 MB)  160
+Tensor 398 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_5/Branch_1/Conv2d_0b_1x7/Relu kTfLiteFloat32  kTfLiteArenaRw     184960 bytes ( 0.2 MB)  1 17 17 160
+Tensor 399 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_5/Branch_1/Conv2d_0c_7x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 400 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_5/Branch_1/Conv2d_0c_7x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 401 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_5/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       4352 bytes ( 0.0 MB)  1088
+Tensor 402 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_5/Relu kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 403 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_5/concat kTfLiteFloat32  kTfLiteArenaRw     443904 bytes ( 0.4 MB)  1 17 17 384
+Tensor 404 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_5/mul kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 405 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_6/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 406 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_6/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 407 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_6/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        512 bytes ( 0.0 MB)  128
+Tensor 408 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_6/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     147968 bytes ( 0.1 MB)  1 17 17 128
+Tensor 409 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_6/Branch_1/Conv2d_0b_1x7/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        640 bytes ( 0.0 MB)  160
+Tensor 410 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_6/Branch_1/Conv2d_0b_1x7/Relu kTfLiteFloat32  kTfLiteArenaRw     184960 bytes ( 0.2 MB)  1 17 17 160
+Tensor 411 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_6/Branch_1/Conv2d_0c_7x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 412 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_6/Branch_1/Conv2d_0c_7x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 413 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_6/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       4352 bytes ( 0.0 MB)  1088
+Tensor 414 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_6/Relu kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 415 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_6/concat kTfLiteFloat32  kTfLiteArenaRw     443904 bytes ( 0.4 MB)  1 17 17 384
+Tensor 416 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_6/mul kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 417 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_7/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 418 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_7/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 419 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_7/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        512 bytes ( 0.0 MB)  128
+Tensor 420 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_7/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     147968 bytes ( 0.1 MB)  1 17 17 128
+Tensor 421 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_7/Branch_1/Conv2d_0b_1x7/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        640 bytes ( 0.0 MB)  160
+Tensor 422 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_7/Branch_1/Conv2d_0b_1x7/Relu kTfLiteFloat32  kTfLiteArenaRw     184960 bytes ( 0.2 MB)  1 17 17 160
+Tensor 423 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_7/Branch_1/Conv2d_0c_7x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 424 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_7/Branch_1/Conv2d_0c_7x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 425 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_7/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       4352 bytes ( 0.0 MB)  1088
+Tensor 426 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_7/Relu kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 427 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_7/concat kTfLiteFloat32  kTfLiteArenaRw     443904 bytes ( 0.4 MB)  1 17 17 384
+Tensor 428 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_7/mul kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 429 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_8/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 430 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_8/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 431 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_8/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        512 bytes ( 0.0 MB)  128
+Tensor 432 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_8/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     147968 bytes ( 0.1 MB)  1 17 17 128
+Tensor 433 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_8/Branch_1/Conv2d_0b_1x7/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        640 bytes ( 0.0 MB)  160
+Tensor 434 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_8/Branch_1/Conv2d_0b_1x7/Relu kTfLiteFloat32  kTfLiteArenaRw     184960 bytes ( 0.2 MB)  1 17 17 160
+Tensor 435 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_8/Branch_1/Conv2d_0c_7x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 436 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_8/Branch_1/Conv2d_0c_7x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 437 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_8/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       4352 bytes ( 0.0 MB)  1088
+Tensor 438 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_8/Relu kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 439 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_8/concat kTfLiteFloat32  kTfLiteArenaRw     443904 bytes ( 0.4 MB)  1 17 17 384
+Tensor 440 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_8/mul kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 441 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_9/Branch_0/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 442 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_9/Branch_0/Conv2d_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 443 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_9/Branch_1/Conv2d_0a_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        512 bytes ( 0.0 MB)  128
+Tensor 444 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_9/Branch_1/Conv2d_0a_1x1/Relu kTfLiteFloat32  kTfLiteArenaRw     147968 bytes ( 0.1 MB)  1 17 17 128
+Tensor 445 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_9/Branch_1/Conv2d_0b_1x7/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        640 bytes ( 0.0 MB)  160
+Tensor 446 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_9/Branch_1/Conv2d_0b_1x7/Relu kTfLiteFloat32  kTfLiteArenaRw     184960 bytes ( 0.2 MB)  1 17 17 160
+Tensor 447 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_9/Branch_1/Conv2d_0c_7x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo        768 bytes ( 0.0 MB)  192
+Tensor 448 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_9/Branch_1/Conv2d_0c_7x1/Relu kTfLiteFloat32  kTfLiteArenaRw     221952 bytes ( 0.2 MB)  1 17 17 192
+Tensor 449 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_9/Conv2d_1x1/Conv2D_bias kTfLiteFloat32   kTfLiteMmapRo       4352 bytes ( 0.0 MB)  1088
+Tensor 450 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_9/Relu kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 451 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_9/concat kTfLiteFloat32  kTfLiteArenaRw     443904 bytes ( 0.4 MB)  1 17 17 384
+Tensor 452 InceptionResnetV2/InceptionResnetV2/Repeat_1/block17_9/mul kTfLiteFloat32  kTfLiteArenaRw    1257728 bytes ( 1.2 MB)  1 17 17 1088
+Tensor 453 InceptionResnetV2/Mixed_5b/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      73728 bytes ( 0.1 MB)  96 1 1 192
+Tensor 454 InceptionResnetV2/Mixed_5b/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      36864 bytes ( 0.0 MB)  48 1 1 192
+Tensor 455 InceptionResnetV2/Mixed_5b/Branch_1/Conv2d_0b_5x5/weights kTfLiteFloat32   kTfLiteMmapRo     307200 bytes ( 0.3 MB)  64 5 5 48
+Tensor 456 InceptionResnetV2/Mixed_5b/Branch_2/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      49152 bytes ( 0.0 MB)  64 1 1 192
+Tensor 457 InceptionResnetV2/Mixed_5b/Branch_2/Conv2d_0b_3x3/weights kTfLiteFloat32   kTfLiteMmapRo     221184 bytes ( 0.2 MB)  96 3 3 64
+Tensor 458 InceptionResnetV2/Mixed_5b/Branch_2/Conv2d_0c_3x3/weights kTfLiteFloat32   kTfLiteMmapRo     331776 bytes ( 0.3 MB)  96 3 3 96
+Tensor 459 InceptionResnetV2/Mixed_5b/Branch_3/Conv2d_0b_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      49152 bytes ( 0.0 MB)  64 1 1 192
+Tensor 460 InceptionResnetV2/Mixed_6a/Branch_0/Conv2d_1a_3x3/weights kTfLiteFloat32   kTfLiteMmapRo    4423680 bytes ( 4.2 MB)  384 3 3 320
+Tensor 461 InceptionResnetV2/Mixed_6a/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     327680 bytes ( 0.3 MB)  256 1 1 320
+Tensor 462 InceptionResnetV2/Mixed_6a/Branch_1/Conv2d_0b_3x3/weights kTfLiteFloat32   kTfLiteMmapRo    2359296 bytes ( 2.2 MB)  256 3 3 256
+Tensor 463 InceptionResnetV2/Mixed_6a/Branch_1/Conv2d_1a_3x3/weights kTfLiteFloat32   kTfLiteMmapRo    3538944 bytes ( 3.4 MB)  384 3 3 256
+Tensor 464 InceptionResnetV2/Repeat/block35_1/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 465 InceptionResnetV2/Repeat/block35_1/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 466 InceptionResnetV2/Repeat/block35_1/Branch_1/Conv2d_0b_3x3/weights kTfLiteFloat32   kTfLiteMmapRo      36864 bytes ( 0.0 MB)  32 3 3 32
+Tensor 467 InceptionResnetV2/Repeat/block35_1/Branch_2/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 468 InceptionResnetV2/Repeat/block35_1/Branch_2/Conv2d_0b_3x3/weights kTfLiteFloat32   kTfLiteMmapRo      55296 bytes ( 0.1 MB)  48 3 3 32
+Tensor 469 InceptionResnetV2/Repeat/block35_1/Branch_2/Conv2d_0c_3x3/weights kTfLiteFloat32   kTfLiteMmapRo     110592 bytes ( 0.1 MB)  64 3 3 48
+Tensor 470 InceptionResnetV2/Repeat/block35_1/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     163840 bytes ( 0.2 MB)  320 1 1 128
+Tensor 471 InceptionResnetV2/Repeat/block35_10/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 472 InceptionResnetV2/Repeat/block35_10/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 473 InceptionResnetV2/Repeat/block35_10/Branch_1/Conv2d_0b_3x3/weights kTfLiteFloat32   kTfLiteMmapRo      36864 bytes ( 0.0 MB)  32 3 3 32
+Tensor 474 InceptionResnetV2/Repeat/block35_10/Branch_2/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 475 InceptionResnetV2/Repeat/block35_10/Branch_2/Conv2d_0b_3x3/weights kTfLiteFloat32   kTfLiteMmapRo      55296 bytes ( 0.1 MB)  48 3 3 32
+Tensor 476 InceptionResnetV2/Repeat/block35_10/Branch_2/Conv2d_0c_3x3/weights kTfLiteFloat32   kTfLiteMmapRo     110592 bytes ( 0.1 MB)  64 3 3 48
+Tensor 477 InceptionResnetV2/Repeat/block35_10/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     163840 bytes ( 0.2 MB)  320 1 1 128
+Tensor 478 InceptionResnetV2/Repeat/block35_2/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 479 InceptionResnetV2/Repeat/block35_2/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 480 InceptionResnetV2/Repeat/block35_2/Branch_1/Conv2d_0b_3x3/weights kTfLiteFloat32   kTfLiteMmapRo      36864 bytes ( 0.0 MB)  32 3 3 32
+Tensor 481 InceptionResnetV2/Repeat/block35_2/Branch_2/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 482 InceptionResnetV2/Repeat/block35_2/Branch_2/Conv2d_0b_3x3/weights kTfLiteFloat32   kTfLiteMmapRo      55296 bytes ( 0.1 MB)  48 3 3 32
+Tensor 483 InceptionResnetV2/Repeat/block35_2/Branch_2/Conv2d_0c_3x3/weights kTfLiteFloat32   kTfLiteMmapRo     110592 bytes ( 0.1 MB)  64 3 3 48
+Tensor 484 InceptionResnetV2/Repeat/block35_2/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     163840 bytes ( 0.2 MB)  320 1 1 128
+Tensor 485 InceptionResnetV2/Repeat/block35_3/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 486 InceptionResnetV2/Repeat/block35_3/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 487 InceptionResnetV2/Repeat/block35_3/Branch_1/Conv2d_0b_3x3/weights kTfLiteFloat32   kTfLiteMmapRo      36864 bytes ( 0.0 MB)  32 3 3 32
+Tensor 488 InceptionResnetV2/Repeat/block35_3/Branch_2/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 489 InceptionResnetV2/Repeat/block35_3/Branch_2/Conv2d_0b_3x3/weights kTfLiteFloat32   kTfLiteMmapRo      55296 bytes ( 0.1 MB)  48 3 3 32
+Tensor 490 InceptionResnetV2/Repeat/block35_3/Branch_2/Conv2d_0c_3x3/weights kTfLiteFloat32   kTfLiteMmapRo     110592 bytes ( 0.1 MB)  64 3 3 48
+Tensor 491 InceptionResnetV2/Repeat/block35_3/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     163840 bytes ( 0.2 MB)  320 1 1 128
+Tensor 492 InceptionResnetV2/Repeat/block35_4/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 493 InceptionResnetV2/Repeat/block35_4/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 494 InceptionResnetV2/Repeat/block35_4/Branch_1/Conv2d_0b_3x3/weights kTfLiteFloat32   kTfLiteMmapRo      36864 bytes ( 0.0 MB)  32 3 3 32
+Tensor 495 InceptionResnetV2/Repeat/block35_4/Branch_2/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 496 InceptionResnetV2/Repeat/block35_4/Branch_2/Conv2d_0b_3x3/weights kTfLiteFloat32   kTfLiteMmapRo      55296 bytes ( 0.1 MB)  48 3 3 32
+Tensor 497 InceptionResnetV2/Repeat/block35_4/Branch_2/Conv2d_0c_3x3/weights kTfLiteFloat32   kTfLiteMmapRo     110592 bytes ( 0.1 MB)  64 3 3 48
+Tensor 498 InceptionResnetV2/Repeat/block35_4/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     163840 bytes ( 0.2 MB)  320 1 1 128
+Tensor 499 InceptionResnetV2/Repeat/block35_5/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 500 InceptionResnetV2/Repeat/block35_5/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 501 InceptionResnetV2/Repeat/block35_5/Branch_1/Conv2d_0b_3x3/weights kTfLiteFloat32   kTfLiteMmapRo      36864 bytes ( 0.0 MB)  32 3 3 32
+Tensor 502 InceptionResnetV2/Repeat/block35_5/Branch_2/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 503 InceptionResnetV2/Repeat/block35_5/Branch_2/Conv2d_0b_3x3/weights kTfLiteFloat32   kTfLiteMmapRo      55296 bytes ( 0.1 MB)  48 3 3 32
+Tensor 504 InceptionResnetV2/Repeat/block35_5/Branch_2/Conv2d_0c_3x3/weights kTfLiteFloat32   kTfLiteMmapRo     110592 bytes ( 0.1 MB)  64 3 3 48
+Tensor 505 InceptionResnetV2/Repeat/block35_5/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     163840 bytes ( 0.2 MB)  320 1 1 128
+Tensor 506 InceptionResnetV2/Repeat/block35_6/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 507 InceptionResnetV2/Repeat/block35_6/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 508 InceptionResnetV2/Repeat/block35_6/Branch_1/Conv2d_0b_3x3/weights kTfLiteFloat32   kTfLiteMmapRo      36864 bytes ( 0.0 MB)  32 3 3 32
+Tensor 509 InceptionResnetV2/Repeat/block35_6/Branch_2/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 510 InceptionResnetV2/Repeat/block35_6/Branch_2/Conv2d_0b_3x3/weights kTfLiteFloat32   kTfLiteMmapRo      55296 bytes ( 0.1 MB)  48 3 3 32
+Tensor 511 InceptionResnetV2/Repeat/block35_6/Branch_2/Conv2d_0c_3x3/weights kTfLiteFloat32   kTfLiteMmapRo     110592 bytes ( 0.1 MB)  64 3 3 48
+Tensor 512 InceptionResnetV2/Repeat/block35_6/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     163840 bytes ( 0.2 MB)  320 1 1 128
+Tensor 513 InceptionResnetV2/Repeat/block35_7/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 514 InceptionResnetV2/Repeat/block35_7/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 515 InceptionResnetV2/Repeat/block35_7/Branch_1/Conv2d_0b_3x3/weights kTfLiteFloat32   kTfLiteMmapRo      36864 bytes ( 0.0 MB)  32 3 3 32
+Tensor 516 InceptionResnetV2/Repeat/block35_7/Branch_2/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 517 InceptionResnetV2/Repeat/block35_7/Branch_2/Conv2d_0b_3x3/weights kTfLiteFloat32   kTfLiteMmapRo      55296 bytes ( 0.1 MB)  48 3 3 32
+Tensor 518 InceptionResnetV2/Repeat/block35_7/Branch_2/Conv2d_0c_3x3/weights kTfLiteFloat32   kTfLiteMmapRo     110592 bytes ( 0.1 MB)  64 3 3 48
+Tensor 519 InceptionResnetV2/Repeat/block35_7/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     163840 bytes ( 0.2 MB)  320 1 1 128
+Tensor 520 InceptionResnetV2/Repeat/block35_8/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 521 InceptionResnetV2/Repeat/block35_8/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 522 InceptionResnetV2/Repeat/block35_8/Branch_1/Conv2d_0b_3x3/weights kTfLiteFloat32   kTfLiteMmapRo      36864 bytes ( 0.0 MB)  32 3 3 32
+Tensor 523 InceptionResnetV2/Repeat/block35_8/Branch_2/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 524 InceptionResnetV2/Repeat/block35_8/Branch_2/Conv2d_0b_3x3/weights kTfLiteFloat32   kTfLiteMmapRo      55296 bytes ( 0.1 MB)  48 3 3 32
+Tensor 525 InceptionResnetV2/Repeat/block35_8/Branch_2/Conv2d_0c_3x3/weights kTfLiteFloat32   kTfLiteMmapRo     110592 bytes ( 0.1 MB)  64 3 3 48
+Tensor 526 InceptionResnetV2/Repeat/block35_8/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     163840 bytes ( 0.2 MB)  320 1 1 128
+Tensor 527 InceptionResnetV2/Repeat/block35_9/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 528 InceptionResnetV2/Repeat/block35_9/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 529 InceptionResnetV2/Repeat/block35_9/Branch_1/Conv2d_0b_3x3/weights kTfLiteFloat32   kTfLiteMmapRo      36864 bytes ( 0.0 MB)  32 3 3 32
+Tensor 530 InceptionResnetV2/Repeat/block35_9/Branch_2/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo      40960 bytes ( 0.0 MB)  32 1 1 320
+Tensor 531 InceptionResnetV2/Repeat/block35_9/Branch_2/Conv2d_0b_3x3/weights kTfLiteFloat32   kTfLiteMmapRo      55296 bytes ( 0.1 MB)  48 3 3 32
+Tensor 532 InceptionResnetV2/Repeat/block35_9/Branch_2/Conv2d_0c_3x3/weights kTfLiteFloat32   kTfLiteMmapRo     110592 bytes ( 0.1 MB)  64 3 3 48
+Tensor 533 InceptionResnetV2/Repeat/block35_9/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     163840 bytes ( 0.2 MB)  320 1 1 128
+Tensor 534 InceptionResnetV2/Repeat_1/block17_1/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     835584 bytes ( 0.8 MB)  192 1 1 1088
+Tensor 535 InceptionResnetV2/Repeat_1/block17_1/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     557056 bytes ( 0.5 MB)  128 1 1 1088
+Tensor 536 InceptionResnetV2/Repeat_1/block17_1/Branch_1/Conv2d_0b_1x7/weights kTfLiteFloat32   kTfLiteMmapRo     573440 bytes ( 0.5 MB)  160 1 7 128
+Tensor 537 InceptionResnetV2/Repeat_1/block17_1/Branch_1/Conv2d_0c_7x1/weights kTfLiteFloat32   kTfLiteMmapRo     860160 bytes ( 0.8 MB)  192 7 1 160
+Tensor 538 InceptionResnetV2/Repeat_1/block17_1/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo    1671168 bytes ( 1.6 MB)  1088 1 1 384
+Tensor 539 InceptionResnetV2/Repeat_1/block17_10/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     835584 bytes ( 0.8 MB)  192 1 1 1088
+Tensor 540 InceptionResnetV2/Repeat_1/block17_10/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     557056 bytes ( 0.5 MB)  128 1 1 1088
+Tensor 541 InceptionResnetV2/Repeat_1/block17_10/Branch_1/Conv2d_0b_1x7/weights kTfLiteFloat32   kTfLiteMmapRo     573440 bytes ( 0.5 MB)  160 1 7 128
+Tensor 542 InceptionResnetV2/Repeat_1/block17_10/Branch_1/Conv2d_0c_7x1/weights kTfLiteFloat32   kTfLiteMmapRo     860160 bytes ( 0.8 MB)  192 7 1 160
+Tensor 543 InceptionResnetV2/Repeat_1/block17_10/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo    1671168 bytes ( 1.6 MB)  1088 1 1 384
+Tensor 544 InceptionResnetV2/Repeat_1/block17_11/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     835584 bytes ( 0.8 MB)  192 1 1 1088
+Tensor 545 InceptionResnetV2/Repeat_1/block17_11/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     557056 bytes ( 0.5 MB)  128 1 1 1088
+Tensor 546 InceptionResnetV2/Repeat_1/block17_11/Branch_1/Conv2d_0b_1x7/weights kTfLiteFloat32   kTfLiteMmapRo     573440 bytes ( 0.5 MB)  160 1 7 128
+Tensor 547 InceptionResnetV2/Repeat_1/block17_11/Branch_1/Conv2d_0c_7x1/weights kTfLiteFloat32   kTfLiteMmapRo     860160 bytes ( 0.8 MB)  192 7 1 160
+Tensor 548 InceptionResnetV2/Repeat_1/block17_11/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo    1671168 bytes ( 1.6 MB)  1088 1 1 384
+Tensor 549 InceptionResnetV2/Repeat_1/block17_12/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     835584 bytes ( 0.8 MB)  192 1 1 1088
+Tensor 550 InceptionResnetV2/Repeat_1/block17_12/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     557056 bytes ( 0.5 MB)  128 1 1 1088
+Tensor 551 InceptionResnetV2/Repeat_1/block17_12/Branch_1/Conv2d_0b_1x7/weights kTfLiteFloat32   kTfLiteMmapRo     573440 bytes ( 0.5 MB)  160 1 7 128
+Tensor 552 InceptionResnetV2/Repeat_1/block17_12/Branch_1/Conv2d_0c_7x1/weights kTfLiteFloat32   kTfLiteMmapRo     860160 bytes ( 0.8 MB)  192 7 1 160
+Tensor 553 InceptionResnetV2/Repeat_1/block17_12/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo    1671168 bytes ( 1.6 MB)  1088 1 1 384
+Tensor 554 InceptionResnetV2/Repeat_1/block17_13/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     835584 bytes ( 0.8 MB)  192 1 1 1088
+Tensor 555 InceptionResnetV2/Repeat_1/block17_13/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     557056 bytes ( 0.5 MB)  128 1 1 1088
+Tensor 556 InceptionResnetV2/Repeat_1/block17_13/Branch_1/Conv2d_0b_1x7/weights kTfLiteFloat32   kTfLiteMmapRo     573440 bytes ( 0.5 MB)  160 1 7 128
+Tensor 557 InceptionResnetV2/Repeat_1/block17_13/Branch_1/Conv2d_0c_7x1/weights kTfLiteFloat32   kTfLiteMmapRo     860160 bytes ( 0.8 MB)  192 7 1 160
+Tensor 558 InceptionResnetV2/Repeat_1/block17_13/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo    1671168 bytes ( 1.6 MB)  1088 1 1 384
+Tensor 559 InceptionResnetV2/Repeat_1/block17_14/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     835584 bytes ( 0.8 MB)  192 1 1 1088
+Tensor 560 InceptionResnetV2/Repeat_1/block17_14/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     557056 bytes ( 0.5 MB)  128 1 1 1088
+Tensor 561 InceptionResnetV2/Repeat_1/block17_14/Branch_1/Conv2d_0b_1x7/weights kTfLiteFloat32   kTfLiteMmapRo     573440 bytes ( 0.5 MB)  160 1 7 128
+Tensor 562 InceptionResnetV2/Repeat_1/block17_14/Branch_1/Conv2d_0c_7x1/weights kTfLiteFloat32   kTfLiteMmapRo     860160 bytes ( 0.8 MB)  192 7 1 160
+Tensor 563 InceptionResnetV2/Repeat_1/block17_14/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo    1671168 bytes ( 1.6 MB)  1088 1 1 384
+Tensor 564 InceptionResnetV2/Repeat_1/block17_15/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     835584 bytes ( 0.8 MB)  192 1 1 1088
+Tensor 565 InceptionResnetV2/Repeat_1/block17_15/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     557056 bytes ( 0.5 MB)  128 1 1 1088
+Tensor 566 InceptionResnetV2/Repeat_1/block17_15/Branch_1/Conv2d_0b_1x7/weights kTfLiteFloat32   kTfLiteMmapRo     573440 bytes ( 0.5 MB)  160 1 7 128
+Tensor 567 InceptionResnetV2/Repeat_1/block17_15/Branch_1/Conv2d_0c_7x1/weights kTfLiteFloat32   kTfLiteMmapRo     860160 bytes ( 0.8 MB)  192 7 1 160
+Tensor 568 InceptionResnetV2/Repeat_1/block17_15/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo    1671168 bytes ( 1.6 MB)  1088 1 1 384
+Tensor 569 InceptionResnetV2/Repeat_1/block17_16/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     835584 bytes ( 0.8 MB)  192 1 1 1088
+Tensor 570 InceptionResnetV2/Repeat_1/block17_16/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     557056 bytes ( 0.5 MB)  128 1 1 1088
+Tensor 571 InceptionResnetV2/Repeat_1/block17_16/Branch_1/Conv2d_0b_1x7/weights kTfLiteFloat32   kTfLiteMmapRo     573440 bytes ( 0.5 MB)  160 1 7 128
+Tensor 572 InceptionResnetV2/Repeat_1/block17_16/Branch_1/Conv2d_0c_7x1/weights kTfLiteFloat32   kTfLiteMmapRo     860160 bytes ( 0.8 MB)  192 7 1 160
+Tensor 573 InceptionResnetV2/Repeat_1/block17_16/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo    1671168 bytes ( 1.6 MB)  1088 1 1 384
+Tensor 574 InceptionResnetV2/Repeat_1/block17_17/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     835584 bytes ( 0.8 MB)  192 1 1 1088
+Tensor 575 InceptionResnetV2/Repeat_1/block17_17/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     557056 bytes ( 0.5 MB)  128 1 1 1088
+Tensor 576 InceptionResnetV2/Repeat_1/block17_17/Branch_1/Conv2d_0b_1x7/weights kTfLiteFloat32   kTfLiteMmapRo     573440 bytes ( 0.5 MB)  160 1 7 128
+Tensor 577 InceptionResnetV2/Repeat_1/block17_17/Branch_1/Conv2d_0c_7x1/weights kTfLiteFloat32   kTfLiteMmapRo     860160 bytes ( 0.8 MB)  192 7 1 160
+Tensor 578 InceptionResnetV2/Repeat_1/block17_17/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo    1671168 bytes ( 1.6 MB)  1088 1 1 384
+Tensor 579 InceptionResnetV2/Repeat_1/block17_18/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     835584 bytes ( 0.8 MB)  192 1 1 1088
+Tensor 580 InceptionResnetV2/Repeat_1/block17_18/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     557056 bytes ( 0.5 MB)  128 1 1 1088
+Tensor 581 InceptionResnetV2/Repeat_1/block17_18/Branch_1/Conv2d_0b_1x7/weights kTfLiteFloat32   kTfLiteMmapRo     573440 bytes ( 0.5 MB)  160 1 7 128
+Tensor 582 InceptionResnetV2/Repeat_1/block17_18/Branch_1/Conv2d_0c_7x1/weights kTfLiteFloat32   kTfLiteMmapRo     860160 bytes ( 0.8 MB)  192 7 1 160
+Tensor 583 InceptionResnetV2/Repeat_1/block17_18/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo    1671168 bytes ( 1.6 MB)  1088 1 1 384
+Tensor 584 InceptionResnetV2/Repeat_1/block17_19/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     835584 bytes ( 0.8 MB)  192 1 1 1088
+Tensor 585 InceptionResnetV2/Repeat_1/block17_19/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     557056 bytes ( 0.5 MB)  128 1 1 1088
+Tensor 586 InceptionResnetV2/Repeat_1/block17_19/Branch_1/Conv2d_0b_1x7/weights kTfLiteFloat32   kTfLiteMmapRo     573440 bytes ( 0.5 MB)  160 1 7 128
+Tensor 587 InceptionResnetV2/Repeat_1/block17_19/Branch_1/Conv2d_0c_7x1/weights kTfLiteFloat32   kTfLiteMmapRo     860160 bytes ( 0.8 MB)  192 7 1 160
+Tensor 588 InceptionResnetV2/Repeat_1/block17_19/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo    1671168 bytes ( 1.6 MB)  1088 1 1 384
+Tensor 589 InceptionResnetV2/Repeat_1/block17_2/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     835584 bytes ( 0.8 MB)  192 1 1 1088
+Tensor 590 InceptionResnetV2/Repeat_1/block17_2/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     557056 bytes ( 0.5 MB)  128 1 1 1088
+Tensor 591 InceptionResnetV2/Repeat_1/block17_2/Branch_1/Conv2d_0b_1x7/weights kTfLiteFloat32   kTfLiteMmapRo     573440 bytes ( 0.5 MB)  160 1 7 128
+Tensor 592 InceptionResnetV2/Repeat_1/block17_2/Branch_1/Conv2d_0c_7x1/weights kTfLiteFloat32   kTfLiteMmapRo     860160 bytes ( 0.8 MB)  192 7 1 160
+Tensor 593 InceptionResnetV2/Repeat_1/block17_2/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo    1671168 bytes ( 1.6 MB)  1088 1 1 384
+Tensor 594 InceptionResnetV2/Repeat_1/block17_20/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     835584 bytes ( 0.8 MB)  192 1 1 1088
+Tensor 595 InceptionResnetV2/Repeat_1/block17_20/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     557056 bytes ( 0.5 MB)  128 1 1 1088
+Tensor 596 InceptionResnetV2/Repeat_1/block17_20/Branch_1/Conv2d_0b_1x7/weights kTfLiteFloat32   kTfLiteMmapRo     573440 bytes ( 0.5 MB)  160 1 7 128
+Tensor 597 InceptionResnetV2/Repeat_1/block17_20/Branch_1/Conv2d_0c_7x1/weights kTfLiteFloat32   kTfLiteMmapRo     860160 bytes ( 0.8 MB)  192 7 1 160
+Tensor 598 InceptionResnetV2/Repeat_1/block17_20/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo    1671168 bytes ( 1.6 MB)  1088 1 1 384
+Tensor 599 InceptionResnetV2/Repeat_1/block17_3/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     835584 bytes ( 0.8 MB)  192 1 1 1088
+Tensor 600 InceptionResnetV2/Repeat_1/block17_3/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     557056 bytes ( 0.5 MB)  128 1 1 1088
+Tensor 601 InceptionResnetV2/Repeat_1/block17_3/Branch_1/Conv2d_0b_1x7/weights kTfLiteFloat32   kTfLiteMmapRo     573440 bytes ( 0.5 MB)  160 1 7 128
+Tensor 602 InceptionResnetV2/Repeat_1/block17_3/Branch_1/Conv2d_0c_7x1/weights kTfLiteFloat32   kTfLiteMmapRo     860160 bytes ( 0.8 MB)  192 7 1 160
+Tensor 603 InceptionResnetV2/Repeat_1/block17_3/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo    1671168 bytes ( 1.6 MB)  1088 1 1 384
+Tensor 604 InceptionResnetV2/Repeat_1/block17_4/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     835584 bytes ( 0.8 MB)  192 1 1 1088
+Tensor 605 InceptionResnetV2/Repeat_1/block17_4/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     557056 bytes ( 0.5 MB)  128 1 1 1088
+Tensor 606 InceptionResnetV2/Repeat_1/block17_4/Branch_1/Conv2d_0b_1x7/weights kTfLiteFloat32   kTfLiteMmapRo     573440 bytes ( 0.5 MB)  160 1 7 128
+Tensor 607 InceptionResnetV2/Repeat_1/block17_4/Branch_1/Conv2d_0c_7x1/weights kTfLiteFloat32   kTfLiteMmapRo     860160 bytes ( 0.8 MB)  192 7 1 160
+Tensor 608 InceptionResnetV2/Repeat_1/block17_4/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo    1671168 bytes ( 1.6 MB)  1088 1 1 384
+Tensor 609 InceptionResnetV2/Repeat_1/block17_5/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     835584 bytes ( 0.8 MB)  192 1 1 1088
+Tensor 610 InceptionResnetV2/Repeat_1/block17_5/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     557056 bytes ( 0.5 MB)  128 1 1 1088
+Tensor 611 InceptionResnetV2/Repeat_1/block17_5/Branch_1/Conv2d_0b_1x7/weights kTfLiteFloat32   kTfLiteMmapRo     573440 bytes ( 0.5 MB)  160 1 7 128
+Tensor 612 InceptionResnetV2/Repeat_1/block17_5/Branch_1/Conv2d_0c_7x1/weights kTfLiteFloat32   kTfLiteMmapRo     860160 bytes ( 0.8 MB)  192 7 1 160
+Tensor 613 InceptionResnetV2/Repeat_1/block17_5/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo    1671168 bytes ( 1.6 MB)  1088 1 1 384
+Tensor 614 InceptionResnetV2/Repeat_1/block17_6/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     835584 bytes ( 0.8 MB)  192 1 1 1088
+Tensor 615 InceptionResnetV2/Repeat_1/block17_6/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     557056 bytes ( 0.5 MB)  128 1 1 1088
+Tensor 616 InceptionResnetV2/Repeat_1/block17_6/Branch_1/Conv2d_0b_1x7/weights kTfLiteFloat32   kTfLiteMmapRo     573440 bytes ( 0.5 MB)  160 1 7 128
+Tensor 617 InceptionResnetV2/Repeat_1/block17_6/Branch_1/Conv2d_0c_7x1/weights kTfLiteFloat32   kTfLiteMmapRo     860160 bytes ( 0.8 MB)  192 7 1 160
+Tensor 618 InceptionResnetV2/Repeat_1/block17_6/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo    1671168 bytes ( 1.6 MB)  1088 1 1 384
+Tensor 619 InceptionResnetV2/Repeat_1/block17_7/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     835584 bytes ( 0.8 MB)  192 1 1 1088
+Tensor 620 InceptionResnetV2/Repeat_1/block17_7/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     557056 bytes ( 0.5 MB)  128 1 1 1088
+Tensor 621 InceptionResnetV2/Repeat_1/block17_7/Branch_1/Conv2d_0b_1x7/weights kTfLiteFloat32   kTfLiteMmapRo     573440 bytes ( 0.5 MB)  160 1 7 128
+Tensor 622 InceptionResnetV2/Repeat_1/block17_7/Branch_1/Conv2d_0c_7x1/weights kTfLiteFloat32   kTfLiteMmapRo     860160 bytes ( 0.8 MB)  192 7 1 160
+Tensor 623 InceptionResnetV2/Repeat_1/block17_7/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo    1671168 bytes ( 1.6 MB)  1088 1 1 384
+Tensor 624 InceptionResnetV2/Repeat_1/block17_8/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     835584 bytes ( 0.8 MB)  192 1 1 1088
+Tensor 625 InceptionResnetV2/Repeat_1/block17_8/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     557056 bytes ( 0.5 MB)  128 1 1 1088
+Tensor 626 InceptionResnetV2/Repeat_1/block17_8/Branch_1/Conv2d_0b_1x7/weights kTfLiteFloat32   kTfLiteMmapRo     573440 bytes ( 0.5 MB)  160 1 7 128
+Tensor 627 InceptionResnetV2/Repeat_1/block17_8/Branch_1/Conv2d_0c_7x1/weights kTfLiteFloat32   kTfLiteMmapRo     860160 bytes ( 0.8 MB)  192 7 1 160
+Tensor 628 InceptionResnetV2/Repeat_1/block17_8/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo    1671168 bytes ( 1.6 MB)  1088 1 1 384
+Tensor 629 InceptionResnetV2/Repeat_1/block17_9/Branch_0/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     835584 bytes ( 0.8 MB)  192 1 1 1088
+Tensor 630 InceptionResnetV2/Repeat_1/block17_9/Branch_1/Conv2d_0a_1x1/weights kTfLiteFloat32   kTfLiteMmapRo     557056 bytes ( 0.5 MB)  128 1 1 1088
+Tensor 631 InceptionResnetV2/Repeat_1/block17_9/Branch_1/Conv2d_0b_1x7/weights kTfLiteFloat32   kTfLiteMmapRo     573440 bytes ( 0.5 MB)  160 1 7 128
+Tensor 632 InceptionResnetV2/Repeat_1/block17_9/Branch_1/Conv2d_0c_7x1/weights kTfLiteFloat32   kTfLiteMmapRo     860160 bytes ( 0.8 MB)  192 7 1 160
+Tensor 633 InceptionResnetV2/Repeat_1/block17_9/Conv2d_1x1/weights kTfLiteFloat32   kTfLiteMmapRo    1671168 bytes ( 1.6 MB)  1088 1 1 384
+Tensor 634 input                kTfLiteFloat32  kTfLiteArenaRw    1072812 bytes ( 1.0 MB)  1 299 299 3
+Tensor 635 (null)               kTfLiteNoType  kTfLiteMemNone          0 bytes ( 0.0 MB)  (null)
+Tensor 636 (null)               kTfLiteNoType  kTfLiteMemNone          0 bytes ( 0.0 MB)  (null)
+Tensor 637 (null)               kTfLiteNoType  kTfLiteMemNone          0 bytes ( 0.0 MB)  (null)
+Tensor 638 (null)               kTfLiteNoType  kTfLiteMemNone          0 bytes ( 0.0 MB)  (null)
+Tensor 639 (null)               kTfLiteNoType  kTfLiteMemNone          0 bytes ( 0.0 MB)  (null)
+Tensor 640 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent       3456 bytes ( 0.0 MB)  27 32
+Tensor 641 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      36864 bytes ( 0.0 MB)  288 32
+Tensor 642 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      73728 bytes ( 0.1 MB)  288 64
+Tensor 643 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      20480 bytes ( 0.0 MB)  64 80
+Tensor 644 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     552960 bytes ( 0.5 MB)  720 192
+Tensor 645 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      73728 bytes ( 0.1 MB)  192 96
+Tensor 646 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      36864 bytes ( 0.0 MB)  192 48
+Tensor 647 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     307200 bytes ( 0.3 MB)  1200 64
+Tensor 648 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      49152 bytes ( 0.0 MB)  192 64
+Tensor 649 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     221184 bytes ( 0.2 MB)  576 96
+Tensor 650 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     331776 bytes ( 0.3 MB)  864 96
+Tensor 651 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      49152 bytes ( 0.0 MB)  192 64
+Tensor 652 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 653 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 654 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      36864 bytes ( 0.0 MB)  288 32
+Tensor 655 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 656 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      55296 bytes ( 0.1 MB)  288 48
+Tensor 657 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     110592 bytes ( 0.1 MB)  432 64
+Tensor 658 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     163840 bytes ( 0.2 MB)  128 320
+Tensor 659 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 660 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 661 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      36864 bytes ( 0.0 MB)  288 32
+Tensor 662 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 663 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      55296 bytes ( 0.1 MB)  288 48
+Tensor 664 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     110592 bytes ( 0.1 MB)  432 64
+Tensor 665 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     163840 bytes ( 0.2 MB)  128 320
+Tensor 666 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 667 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 668 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      36864 bytes ( 0.0 MB)  288 32
+Tensor 669 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 670 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      55296 bytes ( 0.1 MB)  288 48
+Tensor 671 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     110592 bytes ( 0.1 MB)  432 64
+Tensor 672 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     163840 bytes ( 0.2 MB)  128 320
+Tensor 673 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 674 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 675 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      36864 bytes ( 0.0 MB)  288 32
+Tensor 676 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 677 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      55296 bytes ( 0.1 MB)  288 48
+Tensor 678 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     110592 bytes ( 0.1 MB)  432 64
+Tensor 679 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     163840 bytes ( 0.2 MB)  128 320
+Tensor 680 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 681 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 682 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      36864 bytes ( 0.0 MB)  288 32
+Tensor 683 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 684 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      55296 bytes ( 0.1 MB)  288 48
+Tensor 685 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     110592 bytes ( 0.1 MB)  432 64
+Tensor 686 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     163840 bytes ( 0.2 MB)  128 320
+Tensor 687 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 688 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 689 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      36864 bytes ( 0.0 MB)  288 32
+Tensor 690 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 691 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      55296 bytes ( 0.1 MB)  288 48
+Tensor 692 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     110592 bytes ( 0.1 MB)  432 64
+Tensor 693 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     163840 bytes ( 0.2 MB)  128 320
+Tensor 694 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 695 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 696 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      36864 bytes ( 0.0 MB)  288 32
+Tensor 697 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 698 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      55296 bytes ( 0.1 MB)  288 48
+Tensor 699 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     110592 bytes ( 0.1 MB)  432 64
+Tensor 700 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     163840 bytes ( 0.2 MB)  128 320
+Tensor 701 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 702 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 703 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      36864 bytes ( 0.0 MB)  288 32
+Tensor 704 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 705 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      55296 bytes ( 0.1 MB)  288 48
+Tensor 706 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     110592 bytes ( 0.1 MB)  432 64
+Tensor 707 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     163840 bytes ( 0.2 MB)  128 320
+Tensor 708 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 709 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 710 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      36864 bytes ( 0.0 MB)  288 32
+Tensor 711 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 712 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      55296 bytes ( 0.1 MB)  288 48
+Tensor 713 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     110592 bytes ( 0.1 MB)  432 64
+Tensor 714 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     163840 bytes ( 0.2 MB)  128 320
+Tensor 715 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 716 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 717 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      36864 bytes ( 0.0 MB)  288 32
+Tensor 718 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      40960 bytes ( 0.0 MB)  320 32
+Tensor 719 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent      55296 bytes ( 0.1 MB)  288 48
+Tensor 720 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     110592 bytes ( 0.1 MB)  432 64
+Tensor 721 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     163840 bytes ( 0.2 MB)  128 320
+Tensor 722 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent    4423680 bytes ( 4.2 MB)  2880 384
+Tensor 723 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     327680 bytes ( 0.3 MB)  320 256
+Tensor 724 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent    2359296 bytes ( 2.2 MB)  2304 256
+Tensor 725 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent    3538944 bytes ( 3.4 MB)  2304 384
+Tensor 726 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     835584 bytes ( 0.8 MB)  1088 192
+Tensor 727 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     557056 bytes ( 0.5 MB)  1088 128
+Tensor 728 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     573440 bytes ( 0.5 MB)  896 160
+Tensor 729 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     860160 bytes ( 0.8 MB)  1120 192
+Tensor 730 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent    1671168 bytes ( 1.6 MB)  384 1088
+Tensor 731 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     835584 bytes ( 0.8 MB)  1088 192
+Tensor 732 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     557056 bytes ( 0.5 MB)  1088 128
+Tensor 733 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     573440 bytes ( 0.5 MB)  896 160
+Tensor 734 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     860160 bytes ( 0.8 MB)  1120 192
+Tensor 735 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent    1671168 bytes ( 1.6 MB)  384 1088
+Tensor 736 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     835584 bytes ( 0.8 MB)  1088 192
+Tensor 737 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     557056 bytes ( 0.5 MB)  1088 128
+Tensor 738 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     573440 bytes ( 0.5 MB)  896 160
+Tensor 739 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     860160 bytes ( 0.8 MB)  1120 192
+Tensor 740 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent    1671168 bytes ( 1.6 MB)  384 1088
+Tensor 741 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     835584 bytes ( 0.8 MB)  1088 192
+Tensor 742 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     557056 bytes ( 0.5 MB)  1088 128
+Tensor 743 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     573440 bytes ( 0.5 MB)  896 160
+Tensor 744 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     860160 bytes ( 0.8 MB)  1120 192
+Tensor 745 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent    1671168 bytes ( 1.6 MB)  384 1088
+Tensor 746 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     835584 bytes ( 0.8 MB)  1088 192
+Tensor 747 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     557056 bytes ( 0.5 MB)  1088 128
+Tensor 748 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     573440 bytes ( 0.5 MB)  896 160
+Tensor 749 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     860160 bytes ( 0.8 MB)  1120 192
+Tensor 750 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent    1671168 bytes ( 1.6 MB)  384 1088
+Tensor 751 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     835584 bytes ( 0.8 MB)  1088 192
+Tensor 752 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     557056 bytes ( 0.5 MB)  1088 128
+Tensor 753 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     573440 bytes ( 0.5 MB)  896 160
+Tensor 754 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     860160 bytes ( 0.8 MB)  1120 192
+Tensor 755 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent    1671168 bytes ( 1.6 MB)  384 1088
+Tensor 756 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     835584 bytes ( 0.8 MB)  1088 192
+Tensor 757 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     557056 bytes ( 0.5 MB)  1088 128
+Tensor 758 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     573440 bytes ( 0.5 MB)  896 160
+Tensor 759 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     860160 bytes ( 0.8 MB)  1120 192
+Tensor 760 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent    1671168 bytes ( 1.6 MB)  384 1088
+Tensor 761 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     835584 bytes ( 0.8 MB)  1088 192
+Tensor 762 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     557056 bytes ( 0.5 MB)  1088 128
+Tensor 763 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     573440 bytes ( 0.5 MB)  896 160
+Tensor 764 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     860160 bytes ( 0.8 MB)  1120 192
+Tensor 765 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent    1671168 bytes ( 1.6 MB)  384 1088
+Tensor 766 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     835584 bytes ( 0.8 MB)  1088 192
+Tensor 767 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     557056 bytes ( 0.5 MB)  1088 128
+Tensor 768 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     573440 bytes ( 0.5 MB)  896 160
+Tensor 769 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     860160 bytes ( 0.8 MB)  1120 192
+Tensor 770 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent    1671168 bytes ( 1.6 MB)  384 1088
+Tensor 771 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     835584 bytes ( 0.8 MB)  1088 192
+Tensor 772 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     557056 bytes ( 0.5 MB)  1088 128
+Tensor 773 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     573440 bytes ( 0.5 MB)  896 160
+Tensor 774 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     860160 bytes ( 0.8 MB)  1120 192
+Tensor 775 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent    1671168 bytes ( 1.6 MB)  384 1088
+Tensor 776 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     835584 bytes ( 0.8 MB)  1088 192
+Tensor 777 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     557056 bytes ( 0.5 MB)  1088 128
+Tensor 778 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     573440 bytes ( 0.5 MB)  896 160
+Tensor 779 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     860160 bytes ( 0.8 MB)  1120 192
+Tensor 780 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent    1671168 bytes ( 1.6 MB)  384 1088
+Tensor 781 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     835584 bytes ( 0.8 MB)  1088 192
+Tensor 782 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     557056 bytes ( 0.5 MB)  1088 128
+Tensor 783 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     573440 bytes ( 0.5 MB)  896 160
+Tensor 784 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     860160 bytes ( 0.8 MB)  1120 192
+Tensor 785 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent    1671168 bytes ( 1.6 MB)  384 1088
+Tensor 786 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     835584 bytes ( 0.8 MB)  1088 192
+Tensor 787 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     557056 bytes ( 0.5 MB)  1088 128
+Tensor 788 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     573440 bytes ( 0.5 MB)  896 160
+Tensor 789 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     860160 bytes ( 0.8 MB)  1120 192
+Tensor 790 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent    1671168 bytes ( 1.6 MB)  384 1088
+Tensor 791 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     835584 bytes ( 0.8 MB)  1088 192
+Tensor 792 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     557056 bytes ( 0.5 MB)  1088 128
+Tensor 793 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     573440 bytes ( 0.5 MB)  896 160
+Tensor 794 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     860160 bytes ( 0.8 MB)  1120 192
+Tensor 795 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent    1671168 bytes ( 1.6 MB)  384 1088
+Tensor 796 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     835584 bytes ( 0.8 MB)  1088 192
+Tensor 797 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     557056 bytes ( 0.5 MB)  1088 128
+Tensor 798 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     573440 bytes ( 0.5 MB)  896 160
+Tensor 799 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     860160 bytes ( 0.8 MB)  1120 192
+Tensor 800 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent    1671168 bytes ( 1.6 MB)  384 1088
+Tensor 801 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     835584 bytes ( 0.8 MB)  1088 192
+Tensor 802 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     557056 bytes ( 0.5 MB)  1088 128
+Tensor 803 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     573440 bytes ( 0.5 MB)  896 160
+Tensor 804 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     860160 bytes ( 0.8 MB)  1120 192
+Tensor 805 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent    1671168 bytes ( 1.6 MB)  384 1088
+Tensor 806 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     835584 bytes ( 0.8 MB)  1088 192
+Tensor 807 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     557056 bytes ( 0.5 MB)  1088 128
+Tensor 808 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     573440 bytes ( 0.5 MB)  896 160
+Tensor 809 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     860160 bytes ( 0.8 MB)  1120 192
+Tensor 810 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent    1671168 bytes ( 1.6 MB)  384 1088
+Tensor 811 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     835584 bytes ( 0.8 MB)  1088 192
+Tensor 812 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     557056 bytes ( 0.5 MB)  1088 128
+Tensor 813 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     573440 bytes ( 0.5 MB)  896 160
+Tensor 814 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     860160 bytes ( 0.8 MB)  1120 192
+Tensor 815 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent    1671168 bytes ( 1.6 MB)  384 1088
+Tensor 816 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     835584 bytes ( 0.8 MB)  1088 192
+Tensor 817 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     557056 bytes ( 0.5 MB)  1088 128
+Tensor 818 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     573440 bytes ( 0.5 MB)  896 160
+Tensor 819 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     860160 bytes ( 0.8 MB)  1120 192
+Tensor 820 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent    1671168 bytes ( 1.6 MB)  384 1088
+Tensor 821 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     835584 bytes ( 0.8 MB)  1088 192
+Tensor 822 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     557056 bytes ( 0.5 MB)  1088 128
+Tensor 823 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     573440 bytes ( 0.5 MB)  896 160
+Tensor 824 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     860160 bytes ( 0.8 MB)  1120 192
+Tensor 825 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent    1671168 bytes ( 1.6 MB)  384 1088
+Tensor 826 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent     557056 bytes ( 0.5 MB)  1088 128
+Tensor 827 (null)               kTfLiteFloat32 kTfLiteArenaRwPersistent    9830400 bytes ( 9.4 MB)  3200 768
+
+Node   0 Operator Builtin Code   3 CONV_2D
+  Inputs: 634 10 15
+  Outputs: 16
+  Temporaries: 640
+Node   1 Operator Builtin Code   3 CONV_2D
+  Inputs: 16 11 17
+  Outputs: 18
+  Temporaries: 641
+Node   2 Operator Builtin Code   3 CONV_2D
+  Inputs: 18 12 19
+  Outputs: 20
+  Temporaries: 642
+Node   3 Operator Builtin Code  17 MAX_POOL_2D
+  Inputs: 20
+  Outputs: 25
+Node   4 Operator Builtin Code   3 CONV_2D
+  Inputs: 25 13 21
+  Outputs: 22
+  Temporaries: 643
+Node   5 Operator Builtin Code   3 CONV_2D
+  Inputs: 22 14 23
+  Outputs: 24
+  Temporaries: 644
+Node   6 Operator Builtin Code  17 MAX_POOL_2D
+  Inputs: 24
+  Outputs: 26
+Node   7 Operator Builtin Code   3 CONV_2D
+  Inputs: 26 453 27
+  Outputs: 28
+  Temporaries: 645
+Node   8 Operator Builtin Code   3 CONV_2D
+  Inputs: 26 454 29
+  Outputs: 30
+  Temporaries: 646
+Node   9 Operator Builtin Code   3 CONV_2D
+  Inputs: 30 455 31
+  Outputs: 32
+  Temporaries: 647
+Node  10 Operator Builtin Code   3 CONV_2D
+  Inputs: 26 456 33
+  Outputs: 34
+  Temporaries: 648
+Node  11 Operator Builtin Code   3 CONV_2D
+  Inputs: 34 457 35
+  Outputs: 36
+  Temporaries: 649
+Node  12 Operator Builtin Code   3 CONV_2D
+  Inputs: 36 458 37
+  Outputs: 38
+  Temporaries: 650
+Node  13 Operator Builtin Code   1 AVERAGE_POOL_2D
+  Inputs: 26
+  Outputs: 39
+Node  14 Operator Builtin Code   3 CONV_2D
+  Inputs: 39 459 40
+  Outputs: 41
+  Temporaries: 651
+Node  15 Operator Builtin Code   2 CONCATENATION
+  Inputs: 28 32 38 41
+  Outputs: 42
+Node  16 Operator Builtin Code   3 CONV_2D
+  Inputs: 42 464 53
+  Outputs: 54
+  Temporaries: 652
+Node  17 Operator Builtin Code   3 CONV_2D
+  Inputs: 42 465 55
+  Outputs: 56
+  Temporaries: 653
+Node  18 Operator Builtin Code   3 CONV_2D
+  Inputs: 56 466 57
+  Outputs: 58
+  Temporaries: 654
+Node  19 Operator Builtin Code   3 CONV_2D
+  Inputs: 42 467 59
+  Outputs: 60
+  Temporaries: 655
+Node  20 Operator Builtin Code   3 CONV_2D
+  Inputs: 60 468 61
+  Outputs: 62
+  Temporaries: 656
+Node  21 Operator Builtin Code   3 CONV_2D
+  Inputs: 62 469 63
+  Outputs: 64
+  Temporaries: 657
+Node  22 Operator Builtin Code   2 CONCATENATION
+  Inputs: 54 58 64
+  Outputs: 67
+Node  23 Operator Builtin Code   3 CONV_2D
+  Inputs: 67 470 65
+  Outputs: 68
+  Temporaries: 658
+Node  24 Operator Builtin Code   0 ADD
+  Inputs: 42 68
+  Outputs: 66
+Node  25 Operator Builtin Code   3 CONV_2D
+  Inputs: 66 478 85
+  Outputs: 86
+  Temporaries: 659
+Node  26 Operator Builtin Code   3 CONV_2D
+  Inputs: 66 479 87
+  Outputs: 88
+  Temporaries: 660
+Node  27 Operator Builtin Code   3 CONV_2D
+  Inputs: 88 480 89
+  Outputs: 90
+  Temporaries: 661
+Node  28 Operator Builtin Code   3 CONV_2D
+  Inputs: 66 481 91
+  Outputs: 92
+  Temporaries: 662
+Node  29 Operator Builtin Code   3 CONV_2D
+  Inputs: 92 482 93
+  Outputs: 94
+  Temporaries: 663
+Node  30 Operator Builtin Code   3 CONV_2D
+  Inputs: 94 483 95
+  Outputs: 96
+  Temporaries: 664
+Node  31 Operator Builtin Code   2 CONCATENATION
+  Inputs: 86 90 96
+  Outputs: 99
+Node  32 Operator Builtin Code   3 CONV_2D
+  Inputs: 99 484 97
+  Outputs: 100
+  Temporaries: 665
+Node  33 Operator Builtin Code   0 ADD
+  Inputs: 66 100
+  Outputs: 98
+Node  34 Operator Builtin Code   3 CONV_2D
+  Inputs: 98 485 101
+  Outputs: 102
+  Temporaries: 666
+Node  35 Operator Builtin Code   3 CONV_2D
+  Inputs: 98 486 103
+  Outputs: 104
+  Temporaries: 667
+Node  36 Operator Builtin Code   3 CONV_2D
+  Inputs: 104 487 105
+  Outputs: 106
+  Temporaries: 668
+Node  37 Operator Builtin Code   3 CONV_2D
+  Inputs: 98 488 107
+  Outputs: 108
+  Temporaries: 669
+Node  38 Operator Builtin Code   3 CONV_2D
+  Inputs: 108 489 109
+  Outputs: 110
+  Temporaries: 670
+Node  39 Operator Builtin Code   3 CONV_2D
+  Inputs: 110 490 111
+  Outputs: 112
+  Temporaries: 671
+Node  40 Operator Builtin Code   2 CONCATENATION
+  Inputs: 102 106 112
+  Outputs: 115
+Node  41 Operator Builtin Code   3 CONV_2D
+  Inputs: 115 491 113
+  Outputs: 116
+  Temporaries: 672
+Node  42 Operator Builtin Code   0 ADD
+  Inputs: 98 116
+  Outputs: 114
+Node  43 Operator Builtin Code   3 CONV_2D
+  Inputs: 114 492 117
+  Outputs: 118
+  Temporaries: 673
+Node  44 Operator Builtin Code   3 CONV_2D
+  Inputs: 114 493 119
+  Outputs: 120
+  Temporaries: 674
+Node  45 Operator Builtin Code   3 CONV_2D
+  Inputs: 120 494 121
+  Outputs: 122
+  Temporaries: 675
+Node  46 Operator Builtin Code   3 CONV_2D
+  Inputs: 114 495 123
+  Outputs: 124
+  Temporaries: 676
+Node  47 Operator Builtin Code   3 CONV_2D
+  Inputs: 124 496 125
+  Outputs: 126
+  Temporaries: 677
+Node  48 Operator Builtin Code   3 CONV_2D
+  Inputs: 126 497 127
+  Outputs: 128
+  Temporaries: 678
+Node  49 Operator Builtin Code   2 CONCATENATION
+  Inputs: 118 122 128
+  Outputs: 131
+Node  50 Operator Builtin Code   3 CONV_2D
+  Inputs: 131 498 129
+  Outputs: 132
+  Temporaries: 679
+Node  51 Operator Builtin Code   0 ADD
+  Inputs: 114 132
+  Outputs: 130
+Node  52 Operator Builtin Code   3 CONV_2D
+  Inputs: 130 499 133
+  Outputs: 134
+  Temporaries: 680
+Node  53 Operator Builtin Code   3 CONV_2D
+  Inputs: 130 500 135
+  Outputs: 136
+  Temporaries: 681
+Node  54 Operator Builtin Code   3 CONV_2D
+  Inputs: 136 501 137
+  Outputs: 138
+  Temporaries: 682
+Node  55 Operator Builtin Code   3 CONV_2D
+  Inputs: 130 502 139
+  Outputs: 140
+  Temporaries: 683
+Node  56 Operator Builtin Code   3 CONV_2D
+  Inputs: 140 503 141
+  Outputs: 142
+  Temporaries: 684
+Node  57 Operator Builtin Code   3 CONV_2D
+  Inputs: 142 504 143
+  Outputs: 144
+  Temporaries: 685
+Node  58 Operator Builtin Code   2 CONCATENATION
+  Inputs: 134 138 144
+  Outputs: 147
+Node  59 Operator Builtin Code   3 CONV_2D
+  Inputs: 147 505 145
+  Outputs: 148
+  Temporaries: 686
+Node  60 Operator Builtin Code   0 ADD
+  Inputs: 130 148
+  Outputs: 146
+Node  61 Operator Builtin Code   3 CONV_2D
+  Inputs: 146 506 149
+  Outputs: 150
+  Temporaries: 687
+Node  62 Operator Builtin Code   3 CONV_2D
+  Inputs: 146 507 151
+  Outputs: 152
+  Temporaries: 688
+Node  63 Operator Builtin Code   3 CONV_2D
+  Inputs: 152 508 153
+  Outputs: 154
+  Temporaries: 689
+Node  64 Operator Builtin Code   3 CONV_2D
+  Inputs: 146 509 155
+  Outputs: 156
+  Temporaries: 690
+Node  65 Operator Builtin Code   3 CONV_2D
+  Inputs: 156 510 157
+  Outputs: 158
+  Temporaries: 691
+Node  66 Operator Builtin Code   3 CONV_2D
+  Inputs: 158 511 159
+  Outputs: 160
+  Temporaries: 692
+Node  67 Operator Builtin Code   2 CONCATENATION
+  Inputs: 150 154 160
+  Outputs: 163
+Node  68 Operator Builtin Code   3 CONV_2D
+  Inputs: 163 512 161
+  Outputs: 164
+  Temporaries: 693
+Node  69 Operator Builtin Code   0 ADD
+  Inputs: 146 164
+  Outputs: 162
+Node  70 Operator Builtin Code   3 CONV_2D
+  Inputs: 162 513 165
+  Outputs: 166
+  Temporaries: 694
+Node  71 Operator Builtin Code   3 CONV_2D
+  Inputs: 162 514 167
+  Outputs: 168
+  Temporaries: 695
+Node  72 Operator Builtin Code   3 CONV_2D
+  Inputs: 168 515 169
+  Outputs: 170
+  Temporaries: 696
+Node  73 Operator Builtin Code   3 CONV_2D
+  Inputs: 162 516 171
+  Outputs: 172
+  Temporaries: 697
+Node  74 Operator Builtin Code   3 CONV_2D
+  Inputs: 172 517 173
+  Outputs: 174
+  Temporaries: 698
+Node  75 Operator Builtin Code   3 CONV_2D
+  Inputs: 174 518 175
+  Outputs: 176
+  Temporaries: 699
+Node  76 Operator Builtin Code   2 CONCATENATION
+  Inputs: 166 170 176
+  Outputs: 179
+Node  77 Operator Builtin Code   3 CONV_2D
+  Inputs: 179 519 177
+  Outputs: 180
+  Temporaries: 700
+Node  78 Operator Builtin Code   0 ADD
+  Inputs: 162 180
+  Outputs: 178
+Node  79 Operator Builtin Code   3 CONV_2D
+  Inputs: 178 520 181
+  Outputs: 182
+  Temporaries: 701
+Node  80 Operator Builtin Code   3 CONV_2D
+  Inputs: 178 521 183
+  Outputs: 184
+  Temporaries: 702
+Node  81 Operator Builtin Code   3 CONV_2D
+  Inputs: 184 522 185
+  Outputs: 186
+  Temporaries: 703
+Node  82 Operator Builtin Code   3 CONV_2D
+  Inputs: 178 523 187
+  Outputs: 188
+  Temporaries: 704
+Node  83 Operator Builtin Code   3 CONV_2D
+  Inputs: 188 524 189
+  Outputs: 190
+  Temporaries: 705
+Node  84 Operator Builtin Code   3 CONV_2D
+  Inputs: 190 525 191
+  Outputs: 192
+  Temporaries: 706
+Node  85 Operator Builtin Code   2 CONCATENATION
+  Inputs: 182 186 192
+  Outputs: 195
+Node  86 Operator Builtin Code   3 CONV_2D
+  Inputs: 195 526 193
+  Outputs: 196
+  Temporaries: 707
+Node  87 Operator Builtin Code   0 ADD
+  Inputs: 178 196
+  Outputs: 194
+Node  88 Operator Builtin Code   3 CONV_2D
+  Inputs: 194 527 197
+  Outputs: 198
+  Temporaries: 708
+Node  89 Operator Builtin Code   3 CONV_2D
+  Inputs: 194 528 199
+  Outputs: 200
+  Temporaries: 709
+Node  90 Operator Builtin Code   3 CONV_2D
+  Inputs: 200 529 201
+  Outputs: 202
+  Temporaries: 710
+Node  91 Operator Builtin Code   3 CONV_2D
+  Inputs: 194 530 203
+  Outputs: 204
+  Temporaries: 711
+Node  92 Operator Builtin Code   3 CONV_2D
+  Inputs: 204 531 205
+  Outputs: 206
+  Temporaries: 712
+Node  93 Operator Builtin Code   3 CONV_2D
+  Inputs: 206 532 207
+  Outputs: 208
+  Temporaries: 713
+Node  94 Operator Builtin Code   2 CONCATENATION
+  Inputs: 198 202 208
+  Outputs: 211
+Node  95 Operator Builtin Code   3 CONV_2D
+  Inputs: 211 533 209
+  Outputs: 212
+  Temporaries: 714
+Node  96 Operator Builtin Code   0 ADD
+  Inputs: 194 212
+  Outputs: 210
+Node  97 Operator Builtin Code   3 CONV_2D
+  Inputs: 210 471 69
+  Outputs: 70
+  Temporaries: 715
+Node  98 Operator Builtin Code   3 CONV_2D
+  Inputs: 210 472 71
+  Outputs: 72
+  Temporaries: 716
+Node  99 Operator Builtin Code   3 CONV_2D
+  Inputs: 72 473 73
+  Outputs: 74
+  Temporaries: 717
+Node 100 Operator Builtin Code   3 CONV_2D
+  Inputs: 210 474 75
+  Outputs: 76
+  Temporaries: 718
+Node 101 Operator Builtin Code   3 CONV_2D
+  Inputs: 76 475 77
+  Outputs: 78
+  Temporaries: 719
+Node 102 Operator Builtin Code   3 CONV_2D
+  Inputs: 78 476 79
+  Outputs: 80
+  Temporaries: 720
+Node 103 Operator Builtin Code   2 CONCATENATION
+  Inputs: 70 74 80
+  Outputs: 83
+Node 104 Operator Builtin Code   3 CONV_2D
+  Inputs: 83 477 81
+  Outputs: 84
+  Temporaries: 721
+Node 105 Operator Builtin Code   0 ADD
+  Inputs: 210 84
+  Outputs: 82
+Node 106 Operator Builtin Code   3 CONV_2D
+  Inputs: 82 460 43
+  Outputs: 44
+  Temporaries: 722
+Node 107 Operator Builtin Code   3 CONV_2D
+  Inputs: 82 461 45
+  Outputs: 46
+  Temporaries: 723
+Node 108 Operator Builtin Code   3 CONV_2D
+  Inputs: 46 462 47
+  Outputs: 48
+  Temporaries: 724
+Node 109 Operator Builtin Code   3 CONV_2D
+  Inputs: 48 463 49
+  Outputs: 50
+  Temporaries: 725
+Node 110 Operator Builtin Code  17 MAX_POOL_2D
+  Inputs: 82
+  Outputs: 51
+Node 111 Operator Builtin Code   2 CONCATENATION
+  Inputs: 44 50 51
+  Outputs: 52
+Node 112 Operator Builtin Code   3 CONV_2D
+  Inputs: 52 534 213
+  Outputs: 214
+  Temporaries: 726
+Node 113 Operator Builtin Code   3 CONV_2D
+  Inputs: 52 535 215
+  Outputs: 216
+  Temporaries: 727
+Node 114 Operator Builtin Code   3 CONV_2D
+  Inputs: 216 536 217
+  Outputs: 218
+  Temporaries: 728
+Node 115 Operator Builtin Code   3 CONV_2D
+  Inputs: 218 537 219
+  Outputs: 220
+  Temporaries: 729
+Node 116 Operator Builtin Code   2 CONCATENATION
+  Inputs: 214 220
+  Outputs: 223
+Node 117 Operator Builtin Code   3 CONV_2D
+  Inputs: 223 538 221
+  Outputs: 224
+  Temporaries: 730
+Node 118 Operator Builtin Code   0 ADD
+  Inputs: 52 224
+  Outputs: 222
+Node 119 Operator Builtin Code   3 CONV_2D
+  Inputs: 222 589 345
+  Outputs: 346
+  Temporaries: 731
+Node 120 Operator Builtin Code   3 CONV_2D
+  Inputs: 222 590 347
+  Outputs: 348
+  Temporaries: 732
+Node 121 Operator Builtin Code   3 CONV_2D
+  Inputs: 348 591 349
+  Outputs: 350
+  Temporaries: 733
+Node 122 Operator Builtin Code   3 CONV_2D
+  Inputs: 350 592 351
+  Outputs: 352
+  Temporaries: 734
+Node 123 Operator Builtin Code   2 CONCATENATION
+  Inputs: 346 352
+  Outputs: 355
+Node 124 Operator Builtin Code   3 CONV_2D
+  Inputs: 355 593 353
+  Outputs: 356
+  Temporaries: 735
+Node 125 Operator Builtin Code   0 ADD
+  Inputs: 222 356
+  Outputs: 354
+Node 126 Operator Builtin Code   3 CONV_2D
+  Inputs: 354 599 369
+  Outputs: 370
+  Temporaries: 736
+Node 127 Operator Builtin Code   3 CONV_2D
+  Inputs: 354 600 371
+  Outputs: 372
+  Temporaries: 737
+Node 128 Operator Builtin Code   3 CONV_2D
+  Inputs: 372 601 373
+  Outputs: 374
+  Temporaries: 738
+Node 129 Operator Builtin Code   3 CONV_2D
+  Inputs: 374 602 375
+  Outputs: 376
+  Temporaries: 739
+Node 130 Operator Builtin Code   2 CONCATENATION
+  Inputs: 370 376
+  Outputs: 379
+Node 131 Operator Builtin Code   3 CONV_2D
+  Inputs: 379 603 377
+  Outputs: 380
+  Temporaries: 740
+Node 132 Operator Builtin Code   0 ADD
+  Inputs: 354 380
+  Outputs: 378
+Node 133 Operator Builtin Code   3 CONV_2D
+  Inputs: 378 604 381
+  Outputs: 382
+  Temporaries: 741
+Node 134 Operator Builtin Code   3 CONV_2D
+  Inputs: 378 605 383
+  Outputs: 384
+  Temporaries: 742
+Node 135 Operator Builtin Code   3 CONV_2D
+  Inputs: 384 606 385
+  Outputs: 386
+  Temporaries: 743
+Node 136 Operator Builtin Code   3 CONV_2D
+  Inputs: 386 607 387
+  Outputs: 388
+  Temporaries: 744
+Node 137 Operator Builtin Code   2 CONCATENATION
+  Inputs: 382 388
+  Outputs: 391
+Node 138 Operator Builtin Code   3 CONV_2D
+  Inputs: 391 608 389
+  Outputs: 392
+  Temporaries: 745
+Node 139 Operator Builtin Code   0 ADD
+  Inputs: 378 392
+  Outputs: 390
+Node 140 Operator Builtin Code   3 CONV_2D
+  Inputs: 390 609 393
+  Outputs: 394
+  Temporaries: 746
+Node 141 Operator Builtin Code   3 CONV_2D
+  Inputs: 390 610 395
+  Outputs: 396
+  Temporaries: 747
+Node 142 Operator Builtin Code   3 CONV_2D
+  Inputs: 396 611 397
+  Outputs: 398
+  Temporaries: 748
+Node 143 Operator Builtin Code   3 CONV_2D
+  Inputs: 398 612 399
+  Outputs: 400
+  Temporaries: 749
+Node 144 Operator Builtin Code   2 CONCATENATION
+  Inputs: 394 400
+  Outputs: 403
+Node 145 Operator Builtin Code   3 CONV_2D
+  Inputs: 403 613 401
+  Outputs: 404
+  Temporaries: 750
+Node 146 Operator Builtin Code   0 ADD
+  Inputs: 390 404
+  Outputs: 402
+Node 147 Operator Builtin Code   3 CONV_2D
+  Inputs: 402 614 405
+  Outputs: 406
+  Temporaries: 751
+Node 148 Operator Builtin Code   3 CONV_2D
+  Inputs: 402 615 407
+  Outputs: 408
+  Temporaries: 752
+Node 149 Operator Builtin Code   3 CONV_2D
+  Inputs: 408 616 409
+  Outputs: 410
+  Temporaries: 753
+Node 150 Operator Builtin Code   3 CONV_2D
+  Inputs: 410 617 411
+  Outputs: 412
+  Temporaries: 754
+Node 151 Operator Builtin Code   2 CONCATENATION
+  Inputs: 406 412
+  Outputs: 415
+Node 152 Operator Builtin Code   3 CONV_2D
+  Inputs: 415 618 413
+  Outputs: 416
+  Temporaries: 755
+Node 153 Operator Builtin Code   0 ADD
+  Inputs: 402 416
+  Outputs: 414
+Node 154 Operator Builtin Code   3 CONV_2D
+  Inputs: 414 619 417
+  Outputs: 418
+  Temporaries: 756
+Node 155 Operator Builtin Code   3 CONV_2D
+  Inputs: 414 620 419
+  Outputs: 420
+  Temporaries: 757
+Node 156 Operator Builtin Code   3 CONV_2D
+  Inputs: 420 621 421
+  Outputs: 422
+  Temporaries: 758
+Node 157 Operator Builtin Code   3 CONV_2D
+  Inputs: 422 622 423
+  Outputs: 424
+  Temporaries: 759
+Node 158 Operator Builtin Code   2 CONCATENATION
+  Inputs: 418 424
+  Outputs: 427
+Node 159 Operator Builtin Code   3 CONV_2D
+  Inputs: 427 623 425
+  Outputs: 428
+  Temporaries: 760
+Node 160 Operator Builtin Code   0 ADD
+  Inputs: 414 428
+  Outputs: 426
+Node 161 Operator Builtin Code   3 CONV_2D
+  Inputs: 426 624 429
+  Outputs: 430
+  Temporaries: 761
+Node 162 Operator Builtin Code   3 CONV_2D
+  Inputs: 426 625 431
+  Outputs: 432
+  Temporaries: 762
+Node 163 Operator Builtin Code   3 CONV_2D
+  Inputs: 432 626 433
+  Outputs: 434
+  Temporaries: 763
+Node 164 Operator Builtin Code   3 CONV_2D
+  Inputs: 434 627 435
+  Outputs: 436
+  Temporaries: 764
+Node 165 Operator Builtin Code   2 CONCATENATION
+  Inputs: 430 436
+  Outputs: 439
+Node 166 Operator Builtin Code   3 CONV_2D
+  Inputs: 439 628 437
+  Outputs: 440
+  Temporaries: 765
+Node 167 Operator Builtin Code   0 ADD
+  Inputs: 426 440
+  Outputs: 438
+Node 168 Operator Builtin Code   3 CONV_2D
+  Inputs: 438 629 441
+  Outputs: 442
+  Temporaries: 766
+Node 169 Operator Builtin Code   3 CONV_2D
+  Inputs: 438 630 443
+  Outputs: 444
+  Temporaries: 767
+Node 170 Operator Builtin Code   3 CONV_2D
+  Inputs: 444 631 445
+  Outputs: 446
+  Temporaries: 768
+Node 171 Operator Builtin Code   3 CONV_2D
+  Inputs: 446 632 447
+  Outputs: 448
+  Temporaries: 769
+Node 172 Operator Builtin Code   2 CONCATENATION
+  Inputs: 442 448
+  Outputs: 451
+Node 173 Operator Builtin Code   3 CONV_2D
+  Inputs: 451 633 449
+  Outputs: 452
+  Temporaries: 770
+Node 174 Operator Builtin Code   0 ADD
+  Inputs: 438 452
+  Outputs: 450
+Node 175 Operator Builtin Code   3 CONV_2D
+  Inputs: 450 539 225
+  Outputs: 226
+  Temporaries: 771
+Node 176 Operator Builtin Code   3 CONV_2D
+  Inputs: 450 540 227
+  Outputs: 228
+  Temporaries: 772
+Node 177 Operator Builtin Code   3 CONV_2D
+  Inputs: 228 541 229
+  Outputs: 230
+  Temporaries: 773
+Node 178 Operator Builtin Code   3 CONV_2D
+  Inputs: 230 542 231
+  Outputs: 232
+  Temporaries: 774
+Node 179 Operator Builtin Code   2 CONCATENATION
+  Inputs: 226 232
+  Outputs: 235
+Node 180 Operator Builtin Code   3 CONV_2D
+  Inputs: 235 543 233
+  Outputs: 236
+  Temporaries: 775
+Node 181 Operator Builtin Code   0 ADD
+  Inputs: 450 236
+  Outputs: 234
+Node 182 Operator Builtin Code   3 CONV_2D
+  Inputs: 234 544 237
+  Outputs: 238
+  Temporaries: 776
+Node 183 Operator Builtin Code   3 CONV_2D
+  Inputs: 234 545 239
+  Outputs: 240
+  Temporaries: 777
+Node 184 Operator Builtin Code   3 CONV_2D
+  Inputs: 240 546 241
+  Outputs: 242
+  Temporaries: 778
+Node 185 Operator Builtin Code   3 CONV_2D
+  Inputs: 242 547 243
+  Outputs: 244
+  Temporaries: 779
+Node 186 Operator Builtin Code   2 CONCATENATION
+  Inputs: 238 244
+  Outputs: 247
+Node 187 Operator Builtin Code   3 CONV_2D
+  Inputs: 247 548 245
+  Outputs: 248
+  Temporaries: 780
+Node 188 Operator Builtin Code   0 ADD
+  Inputs: 234 248
+  Outputs: 246
+Node 189 Operator Builtin Code   3 CONV_2D
+  Inputs: 246 549 249
+  Outputs: 250
+  Temporaries: 781
+Node 190 Operator Builtin Code   3 CONV_2D
+  Inputs: 246 550 251
+  Outputs: 252
+  Temporaries: 782
+Node 191 Operator Builtin Code   3 CONV_2D
+  Inputs: 252 551 253
+  Outputs: 254
+  Temporaries: 783
+Node 192 Operator Builtin Code   3 CONV_2D
+  Inputs: 254 552 255
+  Outputs: 256
+  Temporaries: 784
+Node 193 Operator Builtin Code   2 CONCATENATION
+  Inputs: 250 256
+  Outputs: 259
+Node 194 Operator Builtin Code   3 CONV_2D
+  Inputs: 259 553 257
+  Outputs: 260
+  Temporaries: 785
+Node 195 Operator Builtin Code   0 ADD
+  Inputs: 246 260
+  Outputs: 258
+Node 196 Operator Builtin Code   3 CONV_2D
+  Inputs: 258 554 261
+  Outputs: 262
+  Temporaries: 786
+Node 197 Operator Builtin Code   3 CONV_2D
+  Inputs: 258 555 263
+  Outputs: 264
+  Temporaries: 787
+Node 198 Operator Builtin Code   3 CONV_2D
+  Inputs: 264 556 265
+  Outputs: 266
+  Temporaries: 788
+Node 199 Operator Builtin Code   3 CONV_2D
+  Inputs: 266 557 267
+  Outputs: 268
+  Temporaries: 789
+Node 200 Operator Builtin Code   2 CONCATENATION
+  Inputs: 262 268
+  Outputs: 271
+Node 201 Operator Builtin Code   3 CONV_2D
+  Inputs: 271 558 269
+  Outputs: 272
+  Temporaries: 790
+Node 202 Operator Builtin Code   0 ADD
+  Inputs: 258 272
+  Outputs: 270
+Node 203 Operator Builtin Code   3 CONV_2D
+  Inputs: 270 559 273
+  Outputs: 274
+  Temporaries: 791
+Node 204 Operator Builtin Code   3 CONV_2D
+  Inputs: 270 560 275
+  Outputs: 276
+  Temporaries: 792
+Node 205 Operator Builtin Code   3 CONV_2D
+  Inputs: 276 561 277
+  Outputs: 278
+  Temporaries: 793
+Node 206 Operator Builtin Code   3 CONV_2D
+  Inputs: 278 562 279
+  Outputs: 280
+  Temporaries: 794
+Node 207 Operator Builtin Code   2 CONCATENATION
+  Inputs: 274 280
+  Outputs: 283
+Node 208 Operator Builtin Code   3 CONV_2D
+  Inputs: 283 563 281
+  Outputs: 284
+  Temporaries: 795
+Node 209 Operator Builtin Code   0 ADD
+  Inputs: 270 284
+  Outputs: 282
+Node 210 Operator Builtin Code   3 CONV_2D
+  Inputs: 282 564 285
+  Outputs: 286
+  Temporaries: 796
+Node 211 Operator Builtin Code   3 CONV_2D
+  Inputs: 282 565 287
+  Outputs: 288
+  Temporaries: 797
+Node 212 Operator Builtin Code   3 CONV_2D
+  Inputs: 288 566 289
+  Outputs: 290
+  Temporaries: 798
+Node 213 Operator Builtin Code   3 CONV_2D
+  Inputs: 290 567 291
+  Outputs: 292
+  Temporaries: 799
+Node 214 Operator Builtin Code   2 CONCATENATION
+  Inputs: 286 292
+  Outputs: 295
+Node 215 Operator Builtin Code   3 CONV_2D
+  Inputs: 295 568 293
+  Outputs: 296
+  Temporaries: 800
+Node 216 Operator Builtin Code   0 ADD
+  Inputs: 282 296
+  Outputs: 294
+Node 217 Operator Builtin Code   3 CONV_2D
+  Inputs: 294 569 297
+  Outputs: 298
+  Temporaries: 801
+Node 218 Operator Builtin Code   3 CONV_2D
+  Inputs: 294 570 299
+  Outputs: 300
+  Temporaries: 802
+Node 219 Operator Builtin Code   3 CONV_2D
+  Inputs: 300 571 301
+  Outputs: 302
+  Temporaries: 803
+Node 220 Operator Builtin Code   3 CONV_2D
+  Inputs: 302 572 303
+  Outputs: 304
+  Temporaries: 804
+Node 221 Operator Builtin Code   2 CONCATENATION
+  Inputs: 298 304
+  Outputs: 307
+Node 222 Operator Builtin Code   3 CONV_2D
+  Inputs: 307 573 305
+  Outputs: 308
+  Temporaries: 805
+Node 223 Operator Builtin Code   0 ADD
+  Inputs: 294 308
+  Outputs: 306
+Node 224 Operator Builtin Code   3 CONV_2D
+  Inputs: 306 574 309
+  Outputs: 310
+  Temporaries: 806
+Node 225 Operator Builtin Code   3 CONV_2D
+  Inputs: 306 575 311
+  Outputs: 312
+  Temporaries: 807
+Node 226 Operator Builtin Code   3 CONV_2D
+  Inputs: 312 576 313
+  Outputs: 314
+  Temporaries: 808
+Node 227 Operator Builtin Code   3 CONV_2D
+  Inputs: 314 577 315
+  Outputs: 316
+  Temporaries: 809
+Node 228 Operator Builtin Code   2 CONCATENATION
+  Inputs: 310 316
+  Outputs: 319
+Node 229 Operator Builtin Code   3 CONV_2D
+  Inputs: 319 578 317
+  Outputs: 320
+  Temporaries: 810
+Node 230 Operator Builtin Code   0 ADD
+  Inputs: 306 320
+  Outputs: 318
+Node 231 Operator Builtin Code   3 CONV_2D
+  Inputs: 318 579 321
+  Outputs: 322
+  Temporaries: 811
+Node 232 Operator Builtin Code   3 CONV_2D
+  Inputs: 318 580 323
+  Outputs: 324
+  Temporaries: 812
+Node 233 Operator Builtin Code   3 CONV_2D
+  Inputs: 324 581 325
+  Outputs: 326
+  Temporaries: 813
+Node 234 Operator Builtin Code   3 CONV_2D
+  Inputs: 326 582 327
+  Outputs: 328
+  Temporaries: 814
+Node 235 Operator Builtin Code   2 CONCATENATION
+  Inputs: 322 328
+  Outputs: 331
+Node 236 Operator Builtin Code   3 CONV_2D
+  Inputs: 331 583 329
+  Outputs: 332
+  Temporaries: 815
+Node 237 Operator Builtin Code   0 ADD
+  Inputs: 318 332
+  Outputs: 330
+Node 238 Operator Builtin Code   3 CONV_2D
+  Inputs: 330 584 333
+  Outputs: 334
+  Temporaries: 816
+Node 239 Operator Builtin Code   3 CONV_2D
+  Inputs: 330 585 335
+  Outputs: 336
+  Temporaries: 817
+Node 240 Operator Builtin Code   3 CONV_2D
+  Inputs: 336 586 337
+  Outputs: 338
+  Temporaries: 818
+Node 241 Operator Builtin Code   3 CONV_2D
+  Inputs: 338 587 339
+  Outputs: 340
+  Temporaries: 819
+Node 242 Operator Builtin Code   2 CONCATENATION
+  Inputs: 334 340
+  Outputs: 343
+Node 243 Operator Builtin Code   3 CONV_2D
+  Inputs: 343 588 341
+  Outputs: 344
+  Temporaries: 820
+Node 244 Operator Builtin Code   0 ADD
+  Inputs: 330 344
+  Outputs: 342
+Node 245 Operator Builtin Code   3 CONV_2D
+  Inputs: 342 594 357
+  Outputs: 358
+  Temporaries: 821
+Node 246 Operator Builtin Code   3 CONV_2D
+  Inputs: 342 595 359
+  Outputs: 360
+  Temporaries: 822
+Node 247 Operator Builtin Code   3 CONV_2D
+  Inputs: 360 596 361
+  Outputs: 362
+  Temporaries: 823
+Node 248 Operator Builtin Code   3 CONV_2D
+  Inputs: 362 597 363
+  Outputs: 364
+  Temporaries: 824
+Node 249 Operator Builtin Code   2 CONCATENATION
+  Inputs: 358 364
+  Outputs: 367
+Node 250 Operator Builtin Code   3 CONV_2D
+  Inputs: 367 598 365
+  Outputs: 368
+  Temporaries: 825
+Node 251 Operator Builtin Code   0 ADD
+  Inputs: 342 368
+  Outputs: 366
+Node 252 Operator Builtin Code   1 AVERAGE_POOL_2D
+  Inputs: 366
+  Outputs: 0
+Node 253 Operator Builtin Code   3 CONV_2D
+  Inputs: 0 3 1
+  Outputs: 2
+  Temporaries: 826
+Node 254 Operator Builtin Code   3 CONV_2D
+  Inputs: 2 6 4
+  Outputs: 5
+  Temporaries: 827
+Node 255 Operator Builtin Code   9 FULLY_CONNECTED
+  Inputs: 5 9 8
+  Outputs: 7
+Node 256 Operator Custom Name TfLiteGpuDelegateV2
+  Inputs: 10 11 12 13 14 15 17 19 21 23 27 29 31 33 35 37 40 53 55 57 59 61 63 65 85 87 89 91 93 95 97 101 103 105 107 109 111 113 117 119 121 123 125 127 129 133 135 137 139 141 143 145 149 151 155 157 159 453 454 455 456 457 458 459 464 465 466 467 468 469 470 478 479 480 481 482 483 484 485 486 487 488 489 490 491 492 493 494 495 496 497 498 499 500 501 502 503 504 505 506 507 509 510 511 634
+  Outputs: 146 150 152 160
+

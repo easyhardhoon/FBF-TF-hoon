@@ -42,10 +42,10 @@ limitations under the License.
 using namespace std;
 
 #define INPUT "../../mAP_TF/input/images-optional/"
-#define Partition_Num 7  // nCr --> "n"  // for YOLOv4-tiny
+#define Partition_Num 10  // nCr --> "n"  // for YOLOv4-tiny
 // #define Max_Delegated_Partitions_Num 1  // nCr --> "r"  // hyper-param // Not use in full-auto
 #define GPU
-#define IMG_set_num 2 // "300" for mAP , "100" for DOT // "1" for debugging
+#define IMG_set_num 1 // "300" for mAP , "100" for DOT // "1" for debugging
 // #define DEBUG
 // #define YOLO
 
@@ -157,7 +157,7 @@ int main(int argc, char* argv[]) {
         // Allocate tensor buffers.
         TFLITE_MINIMAL_CHECK(interpreter->AllocateTensors() == kTfLiteOk);
         printf("=== Pre-invoke Interpreter State ===\n");
-	// tflite::PrintInterpreterState(interpreter.get());  //For debugging model info
+	tflite::PrintInterpreterState(interpreter.get());  //For debugging model info
         //////////////////////////////////////////////////////////////////////////////////////////
         // Push test image to input_tensor
         // float*tmp = nullptr;
@@ -276,7 +276,7 @@ int main(int argc, char* argv[]) {
           #endif
 
           // Make txt file to get mAP
-          make_txt_to_get_mAP(yolo::YOLO_Parser::result_boxes, image_number, dot, N);
+          // make_txt_to_get_mAP(yolo::YOLO_Parser::result_boxes, image_number, dot, N);
 
           // Re-initialize
           image_number+=1;
