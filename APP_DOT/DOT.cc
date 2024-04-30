@@ -43,11 +43,10 @@ using namespace std;
 
 #define INPUT "../../mAP_TF/input/images-optional/"
 #define Partition_Num 10  // nCr --> "n"  // for YOLOv4-tiny
-// #define Max_Delegated_Partitions_Num 1  // nCr --> "r"  // hyper-param // Not use in full-auto
 #define GPU
-#define IMG_set_num 1 // "300" for mAP , "100" for DOT // "1" for debugging
+#define IMG_set_num 100 // "300" for mAP , "100" for DOT // "1" for debugging
 // #define DEBUG
-// #define YOLO
+#define YOLO
 
 std::vector<float> time_table;
 std::vector<std::vector<float>> DOT_table;
@@ -157,7 +156,7 @@ int main(int argc, char* argv[]) {
         // Allocate tensor buffers.
         TFLITE_MINIMAL_CHECK(interpreter->AllocateTensors() == kTfLiteOk);
         printf("=== Pre-invoke Interpreter State ===\n");
-	tflite::PrintInterpreterState(interpreter.get());  //For debugging model info
+	// tflite::PrintInterpreterState(interpreter.get());  //For debugging model info
         //////////////////////////////////////////////////////////////////////////////////////////
         // Push test image to input_tensor
         // float*tmp = nullptr;
@@ -172,14 +171,14 @@ int main(int argc, char* argv[]) {
           int width = input_map[input_type].first;
           int height = input_map[input_type].second;
           read_image_opencv(image_name, input, width, height);
-          printf("\n\n=== read image by CV (After)===\n");
+          // printf("\n\n=== read image by CV (After)===\n");
           // Push image to input tensor
           auto input_tensor = interpreter->typed_input_tensor<float>(0); // float * , data.raw
           auto input_T = interpreter->input_tensor(0); // TfLiteTensor * , real_tensor
-          std:cout << "TFLite's tensor dimension : ";
-          std::cout << input_T->dims->data[0] << " " << input_T->dims->data[1]; 
-          std::cout << " " << input_T->dims->data[2] << " " << input_T->dims->data[3] << std::endl;
-          printf("\n\n=== Push image to input tensor (Before)===\n");
+          // std:cout << "TFLite's tensor dimension : ";
+          // std::cout << input_T->dims->data[0] << " " << input_T->dims->data[1]; 
+          // std::cout << " " << input_T->dims->data[2] << " " << input_T->dims->data[3] << std::endl;
+          // printf("\n\n=== Push image to input tensor (Before)===\n");
           // Normalize code for pushing image to input tensor
           // TFLite's data tensor format :[N, H, W, C]
           // Opencv's data image  format :[N, H, W, C] 
@@ -210,7 +209,7 @@ int main(int argc, char* argv[]) {
           std::cout << "\n======= Tensor safety check END=======\n";     
           #endif
 
-          printf("\n\n=== Push image to input tensor (Start)===\n");
+          // printf("\n\n=== Push image to input tensor (Start)===\n");
 
           // ERROR
           // seg fault at specific case (random-shot)
@@ -252,7 +251,7 @@ int main(int argc, char* argv[]) {
                               input_T->dims[2],input_T->dims[3],input_T->dims[4]);
           printf("\nDEBUG_POINTER_VALUE (after push) : %.6f\n", *input_tensor);
           #endif
-          printf("\n\n=== Push image to input tensor (After)===\n");
+          // printf("\n\n=== Push image to input tensor (After)===\n");
 
           // Run inference
           uint64_t START = millis();
