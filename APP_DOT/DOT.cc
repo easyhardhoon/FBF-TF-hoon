@@ -42,11 +42,11 @@ limitations under the License.
 using namespace std;
 
 #define INPUT "../../mAP_TF/input/images-optional/"
-#define Partition_Num 10  // nCr --> "n"  // for YOLOv4-tiny
+#define Partition_Num 10  // [lanenet] 10   / [yolo] 7
 #define GPU
-#define IMG_set_num 100 // "300" for mAP , "100" for DOT // "1" for debugging
+#define IMG_set_num 5 // "300" for mAP , "100" for DOT // "1" for debugging
 // #define DEBUG
-#define YOLO
+// #define YOLO
 
 std::vector<float> time_table;
 std::vector<std::vector<float>> DOT_table;
