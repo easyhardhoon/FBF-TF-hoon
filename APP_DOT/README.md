@@ -16,3 +16,8 @@ modified (FBF-TF::Work_Hoon) + yolo_output_parsing + get_mAP + DOT(IEIE)
 Before : single model(yolov4-tiny) & single board(xaiver-nx)
 
 After : multi mode(yolov4-tiny, lanenet) & multi board(xavier-nx, odroidxu4)
+
+
+#TODO
+
+https://github.com/tensorflow/tensorflow/issues/66677
