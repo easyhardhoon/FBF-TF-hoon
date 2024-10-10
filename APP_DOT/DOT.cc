@@ -42,7 +42,7 @@ limitations under the License.
 using namespace std;
 
 #define INPUT "../../mAP_TF/input/images-optional/"
-#define Partition_Num 10  // [lanenet] 10   / [yolo] 7
+#define Partition_Num 7  // [lanenet] 10   / [yolo] 7
 #define GPU
 #define IMG_set_num 5 // "300" for mAP , "100" for DOT // "1" for debugging
 // #define DEBUG
@@ -147,11 +147,36 @@ int main(int argc, char* argv[]) {
             .inference_priority3 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO,
             .priority_partition_num = dot, // loop_num
             .experimental_flags = 1,
-            .max_delegated_partitions = N, // default is "1"
+            // .max_delegated_partitions = N, // default is "1"
+            .max_delegated_partitions = 7, // default is "1"
         };
+        uint64_t A = millis(); // EEZEE
         MyDelegate = TfLiteGpuDelegateV2Create(&options);
+        uint64_t B = millis(); // EEZEE
+        uint64_t C = B-A; // EEZEE
+        printf("Delegate Create time : %.6llu\n", C); // EEZEE
+
         TFLITE_MINIMAL_CHECK(interpreter->ModifyGraphWithDelegate(MyDelegate) == kTfLiteOk);
         #endif
+        
+        ///////////////////////////////////////////////////////////////
+        // 241010 DEBUG : re-init delegation 
+        std::cout << "RemoveAllDelegates START\n";
+        uint64_t S1 = millis();
+        TFLITE_MINIMAL_CHECK(interpreter->RemoveAllDelegates() == kTfLiteOk);
+        uint64_t E1 = millis();
+        uint64_t T = E1 - S1;
+        printf("RemoveAllDelegate time : %.6llu\n", T); // EEZEE
+        uint64_t S2 = millis();
+        // tflite::PrintInterpreterState(interpreter.get());  //For debugging model info
+        TFLITE_MINIMAL_CHECK(interpreter->ModifyGraphWithDelegate(MyDelegate) == kTfLiteOk);
+        uint64_t E2 = millis();
+        uint64_t T2 = E2 - S2;
+        printf("ModifyGraph time : %.6llu\n", T2); // EEZEE
+        // tflite::PrintInterpreterState(interpreter.get());  //For debugging model info
+        std::cout << "RemoveAllDelegates END\n";
+        ///////////////////////////////////////////////////////////////
+
 
         // Allocate tensor buffers.
         TFLITE_MINIMAL_CHECK(interpreter->AllocateTensors() == kTfLiteOk);
@@ -260,6 +285,7 @@ int main(int argc, char* argv[]) {
           uint64_t END = millis();
           uint64_t Invoke_time = END - START;
           printf("\n\n=== Interpreter Invoke (After)===\n");
+          printf("Invoke time each stamp : %.6llu\n", Invoke_time); // EEZEE
           average_time += Invoke_time;
 
           #ifdef YOLO
