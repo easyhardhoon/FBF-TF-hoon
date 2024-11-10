@@ -39,12 +39,12 @@ limitations under the License.
 //
 // Usage: ./minimal_yolo <tflite model>
 
+
 using namespace std;
 
 #define INPUT "../../mAP_TF/input/images-optional/"
-#define Partition_Num 7  // [lanenet] 10   / [yolo] 7
-#define GPU
-#define IMG_set_num 5 // "300" for mAP , "100" for DOT // "1" for debugging
+#define Partition_Num 1  // [lanenet] 10   / [yolo] 7
+#define IMG_set_num 1 // "300" for mAP , "100" for DOT // "1" for debugging
 // #define DEBUG
 // #define YOLO
 
@@ -102,6 +102,20 @@ void find_best_case(std::vector<std::vector<float>> DOT_table){
   printf("\n");
 };
 
+////////////////////////
+// For MB
+const int MAX_LENGTH = 100;
+// const int MAX_LENGTH = 384;
+
+void prepare_dummy_input(std::vector<int>& input_data) {
+    input_data.resize(MAX_LENGTH, 0);
+    for (int i = 0; i < MAX_LENGTH; ++i) {
+        input_data[i] = 101 + i;  // 각 토큰 ID를 단순히 증가시키는 패턴
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+// For CNN models
 int main(int argc, char* argv[]) {
   if (argc != 3) {
     fprintf(stderr, "minimal <tflite model> <input_type> \n");
@@ -111,12 +125,10 @@ int main(int argc, char* argv[]) {
   const char* input_type = argv[2];
   vector<cv::Mat> input;
   for (int N=1;N<=Partition_Num;N++){
-  //////////////////////////////////////////////////////////////////////////////////////////
   // Outer loop [1<=N<=Max] 
     printf("\033[0;33mLOOP START [N=%d]...\033[0m\n", N);
     int DOT = combination(Partition_Num, N);
     for (int dot = 0; dot<DOT; dot++){
-        //////////////////////////////////////////////////////////////////////////////////////////
         // Build interpreter on each dot case
         int image_number = 1;
         uint64_t average_time = 0;
@@ -134,7 +146,7 @@ int main(int argc, char* argv[]) {
         builder(&interpreter);
         TFLITE_MINIMAL_CHECK(interpreter != nullptr);
 	
-        #ifdef GPU
+        tflite::PrintInterpreterStateV2(interpreter.get());  //For debugging model info
         // Modify interpreter::subgraph when using GPU
         TfLiteDelegate *MyDelegate = NULL;
 
@@ -148,7 +160,7 @@ int main(int argc, char* argv[]) {
             .priority_partition_num = dot, // loop_num
             .experimental_flags = 1,
             // .max_delegated_partitions = N, // default is "1"
-            .max_delegated_partitions = 7, // default is "1"
+            .max_delegated_partitions = 100, // default is "1"
         };
         uint64_t A = millis(); // EEZEE
         MyDelegate = TfLiteGpuDelegateV2Create(&options);
@@ -157,7 +169,6 @@ int main(int argc, char* argv[]) {
         printf("Delegate Create time : %.6llu\n", C); // EEZEE
 
         TFLITE_MINIMAL_CHECK(interpreter->ModifyGraphWithDelegate(MyDelegate) == kTfLiteOk);
-        #endif
         
         ///////////////////////////////////////////////////////////////
         // 241010 DEBUG : re-init delegation 
@@ -200,65 +211,7 @@ int main(int argc, char* argv[]) {
           // Push image to input tensor
           auto input_tensor = interpreter->typed_input_tensor<float>(0); // float * , data.raw
           auto input_T = interpreter->input_tensor(0); // TfLiteTensor * , real_tensor
-          // std:cout << "TFLite's tensor dimension : ";
-          // std::cout << input_T->dims->data[0] << " " << input_T->dims->data[1]; 
-          // std::cout << " " << input_T->dims->data[2] << " " << input_T->dims->data[3] << std::endl;
-          // printf("\n\n=== Push image to input tensor (Before)===\n");
-          // Normalize code for pushing image to input tensor
-          // TFLite's data tensor format :[N, H, W, C]
-          // Opencv's data image  format :[N, H, W, C] 
-          // PrintTensor(*input_T);
-          ////////////////////////////////////////////////////////////////////
-
-          #ifdef DEBUG
-          printf("DEBUG_POINTER_ADDRESS : %p\n", (void*)input_tensor);
-          printf("DEBUG_POINTER_VALUE (before push) : %.6f\n", *input_tensor);
-          if(input_tensor == nullptr){
-            printf("ERROR : get Nullptr!!!\n");
-          }
-          std::cout << "\n======= Tensor safety check START=======\n";
-          std::cout << "Is data stale (Not fresh)? : " << input_T->data_is_stale << std::endl; 
-          std::cout << "Is data variable (Not stable)? : " << input_T->is_variable << std::endl; 
-          const int alloc_type = input_T->allocation_type;
-          std::cout << "Tensor allocation type is : ";
-           if(alloc_type==2){
-            std::cout << "kTfLiteArenaRw" << std::endl;
-          }
-          else if(alloc_type==0){
-            std::cout << "kTfLiteMemNone" << std::endl;
-          }
-          else{
-            std::cout << "???" << alloc_type << std::endl;            
-          }
-          std::cout << "Tensor allocated byte is : " << input_T->bytes << std::endl; 
-          std::cout << "\n======= Tensor safety check END=======\n";     
-          #endif
-
-          // printf("\n\n=== Push image to input tensor (Start)===\n");
-
-          // ERROR
-          // seg fault at specific case (random-shot)
-          // Should consider cv::mat's dimension.
-          // for (int w=0; w<width; w++){
-          //   std::cout << "W=" << w<< " ";  // (OK : 511, WRONG : 487 )
-          //   for (int h=0; h<height; h++){
-          //     cv::Vec3b pixel = input[0].at<cv::Vec3b>(w, h); // SEG FAULT 
-          //     *(input_tensor + w * height*3 + h * 3) = ((float)pixel[0])/255.0;
-          //     *(input_tensor + w * height*3 + h * 3 + 1) = ((float)pixel[1])/255.0;
-          //     *(input_tensor + w * height*3 + h * 3 + 2) = ((float)pixel[2])/255.0;
-          //   }
-          // }
-
-          // ERROR 
-          // 
-          // for (int w=0; w<width; w++){
-          //     for (int h=0; h<height; h++){
-          //       cv::Vec3b pixel = input[0].at<cv::Vec3b>(h,w);
-          //       *(input_tensor + w * height*3 + h * 3) = ((float)pixel[0])/255.0;
-          //       *(input_tensor + w * height*3 + h * 3 + 1) = ((float)pixel[1])/255.0;
-          //       *(input_tensor + w * height*3 + h * 3 + 2) = ((float)pixel[2])/255.0;
-          //     }
-          // }  
+        
 
           // SUCCESS (NHWC to NHWC)
           // TFLite's data tensor format :[N, H, W, C]
@@ -324,7 +277,81 @@ int main(int argc, char* argv[]) {
   // Search Best case recorded in DOT_table
   print_DOT_table(DOT_table);
   find_best_case(DOT_table);
-  // cv::waitKey(0);
-	// cv::destroyAllWindows();
   return 0;
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+// For Transformer models
+int main_tmp(int argc, char* argv[]) { 
+    // const std::string model_path = "../models/MobileBert_large.tflite"; // large
+    const std::string model_path = "../models/MobileBert_small.tflite"; // light
+
+    std::unique_ptr<tflite::FlatBufferModel> model = tflite::FlatBufferModel::BuildFromFile(model_path.c_str());
+    if (!model) {
+        std::cerr << "Failed to load model" << std::endl;
+        return -1;
+    }
+
+    // 인터프리터 생성 및 초기화
+    tflite::ops::builtin::BuiltinOpResolver resolver;
+    std::unique_ptr<tflite::Interpreter> interpreter;
+    tflite::InterpreterBuilder(*model, resolver)(&interpreter);
+    if (!interpreter) {
+        std::cerr << "Failed to create interpreter" << std::endl;
+        return -1;
+    }
+
+  TfLiteDelegate *MyDelegate = NULL;
+
+        // // Default option + only change N + add dot (inference priority doesn't matter)
+        const TfLiteGpuDelegateOptionsV2 options = {
+              .is_precision_loss_allowed = 0,  //1
+            .inference_preference = TFLITE_GPU_INFERENCE_PREFERENCE_FAST_SINGLE_ANSWER,
+            .inference_priority1 = TFLITE_GPU_INFERENCE_PRIORITY_MAX_PRECISION,
+            .inference_priority2 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO,
+            .inference_priority3 = TFLITE_GPU_INFERENCE_PRIORITY_AUTO,
+            .priority_partition_num = 0, // loop_num
+            .experimental_flags = 1,
+            // .max_delegated_partitions = N, // default is "1"
+            .max_delegated_partitions = 100, // default is "1"
+        };
+        uint64_t A = millis(); // EEZEE
+        MyDelegate = TfLiteGpuDelegateV2Create(&options);
+        uint64_t B = millis(); // EEZEE
+        uint64_t C = B-A; // EEZEE
+        printf("Delegate Create time : %.6llu\n", C); // EEZEE
+
+        TFLITE_MINIMAL_CHECK(interpreter->ModifyGraphWithDelegate(MyDelegate) == kTfLiteOk);
+
+    // 모델의 첫 번째 입력 텐서에 대한 설정
+    tflite::PrintInterpreterStateV2(interpreter.get());  //For debugging model info
+
+    interpreter->AllocateTensors();
+    auto* input_tensor = interpreter->typed_input_tensor<int>(0);  // MobileBERT는 일반적으로 int32 입력을 사용
+
+    // 더미 입력 데이터를 준비합니다.
+    std::vector<int> input_data;
+    prepare_dummy_input(input_data);
+
+    // 준비된 더미 입력 데이터를 텐서에 복사
+    for (int i = 0; i < MAX_LENGTH; ++i) {
+        input_tensor[i] = input_data[i];
+    }
+
+    // 인퍼런스 수행 시간 측정
+    uint64_t START = millis();
+    if (interpreter->Invoke() != kTfLiteOk) {
+        std::cerr << "Failed to invoke TFLite interpreter" << std::endl;
+        return -1;
+    }
+    uint64_t END = millis();
+
+    // 결과 출력
+    printf("Inference time: %llu ms\n", END - START);
+
+    // 결과 확인 (출력 텐서의 첫 번째 값을 예제로 출력)
+    // auto* output_tensor = interpreter->typed_output_tensor<float>(0);
+    // printf("Output tensor first value: %.6f\n", output_tensor[0]);
+    return 0;
 }
